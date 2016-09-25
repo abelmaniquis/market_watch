@@ -1,0 +1,2676 @@
+{"stocks":[{
+	"ticker": "MMM",
+	"name": "3M Company",
+	"free_code": "WIKI/MMM",
+	"premium_code": "EOD/MMM"
+}, {
+	"ticker": "ABT",
+	"name": "Abbott Laboratories",
+	"free_code": "WIKI/ABT",
+	"premium_code": "EOD/ABT"
+}, {
+	"ticker": "ABBV",
+	"name": "AbbVie",
+	"free_code": "WIKI/ABBV",
+	"premium_code": "EOD/ABBV"
+}, {
+	"ticker": "ACN",
+	"name": "Accenture plc",
+	"free_code": "WIKI/ACN",
+	"premium_code": "EOD/ACN"
+}, {
+	"ticker": "ACE",
+	"name": "ACE Limited",
+	"free_code": "WIKI/ACE",
+	"premium_code": "EOD/ACE"
+}, {
+	"ticker": "ATVI",
+	"name": "Activision Blizzard",
+	"free_code": "WIKI/ATVI",
+	"premium_code": "EOD/ATVI"
+}, {
+	"ticker": "ADBE",
+	"name": "Adobe Systems Inc",
+	"free_code": "WIKI/ADBE",
+	"premium_code": "EOD/ADBE"
+}, {
+	"ticker": "ADT",
+	"name": "ADT Corp",
+	"free_code": "WIKI/ADT",
+	"premium_code": "EOD/ADT"
+}, {
+	"ticker": "AAP",
+	"name": "Advance Auto Parts",
+	"free_code": "WIKI/AAP",
+	"premium_code": "EOD/AAP"
+}, {
+	"ticker": "AES",
+	"name": "AES Corp",
+	"free_code": "WIKI/AES",
+	"premium_code": "EOD/AES"
+}, {
+	"ticker": "AET",
+	"name": "Aetna Inc",
+	"free_code": "WIKI/AET",
+	"premium_code": "EOD/AET"
+}, {
+	"ticker": "AFL",
+	"name": "AFLAC Inc",
+	"free_code": "WIKI/AFL",
+	"premium_code": "EOD/AFL"
+}, {
+	"ticker": "AMG",
+	"name": "Affiliated Managers Group Inc",
+	"free_code": "WIKI/AMG",
+	"premium_code": "EOD/AMG"
+}, {
+	"ticker": "A",
+	"name": "Agilent Technologies Inc",
+	"free_code": "WIKI/A",
+	"premium_code": "EOD/A"
+}, {
+	"ticker": "GAS",
+	"name": "AGL Resources Inc.",
+	"free_code": "WIKI/GAS",
+	"premium_code": "EOD/GAS"
+}, {
+	"ticker": "APD",
+	"name": "Air Products & Chemicals Inc",
+	"free_code": "WIKI/APD",
+	"premium_code": "EOD/APD"
+}, {
+	"ticker": "ARG",
+	"name": "Airgas Inc",
+	"free_code": "WIKI/ARG",
+	"premium_code": "EOD/ARG"
+}, {
+	"ticker": "AKAM",
+	"name": "Akamai Technologies Inc",
+	"free_code": "WIKI/AKAM",
+	"premium_code": "EOD/AKAM"
+}, {
+	"ticker": "AA",
+	"name": "Alcoa Inc",
+	"free_code": "WIKI/AA",
+	"premium_code": "EOD/AA"
+}, {
+	"ticker": "AGN",
+	"name": "Allergan plc",
+	"free_code": "WIKI/AGN",
+	"premium_code": "EOD/AGN"
+}, {
+	"ticker": "ALXN",
+	"name": "Alexion Pharmaceuticals",
+	"free_code": "WIKI/ALXN",
+	"premium_code": "EOD/ALXN"
+}, {
+	"ticker": "ALLE",
+	"name": "Allegion",
+	"free_code": "WIKI/ALLE",
+	"premium_code": "EOD/ALLE"
+}, {
+	"ticker": "ADS",
+	"name": "Alliance Data Systems",
+	"free_code": "WIKI/ADS",
+	"premium_code": "EOD/ADS"
+}, {
+	"ticker": "ALL",
+	"name": "Allstate Corp",
+	"free_code": "WIKI/ALL",
+	"premium_code": "EOD/ALL"
+}, {
+	"ticker": "GOOGL",
+	"name": "Alphabet Inc Class A",
+	"free_code": "WIKI/GOOGL",
+	"premium_code": "EOD/GOOGL"
+}, {
+	"ticker": "GOOG",
+	"name": "Alphabet Inc Class C",
+	"free_code": "WIKI/GOOG",
+	"premium_code": "EOD/GOOG"
+}, {
+	"ticker": "ALTR",
+	"name": "Altera Corp",
+	"free_code": "WIKI/ALTR",
+	"premium_code": "EOD/ALTR"
+}, {
+	"ticker": "MO",
+	"name": "Altria Group Inc",
+	"free_code": "WIKI/MO",
+	"premium_code": "EOD/MO"
+}, {
+	"ticker": "AMZN",
+	"name": "Amazon.com Inc",
+	"free_code": "WIKI/AMZN",
+	"premium_code": "EOD/AMZN"
+}, {
+	"ticker": "AEE",
+	"name": "Ameren Corp",
+	"free_code": "WIKI/AEE",
+	"premium_code": "EOD/AEE"
+}, {
+	"ticker": "AAL",
+	"name": "American Airlines Group",
+	"free_code": "WIKI/AAL",
+	"premium_code": "EOD/AAL"
+}, {
+	"ticker": "AEP",
+	"name": "American Electric Power",
+	"free_code": "WIKI/AEP",
+	"premium_code": "EOD/AEP"
+}, {
+	"ticker": "AXP",
+	"name": "American Express Co",
+	"free_code": "WIKI/AXP",
+	"premium_code": "EOD/AXP"
+}, {
+	"ticker": "AIG",
+	"name": "American International Group",
+	"free_code": "WIKI/AIG",
+	"premium_code": "EOD/AIG"
+}, {
+	"ticker": "AMT",
+	"name": "American Tower Corp A",
+	"free_code": "WIKI/AMT",
+	"premium_code": "EOD/AMT"
+}, {
+	"ticker": "AMP",
+	"name": "Ameriprise Financial",
+	"free_code": "WIKI/AMP",
+	"premium_code": "EOD/AMP"
+}, {
+	"ticker": "ABC",
+	"name": "AmerisourceBergen Corp",
+	"free_code": "WIKI/ABC",
+	"premium_code": "EOD/ABC"
+}, {
+	"ticker": "AME",
+	"name": "Ametek",
+	"free_code": "WIKI/AME",
+	"premium_code": "EOD/AME"
+}, {
+	"ticker": "AMGN",
+	"name": "Amgen Inc",
+	"free_code": "WIKI/AMGN",
+	"premium_code": "EOD/AMGN"
+}, {
+	"ticker": "APH",
+	"name": "Amphenol Corp A",
+	"free_code": "WIKI/APH",
+	"premium_code": "EOD/APH"
+}, {
+	"ticker": "APC",
+	"name": "Anadarko Petroleum Corp",
+	"free_code": "WIKI/APC",
+	"premium_code": "EOD/APC"
+}, {
+	"ticker": "ADI",
+	"name": "Analog Devices",
+	"free_code": "WIKI/ADI",
+	"premium_code": "EOD/ADI"
+}, {
+	"ticker": "AON",
+	"name": "Aon plc",
+	"free_code": "WIKI/AON",
+	"premium_code": "EOD/AON"
+}, {
+	"ticker": "APA",
+	"name": "Apache Corporation",
+	"free_code": "WIKI/APA",
+	"premium_code": "EOD/APA"
+}, {
+	"ticker": "AIV",
+	"name": "Apartment Investment & Mgmt",
+	"free_code": "WIKI/AIV",
+	"premium_code": "EOD/AIV"
+}, {
+	"ticker": "AAPL",
+	"name": "Apple Inc.",
+	"free_code": "WIKI/AAPL",
+	"premium_code": "EOD/AAPL"
+}, {
+	"ticker": "AMAT",
+	"name": "Applied Materials Inc",
+	"free_code": "WIKI/AMAT",
+	"premium_code": "EOD/AMAT"
+}, {
+	"ticker": "ADM",
+	"name": "Archer-Daniels-Midland Co",
+	"free_code": "WIKI/ADM",
+	"premium_code": "EOD/ADM"
+}, {
+	"ticker": "AIZ",
+	"name": "Assurant Inc",
+	"free_code": "WIKI/AIZ",
+	"premium_code": "EOD/AIZ"
+}, {
+	"ticker": "T",
+	"name": "AT&T Inc",
+	"free_code": "WIKI/T",
+	"premium_code": "EOD/T"
+}, {
+	"ticker": "ADSK",
+	"name": "Autodesk Inc",
+	"free_code": "WIKI/ADSK",
+	"premium_code": "EOD/ADSK"
+}, {
+	"ticker": "ADP",
+	"name": "Automatic Data Processing",
+	"free_code": "WIKI/ADP",
+	"premium_code": "EOD/ADP"
+}, {
+	"ticker": "AN",
+	"name": "AutoNation Inc",
+	"free_code": "WIKI/AN",
+	"premium_code": "EOD/AN"
+}, {
+	"ticker": "AZO",
+	"name": "AutoZone Inc",
+	"free_code": "WIKI/AZO",
+	"premium_code": "EOD/AZO"
+}, {
+	"ticker": "AVGO",
+	"name": "Avago Technologies",
+	"free_code": "WIKI/AVGO",
+	"premium_code": "EOD/AVGO"
+}, {
+	"ticker": "AVB",
+	"name": "AvalonBay Communities",
+	"free_code": "WIKI/AVB",
+	"premium_code": "EOD/AVB"
+}, {
+	"ticker": "AVY",
+	"name": "Avery Dennison Corp",
+	"free_code": "WIKI/AVY",
+	"premium_code": "EOD/AVY"
+}, {
+	"ticker": "BHI",
+	"name": "Baker Hughes Inc",
+	"free_code": "WIKI/BHI",
+	"premium_code": "EOD/BHI"
+}, {
+	"ticker": "BLL",
+	"name": "Ball Corp",
+	"free_code": "WIKI/BLL",
+	"premium_code": "EOD/BLL"
+}, {
+	"ticker": "BAC",
+	"name": "Bank of America Corp",
+	"free_code": "WIKI/BAC",
+	"premium_code": "EOD/BAC"
+}, {
+	"ticker": "BK",
+	"name": "The Bank of New York Mellon Corp.",
+	"free_code": "WIKI/BK",
+	"premium_code": "EOD/BK"
+}, {
+	"ticker": "BCR",
+	"name": "Bard (C.R.) Inc.",
+	"free_code": "WIKI/BCR",
+	"premium_code": "EOD/BCR"
+}, {
+	"ticker": "BXLT",
+	"name": "Baxalta",
+	"free_code": "WIKI/BXLT",
+	"premium_code": "EOD/BXLT"
+}, {
+	"ticker": "BAX",
+	"name": "Baxter International Inc.",
+	"free_code": "WIKI/BAX",
+	"premium_code": "EOD/BAX"
+}, {
+	"ticker": "BBT",
+	"name": "BB&T Corporation",
+	"free_code": "WIKI/BBT",
+	"premium_code": "EOD/BBT"
+}, {
+	"ticker": "BDX",
+	"name": "Becton Dickinson",
+	"free_code": "WIKI/BDX",
+	"premium_code": "EOD/BDX"
+}, {
+	"ticker": "BBBY",
+	"name": "Bed Bath & Beyond",
+	"free_code": "WIKI/BBBY",
+	"premium_code": "EOD/BBBY"
+}, {
+	"ticker": "BRK_B",
+	"name": "Berkshire Hathaway",
+	"free_code": "WIKI/BRK_B",
+	"premium_code": "EOD/BRK_B"
+}, {
+	"ticker": "BBY",
+	"name": "Best Buy Co. Inc.",
+	"free_code": "WIKI/BBY",
+	"premium_code": "EOD/BBY"
+}, {
+	"ticker": "BIIB",
+	"name": "BIOGEN IDEC Inc.",
+	"free_code": "WIKI/BIIB",
+	"premium_code": "EOD/BIIB"
+}, {
+	"ticker": "BLK",
+	"name": "BlackRock",
+	"free_code": "WIKI/BLK",
+	"premium_code": "EOD/BLK"
+}, {
+	"ticker": "HRB",
+	"name": "Block H&R",
+	"free_code": "WIKI/HRB",
+	"premium_code": "EOD/HRB"
+}, {
+	"ticker": "BA",
+	"name": "Boeing Company",
+	"free_code": "WIKI/BA",
+	"premium_code": "EOD/BA"
+}, {
+	"ticker": "BWA",
+	"name": "BorgWarner",
+	"free_code": "WIKI/BWA",
+	"premium_code": "EOD/BWA"
+}, {
+	"ticker": "BXP",
+	"name": "Boston Properties",
+	"free_code": "WIKI/BXP",
+	"premium_code": "EOD/BXP"
+}, {
+	"ticker": "BSX",
+	"name": "Boston Scientific",
+	"free_code": "WIKI/BSX",
+	"premium_code": "EOD/BSX"
+}, {
+	"ticker": "BMY",
+	"name": "Bristol-Myers Squibb",
+	"free_code": "WIKI/BMY",
+	"premium_code": "EOD/BMY"
+}, {
+	"ticker": "BRCM",
+	"name": "Broadcom Corporation",
+	"free_code": "WIKI/BRCM",
+	"premium_code": "EOD/BRCM"
+}, {
+	"ticker": "BF_B",
+	"name": "Brown-Forman Corporation",
+	"free_code": "WIKI/BF-B",
+	"premium_code": "EOD/BF-B"
+}, {
+	"ticker": "CHRW",
+	"name": "C. H. Robinson Worldwide",
+	"free_code": "WIKI/CHRW",
+	"premium_code": "EOD/CHRW"
+}, {
+	"ticker": "CA",
+	"name": "CA",
+	"free_code": "WIKI/CA",
+	"premium_code": "EOD/CA"
+}, {
+	"ticker": "CVC",
+	"name": "Cablevision Systems Corp.",
+	"free_code": "WIKI/CVC",
+	"premium_code": "EOD/CVC"
+}, {
+	"ticker": "COG",
+	"name": "Cabot Oil & Gas",
+	"free_code": "WIKI/COG",
+	"premium_code": "EOD/COG"
+}, {
+	"ticker": "CAM",
+	"name": "Cameron International Corp.",
+	"free_code": "WIKI/CAM",
+	"premium_code": "EOD/CAM"
+}, {
+	"ticker": "CPB",
+	"name": "Campbell Soup",
+	"free_code": "WIKI/CPB",
+	"premium_code": "EOD/CPB"
+}, {
+	"ticker": "COF",
+	"name": "Capital One Financial",
+	"free_code": "WIKI/COF",
+	"premium_code": "EOD/COF"
+}, {
+	"ticker": "CAH",
+	"name": "Cardinal Health Inc.",
+	"free_code": "WIKI/CAH",
+	"premium_code": "EOD/CAH"
+}, {
+	"ticker": "HSIC",
+	"name": "Henry Schein",
+	"free_code": "WIKI/HSIC",
+	"premium_code": "EOD/HSIC"
+}, {
+	"ticker": "KMX",
+	"name": "Carmax Inc",
+	"free_code": "WIKI/KMX",
+	"premium_code": "EOD/KMX"
+}, {
+	"ticker": "CCL",
+	"name": "Carnival Corp.",
+	"free_code": "WIKI/CCL",
+	"premium_code": "EOD/CCL"
+}, {
+	"ticker": "CAT",
+	"name": "Caterpillar Inc.",
+	"free_code": "WIKI/CAT",
+	"premium_code": "EOD/CAT"
+}, {
+	"ticker": "CBG",
+	"name": "CBRE Group",
+	"free_code": "WIKI/CBG",
+	"premium_code": "EOD/CBG"
+}, {
+	"ticker": "CBS",
+	"name": "CBS Corp.",
+	"free_code": "WIKI/CBS",
+	"premium_code": "EOD/CBS"
+}, {
+	"ticker": "CELG",
+	"name": "Celgene Corp.",
+	"free_code": "WIKI/CELG",
+	"premium_code": "EOD/CELG"
+}, {
+	"ticker": "CNP",
+	"name": "CenterPoint Energy",
+	"free_code": "WIKI/CNP",
+	"premium_code": "EOD/CNP"
+}, {
+	"ticker": "CTL",
+	"name": "CenturyLink Inc",
+	"free_code": "WIKI/CTL",
+	"premium_code": "EOD/CTL"
+}, {
+	"ticker": "CERN",
+	"name": "Cerner",
+	"free_code": "WIKI/CERN",
+	"premium_code": "EOD/CERN"
+}, {
+	"ticker": "CF",
+	"name": "CF Industries Holdings Inc",
+	"free_code": "WIKI/CF",
+	"premium_code": "EOD/CF"
+}, {
+	"ticker": "SCHW",
+	"name": "Charles Schwab Corporation",
+	"free_code": "WIKI/SCHW",
+	"premium_code": "EOD/SCHW"
+}, {
+	"ticker": "CHK",
+	"name": "Chesapeake Energy",
+	"free_code": "WIKI/CHK",
+	"premium_code": "EOD/CHK"
+}, {
+	"ticker": "CVX",
+	"name": "Chevron Corp.",
+	"free_code": "WIKI/CVX",
+	"premium_code": "EOD/CVX"
+}, {
+	"ticker": "CMG",
+	"name": "Chipotle Mexican Grill",
+	"free_code": "WIKI/CMG",
+	"premium_code": "EOD/CMG"
+}, {
+	"ticker": "CB",
+	"name": "Chubb Corp.",
+	"free_code": "WIKI/CB",
+	"premium_code": "EOD/CB"
+}, {
+	"ticker": "CI",
+	"name": "CIGNA Corp.",
+	"free_code": "WIKI/CI",
+	"premium_code": "EOD/CI"
+}, {
+	"ticker": "XEC",
+	"name": "Cimarex Energy",
+	"free_code": "WIKI/XEC",
+	"premium_code": "EOD/XEC"
+}, {
+	"ticker": "CINF",
+	"name": "Cincinnati Financial",
+	"free_code": "WIKI/CINF",
+	"premium_code": "EOD/CINF"
+}, {
+	"ticker": "CTAS",
+	"name": "Cintas Corporation",
+	"free_code": "WIKI/CTAS",
+	"premium_code": "EOD/CTAS"
+}, {
+	"ticker": "CSCO",
+	"name": "Cisco Systems",
+	"free_code": "WIKI/CSCO",
+	"premium_code": "EOD/CSCO"
+}, {
+	"ticker": "C",
+	"name": "Citigroup Inc.",
+	"free_code": "WIKI/C",
+	"premium_code": "EOD/C"
+}, {
+	"ticker": "CTXS",
+	"name": "Citrix Systems",
+	"free_code": "WIKI/CTXS",
+	"premium_code": "EOD/CTXS"
+}, {
+	"ticker": "CLX",
+	"name": "The Clorox Company",
+	"free_code": "WIKI/CLX",
+	"premium_code": "EOD/CLX"
+}, {
+	"ticker": "CME",
+	"name": "CME Group Inc.",
+	"free_code": "WIKI/CME",
+	"premium_code": "EOD/CME"
+}, {
+	"ticker": "CMS",
+	"name": "CMS Energy",
+	"free_code": "WIKI/CMS",
+	"premium_code": "EOD/CMS"
+}, {
+	"ticker": "COH",
+	"name": "Coach Inc.",
+	"free_code": "WIKI/COH",
+	"premium_code": "EOD/COH"
+}, {
+	"ticker": "KO",
+	"name": "The Coca Cola Company",
+	"free_code": "WIKI/KO",
+	"premium_code": "EOD/KO"
+}, {
+	"ticker": "CCE",
+	"name": "Coca-Cola Enterprises",
+	"free_code": "WIKI/CCE",
+	"premium_code": "EOD/CCE"
+}, {
+	"ticker": "CTSH",
+	"name": "Cognizant Technology Solutions",
+	"free_code": "WIKI/CTSH",
+	"premium_code": "EOD/CTSH"
+}, {
+	"ticker": "CL",
+	"name": "Colgate-Palmolive",
+	"free_code": "WIKI/CL",
+	"premium_code": "EOD/CL"
+}, {
+	"ticker": "CPGX",
+	"name": "Columbia Pipeline Group Inc",
+	"free_code": "WIKI/CPGX",
+	"premium_code": "EOD/CPGX"
+}, {
+	"ticker": "CMCSA",
+	"name": "Comcast A Corp",
+	"free_code": "WIKI/CMCSA",
+	"premium_code": "EOD/CMCSA"
+}, {
+	"ticker": "CMCSK",
+	"name": "Comcast Special Corp Class A",
+	"free_code": "WIKI/CMCSK",
+	"premium_code": "EOD/CMCSK"
+}, {
+	"ticker": "CMA",
+	"name": "Comerica Inc.",
+	"free_code": "WIKI/CMA",
+	"premium_code": "EOD/CMA"
+}, {
+	"ticker": "CSC",
+	"name": "Computer Sciences Corp.",
+	"free_code": "WIKI/CSC",
+	"premium_code": "EOD/CSC"
+}, {
+	"ticker": "CAG",
+	"name": "ConAgra Foods Inc.",
+	"free_code": "WIKI/CAG",
+	"premium_code": "EOD/CAG"
+}, {
+	"ticker": "COP",
+	"name": "ConocoPhillips",
+	"free_code": "WIKI/COP",
+	"premium_code": "EOD/COP"
+}, {
+	"ticker": "CNX",
+	"name": "CONSOL Energy Inc.",
+	"free_code": "WIKI/CNX",
+	"premium_code": "EOD/CNX"
+}, {
+	"ticker": "ED",
+	"name": "Consolidated Edison",
+	"free_code": "WIKI/ED",
+	"premium_code": "EOD/ED"
+}, {
+	"ticker": "STZ",
+	"name": "Constellation Brands",
+	"free_code": "WIKI/STZ",
+	"premium_code": "EOD/STZ"
+}, {
+	"ticker": "GLW",
+	"name": "Corning Inc.",
+	"free_code": "WIKI/GLW",
+	"premium_code": "EOD/GLW"
+}, {
+	"ticker": "COST",
+	"name": "Costco Co.",
+	"free_code": "WIKI/COST",
+	"premium_code": "EOD/COST"
+}, {
+	"ticker": "CCI",
+	"name": "Crown Castle International Corp.",
+	"free_code": "WIKI/CCI",
+	"premium_code": "EOD/CCI"
+}, {
+	"ticker": "CSX",
+	"name": "CSX Corp.",
+	"free_code": "WIKI/CSX",
+	"premium_code": "EOD/CSX"
+}, {
+	"ticker": "CMI",
+	"name": "Cummins Inc.",
+	"free_code": "WIKI/CMI",
+	"premium_code": "EOD/CMI"
+}, {
+	"ticker": "CVS",
+	"name": "CVS Caremark Corp.",
+	"free_code": "WIKI/CVS",
+	"premium_code": "EOD/CVS"
+}, {
+	"ticker": "DHI",
+	"name": "D. R. Horton",
+	"free_code": "WIKI/DHI",
+	"premium_code": "EOD/DHI"
+}, {
+	"ticker": "DHR",
+	"name": "Danaher Corp.",
+	"free_code": "WIKI/DHR",
+	"premium_code": "EOD/DHR"
+}, {
+	"ticker": "DRI",
+	"name": "Darden Restaurants",
+	"free_code": "WIKI/DRI",
+	"premium_code": "EOD/DRI"
+}, {
+	"ticker": "DVA",
+	"name": "DaVita Inc.",
+	"free_code": "WIKI/DVA",
+	"premium_code": "EOD/DVA"
+}, {
+	"ticker": "DE",
+	"name": "Deere & Co.",
+	"free_code": "WIKI/DE",
+	"premium_code": "EOD/DE"
+}, {
+	"ticker": "DLPH",
+	"name": "Delphi Automotive",
+	"free_code": "WIKI/DLPH",
+	"premium_code": "EOD/DLPH"
+}, {
+	"ticker": "DAL",
+	"name": "Delta Air Lines",
+	"free_code": "WIKI/DAL",
+	"premium_code": "EOD/DAL"
+}, {
+	"ticker": "XRAY",
+	"name": "Dentsply International",
+	"free_code": "WIKI/XRAY",
+	"premium_code": "EOD/XRAY"
+}, {
+	"ticker": "DVN",
+	"name": "Devon Energy Corp.",
+	"free_code": "WIKI/DVN",
+	"premium_code": "EOD/DVN"
+}, {
+	"ticker": "DO",
+	"name": "Diamond Offshore Drilling",
+	"free_code": "WIKI/DO",
+	"premium_code": "EOD/DO"
+}, {
+	"ticker": "DFS",
+	"name": "Discover Financial Services",
+	"free_code": "WIKI/DFS",
+	"premium_code": "EOD/DFS"
+}, {
+	"ticker": "DISCA",
+	"name": "Discovery Communications-A",
+	"free_code": "WIKI/DISCA",
+	"premium_code": "EOD/DISCA"
+}, {
+	"ticker": "DISCK",
+	"name": "Discovery Communications-C",
+	"free_code": "WIKI/DISCK",
+	"premium_code": "EOD/DISCK"
+}, {
+	"ticker": "DG",
+	"name": "Dollar General",
+	"free_code": "WIKI/DG",
+	"premium_code": "EOD/DG"
+}, {
+	"ticker": "DLTR",
+	"name": "Dollar Tree",
+	"free_code": "WIKI/DLTR",
+	"premium_code": "EOD/DLTR"
+}, {
+	"ticker": "D",
+	"name": "Dominion Resources",
+	"free_code": "WIKI/D",
+	"premium_code": "EOD/D"
+}, {
+	"ticker": "DOV",
+	"name": "Dover Corp.",
+	"free_code": "WIKI/DOV",
+	"premium_code": "EOD/DOV"
+}, {
+	"ticker": "DOW",
+	"name": "Dow Chemical",
+	"free_code": "WIKI/DOW",
+	"premium_code": "EOD/DOW"
+}, {
+	"ticker": "DPS",
+	"name": "Dr Pepper Snapple Group",
+	"free_code": "WIKI/DPS",
+	"premium_code": "EOD/DPS"
+}, {
+	"ticker": "DTE",
+	"name": "DTE Energy Co.",
+	"free_code": "WIKI/DTE",
+	"premium_code": "EOD/DTE"
+}, {
+	"ticker": "DD",
+	"name": "Du Pont (E.I.)",
+	"free_code": "WIKI/DD",
+	"premium_code": "EOD/DD"
+}, {
+	"ticker": "DUK",
+	"name": "Duke Energy",
+	"free_code": "WIKI/DUK",
+	"premium_code": "EOD/DUK"
+}, {
+	"ticker": "DNB",
+	"name": "Dun & Bradstreet",
+	"free_code": "WIKI/DNB",
+	"premium_code": "EOD/DNB"
+}, {
+	"ticker": "ETFC",
+	"name": "E*Trade",
+	"free_code": "WIKI/ETFC",
+	"premium_code": "EOD/ETFC"
+}, {
+	"ticker": "EMN",
+	"name": "Eastman Chemical",
+	"free_code": "WIKI/EMN",
+	"premium_code": "EOD/EMN"
+}, {
+	"ticker": "ETN",
+	"name": "Eaton Corporation",
+	"free_code": "WIKI/ETN",
+	"premium_code": "EOD/ETN"
+}, {
+	"ticker": "EBAY",
+	"name": "eBay Inc.",
+	"free_code": "WIKI/EBAY",
+	"premium_code": "EOD/EBAY"
+}, {
+	"ticker": "ECL",
+	"name": "Ecolab Inc.",
+	"free_code": "WIKI/ECL",
+	"premium_code": "EOD/ECL"
+}, {
+	"ticker": "EIX",
+	"name": "Edison Int'l",
+	"free_code": "WIKI/EIX",
+	"premium_code": "EOD/EIX"
+}, {
+	"ticker": "EW",
+	"name": "Edwards Lifesciences",
+	"free_code": "WIKI/EW",
+	"premium_code": "EOD/EW"
+}, {
+	"ticker": "EA",
+	"name": "Electronic Arts",
+	"free_code": "WIKI/EA",
+	"premium_code": "EOD/EA"
+}, {
+	"ticker": "EMC",
+	"name": "EMC Corp.",
+	"free_code": "WIKI/EMC",
+	"premium_code": "EOD/EMC"
+}, {
+	"ticker": "EMR",
+	"name": "Emerson Electric Company",
+	"free_code": "WIKI/EMR",
+	"premium_code": "EOD/EMR"
+}, {
+	"ticker": "ENDP",
+	"name": "Endo International",
+	"free_code": "WIKI/ENDP",
+	"premium_code": "EOD/ENDP"
+}, {
+	"ticker": "ESV",
+	"name": "Ensco plc",
+	"free_code": "WIKI/ESV",
+	"premium_code": "EOD/ESV"
+}, {
+	"ticker": "ETR",
+	"name": "Entergy Corp.",
+	"free_code": "WIKI/ETR",
+	"premium_code": "EOD/ETR"
+}, {
+	"ticker": "EOG",
+	"name": "EOG Resources",
+	"free_code": "WIKI/EOG",
+	"premium_code": "EOD/EOG"
+}, {
+	"ticker": "EQT",
+	"name": "EQT Corporation",
+	"free_code": "WIKI/EQT",
+	"premium_code": "EOD/EQT"
+}, {
+	"ticker": "EFX",
+	"name": "Equifax Inc.",
+	"free_code": "WIKI/EFX",
+	"premium_code": "EOD/EFX"
+}, {
+	"ticker": "EQIX",
+	"name": "Equinix",
+	"free_code": "WIKI/EQIX",
+	"premium_code": "EOD/EQIX"
+}, {
+	"ticker": "EQR",
+	"name": "Equity Residential",
+	"free_code": "WIKI/EQR",
+	"premium_code": "EOD/EQR"
+}, {
+	"ticker": "ESS",
+	"name": "Essex Property Trust Inc",
+	"free_code": "WIKI/ESS",
+	"premium_code": "EOD/ESS"
+}, {
+	"ticker": "EL",
+	"name": "Estee Lauder Cos.",
+	"free_code": "WIKI/EL",
+	"premium_code": "EOD/EL"
+}, {
+	"ticker": "ES",
+	"name": "Eversource Energy",
+	"free_code": "WIKI/ES",
+	"premium_code": "EOD/ES"
+}, {
+	"ticker": "EXC",
+	"name": "Exelon Corp.",
+	"free_code": "WIKI/EXC",
+	"premium_code": "EOD/EXC"
+}, {
+	"ticker": "EXPE",
+	"name": "Expedia Inc.",
+	"free_code": "WIKI/EXPE",
+	"premium_code": "EOD/EXPE"
+}, {
+	"ticker": "EXPD",
+	"name": "Expeditors Int'l",
+	"free_code": "WIKI/EXPD",
+	"premium_code": "EOD/EXPD"
+}, {
+	"ticker": "ESRX",
+	"name": "Express Scripts",
+	"free_code": "WIKI/ESRX",
+	"premium_code": "EOD/ESRX"
+}, {
+	"ticker": "XOM",
+	"name": "Exxon Mobil Corp.",
+	"free_code": "WIKI/XOM",
+	"premium_code": "EOD/XOM"
+}, {
+	"ticker": "FFIV",
+	"name": "F5 Networks",
+	"free_code": "WIKI/FFIV",
+	"premium_code": "EOD/FFIV"
+}, {
+	"ticker": "FB",
+	"name": "Facebook",
+	"free_code": "WIKI/FB",
+	"premium_code": "EOD/FB"
+}, {
+	"ticker": "FAST",
+	"name": "Fastenal Co",
+	"free_code": "WIKI/FAST",
+	"premium_code": "EOD/FAST"
+}, {
+	"ticker": "FDX",
+	"name": "FedEx Corporation",
+	"free_code": "WIKI/FDX",
+	"premium_code": "EOD/FDX"
+}, {
+	"ticker": "FIS",
+	"name": "Fidelity National Information Services",
+	"free_code": "WIKI/FIS",
+	"premium_code": "EOD/FIS"
+}, {
+	"ticker": "FITB",
+	"name": "Fifth Third Bancorp",
+	"free_code": "WIKI/FITB",
+	"premium_code": "EOD/FITB"
+}, {
+	"ticker": "FSLR",
+	"name": "First Solar Inc",
+	"free_code": "WIKI/FSLR",
+	"premium_code": "EOD/FSLR"
+}, {
+	"ticker": "FE",
+	"name": "FirstEnergy Corp",
+	"free_code": "WIKI/FE",
+	"premium_code": "EOD/FE"
+}, {
+	"ticker": "FISV",
+	"name": "Fiserv Inc",
+	"free_code": "WIKI/FISV",
+	"premium_code": "EOD/FISV"
+}, {
+	"ticker": "FLIR",
+	"name": "FLIR Systems",
+	"free_code": "WIKI/FLIR",
+	"premium_code": "EOD/FLIR"
+}, {
+	"ticker": "FLS",
+	"name": "Flowserve Corporation",
+	"free_code": "WIKI/FLS",
+	"premium_code": "EOD/FLS"
+}, {
+	"ticker": "FLR",
+	"name": "Fluor Corp.",
+	"free_code": "WIKI/FLR",
+	"premium_code": "EOD/FLR"
+}, {
+	"ticker": "FMC",
+	"name": "FMC Corporation",
+	"free_code": "WIKI/FMC",
+	"premium_code": "EOD/FMC"
+}, {
+	"ticker": "FTI",
+	"name": "FMC Technologies Inc.",
+	"free_code": "WIKI/FTI",
+	"premium_code": "EOD/FTI"
+}, {
+	"ticker": "F",
+	"name": "Ford Motor",
+	"free_code": "WIKI/F",
+	"premium_code": "EOD/F"
+}, {
+	"ticker": "FOSL",
+	"name": "Fossil",
+	"free_code": "WIKI/FOSL",
+	"premium_code": "EOD/FOSL"
+}, {
+	"ticker": "BEN",
+	"name": "Franklin Resources",
+	"free_code": "WIKI/BEN",
+	"premium_code": "EOD/BEN"
+}, {
+	"ticker": "FCX",
+	"name": "Freeport-McMoran Cp & Gld",
+	"free_code": "WIKI/FCX",
+	"premium_code": "EOD/FCX"
+}, {
+	"ticker": "FTR",
+	"name": "Frontier Communications",
+	"free_code": "WIKI/FTR",
+	"premium_code": "EOD/FTR"
+}, {
+	"ticker": "GME",
+	"name": "GameStop Corp.",
+	"free_code": "WIKI/GME",
+	"premium_code": "EOD/GME"
+}, {
+	"ticker": "GPS",
+	"name": "Gap (The)",
+	"free_code": "WIKI/GPS",
+	"premium_code": "EOD/GPS"
+}, {
+	"ticker": "GRMN",
+	"name": "Garmin Ltd.",
+	"free_code": "WIKI/GRMN",
+	"premium_code": "EOD/GRMN"
+}, {
+	"ticker": "GD",
+	"name": "General Dynamics",
+	"free_code": "WIKI/GD",
+	"premium_code": "EOD/GD"
+}, {
+	"ticker": "GE",
+	"name": "General Electric",
+	"free_code": "WIKI/GE",
+	"premium_code": "EOD/GE"
+}, {
+	"ticker": "GGP",
+	"name": "General Growth Properties Inc.",
+	"free_code": "WIKI/GGP",
+	"premium_code": "EOD/GGP"
+}, {
+	"ticker": "GIS",
+	"name": "General Mills",
+	"free_code": "WIKI/GIS",
+	"premium_code": "EOD/GIS"
+}, {
+	"ticker": "GM",
+	"name": "General Motors",
+	"free_code": "WIKI/GM",
+	"premium_code": "EOD/GM"
+}, {
+	"ticker": "GPC",
+	"name": "Genuine Parts",
+	"free_code": "WIKI/GPC",
+	"premium_code": "EOD/GPC"
+}, {
+	"ticker": "GNW",
+	"name": "Genworth Financial Inc.",
+	"free_code": "WIKI/GNW",
+	"premium_code": "EOD/GNW"
+}, {
+	"ticker": "GILD",
+	"name": "Gilead Sciences",
+	"free_code": "WIKI/GILD",
+	"premium_code": "EOD/GILD"
+}, {
+	"ticker": "GS",
+	"name": "Goldman Sachs Group",
+	"free_code": "WIKI/GS",
+	"premium_code": "EOD/GS"
+}, {
+	"ticker": "GT",
+	"name": "Goodyear Tire & Rubber",
+	"free_code": "WIKI/GT",
+	"premium_code": "EOD/GT"
+}, {
+	"ticker": "GWW",
+	"name": "Grainger (W.W.) Inc.",
+	"free_code": "WIKI/GWW",
+	"premium_code": "EOD/GWW"
+}, {
+	"ticker": "HAL",
+	"name": "Halliburton Co.",
+	"free_code": "WIKI/HAL",
+	"premium_code": "EOD/HAL"
+}, {
+	"ticker": "HBI",
+	"name": "Hanesbrands Inc",
+	"free_code": "WIKI/HBI",
+	"premium_code": "EOD/HBI"
+}, {
+	"ticker": "HOG",
+	"name": "Harley-Davidson",
+	"free_code": "WIKI/HOG",
+	"premium_code": "EOD/HOG"
+}, {
+	"ticker": "HAR",
+	"name": "Harman Int'l Industries",
+	"free_code": "WIKI/HAR",
+	"premium_code": "EOD/HAR"
+}, {
+	"ticker": "HRS",
+	"name": "Harris Corporation",
+	"free_code": "WIKI/HRS",
+	"premium_code": "EOD/HRS"
+}, {
+	"ticker": "HIG",
+	"name": "Hartford Financial Svc.Gp.",
+	"free_code": "WIKI/HIG",
+	"premium_code": "EOD/HIG"
+}, {
+	"ticker": "HAS",
+	"name": "Hasbro Inc.",
+	"free_code": "WIKI/HAS",
+	"premium_code": "EOD/HAS"
+}, {
+	"ticker": "HCA",
+	"name": "HCA Holdings",
+	"free_code": "WIKI/HCA",
+	"premium_code": "EOD/HCA"
+}, {
+	"ticker": "HCP",
+	"name": "HCP Inc.",
+	"free_code": "WIKI/HCP",
+	"premium_code": "EOD/HCP"
+}, {
+	"ticker": "HP",
+	"name": "Helmerich & Payne",
+	"free_code": "WIKI/HP",
+	"premium_code": "EOD/HP"
+}, {
+	"ticker": "HES",
+	"name": "Hess Corporation",
+	"free_code": "WIKI/HES",
+	"premium_code": "EOD/HES"
+}, {
+	"ticker": "HPQ",
+	"name": "Hewlett-Packard",
+	"free_code": "WIKI/HPQ",
+	"premium_code": "EOD/HPQ"
+}, {
+	"ticker": "HD",
+	"name": "Home Depot",
+	"free_code": "WIKI/HD",
+	"premium_code": "EOD/HD"
+}, {
+	"ticker": "HON",
+	"name": "Honeywell Int'l Inc.",
+	"free_code": "WIKI/HON",
+	"premium_code": "EOD/HON"
+}, {
+	"ticker": "HRL",
+	"name": "Hormel Foods Corp.",
+	"free_code": "WIKI/HRL",
+	"premium_code": "EOD/HRL"
+}, {
+	"ticker": "HST",
+	"name": "Host Hotels & Resorts",
+	"free_code": "WIKI/HST",
+	"premium_code": "EOD/HST"
+}, {
+	"ticker": "HCBK",
+	"name": "Hudson City Bancorp",
+	"free_code": "WIKI/HCBK",
+	"premium_code": "EOD/HCBK"
+}, {
+	"ticker": "HUM",
+	"name": "Humana Inc.",
+	"free_code": "WIKI/HUM",
+	"premium_code": "EOD/HUM"
+}, {
+	"ticker": "HBAN",
+	"name": "Huntington Bancshares",
+	"free_code": "WIKI/HBAN",
+	"premium_code": "EOD/HBAN"
+}, {
+	"ticker": "ITW",
+	"name": "Illinois Tool Works",
+	"free_code": "WIKI/ITW",
+	"premium_code": "EOD/ITW"
+}, {
+	"ticker": "IR",
+	"name": "Ingersoll-Rand PLC",
+	"free_code": "WIKI/IR",
+	"premium_code": "EOD/IR"
+}, {
+	"ticker": "INTC",
+	"name": "Intel Corp.",
+	"free_code": "WIKI/INTC",
+	"premium_code": "EOD/INTC"
+}, {
+	"ticker": "ICE",
+	"name": "Intercontinental Exchange",
+	"free_code": "WIKI/ICE",
+	"premium_code": "EOD/ICE"
+}, {
+	"ticker": "IBM",
+	"name": "International Bus. Machines",
+	"free_code": "WIKI/IBM",
+	"premium_code": "EOD/IBM"
+}, {
+	"ticker": "IP",
+	"name": "International Paper",
+	"free_code": "WIKI/IP",
+	"premium_code": "EOD/IP"
+}, {
+	"ticker": "IPG",
+	"name": "Interpublic Group",
+	"free_code": "WIKI/IPG",
+	"premium_code": "EOD/IPG"
+}, {
+	"ticker": "IFF",
+	"name": "Intl Flavors & Fragrances",
+	"free_code": "WIKI/IFF",
+	"premium_code": "EOD/IFF"
+}, {
+	"ticker": "INTU",
+	"name": "Intuit Inc.",
+	"free_code": "WIKI/INTU",
+	"premium_code": "EOD/INTU"
+}, {
+	"ticker": "ISRG",
+	"name": "Intuitive Surgical Inc.",
+	"free_code": "WIKI/ISRG",
+	"premium_code": "EOD/ISRG"
+}, {
+	"ticker": "IVZ",
+	"name": "Invesco Ltd.",
+	"free_code": "WIKI/IVZ",
+	"premium_code": "EOD/IVZ"
+}, {
+	"ticker": "IRM",
+	"name": "Iron Mountain Incorporated",
+	"free_code": "WIKI/IRM",
+	"premium_code": "EOD/IRM"
+}, {
+	"ticker": "JEC",
+	"name": "Jacobs Engineering Group",
+	"free_code": "WIKI/JEC",
+	"premium_code": "EOD/JEC"
+}, {
+	"ticker": "JBHT",
+	"name": "J. B. Hunt Transport Services",
+	"free_code": "WIKI/JBHT",
+	"premium_code": "EOD/JBHT"
+}, {
+	"ticker": "JNJ",
+	"name": "Johnson & Johnson",
+	"free_code": "WIKI/JNJ",
+	"premium_code": "EOD/JNJ"
+}, {
+	"ticker": "JCI",
+	"name": "Johnson Controls",
+	"free_code": "WIKI/JCI",
+	"premium_code": "EOD/JCI"
+}, {
+	"ticker": "JPM",
+	"name": "JPMorgan Chase & Co.",
+	"free_code": "WIKI/JPM",
+	"premium_code": "EOD/JPM"
+}, {
+	"ticker": "JNPR",
+	"name": "Juniper Networks",
+	"free_code": "WIKI/JNPR",
+	"premium_code": "EOD/JNPR"
+}, {
+	"ticker": "KSU",
+	"name": "Kansas City Southern",
+	"free_code": "WIKI/KSU",
+	"premium_code": "EOD/KSU"
+}, {
+	"ticker": "K",
+	"name": "Kellogg Co.",
+	"free_code": "WIKI/K",
+	"premium_code": "EOD/K"
+}, {
+	"ticker": "KEY",
+	"name": "KeyCorp",
+	"free_code": "WIKI/KEY",
+	"premium_code": "EOD/KEY"
+}, {
+	"ticker": "GMCR",
+	"name": "Keurig Green Mountain",
+	"free_code": "WIKI/GMCR",
+	"premium_code": "EOD/GMCR"
+}, {
+	"ticker": "KMB",
+	"name": "Kimberly-Clark",
+	"free_code": "WIKI/KMB",
+	"premium_code": "EOD/KMB"
+}, {
+	"ticker": "KIM",
+	"name": "Kimco Realty",
+	"free_code": "WIKI/KIM",
+	"premium_code": "EOD/KIM"
+}, {
+	"ticker": "KMI",
+	"name": "Kinder Morgan",
+	"free_code": "WIKI/KMI",
+	"premium_code": "EOD/KMI"
+}, {
+	"ticker": "KLAC",
+	"name": "KLA-Tencor Corp.",
+	"free_code": "WIKI/KLAC",
+	"premium_code": "EOD/KLAC"
+}, {
+	"ticker": "KSS",
+	"name": "Kohl's Corp.",
+	"free_code": "WIKI/KSS",
+	"premium_code": "EOD/KSS"
+}, {
+	"ticker": "KHC",
+	"name": "Kraft Heinz Co",
+	"free_code": "WIKI/KHC",
+	"premium_code": "EOD/KHC"
+}, {
+	"ticker": "KR",
+	"name": "Kroger Co.",
+	"free_code": "WIKI/KR",
+	"premium_code": "EOD/KR"
+}, {
+	"ticker": "LB",
+	"name": "L Brands Inc.",
+	"free_code": "WIKI/LB",
+	"premium_code": "EOD/LB"
+}, {
+	"ticker": "LLL",
+	"name": "L-3 Communications Holdings",
+	"free_code": "WIKI/LLL",
+	"premium_code": "EOD/LLL"
+}, {
+	"ticker": "LH",
+	"name": "Laboratory Corp. of America Holding",
+	"free_code": "WIKI/LH",
+	"premium_code": "EOD/LH"
+}, {
+	"ticker": "LRCX",
+	"name": "Lam Research",
+	"free_code": "WIKI/LRCX",
+	"premium_code": "EOD/LRCX"
+}, {
+	"ticker": "LM",
+	"name": "Legg Mason",
+	"free_code": "WIKI/LM",
+	"premium_code": "EOD/LM"
+}, {
+	"ticker": "LEG",
+	"name": "Leggett & Platt",
+	"free_code": "WIKI/LEG",
+	"premium_code": "EOD/LEG"
+}, {
+	"ticker": "LEN",
+	"name": "Lennar Corp.",
+	"free_code": "WIKI/LEN",
+	"premium_code": "EOD/LEN"
+}, {
+	"ticker": "LVLT",
+	"name": "Level 3 Communications",
+	"free_code": "WIKI/LVLT",
+	"premium_code": "EOD/LVLT"
+}, {
+	"ticker": "LUK",
+	"name": "Leucadia National Corp.",
+	"free_code": "WIKI/LUK",
+	"premium_code": "EOD/LUK"
+}, {
+	"ticker": "LLY",
+	"name": "Lilly (Eli) & Co.",
+	"free_code": "WIKI/LLY",
+	"premium_code": "EOD/LLY"
+}, {
+	"ticker": "LNC",
+	"name": "Lincoln National",
+	"free_code": "WIKI/LNC",
+	"premium_code": "EOD/LNC"
+}, {
+	"ticker": "LLTC",
+	"name": "Linear Technology Corp.",
+	"free_code": "WIKI/LLTC",
+	"premium_code": "EOD/LLTC"
+}, {
+	"ticker": "LMT",
+	"name": "Lockheed Martin Corp.",
+	"free_code": "WIKI/LMT",
+	"premium_code": "EOD/LMT"
+}, {
+	"ticker": "L",
+	"name": "Loews Corp.",
+	"free_code": "WIKI/L",
+	"premium_code": "EOD/L"
+}, {
+	"ticker": "LOW",
+	"name": "Lowe's Cos.",
+	"free_code": "WIKI/LOW",
+	"premium_code": "EOD/LOW"
+}, {
+	"ticker": "LYB",
+	"name": "LyondellBasell",
+	"free_code": "WIKI/LYB",
+	"premium_code": "EOD/LYB"
+}, {
+	"ticker": "MTB",
+	"name": "M&T Bank Corp.",
+	"free_code": "WIKI/MTB",
+	"premium_code": "EOD/MTB"
+}, {
+	"ticker": "MAC",
+	"name": "Macerich",
+	"free_code": "WIKI/MAC",
+	"premium_code": "EOD/MAC"
+}, {
+	"ticker": "M",
+	"name": "Macy's Inc.",
+	"free_code": "WIKI/M",
+	"premium_code": "EOD/M"
+}, {
+	"ticker": "MNK",
+	"name": "Mallinckrodt Plc",
+	"free_code": "WIKI/MNK",
+	"premium_code": "EOD/MNK"
+}, {
+	"ticker": "MRO",
+	"name": "Marathon Oil Corp.",
+	"free_code": "WIKI/MRO",
+	"premium_code": "EOD/MRO"
+}, {
+	"ticker": "MPC",
+	"name": "Marathon Petroleum",
+	"free_code": "WIKI/MPC",
+	"premium_code": "EOD/MPC"
+}, {
+	"ticker": "MAR",
+	"name": "Marriott Int'l.",
+	"free_code": "WIKI/MAR",
+	"premium_code": "EOD/MAR"
+}, {
+	"ticker": "MMC",
+	"name": "Marsh & McLennan",
+	"free_code": "WIKI/MMC",
+	"premium_code": "EOD/MMC"
+}, {
+	"ticker": "MLM",
+	"name": "Martin Marietta Materials",
+	"free_code": "WIKI/MLM",
+	"premium_code": "EOD/MLM"
+}, {
+	"ticker": "MAS",
+	"name": "Masco Corp.",
+	"free_code": "WIKI/MAS",
+	"premium_code": "EOD/MAS"
+}, {
+	"ticker": "MA",
+	"name": "Mastercard Inc.",
+	"free_code": "WIKI/MA",
+	"premium_code": "EOD/MA"
+}, {
+	"ticker": "MAT",
+	"name": "Mattel Inc.",
+	"free_code": "WIKI/MAT",
+	"premium_code": "EOD/MAT"
+}, {
+	"ticker": "MKC",
+	"name": "McCormick & Co.",
+	"free_code": "WIKI/MKC",
+	"premium_code": "EOD/MKC"
+}, {
+	"ticker": "MCD",
+	"name": "McDonald's Corp.",
+	"free_code": "WIKI/MCD",
+	"premium_code": "EOD/MCD"
+}, {
+	"ticker": "MHFI",
+	"name": "McGraw Hill Financial",
+	"free_code": "WIKI/MHFI",
+	"premium_code": "EOD/MHFI"
+}, {
+	"ticker": "MCK",
+	"name": "McKesson Corp.",
+	"free_code": "WIKI/MCK",
+	"premium_code": "EOD/MCK"
+}, {
+	"ticker": "MJN",
+	"name": "Mead Johnson",
+	"free_code": "WIKI/MJN",
+	"premium_code": "EOD/MJN"
+}, {
+	"ticker": "WRK",
+	"name": "Westrock Co",
+	"free_code": "WIKI/WRK",
+	"premium_code": "EOD/WRK"
+}, {
+	"ticker": "MDT",
+	"name": "Medtronic plc",
+	"free_code": "WIKI/MDT",
+	"premium_code": "EOD/MDT"
+}, {
+	"ticker": "MRK",
+	"name": "Merck & Co.",
+	"free_code": "WIKI/MRK",
+	"premium_code": "EOD/MRK"
+}, {
+	"ticker": "MET",
+	"name": "MetLife Inc.",
+	"free_code": "WIKI/MET",
+	"premium_code": "EOD/MET"
+}, {
+	"ticker": "KORS",
+	"name": "Michael Kors Holdings",
+	"free_code": "WIKI/KORS",
+	"premium_code": "EOD/KORS"
+}, {
+	"ticker": "MCHP",
+	"name": "Microchip Technology",
+	"free_code": "WIKI/MCHP",
+	"premium_code": "EOD/MCHP"
+}, {
+	"ticker": "MU",
+	"name": "Micron Technology",
+	"free_code": "WIKI/MU",
+	"premium_code": "EOD/MU"
+}, {
+	"ticker": "MSFT",
+	"name": "Microsoft Corp.",
+	"free_code": "WIKI/MSFT",
+	"premium_code": "EOD/MSFT"
+}, {
+	"ticker": "MHK",
+	"name": "Mohawk Industries",
+	"free_code": "WIKI/MHK",
+	"premium_code": "EOD/MHK"
+}, {
+	"ticker": "TAP",
+	"name": "Molson Coors Brewing Company",
+	"free_code": "WIKI/TAP",
+	"premium_code": "EOD/TAP"
+}, {
+	"ticker": "MDLZ",
+	"name": "Mondelez International",
+	"free_code": "WIKI/MDLZ",
+	"premium_code": "EOD/MDLZ"
+}, {
+	"ticker": "MON",
+	"name": "Monsanto Co.",
+	"free_code": "WIKI/MON",
+	"premium_code": "EOD/MON"
+}, {
+	"ticker": "MNST",
+	"name": "Monster Beverage",
+	"free_code": "WIKI/MNST",
+	"premium_code": "EOD/MNST"
+}, {
+	"ticker": "MCO",
+	"name": "Moody's Corp",
+	"free_code": "WIKI/MCO",
+	"premium_code": "EOD/MCO"
+}, {
+	"ticker": "MS",
+	"name": "Morgan Stanley",
+	"free_code": "WIKI/MS",
+	"premium_code": "EOD/MS"
+}, {
+	"ticker": "MOS",
+	"name": "The Mosaic Company",
+	"free_code": "WIKI/MOS",
+	"premium_code": "EOD/MOS"
+}, {
+	"ticker": "MSI",
+	"name": "Motorola Solutions Inc.",
+	"free_code": "WIKI/MSI",
+	"premium_code": "EOD/MSI"
+}, {
+	"ticker": "MUR",
+	"name": "Murphy Oil",
+	"free_code": "WIKI/MUR",
+	"premium_code": "EOD/MUR"
+}, {
+	"ticker": "MYL",
+	"name": "Mylan N.V.",
+	"free_code": "WIKI/MYL",
+	"premium_code": "EOD/MYL"
+}, {
+	"ticker": "NDAQ",
+	"name": "NASDAQ OMX Group",
+	"free_code": "WIKI/NDAQ",
+	"premium_code": "EOD/NDAQ"
+}, {
+	"ticker": "NOV",
+	"name": "National Oilwell Varco Inc.",
+	"free_code": "WIKI/NOV",
+	"premium_code": "EOD/NOV"
+}, {
+	"ticker": "NAVI",
+	"name": "Navient",
+	"free_code": "WIKI/NAVI",
+	"premium_code": "EOD/NAVI"
+}, {
+	"ticker": "NTAP",
+	"name": "NetApp",
+	"free_code": "WIKI/NTAP",
+	"premium_code": "EOD/NTAP"
+}, {
+	"ticker": "NFLX",
+	"name": "Netflix Inc.",
+	"free_code": "WIKI/NFLX",
+	"premium_code": "EOD/NFLX"
+}, {
+	"ticker": "NWL",
+	"name": "Newell Rubbermaid Co.",
+	"free_code": "WIKI/NWL",
+	"premium_code": "EOD/NWL"
+}, {
+	"ticker": "NFX",
+	"name": "Newfield Exploration Co",
+	"free_code": "WIKI/NFX",
+	"premium_code": "EOD/NFX"
+}, {
+	"ticker": "NEM",
+	"name": "Newmont Mining Corp. (Hldg. Co.)",
+	"free_code": "WIKI/NEM",
+	"premium_code": "EOD/NEM"
+}, {
+	"ticker": "NWSA",
+	"name": "News Corp. Class A",
+	"free_code": "WIKI/NWSA",
+	"premium_code": "EOD/NWSA"
+}, {
+	"ticker": "NWS",
+	"name": "News Corp. Class B",
+	"free_code": "WIKI/NWS",
+	"premium_code": "EOD/NWS"
+}, {
+	"ticker": "NEE",
+	"name": "NextEra Energy",
+	"free_code": "WIKI/NEE",
+	"premium_code": "EOD/NEE"
+}, {
+	"ticker": "NLSN",
+	"name": "Nielsen Holdings",
+	"free_code": "WIKI/NLSN",
+	"premium_code": "EOD/NLSN"
+}, {
+	"ticker": "NKE",
+	"name": "Nike",
+	"free_code": "WIKI/NKE",
+	"premium_code": "EOD/NKE"
+}, {
+	"ticker": "NI",
+	"name": "NiSource Inc.",
+	"free_code": "WIKI/NI",
+	"premium_code": "EOD/NI"
+}, {
+	"ticker": "NBL",
+	"name": "Noble Energy Inc",
+	"free_code": "WIKI/NBL",
+	"premium_code": "EOD/NBL"
+}, {
+	"ticker": "JWN",
+	"name": "Nordstrom",
+	"free_code": "WIKI/JWN",
+	"premium_code": "EOD/JWN"
+}, {
+	"ticker": "NSC",
+	"name": "Norfolk Southern Corp.",
+	"free_code": "WIKI/NSC",
+	"premium_code": "EOD/NSC"
+}, {
+	"ticker": "NTRS",
+	"name": "Northern Trust Corp.",
+	"free_code": "WIKI/NTRS",
+	"premium_code": "EOD/NTRS"
+}, {
+	"ticker": "NOC",
+	"name": "Northrop Grumman Corp.",
+	"free_code": "WIKI/NOC",
+	"premium_code": "EOD/NOC"
+}, {
+	"ticker": "NRG",
+	"name": "NRG Energy",
+	"free_code": "WIKI/NRG",
+	"premium_code": "EOD/NRG"
+}, {
+	"ticker": "NUE",
+	"name": "Nucor Corp.",
+	"free_code": "WIKI/NUE",
+	"premium_code": "EOD/NUE"
+}, {
+	"ticker": "NVDA",
+	"name": "Nvidia Corporation",
+	"free_code": "WIKI/NVDA",
+	"premium_code": "EOD/NVDA"
+}, {
+	"ticker": "ORLY",
+	"name": "O'Reilly Automotive",
+	"free_code": "WIKI/ORLY",
+	"premium_code": "EOD/ORLY"
+}, {
+	"ticker": "OXY",
+	"name": "Occidental Petroleum",
+	"free_code": "WIKI/OXY",
+	"premium_code": "EOD/OXY"
+}, {
+	"ticker": "OMC",
+	"name": "Omnicom Group",
+	"free_code": "WIKI/OMC",
+	"premium_code": "EOD/OMC"
+}, {
+	"ticker": "OKE",
+	"name": "ONEOK",
+	"free_code": "WIKI/OKE",
+	"premium_code": "EOD/OKE"
+}, {
+	"ticker": "ORCL",
+	"name": "Oracle Corp.",
+	"free_code": "WIKI/ORCL",
+	"premium_code": "EOD/ORCL"
+}, {
+	"ticker": "OI",
+	"name": "Owens-Illinois Inc",
+	"free_code": "WIKI/OI",
+	"premium_code": "EOD/OI"
+}, {
+	"ticker": "PCAR",
+	"name": "PACCAR Inc.",
+	"free_code": "WIKI/PCAR",
+	"premium_code": "EOD/PCAR"
+}, {
+	"ticker": "PH",
+	"name": "Parker-Hannifin",
+	"free_code": "WIKI/PH",
+	"premium_code": "EOD/PH"
+}, {
+	"ticker": "PDCO",
+	"name": "Patterson Companies",
+	"free_code": "WIKI/PDCO",
+	"premium_code": "EOD/PDCO"
+}, {
+	"ticker": "PAYX",
+	"name": "Paychex Inc.",
+	"free_code": "WIKI/PAYX",
+	"premium_code": "EOD/PAYX"
+}, {
+	"ticker": "PYPL",
+	"name": "PayPal",
+	"free_code": "WIKI/PYPL",
+	"premium_code": "EOD/PYPL"
+}, {
+	"ticker": "PNR",
+	"name": "Pentair Ltd.",
+	"free_code": "WIKI/PNR",
+	"premium_code": "EOD/PNR"
+}, {
+	"ticker": "PBCT",
+	"name": "People's United Financial",
+	"free_code": "WIKI/PBCT",
+	"premium_code": "EOD/PBCT"
+}, {
+	"ticker": "POM",
+	"name": "Pepco Holdings Inc.",
+	"free_code": "WIKI/POM",
+	"premium_code": "EOD/POM"
+}, {
+	"ticker": "PEP",
+	"name": "PepsiCo Inc.",
+	"free_code": "WIKI/PEP",
+	"premium_code": "EOD/PEP"
+}, {
+	"ticker": "PKI",
+	"name": "PerkinElmer",
+	"free_code": "WIKI/PKI",
+	"premium_code": "EOD/PKI"
+}, {
+	"ticker": "PRGO",
+	"name": "Perrigo",
+	"free_code": "WIKI/PRGO",
+	"premium_code": "EOD/PRGO"
+}, {
+	"ticker": "PFE",
+	"name": "Pfizer Inc.",
+	"free_code": "WIKI/PFE",
+	"premium_code": "EOD/PFE"
+}, {
+	"ticker": "PCG",
+	"name": "PG&E Corp.",
+	"free_code": "WIKI/PCG",
+	"premium_code": "EOD/PCG"
+}, {
+	"ticker": "PM",
+	"name": "Philip Morris International",
+	"free_code": "WIKI/PM",
+	"premium_code": "EOD/PM"
+}, {
+	"ticker": "PSX",
+	"name": "Phillips 66",
+	"free_code": "WIKI/PSX",
+	"premium_code": "EOD/PSX"
+}, {
+	"ticker": "PNW",
+	"name": "Pinnacle West Capital",
+	"free_code": "WIKI/PNW",
+	"premium_code": "EOD/PNW"
+}, {
+	"ticker": "PXD",
+	"name": "Pioneer Natural Resources",
+	"free_code": "WIKI/PXD",
+	"premium_code": "EOD/PXD"
+}, {
+	"ticker": "PBI",
+	"name": "Pitney-Bowes",
+	"free_code": "WIKI/PBI",
+	"premium_code": "EOD/PBI"
+}, {
+	"ticker": "PCL",
+	"name": "Plum Creek Timber Co.",
+	"free_code": "WIKI/PCL",
+	"premium_code": "EOD/PCL"
+}, {
+	"ticker": "PNC",
+	"name": "PNC Financial Services",
+	"free_code": "WIKI/PNC",
+	"premium_code": "EOD/PNC"
+}, {
+	"ticker": "RL",
+	"name": "Polo Ralph Lauren Corp.",
+	"free_code": "WIKI/RL",
+	"premium_code": "EOD/RL"
+}, {
+	"ticker": "PPG",
+	"name": "PPG Industries",
+	"free_code": "WIKI/PPG",
+	"premium_code": "EOD/PPG"
+}, {
+	"ticker": "PPL",
+	"name": "PPL Corp.",
+	"free_code": "WIKI/PPL",
+	"premium_code": "EOD/PPL"
+}, {
+	"ticker": "PX",
+	"name": "Praxair Inc.",
+	"free_code": "WIKI/PX",
+	"premium_code": "EOD/PX"
+}, {
+	"ticker": "PCP",
+	"name": "Precision Castparts",
+	"free_code": "WIKI/PCP",
+	"premium_code": "EOD/PCP"
+}, {
+	"ticker": "PCLN",
+	"name": "Priceline.com Inc",
+	"free_code": "WIKI/PCLN",
+	"premium_code": "EOD/PCLN"
+}, {
+	"ticker": "PFG",
+	"name": "Principal Financial Group",
+	"free_code": "WIKI/PFG",
+	"premium_code": "EOD/PFG"
+}, {
+	"ticker": "PG",
+	"name": "Procter & Gamble",
+	"free_code": "WIKI/PG",
+	"premium_code": "EOD/PG"
+}, {
+	"ticker": "PGR",
+	"name": "Progressive Corp.",
+	"free_code": "WIKI/PGR",
+	"premium_code": "EOD/PGR"
+}, {
+	"ticker": "PLD",
+	"name": "Prologis",
+	"free_code": "WIKI/PLD",
+	"premium_code": "EOD/PLD"
+}, {
+	"ticker": "PRU",
+	"name": "Prudential Financial",
+	"free_code": "WIKI/PRU",
+	"premium_code": "EOD/PRU"
+}, {
+	"ticker": "PEG",
+	"name": "Public Serv. Enterprise Inc.",
+	"free_code": "WIKI/PEG",
+	"premium_code": "EOD/PEG"
+}, {
+	"ticker": "PSA",
+	"name": "Public Storage",
+	"free_code": "WIKI/PSA",
+	"premium_code": "EOD/PSA"
+}, {
+	"ticker": "PHM",
+	"name": "Pulte Homes Inc.",
+	"free_code": "WIKI/PHM",
+	"premium_code": "EOD/PHM"
+}, {
+	"ticker": "PVH",
+	"name": "PVH Corp.",
+	"free_code": "WIKI/PVH",
+	"premium_code": "EOD/PVH"
+}, {
+	"ticker": "QRVO",
+	"name": "Qorvo",
+	"free_code": "WIKI/QRVO",
+	"premium_code": "EOD/QRVO"
+}, {
+	"ticker": "PWR",
+	"name": "Quanta Services Inc.",
+	"free_code": "WIKI/PWR",
+	"premium_code": "EOD/PWR"
+}, {
+	"ticker": "QCOM",
+	"name": "QUALCOMM Inc.",
+	"free_code": "WIKI/QCOM",
+	"premium_code": "EOD/QCOM"
+}, {
+	"ticker": "DGX",
+	"name": "Quest Diagnostics",
+	"free_code": "WIKI/DGX",
+	"premium_code": "EOD/DGX"
+}, {
+	"ticker": "RRC",
+	"name": "Range Resources Corp.",
+	"free_code": "WIKI/RRC",
+	"premium_code": "EOD/RRC"
+}, {
+	"ticker": "RTN",
+	"name": "Raytheon Co.",
+	"free_code": "WIKI/RTN",
+	"premium_code": "EOD/RTN"
+}, {
+	"ticker": "O",
+	"name": "Realty Income Corporation",
+	"free_code": "WIKI/O",
+	"premium_code": "EOD/O"
+}, {
+	"ticker": "RHT",
+	"name": "Red Hat Inc.",
+	"free_code": "WIKI/RHT",
+	"premium_code": "EOD/RHT"
+}, {
+	"ticker": "REGN",
+	"name": "Regeneron",
+	"free_code": "WIKI/REGN",
+	"premium_code": "EOD/REGN"
+}, {
+	"ticker": "RF",
+	"name": "Regions Financial Corp.",
+	"free_code": "WIKI/RF",
+	"premium_code": "EOD/RF"
+}, {
+	"ticker": "RSG",
+	"name": "Republic Services Inc",
+	"free_code": "WIKI/RSG",
+	"premium_code": "EOD/RSG"
+}, {
+	"ticker": "RAI",
+	"name": "Reynolds American Inc.",
+	"free_code": "WIKI/RAI",
+	"premium_code": "EOD/RAI"
+}, {
+	"ticker": "RHI",
+	"name": "Robert Half International",
+	"free_code": "WIKI/RHI",
+	"premium_code": "EOD/RHI"
+}, {
+	"ticker": "ROK",
+	"name": "Rockwell Automation Inc.",
+	"free_code": "WIKI/ROK",
+	"premium_code": "EOD/ROK"
+}, {
+	"ticker": "COL",
+	"name": "Rockwell Collins",
+	"free_code": "WIKI/COL",
+	"premium_code": "EOD/COL"
+}, {
+	"ticker": "ROP",
+	"name": "Roper Industries",
+	"free_code": "WIKI/ROP",
+	"premium_code": "EOD/ROP"
+}, {
+	"ticker": "ROST",
+	"name": "Ross Stores",
+	"free_code": "WIKI/ROST",
+	"premium_code": "EOD/ROST"
+}, {
+	"ticker": "RCL",
+	"name": "Royal Caribbean Cruises Ltd",
+	"free_code": "WIKI/RCL",
+	"premium_code": "EOD/RCL"
+}, {
+	"ticker": "R",
+	"name": "Ryder System",
+	"free_code": "WIKI/R",
+	"premium_code": "EOD/R"
+}, {
+	"ticker": "CRM",
+	"name": "Salesforce.com",
+	"free_code": "WIKI/CRM",
+	"premium_code": "EOD/CRM"
+}, {
+	"ticker": "SNDK",
+	"name": "SanDisk Corporation",
+	"free_code": "WIKI/SNDK",
+	"premium_code": "EOD/SNDK"
+}, {
+	"ticker": "SCG",
+	"name": "SCANA Corp",
+	"free_code": "WIKI/SCG",
+	"premium_code": "EOD/SCG"
+}, {
+	"ticker": "SLB",
+	"name": "Schlumberger Ltd.",
+	"free_code": "WIKI/SLB",
+	"premium_code": "EOD/SLB"
+}, {
+	"ticker": "SNI",
+	"name": "Scripps Networks Interactive Inc.",
+	"free_code": "WIKI/SNI",
+	"premium_code": "EOD/SNI"
+}, {
+	"ticker": "STX",
+	"name": "Seagate Technology",
+	"free_code": "WIKI/STX",
+	"premium_code": "EOD/STX"
+}, {
+	"ticker": "SEE",
+	"name": "Sealed Air Corp.(New)",
+	"free_code": "WIKI/SEE",
+	"premium_code": "EOD/SEE"
+}, {
+	"ticker": "SRE",
+	"name": "Sempra Energy",
+	"free_code": "WIKI/SRE",
+	"premium_code": "EOD/SRE"
+}, {
+	"ticker": "SHW",
+	"name": "Sherwin-Williams",
+	"free_code": "WIKI/SHW",
+	"premium_code": "EOD/SHW"
+}, {
+	"ticker": "SIAL",
+	"name": "Sigma-Aldrich",
+	"free_code": "WIKI/SIAL",
+	"premium_code": "EOD/SIAL"
+}, {
+	"ticker": "SIG",
+	"name": "Signet Jewelers",
+	"free_code": "WIKI/SIG",
+	"premium_code": "EOD/SIG"
+}, {
+	"ticker": "SPG",
+	"name": "Simon Property Group Inc",
+	"free_code": "WIKI/SPG",
+	"premium_code": "EOD/SPG"
+}, {
+	"ticker": "SWKS",
+	"name": "Skyworks Solutions",
+	"free_code": "WIKI/SWKS",
+	"premium_code": "EOD/SWKS"
+}, {
+	"ticker": "SLG",
+	"name": "SL Green Realty",
+	"free_code": "WIKI/SLG",
+	"premium_code": "EOD/SLG"
+}, {
+	"ticker": "SJM",
+	"name": "Smucker (J.M.)",
+	"free_code": "WIKI/SJM",
+	"premium_code": "EOD/SJM"
+}, {
+	"ticker": "SNA",
+	"name": "Snap-On Inc.",
+	"free_code": "WIKI/SNA",
+	"premium_code": "EOD/SNA"
+}, {
+	"ticker": "SO",
+	"name": "Southern Co.",
+	"free_code": "WIKI/SO",
+	"premium_code": "EOD/SO"
+}, {
+	"ticker": "LUV",
+	"name": "Southwest Airlines",
+	"free_code": "WIKI/LUV",
+	"premium_code": "EOD/LUV"
+}, {
+	"ticker": "SWN",
+	"name": "Southwestern Energy",
+	"free_code": "WIKI/SWN",
+	"premium_code": "EOD/SWN"
+}, {
+	"ticker": "SE",
+	"name": "Spectra Energy Corp.",
+	"free_code": "WIKI/SE",
+	"premium_code": "EOD/SE"
+}, {
+	"ticker": "STJ",
+	"name": "St Jude Medical",
+	"free_code": "WIKI/STJ",
+	"premium_code": "EOD/STJ"
+}, {
+	"ticker": "SWK",
+	"name": "Stanley Black & Decker",
+	"free_code": "WIKI/SWK",
+	"premium_code": "EOD/SWK"
+}, {
+	"ticker": "SPLS",
+	"name": "Staples Inc.",
+	"free_code": "WIKI/SPLS",
+	"premium_code": "EOD/SPLS"
+}, {
+	"ticker": "SBUX",
+	"name": "Starbucks Corp.",
+	"free_code": "WIKI/SBUX",
+	"premium_code": "EOD/SBUX"
+}, {
+	"ticker": "HOT",
+	"name": "Starwood Hotels & Resorts",
+	"free_code": "WIKI/HOT",
+	"premium_code": "EOD/HOT"
+}, {
+	"ticker": "STT",
+	"name": "State Street Corp.",
+	"free_code": "WIKI/STT",
+	"premium_code": "EOD/STT"
+}, {
+	"ticker": "SRCL",
+	"name": "Stericycle Inc",
+	"free_code": "WIKI/SRCL",
+	"premium_code": "EOD/SRCL"
+}, {
+	"ticker": "SYK",
+	"name": "Stryker Corp.",
+	"free_code": "WIKI/SYK",
+	"premium_code": "EOD/SYK"
+}, {
+	"ticker": "STI",
+	"name": "SunTrust Banks",
+	"free_code": "WIKI/STI",
+	"premium_code": "EOD/STI"
+}, {
+	"ticker": "SYMC",
+	"name": "Symantec Corp.",
+	"free_code": "WIKI/SYMC",
+	"premium_code": "EOD/SYMC"
+}, {
+	"ticker": "SYY",
+	"name": "Sysco Corp.",
+	"free_code": "WIKI/SYY",
+	"premium_code": "EOD/SYY"
+}, {
+	"ticker": "TROW",
+	"name": "T. Rowe Price Group",
+	"free_code": "WIKI/TROW",
+	"premium_code": "EOD/TROW"
+}, {
+	"ticker": "TGT",
+	"name": "Target Corp.",
+	"free_code": "WIKI/TGT",
+	"premium_code": "EOD/TGT"
+}, {
+	"ticker": "TEL",
+	"name": "TE Connectivity Ltd.",
+	"free_code": "WIKI/TEL",
+	"premium_code": "EOD/TEL"
+}, {
+	"ticker": "TE",
+	"name": "TECO Energy",
+	"free_code": "WIKI/TE",
+	"premium_code": "EOD/TE"
+}, {
+	"ticker": "TGNA",
+	"name": "Tegna",
+	"free_code": "WIKI/TGNA",
+	"premium_code": "EOD/TGNA"
+}, {
+	"ticker": "THC",
+	"name": "Tenet Healthcare Corp.",
+	"free_code": "WIKI/THC",
+	"premium_code": "EOD/THC"
+}, {
+	"ticker": "TDC",
+	"name": "Teradata Corp.",
+	"free_code": "WIKI/TDC",
+	"premium_code": "EOD/TDC"
+}, {
+	"ticker": "TSO",
+	"name": "Tesoro Petroleum Co.",
+	"free_code": "WIKI/TSO",
+	"premium_code": "EOD/TSO"
+}, {
+	"ticker": "TXN",
+	"name": "Texas Instruments",
+	"free_code": "WIKI/TXN",
+	"premium_code": "EOD/TXN"
+}, {
+	"ticker": "TXT",
+	"name": "Textron Inc.",
+	"free_code": "WIKI/TXT",
+	"premium_code": "EOD/TXT"
+}, {
+	"ticker": "HSY",
+	"name": "The Hershey Company",
+	"free_code": "WIKI/HSY",
+	"premium_code": "EOD/HSY"
+}, {
+	"ticker": "TRV",
+	"name": "The Travelers Companies Inc.",
+	"free_code": "WIKI/TRV",
+	"premium_code": "EOD/TRV"
+}, {
+	"ticker": "TMO",
+	"name": "Thermo Fisher Scientific",
+	"free_code": "WIKI/TMO",
+	"premium_code": "EOD/TMO"
+}, {
+	"ticker": "TIF",
+	"name": "Tiffany & Co.",
+	"free_code": "WIKI/TIF",
+	"premium_code": "EOD/TIF"
+}, {
+	"ticker": "TWX",
+	"name": "Time Warner Inc.",
+	"free_code": "WIKI/TWX",
+	"premium_code": "EOD/TWX"
+}, {
+	"ticker": "TWC",
+	"name": "Time Warner Cable Inc.",
+	"free_code": "WIKI/TWC",
+	"premium_code": "EOD/TWC"
+}, {
+	"ticker": "TJX",
+	"name": "TJX Companies Inc.",
+	"free_code": "WIKI/TJX",
+	"premium_code": "EOD/TJX"
+}, {
+	"ticker": "TMK",
+	"name": "Torchmark Corp.",
+	"free_code": "WIKI/TMK",
+	"premium_code": "EOD/TMK"
+}, {
+	"ticker": "TSS",
+	"name": "Total System Services",
+	"free_code": "WIKI/TSS",
+	"premium_code": "EOD/TSS"
+}, {
+	"ticker": "TSCO",
+	"name": "Tractor Supply Company",
+	"free_code": "WIKI/TSCO",
+	"premium_code": "EOD/TSCO"
+}, {
+	"ticker": "RIG",
+	"name": "Transocean",
+	"free_code": "WIKI/RIG",
+	"premium_code": "EOD/RIG"
+}, {
+	"ticker": "TRIP",
+	"name": "TripAdvisor",
+	"free_code": "WIKI/TRIP",
+	"premium_code": "EOD/TRIP"
+}, {
+	"ticker": "FOXA",
+	"name": "Twenty-First Century Fox Class A",
+	"free_code": "WIKI/FOXA",
+	"premium_code": "EOD/FOXA"
+}, {
+	"ticker": "FOX",
+	"name": "Twenty-First Century Fox Class B",
+	"free_code": "WIKI/FOX",
+	"premium_code": "EOD/FOX"
+}, {
+	"ticker": "TSN",
+	"name": "Tyson Foods",
+	"free_code": "WIKI/TSN",
+	"premium_code": "EOD/TSN"
+}, {
+	"ticker": "TYC",
+	"name": "Tyco International",
+	"free_code": "WIKI/TYC",
+	"premium_code": "EOD/TYC"
+}, {
+	"ticker": "USB",
+	"name": "U.S. Bancorp",
+	"free_code": "WIKI/USB",
+	"premium_code": "EOD/USB"
+}, {
+	"ticker": "UA",
+	"name": "Under Armour",
+	"free_code": "WIKI/UA",
+	"premium_code": "EOD/UA"
+}, {
+	"ticker": "UNP",
+	"name": "Union Pacific",
+	"free_code": "WIKI/UNP",
+	"premium_code": "EOD/UNP"
+}, {
+	"ticker": "UAL",
+	"name": "United Continental Holdings",
+	"free_code": "WIKI/UAL",
+	"premium_code": "EOD/UAL"
+}, {
+	"ticker": "UNH",
+	"name": "United Health Group Inc.",
+	"free_code": "WIKI/UNH",
+	"premium_code": "EOD/UNH"
+}, {
+	"ticker": "UPS",
+	"name": "United Parcel Service",
+	"free_code": "WIKI/UPS",
+	"premium_code": "EOD/UPS"
+}, {
+	"ticker": "URI",
+	"name": "United Rentals",
+	"free_code": "WIKI/URI",
+	"premium_code": "EOD/URI"
+}, {
+	"ticker": "UTX",
+	"name": "United Technologies",
+	"free_code": "WIKI/UTX",
+	"premium_code": "EOD/UTX"
+}, {
+	"ticker": "UHS",
+	"name": "Universal Health Services",
+	"free_code": "WIKI/UHS",
+	"premium_code": "EOD/UHS"
+}, {
+	"ticker": "UNM",
+	"name": "Unum Group",
+	"free_code": "WIKI/UNM",
+	"premium_code": "EOD/UNM"
+}, {
+	"ticker": "URBN",
+	"name": "Urban Outfitters",
+	"free_code": "WIKI/URBN",
+	"premium_code": "EOD/URBN"
+}, {
+	"ticker": "VFC",
+	"name": "V.F. Corp.",
+	"free_code": "WIKI/VFC",
+	"premium_code": "EOD/VFC"
+}, {
+	"ticker": "VLO",
+	"name": "Valero Energy",
+	"free_code": "WIKI/VLO",
+	"premium_code": "EOD/VLO"
+}, {
+	"ticker": "VAR",
+	"name": "Varian Medical Systems",
+	"free_code": "WIKI/VAR",
+	"premium_code": "EOD/VAR"
+}, {
+	"ticker": "VTR",
+	"name": "Ventas Inc",
+	"free_code": "WIKI/VTR",
+	"premium_code": "EOD/VTR"
+}, {
+	"ticker": "VRSN",
+	"name": "Verisign Inc.",
+	"free_code": "WIKI/VRSN",
+	"premium_code": "EOD/VRSN"
+}, {
+	"ticker": "VRSK",
+	"name": "Verisk Analytics",
+	"free_code": "WIKI/VRSK",
+	"premium_code": "EOD/VRSK"
+}, {
+	"ticker": "VZ",
+	"name": "Verizon Communications",
+	"free_code": "WIKI/VZ",
+	"premium_code": "EOD/VZ"
+}, {
+	"ticker": "VRTX",
+	"name": "Vertex Pharmaceuticals Inc",
+	"free_code": "WIKI/VRTX",
+	"premium_code": "EOD/VRTX"
+}, {
+	"ticker": "VIAB",
+	"name": "Viacom Inc.",
+	"free_code": "WIKI/VIAB",
+	"premium_code": "EOD/VIAB"
+}, {
+	"ticker": "V",
+	"name": "Visa Inc.",
+	"free_code": "WIKI/V",
+	"premium_code": "EOD/V"
+}, {
+	"ticker": "VNO",
+	"name": "Vornado Realty Trust",
+	"free_code": "WIKI/VNO",
+	"premium_code": "EOD/VNO"
+}, {
+	"ticker": "VMC",
+	"name": "Vulcan Materials",
+	"free_code": "WIKI/VMC",
+	"premium_code": "EOD/VMC"
+}, {
+	"ticker": "WMT",
+	"name": "Wal-Mart Stores",
+	"free_code": "WIKI/WMT",
+	"premium_code": "EOD/WMT"
+}, {
+	"ticker": "WBA",
+	"name": "Walgreens Boots Alliance",
+	"free_code": "WIKI/WBA",
+	"premium_code": "EOD/WBA"
+}, {
+	"ticker": "DIS",
+	"name": "The Walt Disney Company",
+	"free_code": "WIKI/DIS",
+	"premium_code": "EOD/DIS"
+}, {
+	"ticker": "WM",
+	"name": "Waste Management Inc.",
+	"free_code": "WIKI/WM",
+	"premium_code": "EOD/WM"
+}, {
+	"ticker": "WAT",
+	"name": "Waters Corporation",
+	"free_code": "WIKI/WAT",
+	"premium_code": "EOD/WAT"
+}, {
+	"ticker": "ANTM",
+	"name": "Anthem Inc.",
+	"free_code": "WIKI/ANTM",
+	"premium_code": "EOD/ANTM"
+}, {
+	"ticker": "WFC",
+	"name": "Wells Fargo",
+	"free_code": "WIKI/WFC",
+	"premium_code": "EOD/WFC"
+}, {
+	"ticker": "HCN",
+	"name": "Welltower Inc.",
+	"free_code": "WIKI/HCN",
+	"premium_code": "EOD/HCN"
+}, {
+	"ticker": "WDC",
+	"name": "Western Digital",
+	"free_code": "WIKI/WDC",
+	"premium_code": "EOD/WDC"
+}, {
+	"ticker": "WU",
+	"name": "Western Union Co",
+	"free_code": "WIKI/WU",
+	"premium_code": "EOD/WU"
+}, {
+	"ticker": "WY",
+	"name": "Weyerhaeuser Corp.",
+	"free_code": "WIKI/WY",
+	"premium_code": "EOD/WY"
+}, {
+	"ticker": "WHR",
+	"name": "Whirlpool Corp.",
+	"free_code": "WIKI/WHR",
+	"premium_code": "EOD/WHR"
+}, {
+	"ticker": "WFM",
+	"name": "Whole Foods Market",
+	"free_code": "WIKI/WFM",
+	"premium_code": "EOD/WFM"
+}, {
+	"ticker": "WMB",
+	"name": "Williams Cos.",
+	"free_code": "WIKI/WMB",
+	"premium_code": "EOD/WMB"
+}, {
+	"ticker": "WEC",
+	"name": "Wisconsin Energy Corporation",
+	"free_code": "WIKI/WEC",
+	"premium_code": "EOD/WEC"
+}, {
+	"ticker": "WYN",
+	"name": "Wyndham Worldwide",
+	"free_code": "WIKI/WYN",
+	"premium_code": "EOD/WYN"
+}, {
+	"ticker": "WYNN",
+	"name": "Wynn Resorts Ltd",
+	"free_code": "WIKI/WYNN",
+	"premium_code": "EOD/WYNN"
+}, {
+	"ticker": "XEL",
+	"name": "Xcel Energy Inc",
+	"free_code": "WIKI/XEL",
+	"premium_code": "EOD/XEL"
+}, {
+	"ticker": "XRX",
+	"name": "Xerox Corp.",
+	"free_code": "WIKI/XRX",
+	"premium_code": "EOD/XRX"
+}, {
+	"ticker": "XLNX",
+	"name": "Xilinx Inc",
+	"free_code": "WIKI/XLNX",
+	"premium_code": "EOD/XLNX"
+}, {
+	"ticker": "XL",
+	"name": "XL Capital",
+	"free_code": "WIKI/XL",
+	"premium_code": "EOD/XL"
+}, {
+	"ticker": "XYL",
+	"name": "Xylem Inc.",
+	"free_code": "WIKI/XYL",
+	"premium_code": "EOD/XYL"
+}, {
+	"ticker": "YHOO",
+	"name": "Yahoo Inc.",
+	"free_code": "WIKI/YHOO",
+	"premium_code": "EOD/YHOO"
+}, {
+	"ticker": "YUM",
+	"name": "Yum! Brands Inc",
+	"free_code": "WIKI/YUM",
+	"premium_code": "EOD/YUM"
+}, {
+	"ticker": "ZBH",
+	"name": "Zimmer Biomet Holdings",
+	"free_code": "WIKI/ZBH",
+	"premium_code": "EOD/ZBH"
+}, {
+	"ticker": "ZION",
+	"name": "Zions Bancorp",
+	"free_code": "WIKI/ZION",
+	"premium_code": "EOD/ZION"
+}, {
+	"ticker": "ZTS",
+	"name": "Zoetis",
+	"free_code": "WIKI/ZTS",
+	"premium_code": "EOD/ZTS"
+}, {
+	"ticker": "MMM",
+	"name": "3M",
+	"premium_code": "EOD/MMM",
+	"free_code": "WIKI/MMM"
+}, {
+	"ticker": "AXP",
+	"name": "American Express",
+	"premium_code": "EOD/AXP",
+	"free_code": "WIKI/AXP"
+}, {
+	"ticker": "AAPL",
+	"name": "Apple",
+	"premium_code": "EOD/AAPL",
+	"free_code": "WIKI/AAPL"
+}, {
+	"ticker": "BA",
+	"name": "Boeing",
+	"premium_code": "EOD/BA",
+	"free_code": "WIKI/BA"
+}, {
+	"ticker": "CAT",
+	"name": "Caterpillar",
+	"premium_code": "EOD/CAT",
+	"free_code": "WIKI/CAT"
+}, {
+	"ticker": "CVX",
+	"name": "Chevron",
+	"premium_code": "EOD/CVX",
+	"free_code": "WIKI/CVX"
+}, {
+	"ticker": "CSCO",
+	"name": "Cisco Systems",
+	"premium_code": "EOD/CSCO",
+	"free_code": "WIKI/CSCO"
+}, {
+	"ticker": "KO",
+	"name": "Coca-Cola",
+	"premium_code": "EOD/KO",
+	"free_code": "WIKI/KO"
+}, {
+	"ticker": "DD",
+	"name": "DuPont",
+	"premium_code": "EOD/DD",
+	"free_code": "WIKI/DD"
+}, {
+	"ticker": "XOM",
+	"name": "ExxonMobil",
+	"premium_code": "EOD/XOM",
+	"free_code": "WIKI/XOM"
+}, {
+	"ticker": "GE",
+	"name": "General Electric",
+	"premium_code": "EOD/GE",
+	"free_code": "WIKI/GE"
+}, {
+	"ticker": "GS",
+	"name": "Goldman Sachs",
+	"premium_code": "EOD/GS",
+	"free_code": "WIKI/GS"
+}, {
+	"ticker": "HD",
+	"name": "The Home Depot",
+	"premium_code": "EOD/HD",
+	"free_code": "WIKI/HD"
+}, {
+	"ticker": "INTC",
+	"name": "Intel",
+	"premium_code": "EOD/INTC",
+	"free_code": "WIKI/INTC"
+}, {
+	"ticker": "IBM",
+	"name": "IBM",
+	"premium_code": "EOD/IBM",
+	"free_code": "WIKI/IBM"
+}, {
+	"ticker": "JNJ",
+	"name": "Johnson & Johnson",
+	"premium_code": "EOD/JNJ",
+	"free_code": "WIKI/JNJ"
+}, {
+	"ticker": "JPM",
+	"name": "JPMorgan Chase",
+	"premium_code": "EOD/JPM",
+	"free_code": "WIKI/JPM"
+}, {
+	"ticker": "MCD",
+	"name": "McDonald's",
+	"premium_code": "EOD/MCD",
+	"free_code": "WIKI/MCD"
+}, {
+	"ticker": "MRK",
+	"name": "Merck",
+	"premium_code": "EOD/MRK",
+	"free_code": "WIKI/MRK"
+}, {
+	"ticker": "MSFT",
+	"name": "Microsoft",
+	"premium_code": "EOD/MSFT",
+	"free_code": "WIKI/MSFT"
+}, {
+	"ticker": "NKE",
+	"name": "Nike",
+	"premium_code": "EOD/NKE",
+	"free_code": "WIKI/NKE"
+}, {
+	"ticker": "PFE",
+	"name": "Pfizer",
+	"premium_code": "EOD/PFE",
+	"free_code": "WIKI/PFE"
+}, {
+	"ticker": "PG",
+	"name": "Procter & Gamble",
+	"premium_code": "EOD/PG",
+	"free_code": "WIKI/PG"
+}, {
+	"ticker": "TRV",
+	"name": "Travelers",
+	"premium_code": "EOD/TRV",
+	"free_code": "WIKI/TRV"
+}, {
+	"ticker": "UNH",
+	"name": "UnitedHealth Group",
+	"premium_code": "EOD/UNH",
+	"free_code": "WIKI/UNH"
+}, {
+	"ticker": "UTX",
+	"name": "United Technologies",
+	"premium_code": "EOD/UTX",
+	"free_code": "WIKI/UTX"
+}, {
+	"ticker": "VZ",
+	"name": "Verizon",
+	"premium_code": "EOD/VZ",
+	"free_code": "WIKI/VZ"
+}, {
+	"ticker": "V",
+	"name": "Visa",
+	"premium_code": "EOD/V",
+	"free_code": "WIKI/V"
+}, {
+	"ticker": "WMT",
+	"name": "Wal-Mart",
+	"premium_code": "EOD/WMT",
+	"free_code": "WIKI/WMT"
+}, {
+	"ticker": "DIS",
+	"name": "Walt Disney",
+	"premium_code": "EOD/DIS",
+	"free_code": "WIKI/DIS"
+}]}
