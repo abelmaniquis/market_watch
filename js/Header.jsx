@@ -27,7 +27,9 @@ const SearchHeader = React.createClass({
           <th>High</th>
           <th>Low</th>
           <th>Close</th>
-          <th>On date</th>
+          <th>Change</th>
+          <th>Trend</th>
+          <th>On Date</th>
         </tbody>
     </table>
       </header>)

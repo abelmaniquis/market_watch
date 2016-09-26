@@ -21619,10 +21619,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var date = this.state.prices[0];
+	      var open = this.state.prices[1];
+	      var high = this.state.prices[2];
+	      var low = this.state.prices[3];
+	      var close = this.state.prices[4];
+	      var volume = this.state.prices[5];
+	      var exDividend = this.state.prices[6];
+	      var splitRatio = this.state.prices[7];
+	      var change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
+	      var trend = 'trending neutral';
 	
+	      //Use font awesome arrows for this
+	      if (change > 0) {
+	        trend = "up";
+	      } else {
+	        trend = "down";
+	      }
 	      return React.createElement(
 	        'div',
 	        { className: 'data-container' },
+	        React.createElement('link', { href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet' }),
 	        React.createElement(
 	          'table',
 	          null,
@@ -21644,27 +21661,37 @@
 	              React.createElement(
 	                'th',
 	                { className: 'open' },
-	                this.state.prices[1]
+	                open
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'high' },
-	                this.state.prices[2]
+	                high
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'low' },
-	                this.state.prices[3]
+	                low
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'close' },
-	                this.state.prices[4]
+	                close
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'change' },
+	                change
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'trend' },
+	                trend
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'onDate' },
-	                this.state.prices[0]
+	                date
 	              )
 	            )
 	          )
@@ -28956,7 +28983,17 @@
 	          React.createElement(
 	            'th',
 	            null,
-	            'On date'
+	            'Change'
+	          ),
+	          React.createElement(
+	            'th',
+	            null,
+	            'Trend'
+	          ),
+	          React.createElement(
+	            'th',
+	            null,
+	            'On Date'
 	          )
 	        )
 	      )
@@ -30873,8 +30910,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	//newyorktime api key = dbe98497b30d4e558156fc8c7bfc301b
-	
 	var React = __webpack_require__(1);
+	
 	var axios = __webpack_require__(174);
 	var Data = __webpack_require__(173);
 	
@@ -30883,7 +30920,8 @@
 	var Link = _require.Link;
 	
 	
-	console.log(Data);
+	console.log("Pulling from Data: ");
+	console.log(Data.props);
 	
 	var Details = function (_React$Component) {
 	  _inherits(Details, _React$Component);
@@ -30900,6 +30938,11 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'Data' },
+	        React.createElement(
+	          'h1',
+	          null,
+	          'Stock Name'
+	        ),
 	        React.createElement(
 	          'p',
 	          null,
@@ -30927,10 +30970,11 @@
 	
 	var object = React.PropTypes.object;
 	
-	
 	Details.propTypes = {
 	  params: object.isRequired
 	};
+	console.log("object: ");
+	console.log({ object: object });
 	
 	module.exports = Details;
 

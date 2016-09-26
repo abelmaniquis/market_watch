@@ -30,19 +30,38 @@ class Data extends React.Component {
       })
   }
   render() {
+    let date = this.state.prices[0]
+    let open = this.state.prices[1]
+    let high = this.state.prices[2]
+    let low = this.state.prices[3]
+    let close = this.state.prices[4]
+    let volume = this.state.prices[5]
+    let exDividend = this.state.prices[6]
+    let splitRatio = this.state.prices[7]
+    let change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1])*100/100).toFixed(2)
+    let trend = 'trending neutral'
     
+    //Use font awesome arrows for this
+    if(change > 0){
+      trend = "up"
+    }
+    else{
+      trend = "down"
+    }
     return (
       <div className="data-container">
-
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
       <table>
       <tbody>
         <tr>
           <th className='ticker'><Link to={'/details/:id'}>{this.state.ticker}</Link></th>
-          <th className='open'>{this.state.prices[1]}</th>
-          <th className='high'>{this.state.prices[2]}</th>
-          <th className='low'>{this.state.prices[3]}</th>
-          <th className='close'>{this.state.prices[4]}</th>
-          <th className='onDate'>{this.state.prices[0]}</th>
+          <th className='open'>{open}</th>
+          <th className='high'>{high}</th>
+          <th className='low'>{low}</th>
+          <th className='close'>{close}</th>
+          <th className='change'>{change}</th>
+          <th className='trend'>{trend}</th>
+          <th className='onDate'>{date}</th>
         </tr>
         </tbody>
       </table>
