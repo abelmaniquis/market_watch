@@ -20,15 +20,15 @@ const SearchHeader = React.createClass({
       return(
       <header className='header'>
         {searchSpace}
-          <table>
-        <tr>
+      <table>
+        <tbody>
           <th>Ticker</th>
           <th>Open</th>
           <th>High</th>
           <th>Low</th>
           <th>Close</th>
           <th>On date</th>
-        </tr>
+        </tbody>
     </table>
       </header>)
   }

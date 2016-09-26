@@ -30,17 +30,20 @@ class Data extends React.Component {
       })
   }
   render() {
+    
     return (
       <div className="data-container">
 
       <table>
       <tbody>
+        <tr>
           <th className='ticker'><Link to={'/details/:id'}>{this.state.ticker}</Link></th>
           <th className='open'>{this.state.prices[1]}</th>
           <th className='high'>{this.state.prices[2]}</th>
           <th className='low'>{this.state.prices[3]}</th>
           <th className='close'>{this.state.prices[4]}</th>
           <th className='onDate'>{this.state.prices[0]}</th>
+        </tr>
         </tbody>
       </table>
     </div>
