@@ -50,6 +50,8 @@
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(290);
+	var Profile = __webpack_require__(292);
+	var Signup = __webpack_require__(293);
 	
 	var _require = __webpack_require__(196);
 	
@@ -75,6 +77,16 @@
 	
 	var App = React.createClass({
 	  displayName: 'App',
+	  assignStock: function assignStock(nextState, replace) {
+	    var stockArray = stocks.filter(function (stock) {
+	      return stock.ticker === nextState.params.id;
+	    });
+	    if (stockArray.length < 1) {
+	      return replace('/');
+	    }
+	    Object.assign(nextState.params, stockArray[0]);
+	    return nextState;
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      Provider,
@@ -83,7 +95,9 @@
 	        Router,
 	        { history: hashHistory },
 	        React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
-	        React.createElement(Route, { path: '/details/:id', component: Details, stocks: stocks })
+	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
+	        React.createElement(Route, { path: '/signup', component: Signup }),
+	        React.createElement(Route, { path: '/profile/:id', component: Profile, stocks: stocks })
 	      )
 	    );
 	  }
@@ -21528,9 +21542,18 @@
 	    route: object,
 	    searchTerm: string
 	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      searchTerm: ''
+	    };
+	  },
+	  handleSearchTermEvent: function handleSearchTermEvent(event) {
+	    this.setState({ searchTerm: event.target.value });
+	  },
 	  render: function render() {
 	    var _this = this;
 	
+	    console.log(this.props.stocks);
 	    return React.createElement(
 	      'div',
 	      { className: 'app-container' },
@@ -21540,7 +21563,7 @@
 	        React.createElement(
 	          'h1',
 	          { className: 'title' },
-	          'Stocks'
+	          'MarketWatch'
 	        ),
 	        React.createElement(Header, null)
 	      ),
@@ -21551,7 +21574,8 @@
 	          return ('' + stock.ticker + stock.name).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	        }).map(function (stock, index) {
 	          return React.createElement(Data, { keyword: stock.ticker, key: index });
-	        })
+	        }),
+	        console.log(this.props.route.stocks)
 	      )
 	    );
 	  }
@@ -21654,7 +21678,7 @@
 	                { className: 'ticker' },
 	                React.createElement(
 	                  Link,
-	                  { to: '/details/:id' },
+	                  { to: '/details/' + this.state.ticker },
 	                  this.state.ticker
 	                )
 	              ),
@@ -30909,9 +30933,9 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//newyorktime api key = dbe98497b30d4e558156fc8c7bfc301b
+	//newyorktimes api key = dbe98497b30d4e558156fc8c7bfc301b
+	//should take in Data.state.ticker
 	var React = __webpack_require__(1);
-	
 	var axios = __webpack_require__(174);
 	var Data = __webpack_require__(173);
 	
@@ -30919,20 +30943,46 @@
 	
 	var Link = _require.Link;
 	
-	
-	console.log("Pulling from Data: ");
-	console.log(Data.props);
-	
 	var Details = function (_React$Component) {
 	  _inherits(Details, _React$Component);
 	
-	  function Details() {
+	  function Details(props) {
 	    _classCallCheck(this, Details);
 	
-	    return _possibleConstructorReturn(this, (Details.__proto__ || Object.getPrototypeOf(Details)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Details.__proto__ || Object.getPrototypeOf(Details)).call(this, props));
+	
+	    console.log("Details state: ");
+	    console.log(_this.props.params);
+	    _this.state = {
+	      id: {},
+	      name: "",
+	      ticker: "",
+	      logTitles: [],
+	      priceLog: []
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Details, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.props.params.id + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
+	        console.log(response.data.dataset.column_names);
+	        console.log(response.data.dataset.data);
+	        _this2.setState({
+	          ticker: response.data.dataset.dataset_code,
+	          name: response.data.dataset.name,
+	          logTitles: response.data.dataset.column_names,
+	          priceLog: response.data.dataset.data
+	        });
+	        console.log(_this2.state);
+	        console.log(_this2.logTitles);
+	        console.log(_this2.state.name);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -30941,7 +30991,7 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'Stock Name'
+	          this.state.name
 	        ),
 	        React.createElement(
 	          'p',
@@ -30953,12 +31003,18 @@
 	          )
 	        ),
 	        React.createElement(
+	          'h1',
+	          null,
+	          'Price Log'
+	        ),
+	        React.createElement(
 	          'pre',
 	          null,
 	          React.createElement(
 	            'code',
 	            null,
-	            JSON.stringify(this.props.params, null, 4)
+	            JSON.stringify(this.props.params, null, 4),
+	            JSON.stringify(this.state, null, 4)
 	          )
 	        )
 	      );
@@ -34195,6 +34251,65 @@
 				"free_code": "WIKI/DIS"
 			}
 		]
+	};
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Profile = function Profile() {
+	  return React.createElement(
+	    'div',
+	    { className: 'profile-container' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Hello profile page'
+	    ),
+	    React.createElement('table', { className: 'myStocks' })
+	  );
+	};
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Signup = function Signup() {
+	  return React.createElement(
+	    'div',
+	    { className: 'signupContainer' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Hello Signup'
+	    )
+	  );
 	};
 
 /***/ }

@@ -1,21 +1,48 @@
-//newyorktime api key = dbe98497b30d4e558156fc8c7bfc301b
+//newyorktimes api key = dbe98497b30d4e558156fc8c7bfc301b
+//should take in Data.state.ticker
 const React = require('react')
-
 const axios = require('axios')
 const Data = require('./Data')
 const { Link } = require('react-router')
 
-console.log("Pulling from Data: ")
-console.log(Data.props);
-
 class Details extends React.Component{
+  constructor(props){
+    super(props)
+    console.log("Details state: ")
+    console.log(this.props.params);
+    this.state = {
+      id:{},
+      name:"",
+      ticker:"",
+      logTitles:[],
+      priceLog:[]
+    }
+  }
+  componentDidMount(){
+   axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
+    .then((response)=>{
+      console.log(response.data.dataset.column_names);
+      console.log(response.data.dataset.data);
+      this.setState({
+        ticker: response.data.dataset.dataset_code,
+        name: response.data.dataset.name,
+        logTitles: response.data.dataset.column_names,
+        priceLog: response.data.dataset.data
+      });
+      console.log(this.state)
+      console.log(this.logTitles)
+      console.log(this.state.name)
+    });
+  }
   render(){
     return(
     <div className="Data">
-      <h1>Stock Name</h1>
+      <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
+      <h1>Price Log</h1>
           <pre><code>
           {JSON.stringify(this.props.params, null, 4)}
+          {JSON.stringify(this.state, null, 4)}
         </code></pre>
     </div>
     )

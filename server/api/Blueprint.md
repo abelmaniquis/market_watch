@@ -5,11 +5,15 @@ Here's an example of what I want the API object to look like:
     username: Abel,
     password: 12345
   },
+  info:{
+    firstName: Abel,
+    lastName: Maniquis,
+    emailAdress: abelmaniquis@gmail.com
+  },
   watchlist:{
     stocks: [GOOG,NFLX,TSLA,AMZN,BRK_B]
   }
 }
-
 
 Should be able to add stock to watchlist, and remove from watchlist.
 

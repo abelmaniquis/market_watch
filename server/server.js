@@ -4,13 +4,13 @@ var express = require('express');
 var React = require('react');
 var app = express();
 
-console.log(__dirname);
+console.log(__dirname + '/../index.html');
 
 app.use(express.static('public'));
-
+console.log(express.static('public'))
 
 app.get('/',function(req,res){
-    res.status(202).sendFile(__dirname + '/../index.html',function(err){
+    res.status(202).sendFile(__dirname + '/../public/index.html',function(err){
         if(err){
             res.status(500).send(err)
         }
