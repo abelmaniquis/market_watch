@@ -22,28 +22,39 @@ class Details extends React.Component{
    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
       console.log(response.data.dataset.column_names);
-      console.log(response.data.dataset.data);
+      console.log(response.data.dataset.data[0]);
       this.setState({
         ticker: response.data.dataset.dataset_code,
         name: response.data.dataset.name,
         logTitles: response.data.dataset.column_names,
         priceLog: response.data.dataset.data
       });
-      /*console.log(this.state)
-      console.log(this.logTitles)
-      console.log(this.state.name)*/
+      console.log(this.state.name)
     });
   }
   render(){
+    
+    var displayDates = [];
+    var i = 0;
+    while(i < 10){
+      displayDates.push(this.state.priceLog[i]);
+      i++;
+    }
+    
+    console.log('dates');
+    console.log(displayDates);
     return(
     <div className="Data">
       <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
       <button> Add to my Watchlist</button>
-      <h1>Price Log</h1>
+      <h1>Stock History</h1>
           <pre><code>
           {JSON.stringify(this.state, null, 4)}
         </code></pre>
+        
+        <p>{}</p>
+        
     </div>
     )
   }
