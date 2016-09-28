@@ -23,6 +23,19 @@ const Landing = React.createClass({
       <div className='app-container'>
       <div className='home-info'>
         <h1 className='title'>MarketWatch</h1>
+        <form className="login" action='/login' method='post'>
+          
+          <div className="user-input">
+            <label>Username</label>
+            <input type="text" name="username" className="usernameInput"/>
+          </div>
+          
+          <div className="user-input">
+            <label>Password</label>
+            <input type="password" name="password" className="passwordInput"/>
+          </div>
+          
+        </form>
         <Header/>
       </div>
       <div className='stocks'>

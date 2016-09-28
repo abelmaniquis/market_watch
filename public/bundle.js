@@ -50,8 +50,8 @@
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(290);
-	var Profile = __webpack_require__(292);
-	var Signup = __webpack_require__(293);
+	var Profile = __webpack_require__(291);
+	var Signup = __webpack_require__(292);
 	
 	var _require = __webpack_require__(196);
 	
@@ -60,7 +60,7 @@
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 	
-	var _require2 = __webpack_require__(291);
+	var _require2 = __webpack_require__(293);
 	
 	var stocks = _require2.stocks;
 	
@@ -97,7 +97,7 @@
 	        React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
-	        React.createElement(Route, { path: '/profile/:id', component: Profile, stocks: stocks })
+	        React.createElement(Route, { path: '/profile/:id', component: Profile })
 	      )
 	    );
 	  }
@@ -21565,6 +21565,30 @@
 	          { className: 'title' },
 	          'MarketWatch'
 	        ),
+	        React.createElement(
+	          'form',
+	          { className: 'login', action: '/login', method: 'post' },
+	          React.createElement(
+	            'div',
+	            { className: 'user-input' },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Username'
+	            ),
+	            React.createElement('input', { type: 'text', name: 'username', className: 'usernameInput' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'user-input' },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Password'
+	            ),
+	            React.createElement('input', { type: 'password', name: 'password', className: 'passwordInput' })
+	          )
+	        ),
 	        React.createElement(Header, null)
 	      ),
 	      React.createElement(
@@ -30977,9 +31001,9 @@
 	          logTitles: response.data.dataset.column_names,
 	          priceLog: response.data.dataset.data
 	        });
-	        console.log(_this2.state);
-	        console.log(_this2.logTitles);
-	        console.log(_this2.state.name);
+	        /*console.log(this.state)
+	        console.log(this.logTitles)
+	        console.log(this.state.name)*/
 	      });
 	    }
 	  }, {
@@ -31003,6 +31027,11 @@
 	          )
 	        ),
 	        React.createElement(
+	          'button',
+	          null,
+	          ' Add to my Watchlist'
+	        ),
+	        React.createElement(
 	          'h1',
 	          null,
 	          'Price Log'
@@ -31013,7 +31042,6 @@
 	          React.createElement(
 	            'code',
 	            null,
-	            JSON.stringify(this.props.params, null, 4),
 	            JSON.stringify(this.state, null, 4)
 	          )
 	        )
@@ -31036,6 +31064,77 @@
 
 /***/ },
 /* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Profile = React.createClass({
+	  displayName: 'Profile',
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'profile-container' },
+	      React.createElement(
+	        'h1',
+	        null,
+	        'Hello profile page'
+	      ),
+	      React.createElement(
+	        'h3',
+	        null,
+	        'This will display the user\'s stocks'
+	      ),
+	      React.createElement('table', { className: 'myStocks' })
+	    );
+	  }
+	});
+	
+	module.exports = Profile;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Signup = function Signup() {
+	  return React.createElement(
+	    'div',
+	    { className: 'signupContainer' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Hello Signup'
+	    )
+	  );
+	};
+	
+	module.exports = Signup;
+
+/***/ },
+/* 293 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -34251,65 +34350,6 @@
 				"free_code": "WIKI/DIS"
 			}
 		]
-	};
-
-/***/ },
-/* 292 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var reactDOM = __webpack_require__(34);
-	
-	var _require = __webpack_require__(196);
-	
-	var Router = _require.Router;
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
-	
-	
-	var Profile = function Profile() {
-	  return React.createElement(
-	    'div',
-	    { className: 'profile-container' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Hello profile page'
-	    ),
-	    React.createElement('table', { className: 'myStocks' })
-	  );
-	};
-
-/***/ },
-/* 293 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var reactDOM = __webpack_require__(34);
-	
-	var _require = __webpack_require__(196);
-	
-	var Router = _require.Router;
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
-	
-	
-	var Signup = function Signup() {
-	  return React.createElement(
-	    'div',
-	    { className: 'signupContainer' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Hello Signup'
-	    )
-	  );
 	};
 
 /***/ }

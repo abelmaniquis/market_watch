@@ -27,7 +27,7 @@ const App = React.createClass({
         <Route path='/' component={Landing} stocks={stocks}/>
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
-        <Route path='/profile/:id' component={Profile} stocks={stocks}/>
+        <Route path='/profile/:id' component={Profile}/>
       </Router>
     </Provider>
     )

@@ -29,9 +29,9 @@ class Details extends React.Component{
         logTitles: response.data.dataset.column_names,
         priceLog: response.data.dataset.data
       });
-      console.log(this.state)
+      /*console.log(this.state)
       console.log(this.logTitles)
-      console.log(this.state.name)
+      console.log(this.state.name)*/
     });
   }
   render(){
@@ -39,9 +39,9 @@ class Details extends React.Component{
     <div className="Data">
       <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
+      <button> Add to my Watchlist</button>
       <h1>Price Log</h1>
           <pre><code>
-          {JSON.stringify(this.props.params, null, 4)}
           {JSON.stringify(this.state, null, 4)}
         </code></pre>
     </div>

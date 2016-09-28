@@ -9,3 +9,5 @@ const Signup = () =>{
     </div>
   )
 }
+
+module.exports = Signup;
