@@ -30994,24 +30994,32 @@
 	
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.props.params.id + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        console.log(response.data.dataset.column_names);
-	        console.log(response.data.dataset.data);
+	        console.log(response.data.dataset.data[0][0]);
 	        _this2.setState({
 	          ticker: response.data.dataset.dataset_code,
 	          name: response.data.dataset.name,
 	          logTitles: response.data.dataset.column_names,
 	          priceLog: response.data.dataset.data
 	        });
-	        /*console.log(this.state)
-	        console.log(this.logTitles)
-	        console.log(this.state.name)*/
+	        console.log("this.state.priceLog[0][0]");
+	        console.log('-');
+	        console.log('-');
+	        console.log('-');
+	        console.log('date: ' + _this2.state.priceLog[0][0]);
+	        console.log('open: ' + _this2.state.priceLog[0][1]);
+	        console.log('high: ' + _this2.state.priceLog[0][2]);
+	        console.log('low: ' + _this2.state.priceLog[0][3]);
+	        console.log('close: ' + _this2.state.priceLog[0][4]);
+	        console.log('volume: ' + _this2.state.priceLog[0][5]);
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.state.priceLog[0]);
 	      return React.createElement(
 	        'div',
-	        { className: 'Data' },
+	        { className: 'FurtherDetails' },
 	        React.createElement(
 	          'h1',
 	          null,
@@ -31034,7 +31042,12 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'Price Log'
+	          'Stock History'
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          this.state.priceLog[0]
 	        ),
 	        React.createElement(
 	          'pre',
@@ -31044,6 +31057,11 @@
 	            null,
 	            JSON.stringify(this.state, null, 4)
 	          )
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          '"Updated"'
 	        )
 	      );
 	    }
