@@ -9,7 +9,6 @@ const Profile = React.createClass({
     <h1>Hello profile page</h1>
     <h3>This will display the user's stocks</h3>
     <table className="myStocks">
-    
     </table>
   </div>
     )

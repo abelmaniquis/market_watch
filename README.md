@@ -7,10 +7,6 @@ https://www.quandl.com/api/v3/datasets/WIKI/GOOGL.json?api_key=PqxkDaWHTxrB8VHFS
 Netflix
 https://www.quandl.com/api/v3/datasets/WIKI/NFLX.json?api_key=PqxkDaWHTxrB8VHFSDVS
 
-Example:
-https://dbrusky1.github.io/marketDataTwo/#/stocks
-
-
 1. Minimum one endpoint with all 4 request types
 2. Tests covered 
 3. Enviroment variables for 3 different environments: test, production, development

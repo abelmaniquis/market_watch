@@ -20,9 +20,11 @@
   "homepage": "https://github.com/abelmaniquis/react_project#readme",
   "dependencies": {
     "axios": "^0.14.0",
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.1",
+    "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",

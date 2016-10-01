@@ -18,7 +18,6 @@ const Landing = React.createClass({
     this.setState({searchTerm: event.target.value})
   },
   render() {
-    console.log(this.props.stocks)
     return (
       <div className='app-container'>
       <div className='home-info'>

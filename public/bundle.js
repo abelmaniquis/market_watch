@@ -21553,7 +21553,6 @@
 	  render: function render() {
 	    var _this = this;
 	
-	    console.log(this.props.stocks);
 	    return React.createElement(
 	      'div',
 	      { className: 'app-container' },
@@ -21621,6 +21620,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	//http://jsfiddle.net/faria/3nodz94g/
+	
 	var React = __webpack_require__(1);
 	var axios = __webpack_require__(174);
 	
@@ -21641,7 +21642,8 @@
 	      name: "",
 	      ticker: "",
 	      prices: [],
-	      keyword: _this.props.keyword
+	      keyword: _this.props.keyword,
+	      isHovering: false
 	    };
 	    return _this;
 	  }
@@ -21665,8 +21667,16 @@
 	      });
 	    }
 	  }, {
+	    key: 'hoverEvent',
+	    value: function hoverEvent() {
+	      this.setState({
+	        isHovering: true
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	
 	      var date = this.state.prices[0];
 	      var open = this.state.prices[1];
 	      var high = this.state.prices[2];
@@ -21678,16 +21688,17 @@
 	      var change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
 	      var trend = 'trending neutral';
 	
-	      //Use font awesome arrows for this
-	      if (change > 0) {
-	        trend = "up";
-	      } else {
-	        trend = "down";
+	      //Use font awesome arrows for this. also change background highlighting to reflect changes
+	
+	      change >= 0 ? trend = "up" : trend = "down";
+	
+	      if (trend === "down") {
+	        console.log("this should highlight red");
 	      }
+	
 	      return React.createElement(
 	        'div',
 	        { className: 'data-container' },
-	        React.createElement('link', { href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet' }),
 	        React.createElement(
 	          'table',
 	          null,

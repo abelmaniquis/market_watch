@@ -1,3 +1,5 @@
+//http://jsfiddle.net/faria/3nodz94g/
+
 const React = require('react')
 const axios = require('axios')
 const { Link } = require('react-router')
@@ -5,13 +7,14 @@ const { Link } = require('react-router')
 class Data extends React.Component {
   constructor(props) {
     super(props)
-
+  
     this.state = {
       id: {},
       name: "",
       ticker: "",
       prices: [],
-      keyword: this.props.keyword
+      keyword: this.props.keyword,
+      isHovering: false
     }
   }
   componentDidMount() {
@@ -29,7 +32,13 @@ class Data extends React.Component {
         });
       })
   }
+  hoverEvent(){
+    this.setState({
+      isHovering: true
+    })
+  }
   render() {
+    
     let date = this.state.prices[0]
     let open = this.state.prices[1]
     let high = this.state.prices[2]
@@ -41,16 +50,16 @@ class Data extends React.Component {
     let change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1])*100/100).toFixed(2)
     let trend = 'trending neutral'
     
-    //Use font awesome arrows for this
-    if(change > 0){
-      trend = "up"
+    //Use font awesome arrows for this. also change background highlighting to reflect changes
+    
+    change >= 0 ? trend = "up" : trend = "down"
+    
+    if (trend === "down"){
+      console.log("this should highlight red");
     }
-    else{
-      trend = "down"
-    }
+    
     return (
       <div className="data-container">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
       <table>
       <tbody>
         <tr>
