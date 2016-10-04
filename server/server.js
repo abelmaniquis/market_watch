@@ -5,53 +5,14 @@ var port = process.env.PORT || 8080;
 var morgan = require('morgan');
 var http = require('http');
 var path = require('path');
-var React = require('react');
+
 
 app.use(express.static('public'));
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-var updateUsers = function(req,res,next){
-  /*
-  user.portfolio.push(aStock);
-  */
-  next();
-};
-
-app.get('/',function(req,res){
-    res.status(202).sendFile(__dirname + '/../public/index.html',function(err){
-        if(err){
-            res.status(500).send(err)
-        }
-    })
-});
-
-
-app.get('/users',function(req,res,err){
-   res.status(202).json(users);
-   if(err){
-     res.status(500).send(err)
-   }
-});
-
-app.get('/users/:id',function(req,res){
-  var user = req.user;
-  res.json(user||{});
-});
-
-app.post('/users/:id',function(req,res){
-  var user = req.body;
-  users.push
-});
-
-app.put('/users/:id',function(req,res){
-  
-});
-
-app.delete('/users/:id',function(req,res){
-  
-});
+require('./api/user/user.routes.js')(app); 
+require('./api/stock/stock.routes.js')(app); 
 
 app.listen(port);
 console.log("app listening on port " + port);

@@ -4,8 +4,8 @@ var express = require('express');
 
 module.exports = function(app){
   
-  app.get("/",function(req,res){
-    res.status(200).send("This is a test of user.routes");
+  app.get("/stocks",function(req,res){
+    res.status(200).send("This is a test of stock.routes");
   });
   
 }

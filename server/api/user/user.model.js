@@ -12,10 +12,6 @@ var userSchema = mongoose.Schema({
   portfolio:[{type: Schema.Types.ObjectId, ref:'stock'}]
 })
 
-userSchema.methods.addStock = function(){
-  
-}
-
 require('./user.validation.js')(userSchema);
 
 
