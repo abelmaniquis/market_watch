@@ -39,9 +39,22 @@ th{
   text-align:left;
 }
 
+.animate{
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+tr{
+  -webkit-animation:fadeIn ease-in 1;
+}
+
 tr:hover{
   background-color:#00ff00;
 }
+
+
 /*
 tr-false:hover{
   background-color:#DC143C;

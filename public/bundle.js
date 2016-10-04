@@ -21688,8 +21688,6 @@
 	      var change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
 	      var trend = 'trending neutral';
 	
-	      //Use font awesome arrows for this. also change background highlighting to reflect changes
-	
 	      change >= 0 ? trend = "up" : trend = "down";
 	
 	      if (trend === "down") {
@@ -31053,12 +31051,27 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'Stock History'
+	          'Stock History for ',
+	          this.state.ticker
 	        ),
 	        React.createElement(
-	          'p',
+	          'ul',
 	          null,
-	          this.state.priceLog[0]
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.priceLog[0]
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.priceLog[0]
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.priceLog[0]
+	          )
 	        ),
 	        React.createElement(
 	          'pre',

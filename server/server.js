@@ -12,32 +12,10 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-var users = [
-{
-  login:{
-    id: 0,
-    username: 'Abel',
-    password: 12345
-  },
-  info:{
-    firstName: 'Abel',
-    lastName: 'Maniquis',
-    emailAdress: 'abelmaniquis@gmail.com'
-  },
-  watchlist:{
-    stocks: ['GOOG','NFLX','TSLA','AMZN','BRK_B']
-  }
-}
-    
-];
-
-var id = 1;
-
 var updateUsers = function(req,res,next){
-  if(!req.body.login.id){
-    id++;
-    req.body.login.id = id + ''
-  }
+  /*
+  user.portfolio.push(aStock);
+  */
   next();
 };
 

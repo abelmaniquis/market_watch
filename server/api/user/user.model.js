@@ -1,16 +1,23 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
 var userSchema = mongoose.Schema({
   login:{
     username: String,
-    password: String
+    password: String,
+    required:true
   },
-  watchList:{
-    stocks: Array
-  }
-  
+  cash: 100000,
+  portfolio:[{type: Schema.Types.ObjectId, ref:'stock'}]
 })
+
+userSchema.methods.addStock = function(){
+  
+}
+
+require('./user.validation.js')(userSchema);
+
 
 userSchema.methods.validPassword = function(password) {
   var salt = bcrypt.genSaltSync(8);

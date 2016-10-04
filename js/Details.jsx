@@ -48,9 +48,13 @@ class Details extends React.Component{
       <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
       <button> Add to my Watchlist</button>
-      <h1>Stock History</h1>
-      <p>{this.state.priceLog[0]}</p>
+      <h1>Stock History for {this.state.ticker}</h1>
       
+      <ul>
+      <li>{this.state.priceLog[0]}</li>
+      <li>{this.state.priceLog[0]}</li>
+      <li>{this.state.priceLog[0]}</li>
+      </ul>
           <pre><code>
           {JSON.stringify(this.state, null, 4)}
         </code></pre>
