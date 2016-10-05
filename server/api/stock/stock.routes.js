@@ -8,4 +8,9 @@ module.exports = function(app){
     res.status(200).send("This is a test of stock.routes");
   });
   
+  app.get("/stocks/:id",function(req,res){
+    var stock = req.params.id;
+    res.status(200).send("Will show an individual this individual stock: " + stock)
+  });
+  
 }
