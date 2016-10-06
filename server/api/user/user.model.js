@@ -3,18 +3,24 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
 var userSchema = mongoose.Schema({
-  login:{
-    username: String,
-    password: String,
+  username:{
+    type:String,
+    required:true,
+    unique:true
+  },
+  password:{
+    type:String,
     required:true
   },
-  cash: 100000,
-  portfolio:[{type: Schema.Types.ObjectId, ref:'stock'}]
+  cash: {
+    type: Number
+  },
+  portfolio:[]
 })
 
-require('./user.validation.js')(userSchema);
+//require('./user.validation.js')(userSchema);
 
-
+/*
 userSchema.methods.validPassword = function(password) {
   var salt = bcrypt.genSaltSync(8);
   var hash = bcrypt.hashSync(password, salt);
@@ -23,6 +29,6 @@ userSchema.methods.validPassword = function(password) {
     return true;
   };
 };
-
+*/
 
 module.exports = mongoose.model('User', userSchema);

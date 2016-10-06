@@ -31169,6 +31169,35 @@
 	      'h1',
 	      null,
 	      'Hello Signup'
+	    ),
+	    React.createElement(
+	      'form',
+	      { action: '/signup', method: 'post' },
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Username'
+	        ),
+	        React.createElement('input', { type: 'text', name: 'username', 'class': 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { 'class': 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Password'
+	        ),
+	        React.createElement('input', { type: 'password', name: 'password', 'class': 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { 'class': 'button' },
+	        React.createElement('input', { 'class': 'button-type', type: 'submit', value: 'Submit' })
+	      )
 	    )
 	  );
 	};
