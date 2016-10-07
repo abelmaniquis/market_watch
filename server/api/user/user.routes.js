@@ -9,10 +9,9 @@ var User = require('./user.model.js');
 module.exports = function(app){
   /*TEST USER-----------------------------------------------------*/
   var testUser = new User;
-  
   testUser.username = "admin";
   testUser.password = "secret";
-  testUser.cash = 1000000;
+ // testUser.cash = 1000000;
   
   console.log(testUser.portfolio);
   /*-----------------------------------------------------------------*/
@@ -33,10 +32,11 @@ module.exports = function(app){
   });
   
   app.get('/users/:id',function(req,res){
-    testUser.username = req.body.id;
     console.log(testUser.username);
     res.status(202).json(testUser.username);
   });
+  
+  
   
   
 }

@@ -14,9 +14,6 @@ var userSchema = mongoose.Schema({
     type:String,
     required:true
   },
-  cash: {
-    type: Number
-  },
   portfolio:{
     type: mongoose.Schema.Types.ObjectId,
     ref:'portfolio',
@@ -30,11 +27,11 @@ var userSchema = mongoose.Schema({
 userSchema.methods.validPassword = function(password) {
   var salt = bcrypt.genSaltSync(8);
   var hash = bcrypt.hashSync(password, salt);
-
   if (bcrypt.compareSync(this.password, hash)) {
     return true;
   };
 };
 
+console.log(userSchema.validPassword("secret"))
 
 module.exports = mongoose.model('User', userSchema);

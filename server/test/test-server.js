@@ -23,17 +23,30 @@ describe('Front Page', function(req,res) {
   
 });
 
-describe('User Object',function(req,res){
-  it('should Create User object')
+describe('USER',function(req,res){
+  it('should Create and return a new User',function(done){
+    request(app)
+    done();
+  })
   
-  it('should Read User object')
+  it('should Read User object', function(done){
+    request(app)
+    .get('/users')
+    .expect(202)
+    .end(function(err){
+      if(err){
+        throw err
+      };
+    })
+    done();
+  });
   
   it('should Update User object')
   it('should Delete User object')
   
 });
 
-describe('Portfolio Object',function(req,res){
+describe('PORTFOLIO',function(req,res){
   it('should Create Portfolio object')
   it('should Read Portfolio object')
   it('should Update Portfolio object')

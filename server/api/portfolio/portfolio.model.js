@@ -2,7 +2,17 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var StockSchema = mongoose.Schema({
-  stocks: Array,
+  folder: {
+    type:Array
+  },
+  stock:{
+    name:{
+      type:String,
+    },
+    quant:{
+      type:Number
+    },
+  },
   value: Number
 });
 
