@@ -1,10 +1,11 @@
 var app = require('../server.js').app;
 var request = require('supertest');
 var expect = require('chai').expect;
-
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
+
+var User = require('../api/user/user.model.js');
 
 chai.use(chaiHttp);
 
@@ -24,12 +25,8 @@ describe('Front Page', function(req,res) {
 });
 
 describe('USER',function(req,res){
-  it('should Create and return a new User',function(done){
-    request(app)
-    done();
-  })
   
-  it('should Read User object', function(done){
+  it('should read User object', function(done){
     request(app)
     .get('/users')
     .expect(202)
@@ -41,7 +38,42 @@ describe('USER',function(req,res){
     done();
   });
   
-  it('should Update User object')
+  it('should get an individual user',function(done){
+    request(app)
+    .get('/users/:id')
+    .set('Accept','application/json')
+    .expect(200)
+    .end(function(err){
+      if(err){
+        throw err
+      }
+    });
+    done();
+  })
+  
+  it('should create and return a new User object',function(done){
+    
+    var someGuy = new User;
+    
+    someGuy.username = "some guy";
+    someGuy.password = "secretpassword";
+    someGuy.cash = 1000000;
+    request(app)
+    
+    .post('/users')
+    .send(someGuy)
+    .set('Accept','application/json')
+    .expect('Content-type','application/json; charset=utf-8')
+    .expect(202)
+    .end(function(err,resp){
+      if(err){
+        throw err;
+      }
+      expect(resp.body).to.be.an('object');
+      done();
+    });
+  });
+  
   it('should Delete User object')
   
 });

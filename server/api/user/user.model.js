@@ -14,6 +14,11 @@ var userSchema = mongoose.Schema({
     type:String,
     required:true
   },
+  
+  cash:{
+    type:Number,
+    required:true
+  },
   portfolio:{
     type: mongoose.Schema.Types.ObjectId,
     ref:'portfolio',
@@ -31,7 +36,5 @@ userSchema.methods.validPassword = function(password) {
     return true;
   };
 };
-
-console.log(userSchema.validPassword("secret"))
 
 module.exports = mongoose.model('User', userSchema);
