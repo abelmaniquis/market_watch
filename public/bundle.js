@@ -74,7 +74,7 @@
 	
 	
 	console.log({ stocks: stocks });
-	
+	console.log("HELLO!");
 	var App = React.createClass({
 	  displayName: 'App',
 	  assignStock: function assignStock(nextState, replace) {
@@ -21702,7 +21702,7 @@
 	          null,
 	          React.createElement(
 	            'tbody',
-	            null,
+	            { className: 'table-body' },
 	            React.createElement(
 	              'tr',
 	              null,
@@ -29008,7 +29008,7 @@
 	      searchSpace,
 	      React.createElement(
 	        'table',
-	        null,
+	        { className: 'tableHead' },
 	        React.createElement(
 	          'tbody',
 	          null,

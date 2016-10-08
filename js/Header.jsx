@@ -20,7 +20,7 @@ const SearchHeader = React.createClass({
       return(
       <header className='header'>
         {searchSpace}
-      <table>
+      <table className="tableHead">
         <tbody>
           <th>Ticker</th>
           <th>Open</th>

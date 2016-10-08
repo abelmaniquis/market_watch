@@ -10,25 +10,24 @@ var path = require('path');
 var userRouter = require('./api/user/user.routes.js');
 var portfolioRouter = require('./api/portfolio/portfolio.routes.js');
 
-exports.app = app;
-exports.server = server;
-
 app.use(morgan('dev'));
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../public'));
 
 app.use('/', userRouter);
-
-//portfolioRouter(app);
 
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(500).send(err);
   }
 });
+
+exports.app = app;
+//exports.server = server;
+
+//module.exports = app;
 
 app.listen(port);
 

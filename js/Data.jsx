@@ -59,7 +59,7 @@ class Data extends React.Component {
     return (
       <div className="data-container">
       <table>
-      <tbody>
+      <tbody className="table-body">
         <tr>
           <th className='ticker'><Link to={`/details/${this.state.ticker}`}>{this.state.ticker}</Link></th>
           <th className='open'>{open}</th>

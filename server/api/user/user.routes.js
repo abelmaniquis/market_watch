@@ -8,15 +8,24 @@ var User = require('./user.model.js');
 var userRouter = require('express').Router();
 
 var path = require('path');
+var http = require('http');
 
 var users = []
 var id = 0;
 
+  //app.use(express.static(__dirname + '/public'));
+
+
 var updateUser = function(req,res,next){
   var newUser = new User
-  console.log(newUser);
   next()
 }
+
+
+userRouter.get('/',function(req,res){
+  res.sendFile(path.join(__dirname, '../../../public'));
+})
+
 
 userRouter.param('id',function(req,res,next,id){
   var user = lodash.find(users,{id:id});
@@ -26,12 +35,8 @@ userRouter.param('id',function(req,res,next,id){
   }else{
     res.send();
   }
-  
 });
 
-userRouter.get('/',function(req,res){
-  res.sendFile(path.join(__dirname, '../../../public/index.html'));
-})
 
 userRouter.get('/users',function(req,res){
   var aUser = new User

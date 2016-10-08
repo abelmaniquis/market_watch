@@ -10,7 +10,7 @@ const { store } = require('./Store')
 const { Provider } = require('react-redux')
 
 console.log({ stocks })
-
+console.log("HELLO!");
 const App = React.createClass({
   assignStock(nextState,replace){
     const stockArray = stocks.filter((stock) => stock.ticker === nextState.params.id)

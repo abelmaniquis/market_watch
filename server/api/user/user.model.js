@@ -14,7 +14,6 @@ var userSchema = mongoose.Schema({
     type:String,
     required:true
   },
-  
   cash:{
     type:Number,
     required:true
