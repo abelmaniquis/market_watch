@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
 
 app.use('/', userRouter);
+app.use('/',portfolioRouter);
 
 app.use(function(err, req, res, next) {
   if (err) {
@@ -25,9 +26,6 @@ app.use(function(err, req, res, next) {
 });
 
 exports.app = app;
-//exports.server = server;
-
-//module.exports = app;
 
 app.listen(port);
 

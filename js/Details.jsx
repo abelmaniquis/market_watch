@@ -42,7 +42,7 @@ class Details extends React.Component{
     });
   }
   render(){
-    console.log(this.state.priceLog[0]);
+    console.log(this.state.priceLog[0][0]);
     return(
     <div className="FurtherDetails">
       <h1>{this.state.name}</h1>
@@ -50,11 +50,9 @@ class Details extends React.Component{
       <button> Add to my Watchlist</button>
       <h1>Stock History for {this.state.ticker}</h1>
       
-      <ul>
-      <li>{this.state.priceLog[0]}</li>
-      <li>{this.state.priceLog[0]}</li>
-      <li>{this.state.priceLog[0]}</li>
-      </ul>
+      <p>{this.state.priceLog[0]}</p>
+      <p>{this.state.priceLog[0]}</p>
+      <p>{this.state.priceLog[0]}</p>
           <pre><code>
           {JSON.stringify(this.state, null, 4)}
         </code></pre>

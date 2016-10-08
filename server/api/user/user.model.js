@@ -19,21 +19,15 @@ var userSchema = mongoose.Schema({
     required:true
   },
   portfolio:{
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,   //Here is a relationship, a user has a portfolio
     ref:'portfolio',
-    required:true
   }
 })
 
-//require('./user.validation.js')(userSchema);
+var User = mongoose.model('user',userSchema);
+
+User.find({username:"someguy"}).then(console.log("USER.FIND"));
 
 
-userSchema.methods.validPassword = function(password) {
-  var salt = bcrypt.genSaltSync(8);
-  var hash = bcrypt.hashSync(password, salt);
-  if (bcrypt.compareSync(this.password, hash)) {
-    return true;
-  };
-};
 
 module.exports = mongoose.model('User', userSchema);
