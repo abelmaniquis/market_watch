@@ -3,7 +3,6 @@
 var User = require('user.model.js');
 var _ = require('lodash');
 
-
 /*
 Controller functions
 require these functions into user.routes.js
@@ -77,7 +76,4 @@ exports.delete = function(req,res,next){
     }
   })
 };
-
-
-
 
