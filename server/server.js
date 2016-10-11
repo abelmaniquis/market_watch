@@ -1,14 +1,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var api = require('./api/api')
 var port = process.env.PORT || 8080;
 var server = require('http').createServer(app);
 var morgan = require('morgan');
 var http = require('http');
 var path = require('path');
 
-var userRouter = require('./api/user/user.routes.js');
-var portfolioRouter = require('./api/portfolio/portfolio.routes.js');
+var config = require('./config/config')
+
+require('mongoose').connect(config.db.url)
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,8 +18,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../public'));
 
-app.use('/', userRouter);
-app.use('/',portfolioRouter);
+app.use('/api', api);
 
 app.use(function(err, req, res, next) {
   if (err) {

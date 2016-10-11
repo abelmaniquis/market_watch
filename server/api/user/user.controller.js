@@ -1,14 +1,11 @@
 /*https://frontendmasters.com/courses/api-design-nodejs/#v=m0scicn6xn&skip=1
 */
-var User = require('user.model.js');
+var User = require('./user.model.js');
 var _ = require('lodash');
 
 /*
 Controller functions
 require these functions into user.routes.js
-
-Look at exercise 9 - 10 for reference;
-
 */
 
 //Grab User id, grab user document with that id.

@@ -1,30 +1,38 @@
-var http = require('http');
-var path = require('path');
-var bodyParser = require('body-parser');
-var express = require('express');
-var app = express();
-var lodash = require('lodash');
+//var http = require('http');
+//var path = require('path');
+//var bodyParser = require('body-parser');
+//var express = require('express');
+//var app = express();
+//var lodash = require('lodash');
+//var path = require('path');
+//var http = require('http');
+
 var User = require('./user.model.js');
 var userRouter = require('express').Router();
-var path = require('path');
-var http = require('http');
+var controller = require('./user.controller.js');
 
+userRouter.route('/users')
+  .get(controller.get)
+  .post(controller.post)
 
-var users = [];
+userRouter.route('/users/:id')
+  .get(controller.getOne)
+  .put(controller.put)
+  .delete(controller.delete)
 
-var updateUser = function(){
-  console.log("This is temporary!");
-}
-
+module.exports = userRouter;
+/*
 userRouter.get('/',function(req,res){
-  res.sendFile(path.join(__dirname, '../../../public'));
+  //res.sendFile(path.join(__dirname, '../../../public'));
 })
-
+*/
+/*
 userRouter.get('/users',function(req,res){
   var user = new User;
   
   res.json(user);
 });
+
 
 userRouter.get('/users/:id',function(req,res){
   var user = req.user;
@@ -45,5 +53,4 @@ userRouter.delete('/users/:id',function(req,res){
   users.splice(users, 1);
   res.json(req.lion);
 });
-
-module.exports = userRouter;
+*/
