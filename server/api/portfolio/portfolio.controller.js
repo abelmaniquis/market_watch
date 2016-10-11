@@ -1,4 +1,4 @@
-var Portfolio = require('portfolio.model.js');
+var Portfolio = require('./portfolio.model.js');
 var _ = require('lodash');
 
 exports.params = function(req,res,next,id){
@@ -25,6 +25,21 @@ exports.get = function(req,res,next){
 exports.getOne = function(req,res,next){
   var portfolio = req.portfolio
   res.json(portfolio);
+}
+
+exports.put = function(req,res,next){
+  var portfolio = req.portfolio;
+  var update = req.body;
+  _.merge(portfolio,update);
+  
+  portfolio.save(function(err,saved){
+    if(err){
+      next(err);
+    }else{
+      res.json(saved);
+    }
+  })
+  
 }
 
 exports.post = function(req,res,next){
