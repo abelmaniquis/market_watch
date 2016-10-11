@@ -1,15 +1,7 @@
-//var http = require('http');
-//var path = require('path');
-var bodyParser = require('body-parser');
-var express = require('express');
-var app = express();
-
 var axios = require('axios');
-
 var Portfolio = require('./portfolio.model.js');
 var portfolioRouter = require('express').Router();
 var controller = require('./portfolio.controller.js')//source of bug
-
 
 portfolioRouter.route('/portfolio')
   .get(controller.get)
@@ -20,10 +12,10 @@ portfolioRouter.route('/portfolio/:id')
   .put(controller.put)
   .delete(controller.delete)
 
+module.exports = portfolioRouter;
+
 /*
 This information is saved for later use:
 var someStock = req.params.stock
   axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${someStock}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
 */
-
-module.exports = portfolioRouter;

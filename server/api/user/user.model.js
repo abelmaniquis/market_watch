@@ -24,10 +24,4 @@ var userSchema = mongoose.Schema({
   }
 })
 
-var User = mongoose.model('user',userSchema);
-
-User.find({username:"someguy"}).then(console.log("USER.FIND"));
-
-
-
 module.exports = mongoose.model('User', userSchema);

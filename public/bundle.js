@@ -74,7 +74,6 @@
 	
 	
 	console.log({ stocks: stocks });
-	console.log("HELLO!");
 	var App = React.createClass({
 	  displayName: 'App',
 	  assignStock: function assignStock(nextState, replace) {
@@ -21534,6 +21533,10 @@
 	
 	var connector = _require.connector;
 	
+	var _require2 = __webpack_require__(196);
+	
+	var Link = _require2.Link;
+	
 	
 	var Landing = React.createClass({
 	  displayName: 'Landing',
@@ -21588,6 +21591,15 @@
 	            React.createElement('input', { type: 'password', name: 'password', className: 'passwordInput' })
 	          )
 	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          React.createElement(
+	            Link,
+	            { to: '/signup' },
+	            'Or sign Up here'
+	          )
+	        ),
 	        React.createElement(Header, null)
 	      ),
 	      React.createElement(
@@ -21597,8 +21609,7 @@
 	          return ('' + stock.ticker + stock.name).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	        }).map(function (stock, index) {
 	          return React.createElement(Data, { keyword: stock.ticker, key: index });
-	        }),
-	        console.log(this.props.route.stocks)
+	        })
 	      )
 	    );
 	  }
@@ -31025,7 +31036,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.state.priceLog[0]);
+	      console.log(this.state.priceLog[0][0]);
 	      return React.createElement(
 	        'div',
 	        { className: 'FurtherDetails' },
@@ -31055,23 +31066,19 @@
 	          this.state.ticker
 	        ),
 	        React.createElement(
-	          'ul',
+	          'p',
 	          null,
-	          React.createElement(
-	            'li',
-	            null,
-	            this.state.priceLog[0]
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            this.state.priceLog[0]
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            this.state.priceLog[0]
-	          )
+	          this.state.priceLog[0]
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          this.state.priceLog[0]
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          this.state.priceLog[0]
 	        ),
 	        React.createElement(
 	          'pre',
@@ -31168,7 +31175,7 @@
 	    React.createElement(
 	      'h1',
 	      null,
-	      'Hello Signup'
+	      'Sign Up here'
 	    ),
 	    React.createElement(
 	      'form',

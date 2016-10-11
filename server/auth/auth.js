@@ -23,11 +23,31 @@ exports.getNewUser = function(){
         req.user = user;
         next();
       }
+    },function(err){
+      next(err);
     });
   }
 };
 
 exports.verifyUser = function(){
-  
+  return function(req,res,next){
+    var username = req.body.username;
+    var password = req.body.bassword
+    
+    if(!username||!password){
+      res.status(400).send('No username or password');
+      return;
+    }
+    
+    User.findOne({username:username})
+      .then(function(user){
+        
+      })
+    
+    //Check for username in DB and check if the passwords match for the username
+    
+    
+  };
 };
+
 

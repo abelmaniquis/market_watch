@@ -5,7 +5,7 @@ const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 const Signup = () =>{
   return(
     <div className='signupContainer'>
-      <h1>Hello Signup</h1>
+      <h1>Sign Up here</h1>
       <form action = "/signup" method= "post">
         <div className="user-input">
           <label>Username</label>

@@ -24,6 +24,7 @@ exports.params = function(req,res,next,id){
 };
 
 exports.get = function(req,res,next){
+  console.log("This is from GET!")
   User.find({})
   .populate('portfolio')
   .exec()

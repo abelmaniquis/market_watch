@@ -2,7 +2,10 @@ var User = require('./user.model.js');
 var userRouter = require('express').Router();
 var controller = require('./user.controller.js');
 
-userRouter.route('/users')
+console.log(controller);
+console.log(userRouter.route('/users/:id').get(controller.getOne));
+
+userRouter.route('/')
   .get(controller.get)
   .post(controller.post)
 
