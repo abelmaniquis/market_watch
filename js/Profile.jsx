@@ -5,10 +5,15 @@ const reactDOM = require('react-dom');
 const {object,string} = React.PropTypes
 const {Router, Route, IndexRoute,hashHistory} = require('react-router');
 
+const axios = require('axios');
+
 const Profile = React.createClass({
   propTypes:{
     route:object,
     money:1000000
+  },
+  componentDidMount(){
+    axios.get('')
   },
   render() {
     
