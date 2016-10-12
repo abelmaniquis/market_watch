@@ -22,6 +22,7 @@ const SearchHeader = React.createClass({
         {searchSpace}
       <table className="tableHead">
         <tbody>
+          <tr>
           <th>Ticker</th>
           <th>Open</th>
           <th>High</th>
@@ -30,6 +31,7 @@ const SearchHeader = React.createClass({
           <th>Change</th>
           <th>Trend</th>
           <th>On Date</th>
+          </tr>
         </tbody>
     </table>
       </header>)

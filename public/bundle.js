@@ -21658,8 +21658,7 @@
 	      name: "",
 	      ticker: "",
 	      prices: [],
-	      keyword: _this.props.keyword,
-	      isHovering: false
+	      keyword: _this.props.keyword
 	    };
 	    return _this;
 	  }
@@ -21680,13 +21679,6 @@
 	          ticker: response.data.dataset.dataset_code,
 	          id: response.data.dataset.dataset_id
 	        });
-	      });
-	    }
-	  }, {
-	    key: 'hoverEvent',
-	    value: function hoverEvent() {
-	      this.setState({
-	        isHovering: true
 	      });
 	    }
 	  }, {
@@ -29029,44 +29021,48 @@
 	          'tbody',
 	          null,
 	          React.createElement(
-	            'th',
+	            'tr',
 	            null,
-	            'Ticker'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Open'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'High'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Low'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Close'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Change'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Trend'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'On Date'
+	            React.createElement(
+	              'th',
+	              null,
+	              'Ticker'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Open'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'High'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Low'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Close'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Change'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Trend'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'On Date'
+	            )
 	          )
 	        )
 	      )
@@ -31060,9 +31056,26 @@
 	          )
 	        ),
 	        React.createElement(
-	          Link,
-	          { to: '/profile/aUser' },
-	          'BUY!'
+	          'p',
+	          null,
+	          React.createElement(
+	            Link,
+	            { to: '/profile/aUser' },
+	            'BUY!:'
+	          ),
+	          'Quantity:',
+	          React.createElement('input', { type: 'text' })
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          React.createElement(
+	            Link,
+	            { to: '/profile/aUser' },
+	            'SELL!:'
+	          ),
+	          'Quantity:',
+	          React.createElement('input', { type: 'text' })
 	        ),
 	        React.createElement(
 	          'h1',
@@ -31128,19 +31141,31 @@
 	  displayName: 'Profile',
 	
 	  propTypes: {
-	    route: object
+	    route: object,
+	    money: 1000000
 	  },
 	  render: function render() {
+	
+	    console.log(this.props.params.id);
 	    return React.createElement(
 	      'div',
 	      { className: 'myStocks' },
 	      React.createElement(
 	        'h1',
 	        null,
-	        'My Stocks'
+	        this.props.params.id,
+	        '\'s Stocks'
+	      ),
+	      React.createElement(
+	        'h1',
+	        null,
+	        this.props.params.id,
+	        '\'s Cash: ',
+	        1000000
 	      ),
 	      React.createElement(Header, null),
-	      React.createElement(Data, { keyword: 'GOOG', key: 1 })
+	      React.createElement(Data, { keyword: 'GOOG' }),
+	      React.createElement(Data, { keyword: 'NFLX' })
 	    );
 	  }
 	});

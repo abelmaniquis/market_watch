@@ -14,7 +14,6 @@ class Data extends React.Component {
       ticker: "",
       prices: [],
       keyword: this.props.keyword,
-      isHovering: false
     }
   }
   componentDidMount() {
@@ -31,11 +30,6 @@ class Data extends React.Component {
           id: response.data.dataset.dataset_id
         });
       })
-  }
-  hoverEvent(){
-    this.setState({
-      isHovering: true
-    })
   }
   render() {
     

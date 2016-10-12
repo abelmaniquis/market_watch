@@ -7,15 +7,20 @@ const {Router, Route, IndexRoute,hashHistory} = require('react-router');
 
 const Profile = React.createClass({
   propTypes:{
-    route:object
+    route:object,
+    money:1000000
   },
   render() {
+    
+    console.log(this.props.params.id)
     return (
   
   <div className='myStocks'>
-    <h1>My Stocks</h1>
+    <h1>{this.props.params.id}'s Stocks</h1>
+    <h1>{this.props.params.id}'s Cash: {1000000}</h1>
     <Header/>
-    <Data keyword={'GOOG'} key={1}/>
+    <Data keyword={'GOOG'}/>
+    <Data keyword={'NFLX'}/> 
   </div>
     )
   }
