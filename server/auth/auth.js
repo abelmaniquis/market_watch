@@ -41,13 +41,27 @@ exports.verifyUser = function(){
     
     User.findOne({username:username})
       .then(function(user){
-        
+        if(!user){
+          res.status(401).send('No user with a given username');
+        }else{
+          //Check password
+          if(!user.authenticate(password)){
+            res.status(401).send('Wrong Password');
+          }else{
+            req.user = user;
+            next();
+          }
+        }
+      },function(err){
+        next(err);
       })
-    
-    //Check for username in DB and check if the passwords match for the username
-    
-    
   };
 };
 
-
+exports.signToken = function(id) {
+  return jwt.sign(
+    {_id: id},
+    config.secrets.jwt,
+    {expiresInMinutes: config.expireTime}
+  );
+};

@@ -9,15 +9,15 @@ const Signup = () =>{
       <form action = "/signup" method= "post">
         <div className="user-input">
           <label>Username</label>
-          <input type="text" name ="username" class="type-here"/>
+          <input type="text" name ="username" className="type-here"/>
         </div>
         
-        <div class="user-input">
+        <div className="user-input">
             <label>Password</label>
-             <input type="password" name="password" class="type-here"/>
+             <input type="password" name="password" className="type-here"/>
         </div>
         
-       <div class="button">
+       <div className="button">
            <input class = "button-type" type="submit" value="Submit"/>
        </div>
         

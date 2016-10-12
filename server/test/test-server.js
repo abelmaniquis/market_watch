@@ -74,13 +74,42 @@ describe('USER',function(req,res){
     });
   });
   
-  it('should Delete User object')
+  it('should Delete User object',function(done){
+    var someGuy = new User
+    someGuy.username = "someGuy"
+    someGuy.password = "12345"
+    someGuy.cash = 1000000
+    console.log(someGuy);
+    
+    request(app)
+    .post('/users')
+    .send(someGuy)
+    .set('Accept','application/json')
+    .end(function(err,resp){
+      if(err){
+        throw err;
+      }
+      
+      var user = resp.body;
+      
+      request(app)
+      .delete('/users/' + user.id)
+      .end(function(err,resp){
+        if(err){
+          throw err;
+        }
+        expect(resp.body).to.eql(user);
+        done();
+      });
+    })
+    
+  });
   
 });
-
+/*
 describe('PORTFOLIO',function(req,res){
   it('should Create Portfolio object')
   it('should Read Portfolio object')
   it('should Update Portfolio object')
   it('should Delete Portfolio object')
-});
+});*/

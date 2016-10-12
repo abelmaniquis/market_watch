@@ -72,8 +72,8 @@
 	
 	var Provider = _require4.Provider;
 	
-	
 	console.log({ stocks: stocks });
+	
 	var App = React.createClass({
 	  displayName: 'App',
 	  assignStock: function assignStock(nextState, replace) {
@@ -21589,6 +21589,11 @@
 	              'Password'
 	            ),
 	            React.createElement('input', { type: 'password', name: 'password', className: 'passwordInput' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { 'class': 'button' },
+	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	          )
 	        ),
 	        React.createElement(
@@ -31025,6 +31030,7 @@
 	        console.log('-');
 	        console.log('-');
 	        console.log('-');
+	        console.log(_this2.state);
 	        console.log('date: ' + _this2.state.priceLog[0][0]);
 	        console.log('open: ' + _this2.state.priceLog[0][1]);
 	        console.log('high: ' + _this2.state.priceLog[0][2]);
@@ -31036,7 +31042,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.state.priceLog[0][0]);
 	      return React.createElement(
 	        'div',
 	        { className: 'FurtherDetails' },
@@ -31055,9 +31060,9 @@
 	          )
 	        ),
 	        React.createElement(
-	          'button',
-	          null,
-	          ' Add to my Watchlist'
+	          Link,
+	          { to: '/profile/aUser' },
+	          'BUY!'
 	        ),
 	        React.createElement(
 	          'h1',
@@ -31066,27 +31071,13 @@
 	          this.state.ticker
 	        ),
 	        React.createElement(
-	          'p',
-	          null,
-	          this.state.priceLog[0]
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          this.state.priceLog[0]
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          this.state.priceLog[0]
-	        ),
-	        React.createElement(
 	          'pre',
 	          null,
 	          React.createElement(
 	            'code',
 	            null,
-	            JSON.stringify(this.state, null, 4)
+	            JSON.stringify(this.state.logTitles, null, 4),
+	            JSON.stringify(this.state.priceLog, null, 4)
 	          )
 	        ),
 	        React.createElement(
@@ -31118,7 +31109,12 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var Data = __webpack_require__(173);
+	var Header = __webpack_require__(259);
 	var reactDOM = __webpack_require__(34);
+	var _React$PropTypes = React.PropTypes;
+	var object = _React$PropTypes.object;
+	var string = _React$PropTypes.string;
 	
 	var _require = __webpack_require__(196);
 	
@@ -31130,21 +31126,21 @@
 	
 	var Profile = React.createClass({
 	  displayName: 'Profile',
+	
+	  propTypes: {
+	    route: object
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      { className: 'profile-container' },
+	      { className: 'myStocks' },
 	      React.createElement(
 	        'h1',
 	        null,
-	        'Hello profile page'
+	        'My Stocks'
 	      ),
-	      React.createElement(
-	        'h3',
-	        null,
-	        'This will display the user\'s stocks'
-	      ),
-	      React.createElement('table', { className: 'myStocks' })
+	      React.createElement(Header, null),
+	      React.createElement(Data, { keyword: 'GOOG', key: 1 })
 	    );
 	  }
 	});
@@ -31188,21 +31184,21 @@
 	          null,
 	          'Username'
 	        ),
-	        React.createElement('input', { type: 'text', name: 'username', 'class': 'type-here' })
+	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
 	      ),
 	      React.createElement(
 	        'div',
-	        { 'class': 'user-input' },
+	        { className: 'user-input' },
 	        React.createElement(
 	          'label',
 	          null,
 	          'Password'
 	        ),
-	        React.createElement('input', { type: 'password', name: 'password', 'class': 'type-here' })
+	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
 	      ),
 	      React.createElement(
 	        'div',
-	        { 'class': 'button' },
+	        { className: 'button' },
 	        React.createElement('input', { 'class': 'button-type', type: 'submit', value: 'Submit' })
 	      )
 	    )

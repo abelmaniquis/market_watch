@@ -9,6 +9,13 @@ require these functions into user.routes.js
 */
 
 //Grab User id, grab user document with that id.
+
+console.log("USER ROUTES HAVE ACCESS TO USER CONTROLLER");
+
+exports.test = function(req,res,next){
+  res.send("Hello, this is a test");
+}
+
 exports.params = function(req,res,next,id){
   User.findById(id)
   .then(function(user){
@@ -24,7 +31,6 @@ exports.params = function(req,res,next,id){
 };
 
 exports.get = function(req,res,next){
-  console.log("This is from GET!")
   User.find({})
   .populate('portfolio')
   .exec()
@@ -36,8 +42,9 @@ exports.get = function(req,res,next){
 };
 
 exports.getOne = function(req,res,next){
-  var user = req.user
-  res.json(user)
+  console.log(req.user)
+  var user = req.user;
+  res.json(user);
 };
 
 exports.put = function(req,res,next){

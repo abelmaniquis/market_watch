@@ -29,10 +29,16 @@ const Landing = React.createClass({
             <label>Username</label>
             <input type="text" name="username" className="usernameInput"/>
           </div>
+          
           <div className="user-input">
             <label>Password</label>
             <input type="password" name="password" className="passwordInput"/>
           </div>
+          
+          <div class="button">
+            <input className="button-type" type="submit" value="Submit"/>
+          </div>
+          
         </form>
         <p><Link to='/signup'>Or sign Up here</Link></p>
         <Header/>

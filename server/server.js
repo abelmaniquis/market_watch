@@ -11,7 +11,9 @@ require('mongoose').connect(config.db.url)
 require('./middleware/appMiddleware.js');
 
 app.use(express.static(__dirname + '/../public'));
+
 app.use('/api', api);
+
 
 app.use(function(err, req, res, next) {
   if (err) {

@@ -33,6 +33,7 @@ class Details extends React.Component{
       console.log('-')
       console.log('-')
       console.log('-')
+      console.log(this.state)
       console.log(`date: ${this.state.priceLog[0][0]}`);
       console.log(`open: ${this.state.priceLog[0][1]}`);
       console.log(`high: ${this.state.priceLog[0][2]}`);
@@ -42,19 +43,16 @@ class Details extends React.Component{
     });
   }
   render(){
-    console.log(this.state.priceLog[0][0]);
     return(
     <div className="FurtherDetails">
       <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
-      <button> Add to my Watchlist</button>
+      <Link to="/profile/aUser">BUY!</Link>
       <h1>Stock History for {this.state.ticker}</h1>
       
-      <p>{this.state.priceLog[0]}</p>
-      <p>{this.state.priceLog[0]}</p>
-      <p>{this.state.priceLog[0]}</p>
           <pre><code>
-          {JSON.stringify(this.state, null, 4)}
+          {JSON.stringify(this.state.logTitles, null, 4)}
+          {JSON.stringify(this.state.priceLog, null, 4)}
         </code></pre>
         <p>"Updated"</p>
     </div>
