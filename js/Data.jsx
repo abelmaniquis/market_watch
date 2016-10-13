@@ -41,14 +41,13 @@ class Data extends React.Component {
     let volume = this.state.prices[5]
     let exDividend = this.state.prices[6]
     let splitRatio = this.state.prices[7]
-    let change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1])*100/100).toFixed(2)
+    let changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1])*100/100).toFixed(2);
+    let change = changeNum;
+    
+    
     let trend = 'trending neutral'
     
     change >= 0 ? trend = "up" : trend = "down"
-    
-    if (trend === "down"){
-      console.log("this should highlight red");
-    }
     
     return (
       <div className="data-container">
@@ -60,7 +59,7 @@ class Data extends React.Component {
           <th className='high'>{high}</th>
           <th className='low'>{low}</th>
           <th className='close'>{close}</th>
-          <th className='change'>{change}</th>
+          <th className='change'>{change.isNan}</th>
           <th className='trend'>{trend}</th>
           <th className='onDate'>{date}</th>
         </tr>

@@ -12,16 +12,32 @@ https://www.getpostman.com/docs/text_editor
 */
 console.log("API HAS ACCESS TO USER ROUTES")
 
-userRouter.route('/test')
-.get(controller.test)
+module.exports = function(app){
+app.get('/login',function(req,res){
+  res.status(202).send("GOT LOGIN");
+});
+
+app.get('/signup',function(req,res){
+  res.status(202).send('GOT SIGNUP');
+});
+}
+
+/*
+module.exports = function(app){
+  app.get('/login',function(req,res,next){
+    res.send("Here's the log in page");
+  })
+}
+
 
 userRouter.route('/users')
   .get(controller.get)
   .post(controller.post)
-  
+
 userRouter.route('/users/:id')
   .get(controller.getOne)
   .put(controller.put)
   .delete(controller.delete)
 
 module.exports = userRouter;
+*/

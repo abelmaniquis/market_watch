@@ -43,6 +43,21 @@ html {
   background-color: rgba(220, 220, 220, .8);
 }
 
+.stocks{
+  width:100%;
+  height:50em;
+  overflow:scroll;
+}
+
+.buttonContainer{
+  width:33%;
+  display:inline-block;
+}
+
+button{
+  background-color:blue;
+}
+
 table{
   width:100%;
 }

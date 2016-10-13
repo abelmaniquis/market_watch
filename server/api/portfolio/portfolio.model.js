@@ -10,10 +10,10 @@ var StockSchema = mongoose.Schema({
   },
   stock:{
     name:{
-      type:String,
+      type:String
     },
     price:{
-      type:Number
+      type:Number //will be the current price of the stock, will need a web socket or connection.
     },
     quant:{
       type:Number

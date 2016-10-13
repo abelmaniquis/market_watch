@@ -16,6 +16,8 @@ exports.test = function(req,res,next){
   res.send("Hello, this is a test");
 }
 
+
+//These should be
 exports.params = function(req,res,next,id){
   User.findById(id)
   .then(function(user){
@@ -31,14 +33,16 @@ exports.params = function(req,res,next,id){
 };
 
 exports.get = function(req,res,next){
-  User.find({})
+  res.send("Hello Get");
+  //Here you will just have user.Get with a callback function
+  /*User.find({})
   .populate('portfolio')
   .exec()
   .then(function(users){
     res.json(users);
   },function(err){
     next(err)
-  });
+  });*/
 };
 
 exports.getOne = function(req,res,next){

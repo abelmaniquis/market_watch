@@ -52,6 +52,7 @@
 	var Details = __webpack_require__(290);
 	var Profile = __webpack_require__(291);
 	var Signup = __webpack_require__(292);
+	var Login = __webpack_require__(294);
 	
 	var _require = __webpack_require__(196);
 	
@@ -96,6 +97,7 @@
 	        React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
+	        React.createElement(Route, { path: '/login', component: Login }),
 	        React.createElement(Route, { path: '/profile/:id', component: Profile })
 	      )
 	    );
@@ -105,7 +107,6 @@
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 	
 	/*
-	
 	Front End posted on:
 	https://abelmaniquis.github.io/market_watch/#/?_k=8woh2c
 	*/
@@ -21537,6 +21538,7 @@
 	
 	var Link = _require2.Link;
 	
+	var Description = __webpack_require__(296);
 	
 	var Landing = React.createClass({
 	  displayName: 'Landing',
@@ -21568,42 +21570,23 @@
 	          'MarketWatch'
 	        ),
 	        React.createElement(
-	          'form',
-	          { className: 'login', action: '/login', method: 'post' },
+	          'div',
+	          { className: 'buttonContainer' },
 	          React.createElement(
-	            'div',
-	            { className: 'user-input' },
-	            React.createElement(
-	              'label',
-	              null,
-	              'Username'
-	            ),
-	            React.createElement('input', { type: 'text', name: 'username', className: 'usernameInput' })
+	            'form',
+	            { action: '/login' },
+	            React.createElement('input', { type: 'submit', value: 'Log in here' })
 	          ),
 	          React.createElement(
-	            'div',
-	            { className: 'user-input' },
-	            React.createElement(
-	              'label',
-	              null,
-	              'Password'
-	            ),
-	            React.createElement('input', { type: 'password', name: 'password', className: 'passwordInput' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { 'class': 'button' },
-	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	            'form',
+	            { action: '/signup' },
+	            React.createElement('input', { type: 'submit', value: 'Sign up here' })
 	          )
 	        ),
 	        React.createElement(
-	          'p',
+	          'h4',
 	          null,
-	          React.createElement(
-	            Link,
-	            { to: '/signup' },
-	            'Or sign Up here'
-	          )
+	          'Or just check the markets below:'
 	        ),
 	        React.createElement(Header, null)
 	      ),
@@ -21693,14 +21676,12 @@
 	      var volume = this.state.prices[5];
 	      var exDividend = this.state.prices[6];
 	      var splitRatio = this.state.prices[7];
-	      var change = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
+	      var changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
+	      var change = changeNum;
+	
 	      var trend = 'trending neutral';
 	
 	      change >= 0 ? trend = "up" : trend = "down";
-	
-	      if (trend === "down") {
-	        console.log("this should highlight red");
-	      }
 	
 	      return React.createElement(
 	        'div',
@@ -21746,7 +21727,7 @@
 	              React.createElement(
 	                'th',
 	                { className: 'change' },
-	                change
+	                change.isNan
 	              ),
 	              React.createElement(
 	                'th',
@@ -31121,54 +31102,70 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	var React = __webpack_require__(1);
-	var Data = __webpack_require__(173);
-	var Header = __webpack_require__(259);
-	var reactDOM = __webpack_require__(34);
-	var _React$PropTypes = React.PropTypes;
-	var object = _React$PropTypes.object;
-	var string = _React$PropTypes.string;
+	var axios = __webpack_require__(174);
 	
 	var _require = __webpack_require__(196);
 	
-	var Router = _require.Router;
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
+	var Link = _require.Link;
 	
+	var Data = __webpack_require__(173);
 	
-	var Profile = React.createClass({
-	  displayName: 'Profile',
+	var Profile = function (_React$Component) {
+	  _inherits(Profile, _React$Component);
 	
-	  propTypes: {
-	    route: object,
-	    money: 1000000
-	  },
-	  render: function render() {
+	  function Profile(props) {
+	    _classCallCheck(this, Profile);
 	
-	    console.log(this.props.params.id);
-	    return React.createElement(
-	      'div',
-	      { className: 'myStocks' },
-	      React.createElement(
-	        'h1',
-	        null,
-	        this.props.params.id,
-	        '\'s Stocks'
-	      ),
-	      React.createElement(
-	        'h1',
-	        null,
-	        this.props.params.id,
-	        '\'s Cash: ',
-	        1000000
-	      ),
-	      React.createElement(Header, null),
-	      React.createElement(Data, { keyword: 'GOOG' }),
-	      React.createElement(Data, { keyword: 'NFLX' })
-	    );
+	    var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+	
+	    _this.state = {
+	      id: {},
+	      name: "",
+	      ticker: "",
+	      prices: [],
+	      keyword: _this.props.keyword,
+	      cash: 1000000
+	    };
+	    return _this;
 	  }
-	});
+	
+	  _createClass(Profile, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'my-profile' },
+	        React.createElement(
+	          'h1',
+	          null,
+	          'My Profile'
+	        ),
+	        React.createElement(
+	          'h1',
+	          null,
+	          'My Cash: ',
+	          this.state.cash
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'myStocks' },
+	          React.createElement(Data, { keyword: 'GOOG' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Profile;
+	}(React.Component);
 	
 	module.exports = Profile;
 
@@ -31224,7 +31221,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'button' },
-	        React.createElement('input', { 'class': 'button-type', type: 'submit', value: 'Submit' })
+	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	      )
 	    )
 	  );
@@ -34450,6 +34447,94 @@
 			}
 		]
 	};
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Login = function Login() {
+	  return React.createElement(
+	    'div',
+	    { className: 'loginContainer' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Log In here'
+	    ),
+	    React.createElement(
+	      'form',
+	      { action: '/login', method: 'post' },
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Username'
+	        ),
+	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Password'
+	        ),
+	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'button' },
+	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = Login;
+
+/***/ },
+/* 295 */,
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var Description = function Description() {
+	  React.createElement(
+	    "div",
+	    { "class": "desContainer" },
+	    React.createElement(
+	      "h1",
+	      null,
+	      "What is it?"
+	    ),
+	    React.createElement(
+	      "p",
+	      null,
+	      "We'll give you 1 million dollars in fake internet money that you can use to build a portfolio of stocks"
+	    )
+	  );
+	};
+	
+	module.exports = Description;
 
 /***/ }
 /******/ ]);

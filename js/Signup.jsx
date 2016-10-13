@@ -18,7 +18,7 @@ const Signup = () =>{
         </div>
         
        <div className="button">
-           <input class = "button-type" type="submit" value="Submit"/>
+           <input className = "button-type" type="submit" value="Submit"/>
        </div>
         
       </form>
