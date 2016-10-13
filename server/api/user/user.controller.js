@@ -12,10 +12,6 @@ require these functions into user.routes.js
 
 console.log("USER ROUTES HAVE ACCESS TO USER CONTROLLER");
 
-exports.test = function(req,res,next){
-  res.send("Hello, this is a test");
-}
-
 
 //These should be
 exports.params = function(req,res,next,id){
@@ -33,16 +29,7 @@ exports.params = function(req,res,next,id){
 };
 
 exports.get = function(req,res,next){
-  res.send("Hello Get");
-  //Here you will just have user.Get with a callback function
-  /*User.find({})
-  .populate('portfolio')
-  .exec()
-  .then(function(users){
-    res.json(users);
-  },function(err){
-    next(err)
-  });*/
+  User.create
 };
 
 exports.getOne = function(req,res,next){

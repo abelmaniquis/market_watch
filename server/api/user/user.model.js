@@ -30,14 +30,26 @@ var userSchema = mongoose.Schema({
 //http://mongoosejs.com/docs/guide.html
 
 //When called on controller, call User.get
-userSchema.statics.get = function(req,res,next){
-  res.send("Are you GETting this?");
+
+var Users = mongoose.model('User',userSchema); 
+
+console.log(Users);
+
+userSchema.statics.create = function(req,res,next){
+  this.find({})
+  .populate('portfolio')
+  .exec()
+  .then(function(user){
+    res.json(user);
+  },function(err){
+    next(err);
+  });
 };
 
+
 userSchema.statics.getOne = function(req,res,next){
-  console.log("This is the getOne function")
-  this.find({})
-  .then()
+  var user = req.user
+  res.json(user);
 };
 
 userSchema.statics.put = function(req,res,next){
