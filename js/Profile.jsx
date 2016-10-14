@@ -2,6 +2,7 @@ const React = require('react')
 const axios = require('axios')
 const { Link } = require('react-router')
 const Data = require('./Data')
+const UserStockData = require('./UserStockData')
 
 class Profile extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Profile extends React.Component {
       <h1>My Cash: {this.state.cash}</h1>
       <div className='myStocks'>
       <Data keyword={'GOOG'}/>
+      <UserStockData keyword={'NFLX'}/>
       </div>
     </div>
     )

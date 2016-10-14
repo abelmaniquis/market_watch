@@ -31153,6 +31153,7 @@
 	var Link = _require.Link;
 	
 	var Data = __webpack_require__(173);
+	var UserStockData = __webpack_require__(296);
 	
 	var Profile = function (_React$Component) {
 	  _inherits(Profile, _React$Component);
@@ -31193,7 +31194,8 @@
 	        React.createElement(
 	          'div',
 	          { className: 'myStocks' },
-	          React.createElement(Data, { keyword: 'GOOG' })
+	          React.createElement(Data, { keyword: 'GOOG' }),
+	          React.createElement(UserStockData, { keyword: 'NFLX' })
 	        )
 	      );
 	    }
@@ -34542,6 +34544,137 @@
 			}
 		]
 	};
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	//http://jsfiddle.net/faria/3nodz94g/
+	
+	var React = __webpack_require__(1);
+	var axios = __webpack_require__(174);
+	
+	var _require = __webpack_require__(196);
+	
+	var Link = _require.Link;
+	
+	var StockData = function (_React$Component) {
+	  _inherits(StockData, _React$Component);
+	
+	  function StockData(props) {
+	    _classCallCheck(this, StockData);
+	
+	    var _this = _possibleConstructorReturn(this, (StockData.__proto__ || Object.getPrototypeOf(StockData)).call(this, props));
+	
+	    _this.state = {
+	      id: {},
+	      name: "",
+	      ticker: "",
+	      prices: [],
+	      keyword: _this.props.keyword
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(StockData, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.state.keyword + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
+	        var i = 0;
+	        while (i < response.data.dataset.column_names.length) {
+	          _this2.state.prices.push(response.data.dataset.data[0][i]);
+	          i += 1;
+	        }
+	        _this2.setState({
+	          name: response.data.dataset.name,
+	          ticker: response.data.dataset.dataset_code,
+	          id: response.data.dataset.dataset_id
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	
+	      var date = this.state.prices[0];
+	      var open = this.state.prices[1];
+	      var high = this.state.prices[2];
+	      var low = this.state.prices[3];
+	      var close = this.state.prices[4];
+	      var volume = this.state.prices[5];
+	      var exDividend = this.state.prices[6];
+	      var splitRatio = this.state.prices[7];
+	      var changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
+	      var change = changeNum;
+	
+	      var trend = 'trending neutral';
+	
+	      change >= 0 ? trend = "up" : trend = "down";
+	
+	      return React.createElement(
+	        'div',
+	        { className: 'data-container' },
+	        React.createElement(
+	          'table',
+	          null,
+	          React.createElement(
+	            'tbody',
+	            { className: 'table-body' },
+	            React.createElement(
+	              'tr',
+	              null,
+	              React.createElement(
+	                'th',
+	                { className: 'ticker' },
+	                React.createElement(
+	                  Link,
+	                  { to: '/details/' + this.state.ticker },
+	                  this.state.ticker
+	                )
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'open' },
+	                open
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'close' },
+	                close
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'trend' },
+	                trend
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'onDate' },
+	                date
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return StockData;
+	}(React.Component);
+	
+	module.exports = StockData;
 
 /***/ }
 /******/ ]);
