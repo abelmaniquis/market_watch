@@ -49,9 +49,9 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
-	var Details = __webpack_require__(290);
-	var Profile = __webpack_require__(291);
-	var Signup = __webpack_require__(292);
+	var Details = __webpack_require__(291);
+	var Profile = __webpack_require__(292);
+	var Signup = __webpack_require__(293);
 	var Login = __webpack_require__(294);
 	
 	var _require = __webpack_require__(196);
@@ -61,7 +61,7 @@
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 	
-	var _require2 = __webpack_require__(293);
+	var _require2 = __webpack_require__(295);
 	
 	var stocks = _require2.stocks;
 	
@@ -21538,7 +21538,7 @@
 	
 	var Link = _require2.Link;
 	
-	var Description = __webpack_require__(296);
+	var Description = __webpack_require__(290);
 	
 	var Landing = React.createClass({
 	  displayName: 'Landing',
@@ -21575,12 +21575,20 @@
 	          React.createElement(
 	            'form',
 	            { action: '/login' },
-	            React.createElement('input', { type: 'submit', value: 'Log in here' })
+	            React.createElement(
+	              'button',
+	              { className: 'submitButton', type: 'submit' },
+	              'Log in here'
+	            )
 	          ),
 	          React.createElement(
 	            'form',
 	            { action: '/signup' },
-	            React.createElement('input', { type: 'submit', value: 'Sign up here' })
+	            React.createElement(
+	              'button',
+	              { className: 'submitButton', type: 'submit' },
+	              'Sign up here'
+	            )
 	          )
 	        ),
 	        React.createElement(
@@ -30949,6 +30957,33 @@
 /* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var Description = function Description() {
+	  React.createElement(
+	    "div",
+	    { "class": "desContainer" },
+	    React.createElement(
+	      "h1",
+	      null,
+	      "What is it?"
+	    ),
+	    React.createElement(
+	      "p",
+	      null,
+	      "We'll give you 1 million dollars in fake internet money that you can use to build a portfolio of stocks"
+	    )
+	  );
+	};
+	
+	module.exports = Description;
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -31097,7 +31132,7 @@
 	module.exports = Details;
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31170,7 +31205,7 @@
 	module.exports = Profile;
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31230,7 +31265,67 @@
 	module.exports = Signup;
 
 /***/ },
-/* 293 */
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Login = function Login() {
+	  return React.createElement(
+	    'div',
+	    { className: 'loginContainer' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Log In here'
+	    ),
+	    React.createElement(
+	      'form',
+	      { action: '/login', method: 'post' },
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Username'
+	        ),
+	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Password'
+	        ),
+	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'button' },
+	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = Login;
+
+/***/ },
+/* 295 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -34447,94 +34542,6 @@
 			}
 		]
 	};
-
-/***/ },
-/* 294 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var reactDOM = __webpack_require__(34);
-	
-	var _require = __webpack_require__(196);
-	
-	var Router = _require.Router;
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
-	
-	
-	var Login = function Login() {
-	  return React.createElement(
-	    'div',
-	    { className: 'loginContainer' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Log In here'
-	    ),
-	    React.createElement(
-	      'form',
-	      { action: '/login', method: 'post' },
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
-	        React.createElement(
-	          'label',
-	          null,
-	          'Username'
-	        ),
-	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
-	        React.createElement(
-	          'label',
-	          null,
-	          'Password'
-	        ),
-	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'button' },
-	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = Login;
-
-/***/ },
-/* 295 */,
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var React = __webpack_require__(1);
-	
-	var Description = function Description() {
-	  React.createElement(
-	    "div",
-	    { "class": "desContainer" },
-	    React.createElement(
-	      "h1",
-	      null,
-	      "What is it?"
-	    ),
-	    React.createElement(
-	      "p",
-	      null,
-	      "We'll give you 1 million dollars in fake internet money that you can use to build a portfolio of stocks"
-	    )
-	  );
-	};
-	
-	module.exports = Description;
 
 /***/ }
 /******/ ]);

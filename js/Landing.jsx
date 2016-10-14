@@ -28,11 +28,11 @@ const Landing = React.createClass({
         
         <div className='buttonContainer'>
           <form action="/login">
-          <input type="submit" value="Log in here" />
+          <button className='submitButton' type="submit">Log in here</button>
           </form>
         
           <form action="/signup">
-          <input type="submit" value="Sign up here" />
+          <button className='submitButton' type="submit">Sign up here</button>
           </form>
         </div>
         
