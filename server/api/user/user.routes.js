@@ -44,14 +44,15 @@ app.get('/login/:username/:password/',function(req,res){
   aUser.password = req.params.password;
   aUser.cash = 1000000;
   
-  addToWatchList(aUser,'GOOG');
-  addToWatchList(aUser,'NFLX');
+  addToWatchList(aUser,{name:'GOOG',quant:30,val:200});
+  addToWatchList(aUser,{name:'NFLX',quant:1,quant:20,val:100});
+  aUser.cash -= aUser.portfolio[0].val*aUser.portfolio[0].quant;
   res.json(aUser);
 });
 
 app.post('/users/:username/:password', bodyParser, function(req, res) {
+  console.log(res);
   
 })
-
 
 }
