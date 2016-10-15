@@ -31121,14 +31121,6 @@
 	  return Details;
 	}(React.Component);
 	
-	var object = React.PropTypes.object;
-	
-	Details.propTypes = {
-	  params: object.isRequired
-	};
-	console.log("object: ");
-	console.log({ object: object });
-	
 	module.exports = Details;
 
 /***/ },
@@ -31192,9 +31184,56 @@
 	          this.state.cash
 	        ),
 	        React.createElement(
+	          'table',
+	          { className: 'tableHead' },
+	          React.createElement(
+	            'tbody',
+	            null,
+	            React.createElement(
+	              'tr',
+	              null,
+	              React.createElement(
+	                'th',
+	                null,
+	                'Ticker'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Open'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Close'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Trend'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'On Date'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Value'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Quantity'
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
 	          'div',
 	          { className: 'myStocks' },
-	          React.createElement(Data, { keyword: 'GOOG' }),
+	          React.createElement(UserStockData, { keyword: 'GOOG' }),
 	          React.createElement(UserStockData, { keyword: 'NFLX' })
 	        )
 	      );
@@ -34581,7 +34620,8 @@
 	      name: "",
 	      ticker: "",
 	      prices: [],
-	      keyword: _this.props.keyword
+	      keyword: _this.props.keyword,
+	      quantity: 1
 	    };
 	    return _this;
 	  }
@@ -34618,7 +34658,8 @@
 	      var splitRatio = this.state.prices[7];
 	      var changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
 	      var change = changeNum;
-	
+	      var quantity = this.state.quantity;
+	      var value = close * this.state.quantity;
 	      var trend = 'trending neutral';
 	
 	      change >= 0 ? trend = "up" : trend = "down";
@@ -34663,6 +34704,16 @@
 	                'th',
 	                { className: 'onDate' },
 	                date
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'value' },
+	                value
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'quantity' },
+	                quantity
 	              )
 	            )
 	          )

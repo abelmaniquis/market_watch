@@ -33,19 +33,9 @@ var userSchema = mongoose.Schema({
 
 var Users = mongoose.model('User',userSchema); 
 
-console.log(Users);
-
-userSchema.statics.create = function(req,res,next){
-  this.find({})
-  .populate('portfolio')
-  .exec()
-  .then(function(user){
-    res.json(user);
-  },function(err){
-    next(err);
-  });
-};
-
+userSchema.statics.test = function(){
+  console.log("Testing, testing 1 2 3");
+}
 
 userSchema.statics.getOne = function(req,res,next){
   var user = req.user
@@ -64,5 +54,6 @@ userSchema.statics.delete = function(req,res,next){
   console.log("This is the delete function")
 };
 
+var Users = mongoose.model('User',userSchema);
 
 module.exports = mongoose.model('User', userSchema);

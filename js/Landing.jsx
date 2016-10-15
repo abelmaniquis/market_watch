@@ -35,7 +35,6 @@ const Landing = React.createClass({
           <button className='submitButton' type="submit">Sign up here</button>
           </form>
         </div>
-        
         <h4>Or just check the markets below:</h4>
         <Header/>
       </div>

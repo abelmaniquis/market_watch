@@ -50,7 +50,6 @@ class Details extends React.Component{
       <p><Link to="/profile/aUser">BUY!:</Link>Quantity:<input type='text'/></p>
       <p><Link to="/profile/aUser">SELL!:</Link>Quantity:<input type='text'/></p>
       <h1>Stock History for {this.state.ticker}</h1>
-      
           <pre><code>
           {JSON.stringify(this.state.logTitles, null, 4)}
           {JSON.stringify(this.state.priceLog, null, 4)}
@@ -60,12 +59,4 @@ class Details extends React.Component{
     )
   }
 }
-
-const { object } = React.PropTypes
-Details.propTypes = {
-  params: object.isRequired
-}
-console.log("object: ")
-console.log({object})
-
 module.exports = Details

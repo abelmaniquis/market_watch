@@ -14,6 +14,7 @@ class StockData extends React.Component {
       ticker: "",
       prices: [],
       keyword: this.props.keyword,
+      quantity:1,
     }
   }
   componentDidMount() {
@@ -43,8 +44,8 @@ class StockData extends React.Component {
     let splitRatio = this.state.prices[7]
     let changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1])*100/100).toFixed(2);
     let change = changeNum;
-    
-    
+    let quantity = this.state.quantity;
+    let value = close*this.state.quantity
     let trend = 'trending neutral'
     
     change >= 0 ? trend = "up" : trend = "down"
@@ -59,6 +60,8 @@ class StockData extends React.Component {
           <th className='close'>{close}</th>
           <th className='trend'>{trend}</th>
           <th className='onDate'>{date}</th>
+          <th className='value'>{value}</th>
+          <th className='quantity'>{quantity}</th>
         </tr>
         </tbody>
       </table>

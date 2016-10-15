@@ -22,8 +22,24 @@ class Profile extends React.Component {
     <div className="my-profile">
       <h1>My Profile</h1>
       <h1>My Cash: {this.state.cash}</h1>
+      
+    <table className="tableHead">
+        <tbody>
+          <tr>
+          <th>Ticker</th>
+          <th>Open</th>
+          <th>Close</th>
+          <th>Trend</th>
+          <th>On Date</th>
+          <th>Value</th>
+          <th>Quantity</th>
+          </tr>
+        </tbody>
+    </table>   
+
+
       <div className='myStocks'>
-      <Data keyword={'GOOG'}/>
+      <UserStockData keyword={'GOOG'}/>
       <UserStockData keyword={'NFLX'}/>
       </div>
     </div>
