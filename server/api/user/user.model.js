@@ -19,8 +19,7 @@ var userSchema = mongoose.Schema({
     required:true
   },
   portfolio:{
-    type: mongoose.Schema.Types.ObjectId,   //Here is a relationship, a user has a portfolio
-    ref:'portfolio'
+    type:Array
   }
 })
 

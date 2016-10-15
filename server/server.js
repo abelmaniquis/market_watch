@@ -13,6 +13,7 @@ require('mongoose').connect(config.db.url)
 app.use(express.static(__dirname + '/../public'));
 
 require('./middleware/appMiddleware.js')(app);
+
 require('./api/user/user.routes.js')(app);
 
 //Handle errors
