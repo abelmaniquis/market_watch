@@ -13,6 +13,8 @@ mongoose.connection.once('open', function() {
 
 module.exports = function(app){
 
+var testUser = mongoose.model('User',User);
+
 var create = function(user,callback){
   User.create(user,function(err,result){
     if(err){
@@ -35,24 +37,26 @@ app.get('/signup',function(req,res){
   res.status(202).send('GOT SIGNUP');
 });
 
-app.get('/login/:username/:password/',function(req,res){
+app.get('/login/:username/:password/:stock',function(req,res){
   var someUser = User.create({
     username:req.params.username
   })
   var aUser = new User
+  var aStock = req.params.stock;
   aUser.username = req.params.username;
   aUser.password = req.params.password;
   aUser.cash = 1000000;
   
   addToWatchList(aUser,{name:'GOOG',quant:30,val:200});
-  addToWatchList(aUser,{name:'NFLX',quant:1,quant:20,val:100});
+  addToWatchList(aUser,req.params.stock);
   aUser.cash -= aUser.portfolio[0].val*aUser.portfolio[0].quant;
   res.json(aUser);
 });
-
-app.post('/users/:username/:password', bodyParser, function(req, res) {
-  console.log(res);
-  
+/*
+app.post('/users/:username/:password/:stock', bodyParser, function(req, res) {
+  console.log(testUser);
 })
+*/
+app.get('/users/:portfolio/:stock')
 
 }

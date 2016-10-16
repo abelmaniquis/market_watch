@@ -47,8 +47,7 @@ class Details extends React.Component{
     <div className="FurtherDetails">
       <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
-      <p><Link to="/profile/aUser">BUY!:</Link>Quantity:<input type='text'/></p>
-      <p><Link to="/profile/aUser">SELL!:</Link>Quantity:<input type='text'/></p>
+      <p><Link to="/profile/aUser">Add to my Profile/Watchlist</Link></p>
       <h1>Stock History for {this.state.ticker}</h1>
           <pre><code>
           {JSON.stringify(this.state.logTitles, null, 4)}

@@ -11,13 +11,9 @@ var User = require('./api/user/user.model.js')
 
 require('mongoose').connect(config.db.url)
 
-app.use(session(
-    {
-    secret: 'mynameisabel', 
-    resave: false, 
-    saveUninitialized: false
-    }
-)); 
+function requestHandler(request, response) {
+    response.sendFile(__dirname + '/../public/index.html');
+}
 
 app.use(express.static(__dirname + '/../public'));
 
@@ -25,18 +21,14 @@ require('./middleware/appMiddleware.js')(app);
 require('./config/config.passport.js')(app);
 require('./api/user/user.routes.js')(app);
 
-
-app.get('/',function(req,res){
-    res.send("Hello?");
-    console.log("Can you see this?")
-})
-
 //Handle errors
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(500).send(err);
   }
 });
+
+app.get('*', requestHandler);
 
 exports.app = app;
 

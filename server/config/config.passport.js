@@ -27,11 +27,23 @@ module.exports = function(){
     function(req,username,password,done){
       User.findOne({
         'username':username
-      },function(err,createdUser){
+      },function(err,user){
         if(err){
           return done(err,null);
+        }else if(user){
+          console.log('This username already exists');
         }else{
-          done(null, createdUser);
+          
+          User.create({
+            'username':username,
+            'password':password
+          },function(err,createdUser){
+            if(err){
+              done(err,null)
+            }else{
+              done(null,createdUser);
+            }
+          });
         }
       })
     }

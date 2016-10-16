@@ -59,7 +59,6 @@ class Data extends React.Component {
           <th className='high'>{high}</th>
           <th className='low'>{low}</th>
           <th className='close'>{close}</th>
-          <th className='change'>{change.isNan}</th>
           <th className='trend'>{trend}</th>
           <th className='onDate'>{date}</th>
         </tr>

@@ -28,7 +28,6 @@ const SearchHeader = React.createClass({
           <th>High</th>
           <th>Low</th>
           <th>Close</th>
-          <th>Change</th>
           <th>Trend</th>
           <th>On Date</th>
           </tr>
