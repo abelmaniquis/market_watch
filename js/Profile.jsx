@@ -38,9 +38,20 @@ class MyStockList extends React.Component{
       <UserStockData keyword={stockList[0]}/>
       <UserStockData keyword={stockList[1]}/>
       <UserStockData keyword={stockList[2]}/>
-      <AddStock stocks={this.props.stocks}/>
+      
   </div>
   )
+  }
+}
+
+class AddStock extends React.Component{
+  handleSubmit(e){
+    e.preventDefault();
+    let refs = this.refs;
+    let stock = refs.name.value;
+    let quantity = refs.quant.value;
+    
+    this.props.addStock(stock,quantity)
   }
 }
 
