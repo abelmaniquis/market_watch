@@ -2,14 +2,47 @@ const React = require('react');
 const axios = require('axios');
 const { Link } = require('react-router');
 const Data = require('./Data');
-
-
+const UserStockData = require('./UserStockData');
 const {createStore,bindActionCreators} = require('redux');
 const {Provider,connect} = require('react-redux');
 const {render} = require('react-dom');
 
 
-const stockList = [];
+const stockList = ['GOOG','NFLX','AMZN'];
+
+
+class Head extends React.Component{
+  render(){
+    return(
+      <table className="tableHead">
+        <tbody>
+          <tr>
+          <th>Ticker</th>
+          <th>Open</th>
+          <th>Close</th>
+          <th>Trend</th>
+          <th>On Date</th>
+          <th>Value</th>
+          <th>Quantity</th>
+          </tr>
+        </tbody>
+    </table>  
+      )
+  }
+}
+
+class MyStockList extends React.Component{
+  render(){
+    return(
+  <div className='myStocks'>
+      <UserStockData keyword={stockList[0]}/>
+      <UserStockData keyword={stockList[1]}/>
+      <UserStockData keyword={stockList[2]}/>
+      <AddStock stocks={this.props.stocks}/>
+  </div>
+  )
+  }
+}
 
 class Profile extends React.Component {
   constructor(props) {
@@ -38,55 +71,14 @@ class Profile extends React.Component {
       <input type='text'></input>
       <button>Submit</button>
     </div>
+    
       <h2>Watchlist</h2>
-    <table className="tableHead">
-        <tbody>
-          <tr>
-          <th>Ticker</th>
-          <th>Open</th>
-          <th>Close</th>
-          <th>Trend</th>
-          <th>On Date</th>
-          <th>Value</th>
-          <th>Quantity</th>
-          </tr>
-        </tbody>
-    </table>   
-
-
-      <div className='myStocks'>
-      <UserStockData keyword={'GOOG'}/>
-      <UserStockData keyword={'NFLX'}/>
-      <UserStockData keyword={'AMZN'}/>
-      <UserStockData keyword={this.state} onChange={this.handleChange}/>
-      </div>
+    
+    <Head/>
+    <MyStockList/>
     </div>
     )
   }
 }
-
-class UserStocks extends React.Component(){
-  constructor(props){
-    super(props);
-  }
-  render(){
-    return(
-      <div>
-      </div>
-    ) 
-  }
-}
-
-class UserStock extends React.Component(){
-  constructor(props){
-    super(props);
-  }
-}
-
-class AddStock extends React.Component(){
-  
-}
-
-const UserStockData = require('./UserStockData');
 
 module.exports = Profile;

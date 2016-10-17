@@ -53,6 +53,7 @@
 	var Profile = __webpack_require__(292);
 	var Signup = __webpack_require__(294);
 	var Login = __webpack_require__(295);
+	var TestPage = __webpack_require__(297);
 	
 	var _require = __webpack_require__(196);
 	
@@ -98,7 +99,8 @@
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
-	        React.createElement(Route, { path: '/profile/:id', component: Profile })
+	        React.createElement(Route, { path: '/profile/:id', component: Profile }),
+	        React.createElement(Route, { path: '/test', component: TestPage })
 	      )
 	    );
 	  }
@@ -31122,6 +31124,7 @@
 	var Link = _require.Link;
 	
 	var Data = __webpack_require__(173);
+	var UserStockData = __webpack_require__(293);
 	
 	var _require2 = __webpack_require__(261);
 	
@@ -31138,25 +31141,116 @@
 	var render = _require4.render;
 	
 	
-	var stockList = [];
+	var stockList = ['GOOG', 'NFLX', 'AMZN'];
 	
-	var Profile = function (_React$Component) {
-	  _inherits(Profile, _React$Component);
+	var Head = function (_React$Component) {
+	  _inherits(Head, _React$Component);
+	
+	  function Head() {
+	    _classCallCheck(this, Head);
+	
+	    return _possibleConstructorReturn(this, (Head.__proto__ || Object.getPrototypeOf(Head)).apply(this, arguments));
+	  }
+	
+	  _createClass(Head, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'table',
+	        { className: 'tableHead' },
+	        React.createElement(
+	          'tbody',
+	          null,
+	          React.createElement(
+	            'tr',
+	            null,
+	            React.createElement(
+	              'th',
+	              null,
+	              'Ticker'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Open'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Close'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Trend'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'On Date'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Value'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Quantity'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Head;
+	}(React.Component);
+	
+	var MyStockList = function (_React$Component2) {
+	  _inherits(MyStockList, _React$Component2);
+	
+	  function MyStockList() {
+	    _classCallCheck(this, MyStockList);
+	
+	    return _possibleConstructorReturn(this, (MyStockList.__proto__ || Object.getPrototypeOf(MyStockList)).apply(this, arguments));
+	  }
+	
+	  _createClass(MyStockList, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'myStocks' },
+	        React.createElement(UserStockData, { keyword: stockList[0] }),
+	        React.createElement(UserStockData, { keyword: stockList[1] }),
+	        React.createElement(UserStockData, { keyword: stockList[2] }),
+	        React.createElement(AddStock, { stocks: this.props.stocks })
+	      );
+	    }
+	  }]);
+	
+	  return MyStockList;
+	}(React.Component);
+	
+	var Profile = function (_React$Component3) {
+	  _inherits(Profile, _React$Component3);
 	
 	  function Profile(props) {
 	    _classCallCheck(this, Profile);
 	
-	    var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+	    var _this3 = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 	
-	    _this.state = {
+	    _this3.state = {
 	      id: {},
 	      name: "",
 	      ticker: "",
 	      prices: [],
-	      keyword: _this.props.keyword,
+	      keyword: _this3.props.keyword,
 	      cash: 1000000
 	    };
-	    return _this;
+	    return _this3;
 	  }
 	
 	  _createClass(Profile, [{
@@ -31196,112 +31290,14 @@
 	          null,
 	          'Watchlist'
 	        ),
-	        React.createElement(
-	          'table',
-	          { className: 'tableHead' },
-	          React.createElement(
-	            'tbody',
-	            null,
-	            React.createElement(
-	              'tr',
-	              null,
-	              React.createElement(
-	                'th',
-	                null,
-	                'Ticker'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Open'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Close'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Trend'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'On Date'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Value'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Quantity'
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'myStocks' },
-	          React.createElement(UserStockData, { keyword: 'GOOG' }),
-	          React.createElement(UserStockData, { keyword: 'NFLX' }),
-	          React.createElement(UserStockData, { keyword: 'AMZN' }),
-	          React.createElement(UserStockData, { keyword: this.state, onChange: this.handleChange })
-	        )
+	        React.createElement(Head, null),
+	        React.createElement(MyStockList, null)
 	      );
 	    }
 	  }]);
 	
 	  return Profile;
 	}(React.Component);
-	
-	var UserStocks = function (_React$Component2) {
-	  _inherits(UserStocks, _React$Component2);
-	
-	  function UserStocks(props) {
-	    _classCallCheck(this, UserStocks);
-	
-	    return _possibleConstructorReturn(this, (UserStocks.__proto__ || Object.getPrototypeOf(UserStocks)).call(this, props));
-	  }
-	
-	  _createClass(UserStocks, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement('div', null);
-	    }
-	  }]);
-	
-	  return UserStocks;
-	}(React.Component());
-	
-	var UserStock = function (_React$Component3) {
-	  _inherits(UserStock, _React$Component3);
-	
-	  function UserStock(props) {
-	    _classCallCheck(this, UserStock);
-	
-	    return _possibleConstructorReturn(this, (UserStock.__proto__ || Object.getPrototypeOf(UserStock)).call(this, props));
-	  }
-	
-	  return UserStock;
-	}(React.Component());
-	
-	var AddStock = function (_React$Component4) {
-	  _inherits(AddStock, _React$Component4);
-	
-	  function AddStock() {
-	    _classCallCheck(this, AddStock);
-	
-	    return _possibleConstructorReturn(this, (AddStock.__proto__ || Object.getPrototypeOf(AddStock)).apply(this, arguments));
-	  }
-	
-	  return AddStock;
-	}(React.Component());
-	
-	var UserStockData = __webpack_require__(293);
 	
 	module.exports = Profile;
 
@@ -34786,6 +34782,288 @@
 			}
 		]
 	};
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	var Redux = __webpack_require__(261);
+	var ReactDOM = __webpack_require__(34);
+	var ReactRedux = __webpack_require__(276);
+	var uuid = __webpack_require__(298);
+	var createStore = Redux.createStore;
+	var bindActionCreators = Redux.bindActionCreators;
+	var Provider = ReactRedux.Provider;
+	var connect = ReactRedux.connect;
+	var render = ReactDOM.render;
+	
+	// Dummy data for app
+	
+	var attendeeList = [];
+	
+	/* --- COMPONENTS --- */
+	
+	var Test = function (_React$Component) {
+	    _inherits(Test, _React$Component);
+	
+	    function Test() {
+	        _classCallCheck(this, Test);
+	
+	        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+	    }
+	
+	    _createClass(Test, [{
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'h1',
+	                    null,
+	                    'Test Elements'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Test;
+	}(React.Component);
+	
+	module.exports = Test;
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	//     uuid.js
+	//
+	//     Copyright (c) 2010-2012 Robert Kieffer
+	//     MIT License - http://opensource.org/licenses/mit-license.php
+	
+	// Unique ID creation requires a high quality random # generator.  We feature
+	// detect to determine the best RNG source, normalizing to a function that
+	// returns 128-bits of randomness, since that's what's usually required
+	var _rng = __webpack_require__(299);
+	
+	// Maps for number <-> hex string conversion
+	var _byteToHex = [];
+	var _hexToByte = {};
+	for (var i = 0; i < 256; i++) {
+	  _byteToHex[i] = (i + 0x100).toString(16).substr(1);
+	  _hexToByte[_byteToHex[i]] = i;
+	}
+	
+	// **`parse()` - Parse a UUID into it's component bytes**
+	function parse(s, buf, offset) {
+	  var i = buf && offset || 0,
+	      ii = 0;
+	
+	  buf = buf || [];
+	  s.toLowerCase().replace(/[0-9a-f]{2}/g, function (oct) {
+	    if (ii < 16) {
+	      // Don't overflow!
+	      buf[i + ii++] = _hexToByte[oct];
+	    }
+	  });
+	
+	  // Zero out remaining bytes if string was short
+	  while (ii < 16) {
+	    buf[i + ii++] = 0;
+	  }
+	
+	  return buf;
+	}
+	
+	// **`unparse()` - Convert UUID byte array (ala parse()) into a string**
+	function unparse(buf, offset) {
+	  var i = offset || 0,
+	      bth = _byteToHex;
+	  return bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
+	}
+	
+	// **`v1()` - Generate time-based UUID**
+	//
+	// Inspired by https://github.com/LiosK/UUID.js
+	// and http://docs.python.org/library/uuid.html
+	
+	// random #'s we need to init node and clockseq
+	var _seedBytes = _rng();
+	
+	// Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+	var _nodeId = [_seedBytes[0] | 0x01, _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]];
+	
+	// Per 4.2.2, randomize (14 bit) clockseq
+	var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
+	
+	// Previous uuid creation time
+	var _lastMSecs = 0,
+	    _lastNSecs = 0;
+	
+	// See https://github.com/broofa/node-uuid for API details
+	function v1(options, buf, offset) {
+	  var i = buf && offset || 0;
+	  var b = buf || [];
+	
+	  options = options || {};
+	
+	  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+	
+	  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+	  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+	  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+	  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+	  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+	
+	  // Per 4.2.1.2, use count of uuid's generated during the current clock
+	  // cycle to simulate higher resolution clock
+	  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+	
+	  // Time since last uuid creation (in msecs)
+	  var dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000;
+	
+	  // Per 4.2.1.2, Bump clockseq on clock regression
+	  if (dt < 0 && options.clockseq === undefined) {
+	    clockseq = clockseq + 1 & 0x3fff;
+	  }
+	
+	  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+	  // time interval
+	  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+	    nsecs = 0;
+	  }
+	
+	  // Per 4.2.1.2 Throw error if too many uuids are requested
+	  if (nsecs >= 10000) {
+	    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+	  }
+	
+	  _lastMSecs = msecs;
+	  _lastNSecs = nsecs;
+	  _clockseq = clockseq;
+	
+	  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+	  msecs += 12219292800000;
+	
+	  // `time_low`
+	  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+	  b[i++] = tl >>> 24 & 0xff;
+	  b[i++] = tl >>> 16 & 0xff;
+	  b[i++] = tl >>> 8 & 0xff;
+	  b[i++] = tl & 0xff;
+	
+	  // `time_mid`
+	  var tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+	  b[i++] = tmh >>> 8 & 0xff;
+	  b[i++] = tmh & 0xff;
+	
+	  // `time_high_and_version`
+	  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+	  b[i++] = tmh >>> 16 & 0xff;
+	
+	  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+	  b[i++] = clockseq >>> 8 | 0x80;
+	
+	  // `clock_seq_low`
+	  b[i++] = clockseq & 0xff;
+	
+	  // `node`
+	  var node = options.node || _nodeId;
+	  for (var n = 0; n < 6; n++) {
+	    b[i + n] = node[n];
+	  }
+	
+	  return buf ? buf : unparse(b);
+	}
+	
+	// **`v4()` - Generate random UUID**
+	
+	// See https://github.com/broofa/node-uuid for API details
+	function v4(options, buf, offset) {
+	  // Deprecated - 'format' argument, as supported in v1.2
+	  var i = buf && offset || 0;
+	
+	  if (typeof options == 'string') {
+	    buf = options == 'binary' ? new Array(16) : null;
+	    options = null;
+	  }
+	  options = options || {};
+	
+	  var rnds = options.random || (options.rng || _rng)();
+	
+	  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+	  rnds[6] = rnds[6] & 0x0f | 0x40;
+	  rnds[8] = rnds[8] & 0x3f | 0x80;
+	
+	  // Copy bytes to buffer, if provided
+	  if (buf) {
+	    for (var ii = 0; ii < 16; ii++) {
+	      buf[i + ii] = rnds[ii];
+	    }
+	  }
+	
+	  return buf || unparse(rnds);
+	}
+	
+	// Export public API
+	var uuid = v4;
+	uuid.v1 = v1;
+	uuid.v4 = v4;
+	uuid.parse = parse;
+	uuid.unparse = unparse;
+	
+	module.exports = uuid;
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+	
+	var rng;
+	
+	var crypto = global.crypto || global.msCrypto; // for IE 11
+	if (crypto && crypto.getRandomValues) {
+	  // WHATWG crypto-based RNG - http://wiki.whatwg.org/wiki/Crypto
+	  // Moderately fast, high quality
+	  var _rnds8 = new Uint8Array(16);
+	  rng = function whatwgRNG() {
+	    crypto.getRandomValues(_rnds8);
+	    return _rnds8;
+	  };
+	}
+	
+	if (!rng) {
+	  // Math.random()-based (RNG)
+	  //
+	  // If all else fails, use Math.random().  It's fast, but is of unspecified
+	  // quality.
+	  var _rnds = new Array(16);
+	  rng = function rng() {
+	    for (var i = 0, r; i < 16; i++) {
+	      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+	      _rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+	    }
+	
+	    return _rnds;
+	  };
+	}
+	
+	module.exports = rng;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }
 /******/ ]);

@@ -5,6 +5,7 @@ const Details = require('./Details');
 const Profile = require('./Profile');
 const Signup = require('./Signup');
 const Login = require('./Login');
+const TestPage = require('./TestPage');
 const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 const { stocks } = require('../public/tickers')
 const { store } = require('./Store')
@@ -29,6 +30,7 @@ const App = React.createClass({
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
         <Route path='/profile/:id' component={Profile}/>
+        <Route path='/test' component={TestPage}/>
       </Router>
     </Provider>
     )
