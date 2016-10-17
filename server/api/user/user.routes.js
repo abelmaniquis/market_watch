@@ -28,16 +28,16 @@ var addToWatchList = function(user,stock){
   console.log(user);
 }
 
-app.get('/login',function(req,res){
+app.get('api/v1/login',function(req,res){
   res.status(202).json({});
 });
 
-app.get('/signup',function(req,res){
+app.get('api/v1/signup',function(req,res){
   console.log('Reading the routes on node.js')
   res.status(202).send('GOT SIGNUP');
 });
 
-app.get('/login/:username/:password/:stock',function(req,res){
+app.get('api/vi/login/',function(req,res){
   var someUser = User.create({
     username:req.params.username
   })

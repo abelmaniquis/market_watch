@@ -11,10 +11,6 @@ var User = require('./api/user/user.model.js')
 
 require('mongoose').connect(config.db.url)
 
-function requestHandler(request, response) {
-    response.sendFile(__dirname + '/../public/index.html');
-}
-
 app.use(express.static(__dirname + '/../public'));
 
 require('./middleware/appMiddleware.js')(app);
@@ -28,7 +24,6 @@ app.use(function(err, req, res, next) {
   }
 });
 
-app.get('*', requestHandler);
 
 exports.app = app;
 

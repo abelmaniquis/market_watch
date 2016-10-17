@@ -31122,7 +31122,6 @@
 	var Link = _require.Link;
 	
 	var Data = __webpack_require__(173);
-	var UserStockData = __webpack_require__(293);
 	
 	var _require2 = __webpack_require__(261);
 	
@@ -31137,6 +31136,9 @@
 	var _require4 = __webpack_require__(34);
 	
 	var render = _require4.render;
+	
+	
+	var stockList = [];
 	
 	var Profile = function (_React$Component) {
 	  _inherits(Profile, _React$Component);
@@ -31255,6 +31257,51 @@
 	
 	  return Profile;
 	}(React.Component);
+	
+	var UserStocks = function (_React$Component2) {
+	  _inherits(UserStocks, _React$Component2);
+	
+	  function UserStocks(props) {
+	    _classCallCheck(this, UserStocks);
+	
+	    return _possibleConstructorReturn(this, (UserStocks.__proto__ || Object.getPrototypeOf(UserStocks)).call(this, props));
+	  }
+	
+	  _createClass(UserStocks, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement('div', null);
+	    }
+	  }]);
+	
+	  return UserStocks;
+	}(React.Component());
+	
+	var UserStock = function (_React$Component3) {
+	  _inherits(UserStock, _React$Component3);
+	
+	  function UserStock(props) {
+	    _classCallCheck(this, UserStock);
+	
+	    return _possibleConstructorReturn(this, (UserStock.__proto__ || Object.getPrototypeOf(UserStock)).call(this, props));
+	  }
+	
+	  return UserStock;
+	}(React.Component());
+	
+	var AddStock = function (_React$Component4) {
+	  _inherits(AddStock, _React$Component4);
+	
+	  function AddStock() {
+	    _classCallCheck(this, AddStock);
+	
+	    return _possibleConstructorReturn(this, (AddStock.__proto__ || Object.getPrototypeOf(AddStock)).apply(this, arguments));
+	  }
+	
+	  return AddStock;
+	}(React.Component());
+	
+	var UserStockData = __webpack_require__(293);
 	
 	module.exports = Profile;
 

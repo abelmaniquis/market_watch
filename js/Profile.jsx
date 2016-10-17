@@ -2,11 +2,14 @@ const React = require('react');
 const axios = require('axios');
 const { Link } = require('react-router');
 const Data = require('./Data');
-const UserStockData = require('./UserStockData');
+
 
 const {createStore,bindActionCreators} = require('redux');
 const {Provider,connect} = require('react-redux');
 const {render} = require('react-dom');
+
+
+const stockList = [];
 
 class Profile extends React.Component {
   constructor(props) {
@@ -61,4 +64,29 @@ class Profile extends React.Component {
     )
   }
 }
+
+class UserStocks extends React.Component(){
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return(
+      <div>
+      </div>
+    ) 
+  }
+}
+
+class UserStock extends React.Component(){
+  constructor(props){
+    super(props);
+  }
+}
+
+class AddStock extends React.Component(){
+  
+}
+
+const UserStockData = require('./UserStockData');
+
 module.exports = Profile;
