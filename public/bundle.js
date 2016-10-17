@@ -21576,7 +21576,7 @@
 	          { className: 'buttonContainer' },
 	          React.createElement(
 	            'form',
-	            { action: '/login' },
+	            { action: '/#/login/' },
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton', type: 'submit' },
@@ -21585,7 +21585,7 @@
 	          ),
 	          React.createElement(
 	            'form',
-	            { action: '/signup' },
+	            { action: '/#/signup' },
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton', type: 'submit' },
@@ -31249,7 +31249,6 @@
 	      var refs = this.refs;
 	      var stock = refs.name.value;
 	      var quantity = refs.quant.value;
-	
 	      this.props.addStock(stock, quantity);
 	    }
 	  }]);

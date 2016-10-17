@@ -27,11 +27,11 @@ const Landing = React.createClass({
         <h1 className='title'>MarketWatch</h1>
         
         <div className='buttonContainer'>
-          <form action="/login">
+          <form action="/#/login/">
           <button className='submitButton' type="submit">Log in here</button>
           </form>
         
-          <form action="/signup">
+          <form action="/#/signup">
           <button className='submitButton' type="submit">Sign up here</button>
           </form>
         </div>

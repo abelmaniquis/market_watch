@@ -50,7 +50,6 @@ class AddStock extends React.Component{
     let refs = this.refs;
     let stock = refs.name.value;
     let quantity = refs.quant.value;
-    
     this.props.addStock(stock,quantity)
   }
 }

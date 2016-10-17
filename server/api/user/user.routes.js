@@ -4,7 +4,7 @@ var userRouter = require('express').Router();
 var controller = require('./user.controller.js');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var passport = require('passport')
+var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 mongoose.connection.once('open', function() {
@@ -13,7 +13,7 @@ mongoose.connection.once('open', function() {
 
 module.exports = function(app){
 
-var testUser = mongoose.model('User',User);
+var Users = mongoose.model('User',User);
 
 var create = function(user,callback){
   User.create(user,function(err,result){
@@ -23,21 +23,53 @@ var create = function(user,callback){
   }); 
 }
 
-var addToWatchList = function(user,stock){
-  user.portfolio.push(stock);
-  console.log(user);
+var read = function(filter,callback){
 }
 
-app.get('api/v1/login',function(req,res){
-  res.status(202).json({});
+var addToWatchList = function(user,stock){
+  user.portfolio.push(stock);
+  console.log(user.schema);
+}
+
+//USER SIGNUP
+
+app.get('/api/signup/:username',function(req,res){
+  //User.create();
+  
 });
 
-app.get('api/v1/signup',function(req,res){
-  console.log('Reading the routes on node.js')
-  res.status(202).send('GOT SIGNUP');
+app.post('/signup',passport.authenticate('local-signup',{
+    successRedirect : '/profile', 
+    failureRedirect: '/failure' 
+  }),function(req,res){
+    console.log(req.body);
 });
 
-app.get('api/vi/login/',function(req,res){
+//LOGIN
+
+app.get('/api/login/:username',function(req,res){
+  console.log(req.params);
+});
+
+app.post('/login',function(req,res){
+  res.send("this should redirect to the user's profile");
+})
+
+app.post('/api/login/:username',function(req,res){
+  
+});
+
+app.get("*", function(req, res) {
+  res.sendFile(__dirname + '/../public/index.html');
+});
+
+}
+
+
+/*
+
+creating a user:
+
   var someUser = User.create({
     username:req.params.username
   })
@@ -51,12 +83,6 @@ app.get('api/vi/login/',function(req,res){
   addToWatchList(aUser,req.params.stock);
   aUser.cash -= aUser.portfolio[0].val*aUser.portfolio[0].quant;
   res.json(aUser);
-});
-/*
-app.post('/users/:username/:password/:stock', bodyParser, function(req, res) {
-  console.log(testUser);
-})
-*/
-app.get('/users/:portfolio/:stock')
 
-}
+
+*/

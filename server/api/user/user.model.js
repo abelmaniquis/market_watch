@@ -15,8 +15,7 @@ var userSchema = mongoose.Schema({
     required:true
   },
   cash:{
-    type:Number,
-    required:true
+    type:Number
   },
   portfolio:{
     type:Array

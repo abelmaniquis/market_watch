@@ -2,9 +2,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../api/user/user.model.js');
 
-var Admin = new User
-Admin.username = 'admin';
+var testUser = new User
 
+testUser.username = 'test'
+testUser.password = '12345'
+
+console.log(testUser);
 
 module.exports = function(){
   
