@@ -6,6 +6,7 @@ var testUser = new User
 
 testUser.username = 'test'
 testUser.password = '12345'
+testUser.save();
 
 console.log(testUser);
 
@@ -30,9 +31,10 @@ module.exports = function(){
     function(req,username,password,done){
       User.findOne({
         'username':username
-      },function(err,user){
+      },
+      function(err,user){
         if(err){
-          return done(err,null);
+          return done(err);
         }else if(user){
           console.log('This username already exists');
         }else{
@@ -57,13 +59,7 @@ module.exports = function(){
       passwordField: 'password',
       passReqtoCallback:true
     },
-    function(username,password,done){
-      User.findOne({
-        username:'username',
-        password:'password',
-        passReqtoCallback:true
-      },
-      function(username,password,done){
+      function(username, password, done){
         User.findOne({
           username:'username',
         },function(err,user){
@@ -77,10 +73,7 @@ module.exports = function(){
           }else if(user.validPassword(password)){
             return done(null,user)
           };
-        }
-        );
-      })
-    }
-    ))
+      });
+    }));
   
 }

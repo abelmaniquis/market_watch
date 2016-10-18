@@ -31110,6 +31110,8 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -31143,94 +31145,67 @@
 	
 	var stockList = ['GOOG', 'NFLX', 'AMZN'];
 	
-	var Head = function (_React$Component) {
-	  _inherits(Head, _React$Component);
+	var Profile = function (_React$Component) {
+	  _inherits(Profile, _React$Component);
 	
-	  function Head() {
-	    _classCallCheck(this, Head);
+	  function Profile() {
+	    _classCallCheck(this, Profile);
 	
-	    return _possibleConstructorReturn(this, (Head.__proto__ || Object.getPrototypeOf(Head)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
 	  }
 	
-	  _createClass(Head, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'table',
-	        { className: 'tableHead' },
-	        React.createElement(
-	          'tbody',
-	          null,
-	          React.createElement(
-	            'tr',
-	            null,
-	            React.createElement(
-	              'th',
-	              null,
-	              'Ticker'
-	            ),
-	            React.createElement(
-	              'th',
-	              null,
-	              'Open'
-	            ),
-	            React.createElement(
-	              'th',
-	              null,
-	              'Close'
-	            ),
-	            React.createElement(
-	              'th',
-	              null,
-	              'Trend'
-	            ),
-	            React.createElement(
-	              'th',
-	              null,
-	              'On Date'
-	            ),
-	            React.createElement(
-	              'th',
-	              null,
-	              'Value'
-	            ),
-	            React.createElement(
-	              'th',
-	              null,
-	              'Quantity'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Head;
-	}(React.Component);
-	
-	var MyStockList = function (_React$Component2) {
-	  _inherits(MyStockList, _React$Component2);
-	
-	  function MyStockList() {
-	    _classCallCheck(this, MyStockList);
-	
-	    return _possibleConstructorReturn(this, (MyStockList.__proto__ || Object.getPrototypeOf(MyStockList)).apply(this, arguments));
-	  }
-	
-	  _createClass(MyStockList, [{
+	  _createClass(Profile, [{
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'myStocks' },
-	        React.createElement(UserStockData, { keyword: stockList[0] }),
-	        React.createElement(UserStockData, { keyword: stockList[1] }),
-	        React.createElement(UserStockData, { keyword: stockList[2] })
+	        null,
+	        React.createElement(
+	          'h1',
+	          null,
+	          'My Watchlist'
+	        ),
+	        React.createElement(AddStock, { addStock: this.props.addStock }),
+	        React.createElement(MyStocks, { stocks: this.props.stocks })
 	      );
 	    }
 	  }]);
 	
-	  return MyStockList;
+	  return Profile;
+	}(React.Component);
+	
+	/*
+	{this.props.stocks.map((stock,index)=>{
+	            <li className="stocks_stock" key={index}>
+	              <UserStockData keyword={stock} key={index}/>
+	            </li>
+	          })}
+	*/
+	
+	var MyStocks = function (_React$Component2) {
+	  _inherits(MyStocks, _React$Component2);
+	
+	  function MyStocks() {
+	    _classCallCheck(this, MyStocks);
+	
+	    return _possibleConstructorReturn(this, (MyStocks.__proto__ || Object.getPrototypeOf(MyStocks)).apply(this, arguments));
+	  }
+	
+	  _createClass(MyStocks, [{
+	    key: 'render',
+	    value: function render() {
+	
+	      console.log(this.props);
+	
+	      return React.createElement(
+	        'ul',
+	        { className: 'myStocks' },
+	        React.createElement(UserStockData, { keyword: 'GOOG' })
+	      );
+	    }
+	  }]);
+	
+	  return MyStocks;
 	}(React.Component);
 	
 	var AddStock = function (_React$Component3) {
@@ -31246,80 +31221,75 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
+	
 	      var refs = this.refs;
-	      var stock = refs.name.value;
-	      var quantity = refs.quant.value;
-	      this.props.addStock(stock, quantity);
-	    }
-	  }]);
-	
-	  return AddStock;
-	}(React.Component);
-	
-	var Profile = function (_React$Component4) {
-	  _inherits(Profile, _React$Component4);
-	
-	  function Profile(props) {
-	    _classCallCheck(this, Profile);
-	
-	    var _this4 = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
-	
-	    _this4.state = {
-	      id: {},
-	      name: "",
-	      ticker: "",
-	      prices: [],
-	      keyword: _this4.props.keyword,
-	      cash: 1000000
-	    };
-	    return _this4;
-	  }
-	
-	  _createClass(Profile, [{
-	    key: 'handleChange',
-	    value: function handleChange(event) {
-	      this.setState({ value: event.target.value });
+	      var name = refs.name.value;
+	      this.props.addStock(name);
+	      refs.addStock.reset();
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'my-profile' },
-	        React.createElement(
-	          'h1',
-	          null,
-	          'My Profile'
-	        ),
-	        React.createElement(
-	          'h1',
-	          null,
-	          'My Cash: ',
-	          this.state.cash
-	        ),
+	        { className: 'row' },
 	        React.createElement(
 	          'div',
-	          { className: 'myInput' },
-	          React.createElement('input', { type: 'text' }),
+	          { className: 'column' },
 	          React.createElement(
-	            'button',
-	            null,
-	            'Submit'
+	            'form',
+	            { ref: 'addStock', onSubmit: this.handleSubmit.bind(this) },
+	            React.createElement(
+	              'label',
+	              { 'for': 'name' },
+	              'Ticker'
+	            ),
+	            React.createElement('input', { id: 'name', type: 'text', ref: 'name', placeholder: 'Enter a Stock Ticker to Add to your Portfolio' }),
+	            React.createElement(
+	              'button',
+	              { type: 'submit', className: 'button' },
+	              'Add Stock'
+	            )
 	          )
-	        ),
-	        React.createElement(
-	          'h2',
-	          null,
-	          'Watchlist'
-	        ),
-	        React.createElement(Head, null),
-	        React.createElement(MyStockList, null)
+	        )
 	      );
 	    }
 	  }]);
 	
-	  return Profile;
+	  return AddStock;
 	}(React.Component);
+	
+	/*--REDUCERS--*/
+	
+	
+	function reducer() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    //return a new array with old state and added stock
+	    case 'ADD_STOCK':
+	      return [{
+	        stock: action.stock
+	      }].concat(_toConsumableArray(state));
+	    default:
+	      return state;
+	  }
+	};
+	/*--ACTIONS--*/
+	var actions = {
+	  addStock: function addStock(stock) {
+	    return {
+	      //String for reducer to pick up
+	      type: 'ADD_STOCK',
+	      stock: stock
+	    };
+	  }
+	};
+	/*--STORE--*/
+	var ProfileContainer = connect()(Profile);
+	
+	var Store = createStore(reducer, stockList);
 	
 	module.exports = Profile;
 

@@ -34,8 +34,6 @@ var addToWatchList = function(user,stock){
 //USER SIGNUP
 
 app.get('/api/signup/:username',function(req,res){
-  //User.create();
-  
 });
 
 app.post('/signup',passport.authenticate('local-signup',{
@@ -50,14 +48,18 @@ app.post('/signup',passport.authenticate('local-signup',{
 app.get('/api/login/:username',function(req,res){
   console.log(req.params);
 });
-
+/*
 app.post('/login',function(req,res){
   res.send("this should redirect to the user's profile");
 })
-
-app.post('/api/login/:username',function(req,res){
-  
+*/
+app.post('/login', passport.authenticate('local-login',{
+    successRedirect : '/profile',
+    failureRedirect : '/failure'
+  }), function(req, res){
+  req.status(200);
 });
+  
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/../public/index.html');
