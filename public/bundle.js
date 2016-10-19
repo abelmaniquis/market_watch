@@ -31165,16 +31165,22 @@
 	          null,
 	          'My Watchlist'
 	        ),
+	        React.createElement('hr', null),
 	        React.createElement(AddStock, { addStock: this.props.addStock }),
-	        React.createElement(MyStocks, { stocks: this.props.stocks })
+	        React.createElement('hr', null),
+	        React.createElement(MyStocks, { stocks: stockList })
 	      );
 	    }
 	  }]);
 	
 	  return Profile;
 	}(React.Component);
+	// MyStocks stocks should be this.props.stocks
 	
 	/*
+	
+	SOMETHING LIKE THIS SHOULD BE RETURNED BY MyStocks
+	
 	{this.props.stocks.map((stock,index)=>{
 	            <li className="stocks_stock" key={index}>
 	              <UserStockData keyword={stock} key={index}/>
@@ -31194,19 +31200,31 @@
 	  _createClass(MyStocks, [{
 	    key: 'render',
 	    value: function render() {
-	
+	      //  this.props.stocks = "GOOG";
 	      console.log(this.props);
 	
 	      return React.createElement(
 	        'ul',
 	        { className: 'myStocks' },
-	        React.createElement(UserStockData, { keyword: 'GOOG' })
+	        this.props.stocks.map(function (stock, index) {
+	          console.log(stock, index);
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(UserStockData, { keyword: stock, key: index })
+	          );
+	        })
 	      );
 	    }
 	  }]);
 	
 	  return MyStocks;
 	}(React.Component);
+	
+	/*
+	<UserStockData keyword={this.props.stocks[0]}/>
+	<UserStockData keyword={this.props.stocks[1]}/>
+	*/
 	
 	var AddStock = function (_React$Component3) {
 	  _inherits(AddStock, _React$Component3);
@@ -31223,7 +31241,12 @@
 	      e.preventDefault();
 	
 	      var refs = this.refs;
+	      console.log("REFS");
+	      console.log(refs);
+	
 	      var name = refs.name.value;
+	      console.log(name);
+	
 	      this.props.addStock(name);
 	      refs.addStock.reset();
 	    }
@@ -31287,7 +31310,13 @@
 	  }
 	};
 	/*--STORE--*/
-	var ProfileContainer = connect()(Profile);
+	var ProfileContainer = connect(function mapStateToProps(state) {
+	  return {
+	    stocks: state
+	  };
+	}, function mapDispatchToProps(actions, dispatch) {
+	  return bindActionCreators(actions, dispatch);
+	})(Profile);
 	
 	var Store = createStore(reducer, stockList);
 	

@@ -16,15 +16,20 @@ class Profile extends React.Component{
     return(
       <div>
         <h1>My Watchlist</h1>
+        <hr/>
         <AddStock addStock={this.props.addStock}/>
-        <MyStocks stocks={this.props.stocks}/>
+        <hr/>
+        <MyStocks stocks={stockList}/> 
       </div>
     )
   }
 }
-
+// MyStocks stocks should be this.props.stocks
 
 /*
+
+SOMETHING LIKE THIS SHOULD BE RETURNED BY MyStocks
+
 {this.props.stocks.map((stock,index)=>{
             <li className="stocks_stock" key={index}>
               <UserStockData keyword={stock} key={index}/>
@@ -34,23 +39,38 @@ class Profile extends React.Component{
 
 class MyStocks extends React.Component{
   render(){
-    
+  //  this.props.stocks = "GOOG";
     console.log(this.props);
     
     return(
       <ul className="myStocks">
-          <UserStockData keyword={'GOOG'}/>
+        {this.props.stocks.map((stock,index)=>{
+          console.log(stock,index);
+          <li>
+            <UserStockData keyword={stock} key={index}/>
+          </li>
+        })}
       </ul>
       )
   }
 }
+
+/*
+<UserStockData keyword={this.props.stocks[0]}/>
+<UserStockData keyword={this.props.stocks[1]}/>
+*/
 
 class AddStock extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     
     let refs = this.refs;
+    console.log("REFS");
+    console.log(refs);
+    
     let name = refs.name.value;
+    console.log(name);
+    
     this.props.addStock(name);
     refs.addStock.reset();
   }
@@ -97,6 +117,14 @@ const actions = {
 };
 /*--STORE--*/
 const ProfileContainer = connect(
+  function mapStateToProps(state){
+    return{
+      stocks: state
+    };
+  },
+  function mapDispatchToProps(actions,dispatch){
+    return bindActionCreators(actions,dispatch); 
+  }
 )(Profile)
 
 const Store = createStore(reducer,stockList);

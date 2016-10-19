@@ -38,7 +38,7 @@ app.get('/api/signup/:username',function(req,res){
 
 app.post('/signup',passport.authenticate('local-signup',{
     successRedirect : '/profile', 
-    failureRedirect: '/failure' 
+    failureRedirect: '/' 
   }),function(req,res){
     console.log(req.body);
 });
@@ -55,7 +55,7 @@ app.post('/login',function(req,res){
 */
 app.post('/login', passport.authenticate('local-login',{
     successRedirect : '/profile',
-    failureRedirect : '/failure'
+    failureRedirect : '/'
   }), function(req, res){
   req.status(200);
 });
