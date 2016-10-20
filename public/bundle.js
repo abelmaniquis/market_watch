@@ -31129,117 +31129,73 @@
 	
 	var list = __webpack_require__(294);
 	
-	var stockList = ['GOOG', 'NFLX', 'AMZN'];
+	var View = function (_React$Component) {
+	  _inherits(View, _React$Component);
 	
-	var Profile = function (_React$Component) {
-	  _inherits(Profile, _React$Component);
+	  function View(props) {
+	    _classCallCheck(this, View);
 	
-	  function Profile() {
-	    _classCallCheck(this, Profile);
+	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
-	    return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
+	    _this.state = {
+	      stocks: []
+	    };
+	    return _this;
 	  }
 	
-	  _createClass(Profile, [{
-	    key: 'render',
-	    value: function render() {
-	      console.log("HERE'S THE FULL LIST OF STOCKS:");
-	      console.log(list.stocks);
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h1',
-	          { className: 'watchlist-title' },
-	          'My Watchlist'
-	        ),
-	        React.createElement('hr', null),
-	        React.createElement(StockAdder, { addStock: this.props.addStock }),
-	        React.createElement('hr', null),
-	        React.createElement(MyStocks, { stocks: this.props.stocks })
-	      );
-	    }
-	  }]);
-	
-	  return Profile;
-	}(React.Component);
-	
-	var MyStocks = function (_React$Component2) {
-	  _inherits(MyStocks, _React$Component2);
-	
-	  function MyStocks(props) {
-	    _classCallCheck(this, MyStocks);
-	
-	    return _possibleConstructorReturn(this, (MyStocks.__proto__ || Object.getPrototypeOf(MyStocks)).call(this, props));
-	  }
-	
-	  _createClass(MyStocks, [{
-	    key: 'render',
-	    value: function render() {
-	
-	      return React.createElement(
-	        'ul',
-	        { className: 'myStocks' },
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(UserStockData, { keyword: 'GOOG', key: 1 })
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return MyStocks;
-	}(React.Component);
-	
-	var StockAdder = function (_React$Component3) {
-	  _inherits(StockAdder, _React$Component3);
-	
-	  function StockAdder() {
-	    _classCallCheck(this, StockAdder);
-	
-	    return _possibleConstructorReturn(this, (StockAdder.__proto__ || Object.getPrototypeOf(StockAdder)).apply(this, arguments));
-	  }
-	
-	  _createClass(StockAdder, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
+	  _createClass(View, [{
+	    key: 'addStock',
+	    value: function addStock(e) {
 	      e.preventDefault();
-	      var refs = this.refs;
-	      var stock = refs.stock.value;
-	      stockList.push(stock);
-	      console.log(stockList);
-	      this.props.addStock(stock);
-	      refs.addStock.reset();
+	
+	      //store current stocks in a variable
+	      var stockUpdateStore = this.state.stocks;
+	
+	      //Push the next item to the stocks state temporary storage
+	      stockUpdateStore.push(this.refs.addInput.value);
+	
+	      //clear input element
+	      this.refs.addInput.value = '';
+	
+	      this.setState({
+	        stocks: stockUpdateStore
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'row' },
+	        null,
 	        React.createElement(
-	          'div',
-	          { className: 'column' },
+	          'form',
+	          { onSubmit: this.addStock.bind(this) },
+	          React.createElement('input', { type: 'text', placeHolder: 'Enter Stock Ticker Here', ref: 'addInput' }),
 	          React.createElement(
-	            'form',
-	            { ref: 'addStock', onSubmit: this.handleSubmit.bind(this) },
-	            React.createElement('input', { id: 'stock', type: 'text', ref: 'stock', placeholder: 'Enter a Stock Ticker to Add to your Portfolio' }),
-	            React.createElement(
-	              'button',
-	              { type: 'submit', className: 'button' },
-	              'Add Stock'
-	            )
+	            'button',
+	            null,
+	            'Add'
 	          )
+	        ),
+	        React.createElement(
+	          'ul',
+	          null,
+	          this.state.stocks.map(function (stock, i) {
+	            return React.createElement(
+	              'li',
+	              { key: i },
+	              React.createElement(UserStockData, { keyword: stock })
+	            );
+	          })
 	        )
 	      );
 	    }
 	  }]);
 	
-	  return StockAdder;
+	  return View;
 	}(React.Component);
 	
-	module.exports = Profile;
+	module.exports = View;
 
 /***/ },
 /* 293 */
