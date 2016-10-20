@@ -74,3 +74,10 @@ th{
   background-color:#00ff00;
   cursor:pointer;
 }
+
+ul{
+  list-style:none
+}
+h1{
+  text-align:center;
+}

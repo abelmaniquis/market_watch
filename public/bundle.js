@@ -51,9 +51,9 @@
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(291);
 	var Profile = __webpack_require__(292);
-	var Signup = __webpack_require__(294);
-	var Login = __webpack_require__(295);
-	var TestPage = __webpack_require__(296);
+	var Signup = __webpack_require__(295);
+	var Login = __webpack_require__(296);
+	var TestPage = __webpack_require__(297);
 	
 	var _require = __webpack_require__(196);
 	
@@ -62,7 +62,7 @@
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 	
-	var _require2 = __webpack_require__(299);
+	var _require2 = __webpack_require__(294);
 	
 	var stocks = _require2.stocks;
 	
@@ -21614,6 +21614,7 @@
 	});
 	
 	module.exports = connector(Landing);
+	//module.exports = Landing
 
 /***/ },
 /* 173 */
@@ -31110,8 +31111,6 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -31128,20 +31127,7 @@
 	var Data = __webpack_require__(173);
 	var UserStockData = __webpack_require__(293);
 	
-	var _require2 = __webpack_require__(261);
-	
-	var createStore = _require2.createStore;
-	var bindActionCreators = _require2.bindActionCreators;
-	
-	var _require3 = __webpack_require__(276);
-	
-	var Provider = _require3.Provider;
-	var connect = _require3.connect;
-	
-	var _require4 = __webpack_require__(34);
-	
-	var render = _require4.render;
-	
+	var list = __webpack_require__(294);
 	
 	var stockList = ['GOOG', 'NFLX', 'AMZN'];
 	
@@ -31157,63 +31143,48 @@
 	  _createClass(Profile, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log("HERE'S THE FULL LIST OF STOCKS:");
+	      console.log(list.stocks);
 	      return React.createElement(
 	        'div',
 	        null,
 	        React.createElement(
 	          'h1',
-	          null,
+	          { className: 'watchlist-title' },
 	          'My Watchlist'
 	        ),
 	        React.createElement('hr', null),
-	        React.createElement(AddStock, { addStock: this.props.addStock }),
+	        React.createElement(StockAdder, { addStock: this.props.addStock }),
 	        React.createElement('hr', null),
-	        React.createElement(MyStocks, { stocks: stockList })
+	        React.createElement(MyStocks, { stocks: this.props.stocks })
 	      );
 	    }
 	  }]);
 	
 	  return Profile;
 	}(React.Component);
-	// MyStocks stocks should be this.props.stocks
-	
-	/*
-	
-	SOMETHING LIKE THIS SHOULD BE RETURNED BY MyStocks
-	
-	{this.props.stocks.map((stock,index)=>{
-	            <li className="stocks_stock" key={index}>
-	              <UserStockData keyword={stock} key={index}/>
-	            </li>
-	          })}
-	*/
 	
 	var MyStocks = function (_React$Component2) {
 	  _inherits(MyStocks, _React$Component2);
 	
-	  function MyStocks() {
+	  function MyStocks(props) {
 	    _classCallCheck(this, MyStocks);
 	
-	    return _possibleConstructorReturn(this, (MyStocks.__proto__ || Object.getPrototypeOf(MyStocks)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (MyStocks.__proto__ || Object.getPrototypeOf(MyStocks)).call(this, props));
 	  }
 	
 	  _createClass(MyStocks, [{
 	    key: 'render',
 	    value: function render() {
-	      //  this.props.stocks = "GOOG";
-	      console.log(this.props);
 	
 	      return React.createElement(
 	        'ul',
 	        { className: 'myStocks' },
-	        this.props.stocks.map(function (stock, index) {
-	          console.log(stock, index);
-	          React.createElement(
-	            'li',
-	            null,
-	            React.createElement(UserStockData, { keyword: stock, key: index })
-	          );
-	        })
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(UserStockData, { keyword: 'GOOG', key: 1 })
+	        )
 	      );
 	    }
 	  }]);
@@ -31221,33 +31192,24 @@
 	  return MyStocks;
 	}(React.Component);
 	
-	/*
-	<UserStockData keyword={this.props.stocks[0]}/>
-	<UserStockData keyword={this.props.stocks[1]}/>
-	*/
+	var StockAdder = function (_React$Component3) {
+	  _inherits(StockAdder, _React$Component3);
 	
-	var AddStock = function (_React$Component3) {
-	  _inherits(AddStock, _React$Component3);
+	  function StockAdder() {
+	    _classCallCheck(this, StockAdder);
 	
-	  function AddStock() {
-	    _classCallCheck(this, AddStock);
-	
-	    return _possibleConstructorReturn(this, (AddStock.__proto__ || Object.getPrototypeOf(AddStock)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (StockAdder.__proto__ || Object.getPrototypeOf(StockAdder)).apply(this, arguments));
 	  }
 	
-	  _createClass(AddStock, [{
+	  _createClass(StockAdder, [{
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	
 	      var refs = this.refs;
-	      console.log("REFS");
-	      console.log(refs);
-	
-	      var name = refs.name.value;
-	      console.log(name);
-	
-	      this.props.addStock(name);
+	      var stock = refs.stock.value;
+	      stockList.push(stock);
+	      console.log(stockList);
+	      this.props.addStock(stock);
 	      refs.addStock.reset();
 	    }
 	  }, {
@@ -31262,12 +31224,7 @@
 	          React.createElement(
 	            'form',
 	            { ref: 'addStock', onSubmit: this.handleSubmit.bind(this) },
-	            React.createElement(
-	              'label',
-	              { 'for': 'name' },
-	              'Ticker'
-	            ),
-	            React.createElement('input', { id: 'name', type: 'text', ref: 'name', placeholder: 'Enter a Stock Ticker to Add to your Portfolio' }),
+	            React.createElement('input', { id: 'stock', type: 'text', ref: 'stock', placeholder: 'Enter a Stock Ticker to Add to your Portfolio' }),
 	            React.createElement(
 	              'button',
 	              { type: 'submit', className: 'button' },
@@ -31279,46 +31236,8 @@
 	    }
 	  }]);
 	
-	  return AddStock;
+	  return StockAdder;
 	}(React.Component);
-	
-	/*--REDUCERS--*/
-	
-	
-	function reducer() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-	  var action = arguments[1];
-	
-	  switch (action.type) {
-	    //return a new array with old state and added stock
-	    case 'ADD_STOCK':
-	      return [{
-	        stock: action.stock
-	      }].concat(_toConsumableArray(state));
-	    default:
-	      return state;
-	  }
-	};
-	/*--ACTIONS--*/
-	var actions = {
-	  addStock: function addStock(stock) {
-	    return {
-	      //String for reducer to pick up
-	      type: 'ADD_STOCK',
-	      stock: stock
-	    };
-	  }
-	};
-	/*--STORE--*/
-	var ProfileContainer = connect(function mapStateToProps(state) {
-	  return {
-	    stocks: state
-	  };
-	}, function mapDispatchToProps(actions, dispatch) {
-	  return bindActionCreators(actions, dispatch);
-	})(Profile);
-	
-	var Store = createStore(reducer, stockList);
 	
 	module.exports = Profile;
 
@@ -31467,408 +31386,6 @@
 
 /***/ },
 /* 294 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var reactDOM = __webpack_require__(34);
-	
-	var _require = __webpack_require__(196);
-	
-	var Router = _require.Router;
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
-	
-	
-	var Signup = function Signup() {
-	  return React.createElement(
-	    'div',
-	    { className: 'signupContainer' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Sign Up here'
-	    ),
-	    React.createElement(
-	      'form',
-	      { action: '/signup', method: 'post' },
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
-	        React.createElement(
-	          'label',
-	          null,
-	          'Username'
-	        ),
-	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
-	        React.createElement(
-	          'label',
-	          null,
-	          'Password'
-	        ),
-	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'button' },
-	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = Signup;
-
-/***/ },
-/* 295 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var reactDOM = __webpack_require__(34);
-	
-	var _require = __webpack_require__(196);
-	
-	var Router = _require.Router;
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
-	
-	
-	var Login = function Login() {
-	  return React.createElement(
-	    'div',
-	    { className: 'loginContainer' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Log In here'
-	    ),
-	    React.createElement(
-	      'form',
-	      { action: '/login', method: 'post' },
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
-	        React.createElement(
-	          'label',
-	          null,
-	          'Username'
-	        ),
-	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
-	        React.createElement(
-	          'label',
-	          null,
-	          'Password'
-	        ),
-	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'button' },
-	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = Login;
-
-/***/ },
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	var Redux = __webpack_require__(261);
-	var ReactDOM = __webpack_require__(34);
-	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(297);
-	var createStore = Redux.createStore;
-	var bindActionCreators = Redux.bindActionCreators;
-	var Provider = ReactRedux.Provider;
-	var connect = ReactRedux.connect;
-	var render = ReactDOM.render;
-	
-	// Dummy data for app
-	
-	var attendeeList = [];
-	
-	/* --- COMPONENTS --- */
-	
-	var Test = function (_React$Component) {
-	    _inherits(Test, _React$Component);
-	
-	    function Test() {
-	        _classCallCheck(this, Test);
-	
-	        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
-	    }
-	
-	    _createClass(Test, [{
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    'h1',
-	                    null,
-	                    'Test Elements'
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Test;
-	}(React.Component);
-	
-	module.exports = Test;
-
-/***/ },
-/* 297 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	//     uuid.js
-	//
-	//     Copyright (c) 2010-2012 Robert Kieffer
-	//     MIT License - http://opensource.org/licenses/mit-license.php
-	
-	// Unique ID creation requires a high quality random # generator.  We feature
-	// detect to determine the best RNG source, normalizing to a function that
-	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(298);
-	
-	// Maps for number <-> hex string conversion
-	var _byteToHex = [];
-	var _hexToByte = {};
-	for (var i = 0; i < 256; i++) {
-	  _byteToHex[i] = (i + 0x100).toString(16).substr(1);
-	  _hexToByte[_byteToHex[i]] = i;
-	}
-	
-	// **`parse()` - Parse a UUID into it's component bytes**
-	function parse(s, buf, offset) {
-	  var i = buf && offset || 0,
-	      ii = 0;
-	
-	  buf = buf || [];
-	  s.toLowerCase().replace(/[0-9a-f]{2}/g, function (oct) {
-	    if (ii < 16) {
-	      // Don't overflow!
-	      buf[i + ii++] = _hexToByte[oct];
-	    }
-	  });
-	
-	  // Zero out remaining bytes if string was short
-	  while (ii < 16) {
-	    buf[i + ii++] = 0;
-	  }
-	
-	  return buf;
-	}
-	
-	// **`unparse()` - Convert UUID byte array (ala parse()) into a string**
-	function unparse(buf, offset) {
-	  var i = offset || 0,
-	      bth = _byteToHex;
-	  return bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
-	}
-	
-	// **`v1()` - Generate time-based UUID**
-	//
-	// Inspired by https://github.com/LiosK/UUID.js
-	// and http://docs.python.org/library/uuid.html
-	
-	// random #'s we need to init node and clockseq
-	var _seedBytes = _rng();
-	
-	// Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-	var _nodeId = [_seedBytes[0] | 0x01, _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]];
-	
-	// Per 4.2.2, randomize (14 bit) clockseq
-	var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
-	
-	// Previous uuid creation time
-	var _lastMSecs = 0,
-	    _lastNSecs = 0;
-	
-	// See https://github.com/broofa/node-uuid for API details
-	function v1(options, buf, offset) {
-	  var i = buf && offset || 0;
-	  var b = buf || [];
-	
-	  options = options || {};
-	
-	  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
-	
-	  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
-	  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
-	  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
-	  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
-	  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
-	
-	  // Per 4.2.1.2, use count of uuid's generated during the current clock
-	  // cycle to simulate higher resolution clock
-	  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
-	
-	  // Time since last uuid creation (in msecs)
-	  var dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000;
-	
-	  // Per 4.2.1.2, Bump clockseq on clock regression
-	  if (dt < 0 && options.clockseq === undefined) {
-	    clockseq = clockseq + 1 & 0x3fff;
-	  }
-	
-	  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
-	  // time interval
-	  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
-	    nsecs = 0;
-	  }
-	
-	  // Per 4.2.1.2 Throw error if too many uuids are requested
-	  if (nsecs >= 10000) {
-	    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
-	  }
-	
-	  _lastMSecs = msecs;
-	  _lastNSecs = nsecs;
-	  _clockseq = clockseq;
-	
-	  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
-	  msecs += 12219292800000;
-	
-	  // `time_low`
-	  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
-	  b[i++] = tl >>> 24 & 0xff;
-	  b[i++] = tl >>> 16 & 0xff;
-	  b[i++] = tl >>> 8 & 0xff;
-	  b[i++] = tl & 0xff;
-	
-	  // `time_mid`
-	  var tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
-	  b[i++] = tmh >>> 8 & 0xff;
-	  b[i++] = tmh & 0xff;
-	
-	  // `time_high_and_version`
-	  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
-	  b[i++] = tmh >>> 16 & 0xff;
-	
-	  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
-	  b[i++] = clockseq >>> 8 | 0x80;
-	
-	  // `clock_seq_low`
-	  b[i++] = clockseq & 0xff;
-	
-	  // `node`
-	  var node = options.node || _nodeId;
-	  for (var n = 0; n < 6; n++) {
-	    b[i + n] = node[n];
-	  }
-	
-	  return buf ? buf : unparse(b);
-	}
-	
-	// **`v4()` - Generate random UUID**
-	
-	// See https://github.com/broofa/node-uuid for API details
-	function v4(options, buf, offset) {
-	  // Deprecated - 'format' argument, as supported in v1.2
-	  var i = buf && offset || 0;
-	
-	  if (typeof options == 'string') {
-	    buf = options == 'binary' ? new Array(16) : null;
-	    options = null;
-	  }
-	  options = options || {};
-	
-	  var rnds = options.random || (options.rng || _rng)();
-	
-	  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-	  rnds[6] = rnds[6] & 0x0f | 0x40;
-	  rnds[8] = rnds[8] & 0x3f | 0x80;
-	
-	  // Copy bytes to buffer, if provided
-	  if (buf) {
-	    for (var ii = 0; ii < 16; ii++) {
-	      buf[i + ii] = rnds[ii];
-	    }
-	  }
-	
-	  return buf || unparse(rnds);
-	}
-	
-	// Export public API
-	var uuid = v4;
-	uuid.v1 = v1;
-	uuid.v4 = v4;
-	uuid.parse = parse;
-	uuid.unparse = unparse;
-	
-	module.exports = uuid;
-
-/***/ },
-/* 298 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
-	
-	var rng;
-	
-	var crypto = global.crypto || global.msCrypto; // for IE 11
-	if (crypto && crypto.getRandomValues) {
-	  // WHATWG crypto-based RNG - http://wiki.whatwg.org/wiki/Crypto
-	  // Moderately fast, high quality
-	  var _rnds8 = new Uint8Array(16);
-	  rng = function whatwgRNG() {
-	    crypto.getRandomValues(_rnds8);
-	    return _rnds8;
-	  };
-	}
-	
-	if (!rng) {
-	  // Math.random()-based (RNG)
-	  //
-	  // If all else fails, use Math.random().  It's fast, but is of unspecified
-	  // quality.
-	  var _rnds = new Array(16);
-	  rng = function rng() {
-	    for (var i = 0, r; i < 16; i++) {
-	      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
-	      _rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
-	    }
-	
-	    return _rnds;
-	  };
-	}
-	
-	module.exports = rng;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 299 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -35085,6 +34602,408 @@
 			}
 		]
 	};
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Signup = function Signup() {
+	  return React.createElement(
+	    'div',
+	    { className: 'signupContainer' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Sign Up here'
+	    ),
+	    React.createElement(
+	      'form',
+	      { action: '/signup', method: 'post' },
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Username'
+	        ),
+	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Password'
+	        ),
+	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'button' },
+	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = Signup;
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
+	
+	var _require = __webpack_require__(196);
+	
+	var Router = _require.Router;
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	var hashHistory = _require.hashHistory;
+	
+	
+	var Login = function Login() {
+	  return React.createElement(
+	    'div',
+	    { className: 'loginContainer' },
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Log In here'
+	    ),
+	    React.createElement(
+	      'form',
+	      { action: '/login', method: 'post' },
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Username'
+	        ),
+	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'user-input' },
+	        React.createElement(
+	          'label',
+	          null,
+	          'Password'
+	        ),
+	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'button' },
+	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = Login;
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	var Redux = __webpack_require__(261);
+	var ReactDOM = __webpack_require__(34);
+	var ReactRedux = __webpack_require__(276);
+	var uuid = __webpack_require__(298);
+	var createStore = Redux.createStore;
+	var bindActionCreators = Redux.bindActionCreators;
+	var Provider = ReactRedux.Provider;
+	var connect = ReactRedux.connect;
+	var render = ReactDOM.render;
+	
+	// Dummy data for app
+	
+	var attendeeList = [];
+	
+	/* --- COMPONENTS --- */
+	
+	var Test = function (_React$Component) {
+	    _inherits(Test, _React$Component);
+	
+	    function Test() {
+	        _classCallCheck(this, Test);
+	
+	        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+	    }
+	
+	    _createClass(Test, [{
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'h1',
+	                    null,
+	                    'Test Elements'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Test;
+	}(React.Component);
+	
+	module.exports = Test;
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	//     uuid.js
+	//
+	//     Copyright (c) 2010-2012 Robert Kieffer
+	//     MIT License - http://opensource.org/licenses/mit-license.php
+	
+	// Unique ID creation requires a high quality random # generator.  We feature
+	// detect to determine the best RNG source, normalizing to a function that
+	// returns 128-bits of randomness, since that's what's usually required
+	var _rng = __webpack_require__(299);
+	
+	// Maps for number <-> hex string conversion
+	var _byteToHex = [];
+	var _hexToByte = {};
+	for (var i = 0; i < 256; i++) {
+	  _byteToHex[i] = (i + 0x100).toString(16).substr(1);
+	  _hexToByte[_byteToHex[i]] = i;
+	}
+	
+	// **`parse()` - Parse a UUID into it's component bytes**
+	function parse(s, buf, offset) {
+	  var i = buf && offset || 0,
+	      ii = 0;
+	
+	  buf = buf || [];
+	  s.toLowerCase().replace(/[0-9a-f]{2}/g, function (oct) {
+	    if (ii < 16) {
+	      // Don't overflow!
+	      buf[i + ii++] = _hexToByte[oct];
+	    }
+	  });
+	
+	  // Zero out remaining bytes if string was short
+	  while (ii < 16) {
+	    buf[i + ii++] = 0;
+	  }
+	
+	  return buf;
+	}
+	
+	// **`unparse()` - Convert UUID byte array (ala parse()) into a string**
+	function unparse(buf, offset) {
+	  var i = offset || 0,
+	      bth = _byteToHex;
+	  return bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + '-' + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
+	}
+	
+	// **`v1()` - Generate time-based UUID**
+	//
+	// Inspired by https://github.com/LiosK/UUID.js
+	// and http://docs.python.org/library/uuid.html
+	
+	// random #'s we need to init node and clockseq
+	var _seedBytes = _rng();
+	
+	// Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+	var _nodeId = [_seedBytes[0] | 0x01, _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]];
+	
+	// Per 4.2.2, randomize (14 bit) clockseq
+	var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
+	
+	// Previous uuid creation time
+	var _lastMSecs = 0,
+	    _lastNSecs = 0;
+	
+	// See https://github.com/broofa/node-uuid for API details
+	function v1(options, buf, offset) {
+	  var i = buf && offset || 0;
+	  var b = buf || [];
+	
+	  options = options || {};
+	
+	  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+	
+	  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+	  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+	  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+	  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+	  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+	
+	  // Per 4.2.1.2, use count of uuid's generated during the current clock
+	  // cycle to simulate higher resolution clock
+	  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+	
+	  // Time since last uuid creation (in msecs)
+	  var dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000;
+	
+	  // Per 4.2.1.2, Bump clockseq on clock regression
+	  if (dt < 0 && options.clockseq === undefined) {
+	    clockseq = clockseq + 1 & 0x3fff;
+	  }
+	
+	  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+	  // time interval
+	  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+	    nsecs = 0;
+	  }
+	
+	  // Per 4.2.1.2 Throw error if too many uuids are requested
+	  if (nsecs >= 10000) {
+	    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+	  }
+	
+	  _lastMSecs = msecs;
+	  _lastNSecs = nsecs;
+	  _clockseq = clockseq;
+	
+	  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+	  msecs += 12219292800000;
+	
+	  // `time_low`
+	  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+	  b[i++] = tl >>> 24 & 0xff;
+	  b[i++] = tl >>> 16 & 0xff;
+	  b[i++] = tl >>> 8 & 0xff;
+	  b[i++] = tl & 0xff;
+	
+	  // `time_mid`
+	  var tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+	  b[i++] = tmh >>> 8 & 0xff;
+	  b[i++] = tmh & 0xff;
+	
+	  // `time_high_and_version`
+	  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+	  b[i++] = tmh >>> 16 & 0xff;
+	
+	  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+	  b[i++] = clockseq >>> 8 | 0x80;
+	
+	  // `clock_seq_low`
+	  b[i++] = clockseq & 0xff;
+	
+	  // `node`
+	  var node = options.node || _nodeId;
+	  for (var n = 0; n < 6; n++) {
+	    b[i + n] = node[n];
+	  }
+	
+	  return buf ? buf : unparse(b);
+	}
+	
+	// **`v4()` - Generate random UUID**
+	
+	// See https://github.com/broofa/node-uuid for API details
+	function v4(options, buf, offset) {
+	  // Deprecated - 'format' argument, as supported in v1.2
+	  var i = buf && offset || 0;
+	
+	  if (typeof options == 'string') {
+	    buf = options == 'binary' ? new Array(16) : null;
+	    options = null;
+	  }
+	  options = options || {};
+	
+	  var rnds = options.random || (options.rng || _rng)();
+	
+	  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+	  rnds[6] = rnds[6] & 0x0f | 0x40;
+	  rnds[8] = rnds[8] & 0x3f | 0x80;
+	
+	  // Copy bytes to buffer, if provided
+	  if (buf) {
+	    for (var ii = 0; ii < 16; ii++) {
+	      buf[i + ii] = rnds[ii];
+	    }
+	  }
+	
+	  return buf || unparse(rnds);
+	}
+	
+	// Export public API
+	var uuid = v4;
+	uuid.v1 = v1;
+	uuid.v4 = v4;
+	uuid.parse = parse;
+	uuid.unparse = unparse;
+	
+	module.exports = uuid;
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+	
+	var rng;
+	
+	var crypto = global.crypto || global.msCrypto; // for IE 11
+	if (crypto && crypto.getRandomValues) {
+	  // WHATWG crypto-based RNG - http://wiki.whatwg.org/wiki/Crypto
+	  // Moderately fast, high quality
+	  var _rnds8 = new Uint8Array(16);
+	  rng = function whatwgRNG() {
+	    crypto.getRandomValues(_rnds8);
+	    return _rnds8;
+	  };
+	}
+	
+	if (!rng) {
+	  // Math.random()-based (RNG)
+	  //
+	  // If all else fails, use Math.random().  It's fast, but is of unspecified
+	  // quality.
+	  var _rnds = new Array(16);
+	  rng = function rng() {
+	    for (var i = 0, r; i < 16; i++) {
+	      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+	      _rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+	    }
+	
+	    return _rnds;
+	  };
+	}
+	
+	module.exports = rng;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }
 /******/ ]);
