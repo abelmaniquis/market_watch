@@ -40,22 +40,19 @@ module.exports = function(app) {
   app.get('/api/login/:username', function(req, res) {
     console.log(req.params);
   });
-  /*
-  app.post('/login',function(req,res){
-    res.send("this should redirect to the user's profile");
-  })
-  */
+  
   app.post('/login', passport.authenticate('local-login', {
     successRedirect: '/login/profile',
     failureRedirect: '/'
   }), function(req, res) {
     req.status(200);
   });
-
-  app.put('/addstock', function(req, res) {
-    console.log("adds a stock");
+  
+  app.put('/api/:username/:stock',isLoggedIn,function(req,res){
+    User.findByIdAndUpdate(req.user._id,{
+      'portfolio':req.body.portfolio.push(req.params.stock)
+    });
   })
-
 
   app.get("*", function(req, res) {
     res.sendFile(__dirname + '/../public/index.html');
@@ -63,6 +60,14 @@ module.exports = function(app) {
 
 }
 
+
+function isLoggedIn(req,res,next){
+  if(req.isAuthenticated())
+    return next();
+  else{
+    res.redirect('/failure');
+  }
+}
 
 /*
 
