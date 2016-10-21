@@ -74,7 +74,6 @@
 	
 	var Provider = _require4.Provider;
 	
-	console.log({ stocks: stocks });
 	
 	var App = React.createClass({
 	  displayName: 'App',

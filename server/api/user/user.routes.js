@@ -7,55 +7,59 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function(app){
+module.exports = function(app) {
 
-console.log('READING USER ROUTES')
+  console.log('READING USER ROUTES')
+  
+  var addStock = function(user,stock){
+    user.portfolio.push(stock);
+    user.save
+  }
+  
+  var someUser = new User;
+  
+  addStock(someUser,'GOOG');
+  
+  console.log(someUser);
+  
+  //USER SIGNUP
 
-var Users = mongoose.model('User',User);
+  app.get('/api/signup/:username', function(req, res) {
+    res.json(User);
+  });
 
-var addToWatchList = function(user,stock){
-  user.portfolio.push(stock);
-  console.log(user.schema);
-}
-
-//USER SIGNUP
-
-app.get('/api/signup/:username',function(req,res){
-  res.json(User);
-});
-
-app.post('/api/signup',passport.authenticate('local-signup',{
-    successRedirect : '/profile/abel', 
-    failureRedirect: '/' 
-  }),function(req,res){
+  app.post('/api/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile/abel',
+    failureRedirect: '/'
+  }), function(req, res) {
     console.log(req.body);
-});
+  });
 
-//LOGIN
+  //LOGIN
 
-app.get('/api/login/:username',function(req,res){
-  console.log(req.params);
-});
-/*
-app.post('/login',function(req,res){
-  res.send("this should redirect to the user's profile");
-})
-*/
-app.post('/login', passport.authenticate('local-login',{
-    successRedirect : '/login/profile',
-    failureRedirect : '/'
-  }), function(req, res){
-  req.status(200);
-});
+  app.get('/api/login/:username', function(req, res) {
+    console.log(req.params);
+  });
+  /*
+  app.post('/login',function(req,res){
+    res.send("this should redirect to the user's profile");
+  })
+  */
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/login/profile',
+    failureRedirect: '/'
+  }), function(req, res) {
+    req.status(200);
+  });
 
-app.put('/addstock',function(req,res){
-  console.log("adds a stock");
-})
+  app.put('/addstock', function(req, res) {
+    console.log("adds a stock");
+  })
 
 
-app.get("*", function(req, res) {
-  res.sendFile(__dirname + '/../public/index.html');
-});
+  app.get("*", function(req, res) {
+    res.sendFile(__dirname + '/../public/index.html');
+  });
 
 }
 

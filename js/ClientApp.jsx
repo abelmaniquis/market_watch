@@ -10,7 +10,6 @@ const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 const { stocks } = require('../public/tickers')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
-console.log({ stocks })
 
 const App = React.createClass({
   assignStock(nextState,replace){

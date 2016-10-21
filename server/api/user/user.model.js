@@ -22,6 +22,13 @@ var userSchema = mongoose.Schema({
   }
 })
 
+/*
+userSchema.statics.addToWatchList = function(stock){
+  this.portfolio.push(stock);
+  return this
+}*/
+
+
 //now you can say User.get on any point on the controller. 
 //.methods works on instances
 //.statics works on models
