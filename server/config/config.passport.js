@@ -10,7 +10,7 @@ testUser.save();
 
 console.log(testUser);
 
-module.exports = function(){
+module.exports = function(app){
   
   passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -38,7 +38,6 @@ module.exports = function(){
         }else if(user){
           console.log('This username already exists');
         }else{
-          
           User.create({
             'username':username,
             'password':password
@@ -46,6 +45,7 @@ module.exports = function(){
             if(err){
               done(err,null)
             }else{
+              console.log(createdUser.username + " has been added to the user database!");
               done(null,createdUser);
             }
           });

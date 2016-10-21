@@ -7,24 +7,11 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.connection.once('open', function() {
-    console.log('connection established!');
-});
-
 module.exports = function(app){
 
+console.log('READING USER ROUTES')
+
 var Users = mongoose.model('User',User);
-
-var create = function(user,callback){
-  User.create(user,function(err,result){
-    if(err){
-      console.error("No user");
-    }
-  }); 
-}
-
-var read = function(filter,callback){
-}
 
 var addToWatchList = function(user,stock){
   user.portfolio.push(stock);
@@ -61,7 +48,9 @@ app.post('/login', passport.authenticate('local-login',{
   req.status(200);
 });
 
-app.post('/')
+app.put('/addstock',function(req,res){
+  console.log("adds a stock");
+})
 
 
 app.get("*", function(req, res) {

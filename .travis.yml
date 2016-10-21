@@ -1,0 +1,17 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: G0xqLqqBsu4j1kfJ5vkhaJYKdPYjBHURDAKsN9vY9ZBtrPFvW+FQOWbBblhlZboTpld6c/Bl3p57WwuLNgKjWYjbKeCrJtzwXLc7I6JiDdYjqtLDzdlAG/e5OF4z5JQY4w80J3UBdlbvdYgzQg8NZgA8bP1IByENIarKtrsGnLlkds6o6tkmQOpO0V9YSNlzSZcmCWCEEajOUrQpihDBDHq1Ji7/x1s/XcmtX/vmIYbrQbBwjKGFDILhQ0N7nJ3MpeJ+7IRRmLyJQpCB+O/gOVedoGYTCis6lcWlHVXVI7bsUi+RUcuwCfcic43b8AULm3fvoVAwAYJh/Rtx7bcMFKWl4RjWwnkOwqIVmPcQNW4dUDTjgKATxQq1/AdUyjZ+OD4yVWmqAWg4vo+NzZOuInDUYWnXC1zhi2uwDUhpQMiog3KfOb0TAU109RLbFaFgZDVtj1PBgRau7KhVrxS7rfPoOvWZainTlmGdtd//qQF9L15kVdLqN6fxJ6jiMqEDzGKZ0ZxwQSszeXyCyfYicUWTVoO1lFoSbklhRTCq32kjkkFNsBKYzgYHuswIYCQdn6E8j/ENX4KQIHiWE4js984VuhWaUjDb31M3fiGN8uL2ZU4E91VJAGcn+Y50FxmKr5+fV/A1AICTdTWjwZ5JcRbq0jT6XOq13DPpuOgN1g4=
+  app: safe-oasis-55337
+  on:
+    repo: abelmaniquis/market_watch

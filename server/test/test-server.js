@@ -25,7 +25,7 @@ describe('Front Page', function(req,res) {
 });
 
 describe('USER',function(req,res){
-  
+
   it('should read User object', function(done){
     request(app)
     .get('/users')
