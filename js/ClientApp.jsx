@@ -11,6 +11,8 @@ const { stocks } = require('../public/tickers')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
 
+const Routes = require('./Routes');
+
 const App = React.createClass({
   assignStock(nextState,replace){
     const stockArray = stocks.filter((stock) => stock.ticker === nextState.params.id)
@@ -21,6 +23,7 @@ const App = React.createClass({
       return nextState
   },
   render() {
+    console.log(Routes);
     return (
     <Provider store={store}>
       <Router history={hashHistory}>
@@ -28,7 +31,7 @@ const App = React.createClass({
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/login/profile' component={Profile}/>
+        <Route path='/login/profile/:user' component={Profile}/>
         <Route path='/test' component={TestPage}/>
       </Router>
     </Provider>

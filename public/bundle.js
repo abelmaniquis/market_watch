@@ -75,6 +75,8 @@
 	var Provider = _require4.Provider;
 	
 	
+	var Routes = __webpack_require__(300);
+	
 	var App = React.createClass({
 	  displayName: 'App',
 	  assignStock: function assignStock(nextState, replace) {
@@ -88,6 +90,7 @@
 	    return nextState;
 	  },
 	  render: function render() {
+	    console.log(Routes);
 	    return React.createElement(
 	      Provider,
 	      { store: store },
@@ -98,7 +101,7 @@
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
-	        React.createElement(Route, { path: '/login/profile', component: Profile }),
+	        React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
 	        React.createElement(Route, { path: '/test', component: TestPage })
 	      )
 	    );
@@ -35094,6 +35097,42 @@
 	
 	module.exports = rng;
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var React = __webpack_require__(1);
+	
+	var _require = __webpack_require__(196);
+	
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	
+	var Landing = __webpack_require__(172);
+	var Details = __webpack_require__(291);
+	var Signup = __webpack_require__(295);
+	var Login = __webpack_require__(296);
+	var Profile = __webpack_require__(292);
+	var TestPage = __webpack_require__(297);
+	
+	var routes = React.createElement(
+	  Route,
+	  { path: '/', component: Landing },
+	  React.createElement(IndexRoute, { component: Landing }),
+	  React.createElement(Route, { path: 'details/:id', component: Details }),
+	  React.createElement(Route, { path: 'signup', component: Signup }),
+	  React.createElement(Route, { path: 'login', component: Login }),
+	  React.createElement(Route, { path: 'login/profile/:user', component: Profile }),
+	  React.createElement(Route, { path: '*', component: TestPage })
+	);
+	
+	exports.default = routes;
 
 /***/ }
 /******/ ]);

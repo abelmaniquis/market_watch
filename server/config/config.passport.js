@@ -2,13 +2,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../api/user/user.model.js');
 
-var testUser = new User
-
-testUser.username = 'test'
-testUser.password = '12345'
-
-console.log(testUser);
-
 module.exports = function(app) {
 
   passport.serializeUser(function(user, done) {

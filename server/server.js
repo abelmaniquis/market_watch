@@ -22,7 +22,6 @@ mongoose.connection.on('error', function(err) {
 app.use(express.static(__dirname + '/../public'));
 
 require('./middleware/appMiddleware.js')(app);
-require('./config/config.passport.js')(app);
 require('./api/user/user.routes.js')(app);
 
 //Handle errors
@@ -31,9 +30,6 @@ app.use(function(err, req, res, next) {
     res.status(500).send(err);
   }
 });
-
-
-
 
 exports.app = app;
 

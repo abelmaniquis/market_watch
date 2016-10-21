@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function(app) {
 
+module.exports = function(app) {
+  console.log(__dirname);
   console.log('READING USER ROUTES')
   
   var addStock = function(user,stock){
@@ -41,7 +42,7 @@ module.exports = function(app) {
     console.log(req.params);
   });
   
-  app.post('/login', passport.authenticate('local-login', {
+  app.post('/api/login', passport.authenticate('local-login', {
     successRedirect: '/login/profile',
     failureRedirect: '/'
   }), function(req, res) {

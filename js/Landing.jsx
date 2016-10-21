@@ -6,7 +6,6 @@ const {connector} = require('./Store')
 const { Link } = require('react-router')
 const Description = require('./Description')
 
-
 const Landing = React.createClass({
   propTypes: {
     route: object,
