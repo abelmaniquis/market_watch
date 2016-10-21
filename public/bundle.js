@@ -99,7 +99,7 @@
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
-	        React.createElement(Route, { path: '/profile/:id', component: Profile }),
+	        React.createElement(Route, { path: '/login/profile', component: Profile }),
 	        React.createElement(Route, { path: '/test', component: TestPage })
 	      )
 	    );
@@ -21614,7 +21614,6 @@
 	});
 	
 	module.exports = connector(Landing);
-	//module.exports = Landing
 
 /***/ },
 /* 173 */
@@ -31126,7 +31125,6 @@
 	
 	var Data = __webpack_require__(173);
 	var UserStockData = __webpack_require__(293);
-	
 	var list = __webpack_require__(294);
 	
 	var View = function (_React$Component) {
@@ -31144,6 +31142,14 @@
 	  }
 	
 	  _createClass(View, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      axios.get('https://jsonplaceholder.typicode.com/posts') //Where the API will be called
+	      .then(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'addStock',
 	    value: function addStock(e) {
 	      e.preventDefault();
@@ -31168,6 +31174,11 @@
 	        'div',
 	        null,
 	        React.createElement(
+	          'h1',
+	          null,
+	          'My Watchlist'
+	        ),
+	        React.createElement(
 	          'form',
 	          { onSubmit: this.addStock.bind(this) },
 	          React.createElement('input', { type: 'text', placeHolder: 'Enter Stock Ticker Here', ref: 'addInput' }),
@@ -31175,6 +31186,53 @@
 	            'button',
 	            null,
 	            'Add'
+	          )
+	        ),
+	        React.createElement(
+	          'table',
+	          { className: 'tableHead' },
+	          React.createElement(
+	            'tbody',
+	            null,
+	            React.createElement(
+	              'tr',
+	              null,
+	              React.createElement(
+	                'th',
+	                null,
+	                'Ticker'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Open'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Close'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Trend'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'On Date'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Value'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Quantity'
+	              )
+	            )
 	          )
 	        ),
 	        React.createElement(
@@ -34587,7 +34645,7 @@
 	    ),
 	    React.createElement(
 	      'form',
-	      { action: '/signup', method: 'post' },
+	      { action: '/api/signup', method: 'post' },
 	      React.createElement(
 	        'div',
 	        { className: 'user-input' },
@@ -34625,6 +34683,14 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	var React = __webpack_require__(1);
 	var reactDOM = __webpack_require__(34);
 	
@@ -34635,49 +34701,118 @@
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 	
+	var axios = __webpack_require__(174);
+	//This is where we do an axios call on our object
 	
-	var Login = function Login() {
-	  return React.createElement(
-	    'div',
-	    { className: 'loginContainer' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Log In here'
-	    ),
-	    React.createElement(
-	      'form',
-	      { action: '/login', method: 'post' },
-	      React.createElement(
+	var Login = function (_React$Component) {
+	  _inherits(Login, _React$Component);
+	
+	  function Login(props) {
+	    _classCallCheck(this, Login);
+	
+	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	  }
+	
+	  _createClass(Login, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      console.log("can you see this?");
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      axios.get('https://jsonplaceholder.typicode.com/posts') //Temporary placeholder. Will get user information from here
+	      .then(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
 	        'div',
-	        { className: 'user-input' },
+	        { className: 'signupContainer' },
 	        React.createElement(
-	          'label',
+	          'h1',
 	          null,
-	          'Username'
+	          'Log in here'
 	        ),
-	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
 	        React.createElement(
-	          'label',
-	          null,
-	          'Password'
-	        ),
-	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'button' },
-	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
-	      )
-	    )
-	  );
-	};
+	          'form',
+	          { action: '/#/login/abel', method: 'post' },
+	          React.createElement(
+	            'div',
+	            { className: 'user-input' },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Username'
+	            ),
+	            React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'user-input' },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Password'
+	            ),
+	            React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'button' },
+	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Login;
+	}(React.Component);
 	
 	module.exports = Login;
+	
+	/*
+	FOR REFERENCE:
+
+	import { browserHistory } from 'react-router';
+
+	class Login extends Component {
+	  state = { email: '', password: '' }
+	  handleSubmit(e) {
+	    e.preventDefault();
+	    const form = e.target
+	    const email = form.querySelector('[name="email"]').value;
+	    const password = form.querySelector('[name="password"]').value;
+
+	    axios
+	      .push(url, { email, password })
+	      .then(res => res.json)
+	      .then(() => browserHistory.push(`/profile/${res.body.email}`))
+
+	  }
+	  render() {
+	    return (
+	      <form onSubmit={e => this.handleSubmit(e)}>
+	        <input
+	          onChange={email => this.setState({ email })} 
+	          type="text" placeholder="Email here" name="email" />
+	        <input
+	          onChange={password => this.setState({ password })} 
+	          type="password" placeholder="Password here" name="password" />
+	      </form>
+	    );
+	  }
+	}
+
+	export default Login;
+
+
+	*/
 
 /***/ },
 /* 297 */

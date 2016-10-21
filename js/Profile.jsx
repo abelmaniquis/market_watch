@@ -3,9 +3,8 @@ const axios = require('axios');
 const { Link } = require('react-router');
 const Data = require('./Data');
 const UserStockData = require('./UserStockData');
-
 const list = require('../public/tickers.json');
-  
+
 class View extends React.Component{
   constructor(props){
     super(props)
@@ -13,6 +12,12 @@ class View extends React.Component{
     this.state = {
      stocks: []
     }
+  }
+  componentDidMount(){
+   axios.get('https://jsonplaceholder.typicode.com/posts') //Where the API will be called
+   .then((response)=>{
+     console.log(response);
+   })
   }
   
   addStock(e){
@@ -30,16 +35,32 @@ class View extends React.Component{
     this.setState({
       stocks: stockUpdateStore
     })
-    
   }
-  
   render(){
     return(
+
       <div>
+      
+        <h1>My Watchlist</h1>
+      
           <form onSubmit={ this.addStock.bind(this) }>
           <input type="text" placeHolder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
+        
+        <table className="tableHead">
+        <tbody>
+          <tr>
+          <th>Ticker</th>
+          <th>Open</th>
+          <th>Close</th>
+          <th>Trend</th>
+          <th>On Date</th>
+          <th>Value</th>
+          <th>Quantity</th>
+          </tr>
+        </tbody>
+    </table>
         
         <ul>
           {

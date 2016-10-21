@@ -34,10 +34,11 @@ var addToWatchList = function(user,stock){
 //USER SIGNUP
 
 app.get('/api/signup/:username',function(req,res){
+  res.json(User);
 });
 
-app.post('/signup',passport.authenticate('local-signup',{
-    successRedirect : '/profile', 
+app.post('/api/signup',passport.authenticate('local-signup',{
+    successRedirect : '/profile/abel', 
     failureRedirect: '/' 
   }),function(req,res){
     console.log(req.body);
@@ -54,12 +55,14 @@ app.post('/login',function(req,res){
 })
 */
 app.post('/login', passport.authenticate('local-login',{
-    successRedirect : '/profile',
+    successRedirect : '/login/profile',
     failureRedirect : '/'
   }), function(req, res){
   req.status(200);
 });
-  
+
+app.post('/')
+
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/../public/index.html');

@@ -29,29 +29,4 @@ var userSchema = mongoose.Schema({
 
 //When called on controller, call User.get
 
-var Users = mongoose.model('User',userSchema); 
-
-userSchema.statics.test = function(){
-  console.log("Testing, testing 1 2 3");
-}
-
-userSchema.statics.getOne = function(req,res,next){
-  var user = req.user
-  res.json(user);
-};
-
-userSchema.statics.put = function(req,res,next){
-  console.log("this is the put function")
-};
-
-userSchema.statics.post = function(req,res,next){
-  console.log("This is the post function")
-};
-
-userSchema.statics.delete = function(req,res,next){
-  console.log("This is the delete function")
-};
-
-var Users = mongoose.model('User',userSchema);
-
 module.exports = mongoose.model('User', userSchema);

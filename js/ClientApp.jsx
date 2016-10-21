@@ -29,7 +29,7 @@ const App = React.createClass({
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/profile/:id' component={Profile}/>
+        <Route path='/login/profile' component={Profile}/>
         <Route path='/test' component={TestPage}/>
       </Router>
     </Provider>

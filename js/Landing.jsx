@@ -49,4 +49,3 @@ const Landing = React.createClass({
 })
 
 module.exports = connector(Landing)
-//module.exports = Landing

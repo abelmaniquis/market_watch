@@ -6,7 +6,7 @@ const Signup = () =>{
   return(
     <div className='signupContainer'>
       <h1>Sign Up here</h1>
-      <form action = "/signup" method= "post">
+      <form action = "/api/signup" method= "post">
         <div className="user-input">
           <label>Username</label>
           <input type="text" name ="username" className="type-here"/>
