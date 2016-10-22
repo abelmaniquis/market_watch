@@ -21,6 +21,7 @@ mongoose.connection.on('error', function(err) {
 
 app.use(express.static(__dirname + '/../public'));
 
+
 require('./middleware/appMiddleware.js')(app);
 require('./api/user/user.routes.js')(app);
 
@@ -29,6 +30,10 @@ app.use(function(err, req, res, next) {
   if (err) {
     res.status(500).send(err);
   }
+});
+
+app.get("*", function(req, res) {
+  res.sendFile(__dirname + '/../public/index.html');
 });
 
 exports.app = app;

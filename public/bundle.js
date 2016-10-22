@@ -74,7 +74,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	
+	var NotFound = __webpack_require__(301);
 	var Routes = __webpack_require__(300);
 	
 	var App = React.createClass({
@@ -102,7 +102,8 @@
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
 	        React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
-	        React.createElement(Route, { path: '/test', component: TestPage })
+	        React.createElement(Route, { path: '/test', component: TestPage }),
+	        React.createElement(Route, { path: '*', component: NotFound })
 	      )
 	    );
 	  }
@@ -21578,7 +21579,7 @@
 	          { className: 'buttonContainer' },
 	          React.createElement(
 	            'form',
-	            { action: '/#/login/' },
+	            { action: '#/login' },
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton', type: 'submit' },
@@ -21587,7 +21588,7 @@
 	          ),
 	          React.createElement(
 	            'form',
-	            { action: '/#/signup' },
+	            { action: '#/signup' },
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton', type: 'submit' },
@@ -30990,6 +30991,9 @@
 	
 	//newyorktimes api key = dbe98497b30d4e558156fc8c7bfc301b
 	//should take in Data.state.ticker
+	
+	//news api key: 3009df8d586e40cf8ee9664e44571061
+	
 	var React = __webpack_require__(1);
 	var axios = __webpack_require__(174);
 	var Data = __webpack_require__(173);
@@ -31043,6 +31047,13 @@
 	        console.log('low: ' + _this2.state.priceLog[0][3]);
 	        console.log('close: ' + _this2.state.priceLog[0][4]);
 	        console.log('volume: ' + _this2.state.priceLog[0][5]);
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=3009df8d586e40cf8ee9664e44571061').then(function (response) {
+	        console.log(response);
 	      });
 	    }
 	  }, {
@@ -34742,7 +34753,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { action: '/#/login/abel', method: 'post' },
+	          { action: '/#/login/profile/abel', method: 'post' },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
@@ -35120,19 +35131,65 @@
 	var Login = __webpack_require__(296);
 	var Profile = __webpack_require__(292);
 	var TestPage = __webpack_require__(297);
+	var NotFound = __webpack_require__(301);
 	
 	var routes = React.createElement(
 	  Route,
 	  { path: '/', component: Landing },
 	  React.createElement(IndexRoute, { component: Landing }),
-	  React.createElement(Route, { path: 'details/:id', component: Details }),
-	  React.createElement(Route, { path: 'signup', component: Signup }),
-	  React.createElement(Route, { path: 'login', component: Login }),
-	  React.createElement(Route, { path: 'login/profile/:user', component: Profile }),
-	  React.createElement(Route, { path: '*', component: TestPage })
+	  React.createElement(Route, { path: '/details/:id', component: Details }),
+	  React.createElement(Route, { path: '/signup', component: Signup }),
+	  React.createElement(Route, { path: '/login', component: Login }),
+	  React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
+	  React.createElement(Route, { path: '*', component: NotFound })
 	);
 	
 	exports.default = routes;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	
+	var NotFound = function (_React$Component) {
+	  _inherits(NotFound, _React$Component);
+	
+	  function NotFound() {
+	    _classCallCheck(this, NotFound);
+	
+	    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
+	  }
+	
+	  _createClass(NotFound, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h1',
+	          null,
+	          'Not Found!'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NotFound;
+	}(React.Component);
+	
+	module.exports = NotFound;
 
 /***/ }
 /******/ ]);

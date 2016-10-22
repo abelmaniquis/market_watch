@@ -1,5 +1,8 @@
 //newyorktimes api key = dbe98497b30d4e558156fc8c7bfc301b
 //should take in Data.state.ticker
+
+//news api key: 3009df8d586e40cf8ee9664e44571061
+
 const React = require('react')
 const axios = require('axios')
 const Data = require('./Data')
@@ -40,6 +43,12 @@ class Details extends React.Component{
       console.log(`low: ${this.state.priceLog[0][3]}`);
       console.log(`close: ${this.state.priceLog[0][4]}`);
       console.log(`volume: ${this.state.priceLog[0][5]}`)
+    });
+  }
+  componentDidMount(){
+    axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=3009df8d586e40cf8ee9664e44571061')
+    .then((response)=>{
+      console.log(response);
     });
   }
   render(){

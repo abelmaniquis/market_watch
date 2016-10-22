@@ -29,7 +29,7 @@ class Login extends React.Component {
     return (
       <div className='signupContainer'>
       <h1>Log in here</h1>
-      <form action = "/#/login/abel" method= "post">
+      <form action = "/#/login/profile/abel" method= "post">
         <div className="user-input">
           <label>Username</label>
           <input type="text" name ="username" className="type-here"/>

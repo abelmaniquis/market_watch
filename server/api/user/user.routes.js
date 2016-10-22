@@ -9,18 +9,14 @@ var LocalStrategy = require('passport-local').Strategy;
 
 
 module.exports = function(app) {
-  console.log(__dirname);
-  console.log('READING USER ROUTES')
   
   var addStock = function(user,stock){
     user.portfolio.push(stock);
-    user.save
   }
   
   var someUser = new User;
-  
   addStock(someUser,'GOOG');
-  
+  addStock(someUser,'NFLX');
   console.log(someUser);
   
   //USER SIGNUP
@@ -30,7 +26,7 @@ module.exports = function(app) {
   });
 
   app.post('/api/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile/abel',
+    successRedirect: '/login/profile/:username',
     failureRedirect: '/'
   }), function(req, res) {
     console.log(req.body);
@@ -38,27 +34,23 @@ module.exports = function(app) {
 
   //LOGIN
 
-  app.get('/api/login/:username', function(req, res) {
+  app.get('/api/login/profile/:username', function(req, res) {
     console.log(req.params);
   });
   
-  app.post('/api/login', passport.authenticate('local-login', {
-    successRedirect: '/login/profile',
-    failureRedirect: '/'
+  app.post('/api/login/profile/:username', passport.authenticate('local-login', {
+    successRedirect: '/login/profile/:username',
+    failureRedirect: '/hellotest'
   }), function(req, res) {
     req.status(200);
   });
   
   app.put('/api/:username/:stock',isLoggedIn,function(req,res){
     User.findByIdAndUpdate(req.user._id,{
-      'portfolio':req.body.portfolio.push(req.params.stock)
+      portfolio:req.body.portfolio.push(req.params.stock)
     });
+    console.log(req.body.portfolio)
   })
-
-  app.get("*", function(req, res) {
-    res.sendFile(__dirname + '/../public/index.html');
-  });
-
 }
 
 

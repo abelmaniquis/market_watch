@@ -10,7 +10,7 @@ const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 const { stocks } = require('../public/tickers')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
-
+const NotFound = require('./NotFound')
 const Routes = require('./Routes');
 
 const App = React.createClass({
@@ -33,6 +33,7 @@ const App = React.createClass({
         <Route path='/login' component={Login}/>
         <Route path='/login/profile/:user' component={Profile}/>
         <Route path='/test' component={TestPage}/>
+        <Route path="*" component={NotFound}/>
       </Router>
     </Provider>
     )

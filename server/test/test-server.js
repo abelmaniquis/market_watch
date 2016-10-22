@@ -60,7 +60,7 @@ describe('USER',function(req,res){
     someGuy.cash = 1000000;
     request(app)
     
-    .post('/users')
+    .post('api/users')
     .send(someGuy)
     .set('Accept','application/json')
     .expect('Content-type','application/json; charset=utf-8')
