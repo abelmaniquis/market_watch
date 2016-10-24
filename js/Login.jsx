@@ -18,12 +18,13 @@ class Login extends React.Component {
 // Right now, front end and back end are not interacting properly.
 
 // https://jsonplaceholder.typicode.com/users
-
-//do an axios.post request
+//do an axios.post request on /api/users/login
   handleSubmit(e) {
     e.preventDefault();
-    axios.post('/api/users/signup')
+    axios.get('/api/userSchema')
     .then((response) =>{
+      response.data.a = "bcdefg"
+      response.data.test2 = "TEST AGAIN!";
       console.log(response);
     }).catch(function(err){
       console.log(err);

@@ -11,15 +11,18 @@ var LocalStrategy = require('passport-local').Strategy;
 //https://github.com/lynndylanhurley/redux-auth
 
 module.exports = function(app) {
-  
+  console.log()
   var addStock = function(user,stock){
     user.portfolio.push(stock);
   }
   
   //USER SIGNUP
-
-  app.get('/api/users/signup/', bodyParser, function(req, res) {
-    res.status(200).json(User);
+  app.get('/api/userSchema',function(req,res){
+    res.json({a:'test'});
+  })
+  
+  app.get('/api/users/signup/', function(req, res) {
+    res.json(new User);
   });
 
   app.post('/api/users/signup', passport.authenticate('local-signup', {
@@ -32,17 +35,17 @@ module.exports = function(app) {
   //LOGIN
 
   app.get('/api/users/login/', function(req, res) {
-    console.log(req.params);
+    res.status(200).json(User);
   });
   
   app.post('/api/users/login/', passport.authenticate('local-login', {
     successRedirect: '/login/profile/',
-    failureRedirect: '/login'
+    failureRedirect: '/'
   }), function(req, res) {
     req.status(200);
   });
   
-  app.put('/api/:username/:stock',isLoggedIn,function(req,res){
+  app.put('/api/users/:user',isLoggedIn,function(req,res){
     User.findByIdAndUpdate(req.user._id,{
       portfolio:req.body.portfolio.push(req.params.stock)
     });
