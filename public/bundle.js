@@ -74,8 +74,8 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(301);
-	var Routes = __webpack_require__(300);
+	var NotFound = __webpack_require__(300);
+	var Routes = __webpack_require__(301);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -31157,7 +31157,7 @@
 	  _createClass(View, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      axios.get('https://jsonplaceholder.typicode.com/posts') //Where the API will be called
+	      axios.get('/api/users/signup') //Where the API will be called
 	      .then(function (response) {
 	        console.log(response);
 	      });
@@ -31252,10 +31252,11 @@
 	          'ul',
 	          null,
 	          this.state.stocks.map(function (stock, i) {
+	            console.log(stock);
 	            return React.createElement(
 	              'li',
 	              { key: i },
-	              React.createElement(UserStockData, { keyword: stock })
+	              React.createElement(UserStockData, { keyword: stock, key: i })
 	            );
 	          })
 	        )
@@ -34636,6 +34637,14 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	var React = __webpack_require__(1);
 	var reactDOM = __webpack_require__(34);
 	
@@ -34646,47 +34655,61 @@
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 	
+	var Signup = function (_React$Component) {
+	  _inherits(Signup, _React$Component);
 	
-	var Signup = function Signup() {
-	  return React.createElement(
-	    'div',
-	    { className: 'signupContainer' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      'Sign Up here'
-	    ),
-	    React.createElement(
-	      'form',
-	      { action: '/api/signup', method: 'post' },
-	      React.createElement(
+	  function Signup(props, context) {
+	    _classCallCheck(this, Signup);
+	
+	    return _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).call(this, props, context));
+	  }
+	
+	  _createClass(Signup, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
 	        'div',
-	        { className: 'user-input' },
+	        { className: 'signupContainer' },
 	        React.createElement(
-	          'label',
+	          'h1',
 	          null,
-	          'Username'
+	          'Sign Up here'
 	        ),
-	        React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'user-input' },
 	        React.createElement(
-	          'label',
-	          null,
-	          'Password'
-	        ),
-	        React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'button' },
-	        React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
-	      )
-	    )
-	  );
-	};
+	          'form',
+	          { action: '/api/signup', method: 'post' },
+	          React.createElement(
+	            'div',
+	            { className: 'user-input' },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Username'
+	            ),
+	            React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'user-input' },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Password'
+	            ),
+	            React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'button' },
+	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Signup;
+	}(React.Component);
 	
 	module.exports = Signup;
 
@@ -35115,43 +35138,6 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var React = __webpack_require__(1);
-	
-	var _require = __webpack_require__(196);
-	
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	
-	var Landing = __webpack_require__(172);
-	var Details = __webpack_require__(291);
-	var Signup = __webpack_require__(295);
-	var Login = __webpack_require__(296);
-	var Profile = __webpack_require__(292);
-	var TestPage = __webpack_require__(297);
-	var NotFound = __webpack_require__(301);
-	
-	var routes = React.createElement(
-	  Route,
-	  { path: '/', component: Landing },
-	  React.createElement(IndexRoute, { component: Landing }),
-	  React.createElement(Route, { path: '/details/:id', component: Details }),
-	  React.createElement(Route, { path: '/signup', component: Signup }),
-	  React.createElement(Route, { path: '/login', component: Login }),
-	  React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
-	  React.createElement(Route, { path: '*', component: NotFound })
-	);
-	
-	exports.default = routes;
-
-/***/ },
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35190,6 +35176,43 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var React = __webpack_require__(1);
+	
+	var _require = __webpack_require__(196);
+	
+	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
+	
+	var Landing = __webpack_require__(172);
+	var Details = __webpack_require__(291);
+	var Signup = __webpack_require__(295);
+	var Login = __webpack_require__(296);
+	var Profile = __webpack_require__(292);
+	var TestPage = __webpack_require__(297);
+	var NotFound = __webpack_require__(300);
+	
+	var routes = React.createElement(
+	  Route,
+	  { path: '/', component: Landing },
+	  React.createElement(IndexRoute, { component: Landing }),
+	  React.createElement(Route, { path: '/details/:id', component: Details }),
+	  React.createElement(Route, { path: '/signup', component: Signup }),
+	  React.createElement(Route, { path: '/login', component: Login }),
+	  React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
+	  React.createElement(Route, { path: '*', component: NotFound })
+	);
+	
+	exports.default = routes;
 
 /***/ }
 /******/ ]);

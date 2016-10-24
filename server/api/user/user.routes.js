@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+//AUTH WITH REACT: http://www.tech-dojo.org/#!/articles/5697fd5ddb99acd646dea1aa
+//https://github.com/lynndylanhurley/redux-auth
 
 module.exports = function(app) {
   
@@ -21,26 +23,26 @@ module.exports = function(app) {
   
   //USER SIGNUP
 
-  app.get('/api/signup/:username', function(req, res) {
-    res.json(User);
+  app.get('/api/users/signup/', bodyParser, function(req, res) {
+    res.status(200).json(User);
   });
 
-  app.post('/api/signup', passport.authenticate('local-signup', {
+  app.post('/api/users/signup', passport.authenticate('local-signup', {
     successRedirect: '/login/profile/:username',
     failureRedirect: '/'
   }), function(req, res) {
-    console.log(req.body);
+    req.status(200)
   });
 
   //LOGIN
 
-  app.get('/api/login/profile/:username', function(req, res) {
+  app.get('/api/users/login/', function(req, res) {
     console.log(req.params);
   });
   
-  app.post('/api/login/profile/:username', passport.authenticate('local-login', {
+  app.post('/api/users/login/',bodyParser, passport.authenticate('local-login', {
     successRedirect: '/login/profile/:username',
-    failureRedirect: '/hellotest'
+    failureRedirect: '/login'
   }), function(req, res) {
     req.status(200);
   });
@@ -58,7 +60,7 @@ function isLoggedIn(req,res,next){
   if(req.isAuthenticated())
     return next();
   else{
-    res.redirect('/failure');
+    res.redirect('/');
   }
 }
 

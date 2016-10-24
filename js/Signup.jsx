@@ -2,7 +2,13 @@ const React = require('react');
 const reactDOM = require('react-dom')
 const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 
-const Signup = () =>{
+class Signup extends React.Component{
+ constructor(props,context){
+   super(props,context)
+ }
+ 
+ 
+ render(){
   return(
     <div className='signupContainer'>
       <h1>Sign Up here</h1>
@@ -24,6 +30,7 @@ const Signup = () =>{
       </form>
     </div>
   )
+  }
 }
 
 module.exports = Signup;

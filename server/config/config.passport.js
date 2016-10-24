@@ -34,7 +34,8 @@ module.exports = function(app) {
           else {
             User.create({
               'username': username,
-              'password': password
+              'password': password,
+              'cash':1000000
             }, function(err, createdUser) {
               if (err) {
                 done(err, null)

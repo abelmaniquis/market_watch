@@ -14,7 +14,7 @@ class View extends React.Component{
     }
   }
   componentDidMount(){
-   axios.get('https://jsonplaceholder.typicode.com/posts') //Where the API will be called
+   axios.get('/api/users/signup') //Where the API will be called
    .then((response)=>{
      console.log(response);
    })
@@ -65,9 +65,10 @@ class View extends React.Component{
         <ul>
           {
             this.state.stocks.map((stock,i)=>{
+            console.log(stock);
               return(
                 <li key={i}>
-                <UserStockData keyword = {stock}/>
+                <UserStockData keyword = {stock} key={i}/>
                 </li>
               )
             })

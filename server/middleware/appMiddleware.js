@@ -7,7 +7,6 @@ var passport = require('passport');
 
 module.exports = function(app) {
     app.use(morgan('dev'));
-
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: false,
@@ -20,7 +19,6 @@ module.exports = function(app) {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
-
     require('../config/config.passport.js')(app);
 
 };

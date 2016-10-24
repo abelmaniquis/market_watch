@@ -28,8 +28,6 @@ exports.params = function(req,res,next,id){
   })
 };
 
-
-
 exports.get = function(req,res,next){
   User.create
 };
