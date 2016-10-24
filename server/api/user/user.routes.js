@@ -16,11 +16,6 @@ module.exports = function(app) {
     user.portfolio.push(stock);
   }
   
-  var someUser = new User;
-  addStock(someUser,'GOOG');
-  addStock(someUser,'NFLX');
-  console.log(someUser);
-  
   //USER SIGNUP
 
   app.get('/api/users/signup/', bodyParser, function(req, res) {
@@ -28,7 +23,7 @@ module.exports = function(app) {
   });
 
   app.post('/api/users/signup', passport.authenticate('local-signup', {
-    successRedirect: '/login/profile/:username',
+    successRedirect: '/login/profile/',
     failureRedirect: '/'
   }), function(req, res) {
     req.status(200)
@@ -40,8 +35,8 @@ module.exports = function(app) {
     console.log(req.params);
   });
   
-  app.post('/api/users/login/',bodyParser, passport.authenticate('local-login', {
-    successRedirect: '/login/profile/:username',
+  app.post('/api/users/login/', passport.authenticate('local-login', {
+    successRedirect: '/login/profile/',
     failureRedirect: '/login'
   }), function(req, res) {
     req.status(200);

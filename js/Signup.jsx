@@ -7,12 +7,11 @@ class Signup extends React.Component{
    super(props,context)
  }
  
- 
  render(){
   return(
     <div className='signupContainer'>
       <h1>Sign Up here</h1>
-      <form action = "/api/signup" method= "post">
+      <form action = "/api/users/signup" method= "post">
         <div className="user-input">
           <label>Username</label>
           <input type="text" name ="username" className="type-here"/>

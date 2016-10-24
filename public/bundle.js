@@ -34677,7 +34677,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { action: '/api/signup', method: 'post' },
+	          { action: '/api/users/signup', method: 'post' },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
@@ -34748,19 +34748,23 @@
 	
 	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 	  }
+	  //Make sure that this is correct;
+	  // Most essential thing is figuring out if we are sending anything
+	  // Right now, front end and back end are not interacting properly.
+	
+	  // https://jsonplaceholder.typicode.com/users
+	
+	  //do an axios.post request
+	
 	
 	  _createClass(Login, [{
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      console.log("can you see this?");
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      axios.get('https://jsonplaceholder.typicode.com/posts') //Temporary placeholder. Will get user information from here
-	      .then(function (response) {
+	      axios.post('/api/users/signup').then(function (response) {
 	        console.log(response);
+	      }).catch(function (err) {
+	        console.log(err);
 	      });
 	    }
 	  }, {
@@ -34776,7 +34780,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { action: '/#/login/profile/abel', method: 'post' },
+	          { onSubmit: this.handleSubmit },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
@@ -34811,44 +34815,6 @@
 	}(React.Component);
 	
 	module.exports = Login;
-	
-	/*
-	FOR REFERENCE:
-
-	import { browserHistory } from 'react-router';
-
-	class Login extends Component {
-	  state = { email: '', password: '' }
-	  handleSubmit(e) {
-	    e.preventDefault();
-	    const form = e.target
-	    const email = form.querySelector('[name="email"]').value;
-	    const password = form.querySelector('[name="password"]').value;
-
-	    axios
-	      .push(url, { email, password })
-	      .then(res => res.json)
-	      .then(() => browserHistory.push(`/profile/${res.body.email}`))
-
-	  }
-	  render() {
-	    return (
-	      <form onSubmit={e => this.handleSubmit(e)}>
-	        <input
-	          onChange={email => this.setState({ email })} 
-	          type="text" placeholder="Email here" name="email" />
-	        <input
-	          onChange={password => this.setState({ password })} 
-	          type="password" placeholder="Password here" name="password" />
-	      </form>
-	    );
-	  }
-	}
-
-	export default Login;
-
-
-	*/
 
 /***/ },
 /* 297 */
