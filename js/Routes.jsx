@@ -14,7 +14,7 @@ const routes = (
   <Route path="/details/:id" component={Details}/>
   <Route path='/signup' component={Signup}/>
   <Route path='/login' component={Login}/>
-  <Route path='/login/profile/:user' component={Profile}/>
+  <Route path='/login/profile/' component={Profile}/>
   <Route path="*" component={NotFound}/>
 </Route>
 )

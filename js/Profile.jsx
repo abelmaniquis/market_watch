@@ -8,15 +8,17 @@ const list = require('../public/tickers.json');
 class View extends React.Component{
   constructor(props){
     super(props)
-    
+  
     this.state = {
      stocks: []
     }
   }
   componentDidMount(){
-   axios.get('/api/users/signup') //Where the API will be called
+   axios.get('/api/profile/userInfo') //Where the API will be called
    .then((response)=>{
-     console.log(response);
+     this.state.stocks = response.data.portfolio;
+     console.log(response.data.portfolio);
+     console.log(this.state.stocks);
    })
   }
   
@@ -27,7 +29,9 @@ class View extends React.Component{
     const stockUpdateStore = this.state.stocks
     
     //Push the next item to the stocks state temporary storage
-    stockUpdateStore.push(this.refs.addInput.value)
+    this.state.stocks.push(this.refs.addInput.value);
+    stockUpdateStore.push(this.refs.addInput.value);
+    
     
     //clear input element
     this.refs.addInput.value = '';

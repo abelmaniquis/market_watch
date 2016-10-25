@@ -7,23 +7,21 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-//AUTH WITH REACT: http://www.tech-dojo.org/#!/articles/5697fd5ddb99acd646dea1aa
-//https://github.com/lynndylanhurley/redux-auth
-
 module.exports = function(app) {
-  console.log()
-  var addStock = function(user,stock){
-    user.portfolio.push(stock);
-  }
   
   //USER SIGNUP
-  app.get('/api/userSchema',function(req,res){
+  app.get('/api/test',function(req,res){
     res.json({a:'test'});
   })
   
-  app.get('/api/users/signup/', function(req, res) {
+  app.get('/api/profile/userInfo', function(req, res) {
     res.json(new User);
   });
+  
+  app.post('/api/profile/userInfo',bodyParser,function(req,res){
+    new User({username:req.body.username,password:req.body.password});
+  });
+  
 
   app.post('/api/users/signup', passport.authenticate('local-signup', {
     successRedirect: '/login/profile/',

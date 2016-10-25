@@ -1,5 +1,3 @@
-//http://jsfiddle.net/faria/3nodz94g/
-
 const React = require('react')
 const axios = require('axios')
 const { Link } = require('react-router')

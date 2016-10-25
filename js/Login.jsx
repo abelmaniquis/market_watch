@@ -21,11 +21,11 @@ class Login extends React.Component {
 //do an axios.post request on /api/users/login
   handleSubmit(e) {
     e.preventDefault();
-    axios.get('/api/userSchema')
+    axios.post('/api/profile/userInfo',
+    {username:'someguy',
+    password:'12345'})
     .then((response) =>{
-      response.data.a = "bcdefg"
-      response.data.test2 = "TEST AGAIN!";
-      console.log(response);
+      console.log(response)
     }).catch(function(err){
       console.log(err);
     })

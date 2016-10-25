@@ -90,7 +90,6 @@
 	    return nextState;
 	  },
 	  render: function render() {
-	    console.log(Routes);
 	    return React.createElement(
 	      Provider,
 	      { store: store },
@@ -101,7 +100,7 @@
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
-	        React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
+	        React.createElement(Route, { path: '/login/profile', component: Profile }),
 	        React.createElement(Route, { path: '/test', component: TestPage }),
 	        React.createElement(Route, { path: '*', component: NotFound })
 	      )
@@ -21632,8 +21631,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//http://jsfiddle.net/faria/3nodz94g/
-	
 	var React = __webpack_require__(1);
 	var axios = __webpack_require__(174);
 	
@@ -31157,9 +31154,13 @@
 	  _createClass(View, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      axios.get('/api/users/signup') //Where the API will be called
+	      var _this2 = this;
+	
+	      axios.get('/api/profile/userInfo') //Where the API will be called
 	      .then(function (response) {
-	        console.log(response);
+	        _this2.state.stocks = response.data.portfolio;
+	        console.log(response.data.portfolio);
+	        console.log(_this2.state.stocks);
 	      });
 	    }
 	  }, {
@@ -31171,6 +31172,7 @@
 	      var stockUpdateStore = this.state.stocks;
 	
 	      //Push the next item to the stocks state temporary storage
+	      this.state.stocks.push(this.refs.addInput.value);
 	      stockUpdateStore.push(this.refs.addInput.value);
 	
 	      //clear input element
@@ -34760,9 +34762,8 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      axios.get('/api/userSchema').then(function (response) {
-	        response.data.a = "bcdefg";
-	        response.data.test2 = "TEST AGAIN!";
+	      axios.post('/api/profile/userInfo', { username: 'someguy',
+	        password: '12345' }).then(function (response) {
 	        console.log(response);
 	      }).catch(function (err) {
 	        console.log(err);
@@ -35175,7 +35176,7 @@
 	  React.createElement(Route, { path: '/details/:id', component: Details }),
 	  React.createElement(Route, { path: '/signup', component: Signup }),
 	  React.createElement(Route, { path: '/login', component: Login }),
-	  React.createElement(Route, { path: '/login/profile/:user', component: Profile }),
+	  React.createElement(Route, { path: '/login/profile/', component: Profile }),
 	  React.createElement(Route, { path: '*', component: NotFound })
 	);
 	
