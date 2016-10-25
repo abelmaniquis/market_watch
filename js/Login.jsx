@@ -7,11 +7,19 @@ const {
   hashHistory
 } = require('react-router')
 const axios = require('axios');
-//This is where we do an axios call on our object
+//https://facebook.github.io/react/docs/forms.html
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {username: "", password:""};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
+  handleChange(e){
+   this.setState({username:this.target.username,password:this.target.password})
+   console.log(this.state);
   }
 //Make sure that this is correct;
 // Most essential thing is figuring out if we are sending anything
@@ -21,11 +29,14 @@ class Login extends React.Component {
 //do an axios.post request on /api/users/login
   handleSubmit(e) {
     e.preventDefault();
-    axios.post('/api/profile/userInfo',
-    {username:'someguy',
-    password:'123456789'})
+    console.log(this.state.value )
+    axios.post('/api/users/login/',{
+      username:'aaaaa',
+      password:'12345'
+    })
     .then((response) =>{
-      console.log(response)
+     console.log("SHOULD LOG IN USER")
+     console.log(response)
     }).catch(function(err){
       console.log(err);
     })
@@ -34,7 +45,6 @@ class Login extends React.Component {
     return (
       <div className='signupContainer'>
       <h1>Log in here</h1>
-      
       <form onSubmit={this.handleSubmit}>
         <div className="user-input">
           <label>Username</label>
@@ -49,7 +59,6 @@ class Login extends React.Component {
        <div className="button">
            <input className = "button-type" type="submit" value="Submit"/>
        </div>
-        
       
       </form>
     </div>

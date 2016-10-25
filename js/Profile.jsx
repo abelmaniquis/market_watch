@@ -4,7 +4,10 @@ const { Link } = require('react-router');
 const Data = require('./Data');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
+/*
+get user info from back end
 
+*/
 class View extends React.Component{
   constructor(props){
     super(props)
@@ -16,6 +19,9 @@ class View extends React.Component{
   componentDidMount(){
    axios.get('/api/profile/userInfo') //Where the API will be called
    .then((response)=>{
+     /*
+     Take stocks saved in user object and push them into the this.state.stocks
+     */
      this.state.stocks = response.data.portfolio;
      console.log(response.data.portfolio);
      console.log(this.state.stocks);

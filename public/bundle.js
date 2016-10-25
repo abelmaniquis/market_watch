@@ -31136,6 +31136,10 @@
 	var Data = __webpack_require__(173);
 	var UserStockData = __webpack_require__(293);
 	var list = __webpack_require__(294);
+	/*
+	get user info from back end
+	
+	*/
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -31158,6 +31162,9 @@
 	
 	      axios.get('/api/profile/userInfo') //Where the API will be called
 	      .then(function (response) {
+	        /*
+	        Take stocks saved in user object and push them into the this.state.stocks
+	        */
 	        _this2.state.stocks = response.data.portfolio;
 	        console.log(response.data.portfolio);
 	        console.log(_this2.state.stocks);
@@ -34657,6 +34664,8 @@
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 	
+	var axios = __webpack_require__(174);
+	
 	var Signup = function (_React$Component) {
 	  _inherits(Signup, _React$Component);
 	
@@ -34667,6 +34676,12 @@
 	  }
 	
 	  _createClass(Signup, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      axios.post('/api/profile/userInfo');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -34740,7 +34755,7 @@
 	var hashHistory = _require.hashHistory;
 	
 	var axios = __webpack_require__(174);
-	//This is where we do an axios call on our object
+	//https://facebook.github.io/react/docs/forms.html
 	
 	var Login = function (_React$Component) {
 	  _inherits(Login, _React$Component);
@@ -34748,22 +34763,37 @@
 	  function Login(props) {
 	    _classCallCheck(this, Login);
 	
-	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	
+	    _this.state = { username: "", password: "" };
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
 	  }
-	  //Make sure that this is correct;
-	  // Most essential thing is figuring out if we are sending anything
-	  // Right now, front end and back end are not interacting properly.
-	
-	  // https://jsonplaceholder.typicode.com/users
-	  //do an axios.post request on /api/users/login
-	
 	
 	  _createClass(Login, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({ username: this.target.username, password: this.target.password });
+	      console.log(this.state);
+	    }
+	    //Make sure that this is correct;
+	    // Most essential thing is figuring out if we are sending anything
+	    // Right now, front end and back end are not interacting properly.
+	
+	    // https://jsonplaceholder.typicode.com/users
+	    //do an axios.post request on /api/users/login
+	
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      axios.post('/api/profile/userInfo', { username: 'someguy',
-	        password: '123456789' }).then(function (response) {
+	      console.log(this.state.value);
+	      axios.post('/api/users/login/', {
+	        username: 'aaaaa',
+	        password: '12345'
+	      }).then(function (response) {
+	        console.log("SHOULD LOG IN USER");
 	        console.log(response);
 	      }).catch(function (err) {
 	        console.log(err);

@@ -21,7 +21,6 @@ mongoose.connection.on('error', function(err) {
 
 app.use(express.static(__dirname + '/../public'));
 
-
 require('./middleware/appMiddleware.js')(app);
 require('./api/user/user.routes.js')(app);
 

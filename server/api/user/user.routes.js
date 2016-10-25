@@ -95,7 +95,6 @@ module.exports = function(app) {
   })
 }
 
-
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated())
     return next();
@@ -121,6 +120,4 @@ creating a user:
   addToWatchList(aUser,req.params.stock);
   aUser.cash -= aUser.portfolio[0].val*aUser.portfolio[0].quant;
   res.json(aUser);
-
-
 */
