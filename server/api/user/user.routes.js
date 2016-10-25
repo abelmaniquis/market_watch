@@ -7,19 +7,63 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+
+//  https://pixelhandler.com/posts/develop-a-restful-api-using-nodejs-with-express-and-mongoose
 module.exports = function(app) {
-  
+  var UserModel = mongoose.model('User',User)
   //USER SIGNUP
   app.get('/api/test',function(req,res){
     res.json({a:'test'});
   })
   
-  app.get('/api/profile/userInfo', function(req, res) {
-    res.json(new User);
+  app.get('/api/allUsers',bodyParser,function(req,res){
+    return UserModel.find(function(err,users){
+      if(!err){
+        return res.send(users)
+      }else{
+        return console.log(err);
+      }
+    });
   });
   
-  app.post('/api/profile/userInfo',bodyParser,function(req,res){
-    new User({username:req.body.username,password:req.body.password});
+  
+  app.post('/api/profile/userInfo',function(req,res){
+    console.log(req.body);
+    var user = new UserModel({
+      username:req.body.username,
+      password:req.body.password,
+      cash: 1000000
+    });
+    user.save(function(err){
+      if(!err){
+        console.log("User created")
+      }else{
+        console.log(err)
+      }
+    });
+    console.log(user);
+  });
+  
+  app.get('/api/profile/userInfo/:id',function(req,res){
+    return UserModel.findById(req.params.id,function(err,product){
+      if(!err){
+        return res.send(product);
+      }else{
+        console.log(err)
+      }
+    });
+  });
+  
+  app.put('/api/profile/userInfo/:id',function(req,res){
+    UserModel.findById(req.params.id,function(user){
+      user.title = req.body.title;
+      user.username = req.body.username;
+      user.password = req.body.password;
+      user.cash = req.body.cash;
+      user.portfolio = req.body.portfolio;
+      
+      });
+      
   });
   
 

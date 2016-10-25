@@ -34763,7 +34763,7 @@
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
 	      axios.post('/api/profile/userInfo', { username: 'someguy',
-	        password: '12345' }).then(function (response) {
+	        password: '123456789' }).then(function (response) {
 	        console.log(response);
 	      }).catch(function (err) {
 	        console.log(err);

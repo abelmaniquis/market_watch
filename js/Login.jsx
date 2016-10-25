@@ -23,7 +23,7 @@ class Login extends React.Component {
     e.preventDefault();
     axios.post('/api/profile/userInfo',
     {username:'someguy',
-    password:'12345'})
+    password:'123456789'})
     .then((response) =>{
       console.log(response)
     }).catch(function(err){
