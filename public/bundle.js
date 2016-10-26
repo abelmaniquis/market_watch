@@ -34765,38 +34765,28 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 	
-	    _this.state = { username: "", password: "" };
-	    _this.handleChange = _this.handleChange.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    _this.state = {
+	      name: "",
+	      password: "",
+	      isLoggedIn: false,
+	      error: null
+	    };
+	    //this.formSubmit = this.formSubmit.bind(this);
 	    return _this;
 	  }
 	
 	  _createClass(Login, [{
-	    key: 'handleChange',
-	    value: function handleChange(e) {
-	      this.setState({ username: this.target.username, password: this.target.password });
-	      console.log(this.state);
-	    }
-	    //Make sure that this is correct;
-	    // Most essential thing is figuring out if we are sending anything
-	    // Right now, front end and back end are not interacting properly.
-	
-	    // https://jsonplaceholder.typicode.com/users
-	    //do an axios.post request on /api/users/login
-	
+	    key: 'validateEmail',
+	    value: function validateEmail() {}
+	  }, {
+	    key: 'validatePassword',
+	    value: function validatePassword() {}
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      console.log(this.state.value);
-	      axios.post('/api/users/login/', {
-	        username: 'aaaaa',
-	        password: '12345'
-	      }).then(function (response) {
-	        console.log("SHOULD LOG IN USER");
+	      axios.post('/api/users/login').then(function (response) {
 	        console.log(response);
-	      }).catch(function (err) {
-	        console.log(err);
 	      });
 	    }
 	  }, {

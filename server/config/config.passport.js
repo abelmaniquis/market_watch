@@ -42,7 +42,7 @@ module.exports = function(app) {
               }
               else {
                 console.log(createdUser.username + " has been added to the user database!");
-                done(null, createdUser);
+                return done(null, createdUser);
               }
             });
           }

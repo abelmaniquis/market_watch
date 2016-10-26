@@ -27,7 +27,6 @@ class View extends React.Component{
      console.log(this.state.stocks);
    })
   }
-  
   addStock(e){
     e.preventDefault();
     

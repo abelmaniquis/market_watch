@@ -1,5 +1,4 @@
-/*https://frontendmasters.com/courses/api-design-nodejs/#v=m0scicn6xn&skip=1
-*/
+
 var User = require('./user.model.js');
 var _ = require('lodash');
 
