@@ -7,6 +7,11 @@
 
 //following this example: https://github.com/ReactTraining/react-router/blob/master/examples/auth-flow/auth.js
 
+//    https://www.youtube.com/watch?v=5oiXG9f6GO0&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY
+
+//https://www.youtube.com/watch?v=yoJuOs-niIc&index=2&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY
+
+
 let axios = require('axios');
 
 module.exports = {
