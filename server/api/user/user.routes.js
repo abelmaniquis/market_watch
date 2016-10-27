@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-
-//  https://pixelhandler.com/posts/develop-a-restful-api-using-nodejs-with-express-and-mongoose
 module.exports = function(app) {
   var UserModel = mongoose.model('User',User)
   //USER SIGNUP
@@ -86,12 +84,13 @@ module.exports = function(app) {
     req.status(200);
   });
   
-  app.put('/api/users/:user',isLoggedIn,function(req,res){
+  app.put('/api/users/:user',function(req,res){
     User.findByIdAndUpdate(req.user._id,{
       portfolio:req.body.portfolio.push(req.params.stock)
     });
     console.log(req.body.portfolio)
   })
+  
 }
 
 function isLoggedIn(req,res,next){
@@ -103,7 +102,6 @@ function isLoggedIn(req,res,next){
 }
 
 /*
-
 creating a user:
 
   var someUser = User.create({
