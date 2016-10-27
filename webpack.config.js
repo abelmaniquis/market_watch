@@ -1,5 +1,4 @@
-const path = require('path')
-
+const path = require('path');
 module.exports = {
     context: __dirname,
     entry: './js/ClientApp.jsx',
@@ -19,7 +18,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)?$/,
                 loader: 'babel-loader'
             }
             ,

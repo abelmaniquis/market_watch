@@ -61,7 +61,6 @@ module.exports = function(app) {
       user.password = req.body.password;
       user.cash = req.body.cash;
       user.portfolio = req.body.portfolio;
-      
       });
       
   });

@@ -61,6 +61,7 @@
 	var Route = _require.Route;
 	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
+	var browserHistory = _require.browserHistory;
 	
 	var _require2 = __webpack_require__(294);
 	
@@ -75,7 +76,6 @@
 	var Provider = _require4.Provider;
 	
 	var NotFound = __webpack_require__(300);
-	var Routes = __webpack_require__(301);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -95,7 +95,7 @@
 	      { store: store },
 	      React.createElement(
 	        Router,
-	        { history: hashHistory },
+	        { history: browserHistory },
 	        React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
@@ -21571,14 +21571,14 @@
 	        React.createElement(
 	          'h1',
 	          { className: 'title' },
-	          'MarketWatch'
+	          'MarketWatch!'
 	        ),
 	        React.createElement(
 	          'div',
 	          { className: 'buttonContainer' },
 	          React.createElement(
 	            'form',
-	            { action: '#/login' },
+	            { action: '/login' },
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton', type: 'submit' },
@@ -21587,7 +21587,7 @@
 	          ),
 	          React.createElement(
 	            'form',
-	            { action: '#/signup' },
+	            { action: '/signup' },
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton', type: 'submit' },
@@ -34648,14 +34648,26 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(34);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	var reactDOM = __webpack_require__(34);
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	/*
+	https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
+	*/
 	
 	var _require = __webpack_require__(196);
 	
@@ -34684,41 +34696,41 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { className: 'signupContainer' },
-	        React.createElement(
+	        _react2.default.createElement(
 	          'h1',
 	          null,
 	          'Sign Up here'
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'form',
 	          { action: '/api/users/signup', method: 'post' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'div',
 	            { className: 'user-input' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'label',
 	              null,
 	              'Username'
 	            ),
-	            React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	            _react2.default.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
 	          ),
-	          React.createElement(
+	          _react2.default.createElement(
 	            'div',
 	            { className: 'user-input' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'label',
 	              null,
 	              'Password'
 	            ),
-	            React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	            _react2.default.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
 	          ),
-	          React.createElement(
+	          _react2.default.createElement(
 	            'div',
 	            { className: 'button' },
-	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	            _react2.default.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	          )
 	        )
 	      );
@@ -34726,7 +34738,7 @@
 	  }]);
 	
 	  return Signup;
-	}(React.Component);
+	}(_react2.default.Component);
 	
 	module.exports = Signup;
 
@@ -34752,7 +34764,7 @@
 	var Router = _require.Router;
 	var Route = _require.Route;
 	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
+	var browserHistory = _require.browserHistory;
 	
 	var axios = __webpack_require__(174);
 	//https://facebook.github.io/react/docs/forms.html
@@ -35164,43 +35176,6 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
-
-/***/ },
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var React = __webpack_require__(1);
-	
-	var _require = __webpack_require__(196);
-	
-	var Route = _require.Route;
-	var IndexRoute = _require.IndexRoute;
-	
-	var Landing = __webpack_require__(172);
-	var Details = __webpack_require__(291);
-	var Signup = __webpack_require__(295);
-	var Login = __webpack_require__(296);
-	var Profile = __webpack_require__(292);
-	var TestPage = __webpack_require__(297);
-	var NotFound = __webpack_require__(300);
-	
-	var routes = React.createElement(
-	  Route,
-	  { path: '/', component: Landing },
-	  React.createElement(IndexRoute, { component: Landing }),
-	  React.createElement(Route, { path: '/details/:id', component: Details }),
-	  React.createElement(Route, { path: '/signup', component: Signup }),
-	  React.createElement(Route, { path: '/login', component: Login }),
-	  React.createElement(Route, { path: '/login/profile/', component: Profile }),
-	  React.createElement(Route, { path: '*', component: NotFound })
-	);
-	
-	exports.default = routes;
 
 /***/ }
 /******/ ]);

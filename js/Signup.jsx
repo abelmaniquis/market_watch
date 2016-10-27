@@ -1,5 +1,12 @@
-const React = require('react');
-const reactDOM = require('react-dom')
+/*
+https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
+*/
+/*
+https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
+*/
+
+import React from 'react';
+import reactDOM from 'react-dom';
 const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 const axios = require('axios')
 

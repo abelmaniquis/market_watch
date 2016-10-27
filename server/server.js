@@ -1,13 +1,19 @@
-var express = require('express');
+var express =require('express');
+
+var path = require('path');
+var http = require('http');
+var session = require('express-session');
+
 var app = express();
-var session = require('express-session'); 
+
+
 var port = process.env.PORT || 8080;
 var server = require('http').createServer(app);
-var http = require('http');
-var path = require('path');
+
 var config = require('./config/config.db')
 var mongoose = require('mongoose');
 var User = require('./api/user/user.model.js')
+
 
 require('mongoose').connect(config.db.url)
 

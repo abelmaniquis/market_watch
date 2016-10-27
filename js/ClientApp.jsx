@@ -6,12 +6,11 @@ const Profile = require('./Profile');
 const Signup = require('./Signup');
 const Login = require('./Login');
 const TestPage = require('./TestPage');
-const { Router, Route, IndexRoute, hashHistory } = require('react-router')
+const { Router, Route, IndexRoute, hashHistory,browserHistory } = require('react-router')
 const { stocks } = require('../public/tickers')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
 const NotFound = require('./NotFound')
-const Routes = require('./Routes');
 
 const App = React.createClass({
   assignStock(nextState,replace){
@@ -25,7 +24,7 @@ const App = React.createClass({
   render() {
     return (
     <Provider store={store}>
-      <Router history={hashHistory}>
+      <Router history={browserHistory}>
         <Route path='/' component={Landing} stocks={stocks}/>
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
