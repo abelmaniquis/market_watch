@@ -1,4 +1,5 @@
 var User = require('./user.model.js');
+var express = require('express')
 var Portfolio = require('../portfolio/portfolio.model.js')
 var userRouter = require('express').Router();
 var controller = require('./user.controller.js');
@@ -8,10 +9,13 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(app) {
+  
   var UserModel = mongoose.model('User',User)
+  
   //USER SIGNUP
   app.get('/api/test',function(req,res){
-    res.json({a:'test'});
+    console.log(User.schema.obj);
+    res.json(User.schema);
   })
   
   app.get('/api/allUsers',bodyParser,function(req,res){
@@ -23,7 +27,6 @@ module.exports = function(app) {
       }
     });
   });
-  
   
   app.post('/api/profile/userInfo',function(req,res){
     console.log(req.body);
@@ -83,7 +86,7 @@ module.exports = function(app) {
   }), function(req, res) {
     req.status(200);
   });
-  
+
   app.put('/api/users/:user',function(req,res){
     User.findByIdAndUpdate(req.user._id,{
       portfolio:req.body.portfolio.push(req.params.stock)
@@ -92,11 +95,12 @@ module.exports = function(app) {
   })
   
 }
-
-function isLoggedIn(req,res,next){
-  if(req.isAuthenticated())
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    console.log("USER IS LOGGED IN");
     return next();
-  else{
+  }
+  else {
     res.redirect('/');
   }
 }

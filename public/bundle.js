@@ -31025,32 +31025,12 @@
 	      var _this2 = this;
 	
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.props.params.id + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
-	        console.log(response.data.dataset.column_names);
-	        console.log(response.data.dataset.data[0][0]);
 	        _this2.setState({
 	          ticker: response.data.dataset.dataset_code,
 	          name: response.data.dataset.name,
 	          logTitles: response.data.dataset.column_names,
 	          priceLog: response.data.dataset.data
 	        });
-	        console.log("this.state.priceLog[0][0]");
-	        console.log('-');
-	        console.log('-');
-	        console.log('-');
-	        console.log(_this2.state);
-	        console.log('date: ' + _this2.state.priceLog[0][0]);
-	        console.log('open: ' + _this2.state.priceLog[0][1]);
-	        console.log('high: ' + _this2.state.priceLog[0][2]);
-	        console.log('low: ' + _this2.state.priceLog[0][3]);
-	        console.log('close: ' + _this2.state.priceLog[0][4]);
-	        console.log('volume: ' + _this2.state.priceLog[0][5]);
-	      });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=3009df8d586e40cf8ee9664e44571061').then(function (response) {
-	        console.log(response);
 	      });
 	    }
 	  }, {

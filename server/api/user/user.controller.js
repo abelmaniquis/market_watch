@@ -11,7 +11,6 @@ require these functions into user.routes.js
 
 console.log("USER ROUTES HAVE ACCESS TO USER CONTROLLER");
 
-
 //These should be
 exports.params = function(req,res,next,id){
   User.findById(id)

@@ -24,31 +24,12 @@ class Details extends React.Component{
   componentDidMount(){
    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
-      console.log(response.data.dataset.column_names);
-      console.log(response.data.dataset.data[0][0]);
       this.setState({
         ticker: response.data.dataset.dataset_code,
         name: response.data.dataset.name,
         logTitles: response.data.dataset.column_names,
         priceLog: response.data.dataset.data
       });
-      console.log("this.state.priceLog[0][0]");
-      console.log('-')
-      console.log('-')
-      console.log('-')
-      console.log(this.state)
-      console.log(`date: ${this.state.priceLog[0][0]}`);
-      console.log(`open: ${this.state.priceLog[0][1]}`);
-      console.log(`high: ${this.state.priceLog[0][2]}`);
-      console.log(`low: ${this.state.priceLog[0][3]}`);
-      console.log(`close: ${this.state.priceLog[0][4]}`);
-      console.log(`volume: ${this.state.priceLog[0][5]}`)
-    });
-  }
-  componentDidMount(){
-    axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=3009df8d586e40cf8ee9664e44571061')
-    .then((response)=>{
-      console.log(response);
     });
   }
   render(){
