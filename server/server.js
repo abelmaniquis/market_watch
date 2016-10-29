@@ -19,10 +19,10 @@ app.use(express.static(__dirname + '/../public'));
 require('./middleware/appMiddleware.js')(app);
 require('./api/user/user.routes.js')(app);
 
-app.get("/*", function(req, res) {
+app.get("*", function(req, res) {
   
   res.sendFile(path.resolve(__dirname + '/../', 'public', 'index.html'))
-  console.log("CATCH ALL ENPOINT!");
+  console.log("CATCH ALL ENDPOINT!");
 });
 
 //Handle errors

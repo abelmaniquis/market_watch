@@ -13,6 +13,8 @@ class Login extends React.Component {
       error: null
     };
     //this.formSubmit = this.formSubmit.bind(this);
+    
+    //<form onSubmit={this.handleSubmit}>
   }
   
   validateEmail(){
@@ -32,7 +34,7 @@ class Login extends React.Component {
     return (
       <div className='signupContainer'>
       <h1>Log in here</h1>
-      <form onSubmit={this.handleSubmit}>
+      <form action = "/api/users/login" method="post">
         <div className="user-input">
           <label>Username</label>
           <input type="text" name ="username" className="type-here"/>

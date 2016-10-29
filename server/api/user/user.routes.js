@@ -18,6 +18,11 @@ module.exports = function(app) {
     res.json(User.schema);
   })
   
+  app.post('/api/test',function(req,res){
+    console.log(User.schema.obj);
+    res.json(User.schema)
+  })
+  
   app.get('/api/allUsers',bodyParser,function(req,res){
     return UserModel.find(function(err,users){
       if(!err){
@@ -79,14 +84,13 @@ module.exports = function(app) {
   app.get('/api/users/login/', function(req, res) {
     res.status(200).json(User);
   });
-  
   app.post('/api/users/login/', passport.authenticate('local-login', {
-    successRedirect: '/login/profile/',
+    successRedirect: '/I_can_see_this_on_success',
     failureRedirect: '/'
   }), function(req, res) {
     req.status(200);
   });
-
+  
   app.put('/api/users/:user',function(req,res){
     User.findByIdAndUpdate(req.user._id,{
       portfolio:req.body.portfolio.push(req.params.stock)

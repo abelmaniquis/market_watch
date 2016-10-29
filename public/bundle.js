@@ -31116,10 +31116,6 @@
 	var Data = __webpack_require__(173);
 	var UserStockData = __webpack_require__(293);
 	var list = __webpack_require__(294);
-	/*
-	get user info from back end
-	
-	*/
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -31136,40 +31132,6 @@
 	  }
 	
 	  _createClass(View, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      axios.get('/api/profile/userInfo') //Where the API will be called
-	      .then(function (response) {
-	        /*
-	        Take stocks saved in user object and push them into the this.state.stocks
-	        */
-	        _this2.state.stocks = response.data.portfolio;
-	        console.log(response.data.portfolio);
-	        console.log(_this2.state.stocks);
-	      });
-	    }
-	  }, {
-	    key: 'addStock',
-	    value: function addStock(e) {
-	      e.preventDefault();
-	
-	      //store current stocks in a variable
-	      var stockUpdateStore = this.state.stocks;
-	
-	      //Push the next item to the stocks state temporary storage
-	      this.state.stocks.push(this.refs.addInput.value);
-	      stockUpdateStore.push(this.refs.addInput.value);
-	
-	      //clear input element
-	      this.refs.addInput.value = '';
-	
-	      this.setState({
-	        stocks: stockUpdateStore
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -31178,76 +31140,7 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'My Watchlist'
-	        ),
-	        React.createElement(
-	          'form',
-	          { onSubmit: this.addStock.bind(this) },
-	          React.createElement('input', { type: 'text', placeHolder: 'Enter Stock Ticker Here', ref: 'addInput' }),
-	          React.createElement(
-	            'button',
-	            null,
-	            'Add'
-	          )
-	        ),
-	        React.createElement(
-	          'table',
-	          { className: 'tableHead' },
-	          React.createElement(
-	            'tbody',
-	            null,
-	            React.createElement(
-	              'tr',
-	              null,
-	              React.createElement(
-	                'th',
-	                null,
-	                'Ticker'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Open'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Close'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Trend'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'On Date'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Value'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Quantity'
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'ul',
-	          null,
-	          this.state.stocks.map(function (stock, i) {
-	            console.log(stock);
-	            return React.createElement(
-	              'li',
-	              { key: i },
-	              React.createElement(UserStockData, { keyword: stock, key: i })
-	            );
-	          })
+	          'Hello Profile'
 	        )
 	      );
 	    }
@@ -34764,6 +34657,8 @@
 	      error: null
 	    };
 	    //this.formSubmit = this.formSubmit.bind(this);
+	
+	    //<form onSubmit={this.handleSubmit}>
 	    return _this;
 	  }
 	
@@ -34794,7 +34689,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { onSubmit: this.handleSubmit },
+	          { action: '/api/users/login', method: 'post' },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
