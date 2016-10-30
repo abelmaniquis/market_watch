@@ -35,19 +35,6 @@ module.exports = function(app) {
   
   app.post('/api/profile/userInfo',function(req,res){
     console.log(req.body);
-    var user = new UserModel({
-      username:req.body.username,
-      password:req.body.password,
-      cash: 1000000
-    });
-    user.save(function(err){
-      if(!err){
-        console.log("User created")
-      }else{
-        console.log(err)
-      }
-    });
-    console.log(user);
   });
   
   app.get('/api/profile/userInfo/:id',function(req,res){
@@ -68,7 +55,6 @@ module.exports = function(app) {
       user.cash = req.body.cash;
       user.portfolio = req.body.portfolio;
       });
-      
   });
   
 
@@ -85,8 +71,8 @@ module.exports = function(app) {
     res.status(200).json(User);
   });
   app.post('/api/users/login/', passport.authenticate('local-login', {
-    successRedirect: '/I_can_see_this_on_success',
-    failureRedirect: '/'
+    successRedirect: '/profile',
+    failureRedirect: '/login'
   }), function(req, res) {
     req.status(200);
   });

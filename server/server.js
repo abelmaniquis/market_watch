@@ -12,8 +12,6 @@ var User = require('./api/user/user.model.js')
 
 require('./config/config.mongoose.js')(app);
 
-//app.use(path.resolve(__dirname,'public'));
-
 app.use(express.static(__dirname + '/../public'));
 
 require('./middleware/appMiddleware.js')(app);

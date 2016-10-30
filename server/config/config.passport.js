@@ -35,7 +35,7 @@ module.exports = function(app) {
             User.create({
               'username': username,
               'password': password,
-              'cash':1000000
+              'cash': 1000000
             }, function(err, createdUser) {
               if (err) {
                 done(err, null)
@@ -57,18 +57,24 @@ module.exports = function(app) {
     },
     function(username, password, done) {
       User.findOne({
-        username: 'username',
+        'username': username,
       }, function(err, user) {
         if (err) {
+          console.log(err);
           return done(err);
         }
         if (!user) {
+          console.log(" ");
+          console.log('There is no user!');
+          console.log(" ");
           return done(null, false);
         }
         else if (!user.validPassword(password)) {
+          console.log("Not valid password");
           return done(null, false)
         }
         else if (user.validPassword(password)) {
+          console.log("Success! ", user);
           return done(null, user)
         };
       });
