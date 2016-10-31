@@ -12,7 +12,6 @@ get user info from back end
 class View extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       stocks: []
     }
@@ -21,7 +20,6 @@ class View extends React.Component {
   componentDidMount() {
     axios.get('/api/profile/userInfo') //Where the API will be called
       .then((response) => {
-
         //Take stocks saved in user object and push them into the this.state.stocks
 
         this.state.stocks = response.data.portfolio;

@@ -79,6 +79,16 @@
 	
 	var App = React.createClass({
 	  displayName: 'App',
+	
+	
+	  /*
+	  Use axios to redirect
+	  succesful login or unsuccesful login
+	  use axios to redirect
+	  Use the front end to redirect, use framework features
+	  don't use redirects in backend
+	  */
+	
 	  assignStock: function assignStock(nextState, replace) {
 	    var stockArray = stocks.filter(function (stock) {
 	      return stock.ticker === nextState.params.id;
@@ -89,6 +99,7 @@
 	    Object.assign(nextState.params, stockArray[0]);
 	    return nextState;
 	  },
+	  requireAuth: function requireAuth(nextState) {},
 	  render: function render() {
 	    return React.createElement(
 	      Provider,
@@ -31142,7 +31153,6 @@
 	
 	      axios.get('/api/profile/userInfo') //Where the API will be called
 	      .then(function (response) {
-	
 	        //Take stocks saved in user object and push them into the this.state.stocks
 	
 	        _this2.state.stocks = response.data.portfolio;
@@ -34758,7 +34768,7 @@
 	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 	
 	    _this.state = {
-	      name: "",
+	      username: "",
 	      password: "",
 	      isLoggedIn: false,
 	      error: null
@@ -34770,17 +34780,13 @@
 	  }
 	
 	  _createClass(Login, [{
-	    key: 'validateEmail',
-	    value: function validateEmail() {}
-	  }, {
-	    key: 'validatePassword',
-	    value: function validatePassword() {}
-	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
+	      browserHistory.push('/login/profile');
+	      console.log(this.state);
 	      axios.post('/api/users/login', {
-	        username: 'Abel',
+	        username: 'abel',
 	        password: '12345'
 	      }).then(function (response) {
 	        console.log(response);

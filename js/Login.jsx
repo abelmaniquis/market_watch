@@ -7,7 +7,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      username: "",
       password: "",
       isLoggedIn: false,
       error: null
@@ -16,18 +16,12 @@ class Login extends React.Component {
     
     //<form onSubmit={this.handleSubmit}>
   }
-  
-  validateEmail(){
-    
-  }
-  
-  validatePassword(){
-    
-  }
   handleSubmit(e) {
     e.preventDefault();
+    browserHistory.push('/login/profile');
+    console.log(this.state);
     axios.post('/api/users/login',{
-      username:'Abel',
+      username:'abel',
       password:'12345'
     }).then((response)=>{
       console.log(response);

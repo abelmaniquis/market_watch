@@ -13,6 +13,18 @@ const { Provider } = require('react-redux')
 const NotFound = require('./NotFound')
 
 const App = React.createClass({
+  
+  /*
+Use axios to redirect
+
+succesful login or unsuccesful login
+use axios to redirect
+
+Use the front end to redirect, use framework features
+don't use redirects in backend
+
+*/
+  
   assignStock(nextState,replace){
     const stockArray = stocks.filter((stock) => stock.ticker === nextState.params.id)
     if(stockArray.length < 1){
@@ -20,6 +32,9 @@ const App = React.createClass({
     }
     Object.assign(nextState.params,stockArray[0])
       return nextState
+  },
+  requireAuth(nextState){
+    
   },
   render() {
     return (

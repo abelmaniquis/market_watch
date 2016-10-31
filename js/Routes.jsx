@@ -9,16 +9,6 @@ const TestPage = require('./TestPage');
 const { stocks } = require('../public/tickers');
 const NotFound = require('./NotFound');
 
-/*
-Use axios to redirect
-
-succesful login or unsuccesful login
-use axios to redirect
-
-Use the front end to redirect, use framework features
-don't use redirects in backend
-
-*/
 
 const routes = (
       <Router history={browserHistory}>
