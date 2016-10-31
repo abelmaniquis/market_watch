@@ -1,6 +1,6 @@
 var User = require('./user.model.js');
-var express = require('express')
-var Portfolio = require('../portfolio/portfolio.model.js')
+var express = require('express');
+var Portfolio = require('../portfolio/portfolio.model.js');
 var userRouter = require('express').Router();
 var controller = require('./user.controller.js');
 var mongoose = require('mongoose');
@@ -58,11 +58,9 @@ module.exports = function(app) {
   });
   
 
-  app.post('/api/users/signup', passport.authenticate('local-signup', {
-    successRedirect: '/login/profile/',
-    failureRedirect: '/'
-  }), function(req, res) {
-    req.status(200)
+  app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res) {
+    console.log(req.user,req.body)
+    res.end();
   });
 
   //LOGIN
@@ -70,11 +68,10 @@ module.exports = function(app) {
   app.get('/api/users/login/', function(req, res) {
     res.status(200).json(User);
   });
-  app.post('/api/users/login/', passport.authenticate('local-login', {
-    successRedirect: '/login/profile',
-    failureRedirect: '/login'
-  }), function(req, res) {
-    req.status(200);
+  
+  app.post('/api/users/login/', passport.authenticate('local-login'), function(req, res){
+    console.log(req.user,req.body);
+    res.end();
   });
   
   app.put('/api/users/:user',function(req,res){

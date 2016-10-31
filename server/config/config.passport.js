@@ -4,16 +4,6 @@ var User = require('../api/user/user.model.js');
 
 module.exports = function(app) {
 
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
-
   //Local Signup
   passport.use('local-signup', new LocalStrategy({
       usernameField: 'username',
@@ -64,10 +54,8 @@ module.exports = function(app) {
           return done(err);
         }
         if (!user) {
-          console.log(" ");
           console.log('There is no user!');
-          console.log(" ");
-          return done(null, false);
+          return done(null, false, { message: 'Incorrect username or password' });
         }
         else if (!user.validPassword(password)) {
           console.log("Not valid password");
@@ -78,5 +66,18 @@ module.exports = function(app) {
           return done(null, user)
         };
       });
+
+
     }));
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
 }

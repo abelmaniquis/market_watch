@@ -9,13 +9,24 @@ const TestPage = require('./TestPage');
 const { stocks } = require('../public/tickers');
 const NotFound = require('./NotFound');
 
+/*
+Use axios to redirect
+
+succesful login or unsuccesful login
+use axios to redirect
+
+Use the front end to redirect, use framework features
+don't use redirects in backend
+
+*/
+
 const routes = (
       <Router history={browserHistory}>
         <Route path='/' component={Landing} stocks={stocks}/>
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/login/profile' component={Profile}/>
+        <Route path='/login/profile' component={TestPage}/>
         <Route path='/test' component={TestPage}/>
         <Route path="*" component={NotFound}/>
       </Router>

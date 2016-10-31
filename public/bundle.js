@@ -34779,10 +34779,18 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      axios.post('/api/users/login').then(function (response) {
+	      axios.post('/api/users/login', {
+	        username: 'Abel',
+	        password: '12345'
+	      }).then(function (response) {
 	        console.log(response);
+	      }).catch(function (err) {
+	        console.log(err);
 	      });
 	    }
+	
+	    //original form:  <form action = "/api/users/login" method="post">
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -34796,7 +34804,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { action: '/api/users/login', method: 'post' },
+	          { onSubmit: this.handleSubmit.bind(this) },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },

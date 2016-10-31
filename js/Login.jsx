@@ -26,15 +26,24 @@ class Login extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    axios.post('/api/users/login').then((response)=>{
+    axios.post('/api/users/login',{
+      username:'Abel',
+      password:'12345'
+    }).then((response)=>{
       console.log(response);
-    })
+    }).catch(function(err){
+      console.log(err);
+    });
   }
+  
+  //original form:  <form action = "/api/users/login" method="post">
+  
   render() {
     return (
       <div className='signupContainer'>
       <h1>Log in here</h1>
-      <form action = "/api/users/login" method="post">
+      
+      <form onSubmit={this.handleSubmit.bind(this)}>
         <div className="user-input">
           <label>Username</label>
           <input type="text" name ="username" className="type-here"/>

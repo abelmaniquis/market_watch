@@ -14,13 +14,13 @@ require('./config/config.mongoose.js')(app);
 
 app.use(express.static(__dirname + '/../public'));
 
+
 require('./middleware/appMiddleware.js')(app);
 require('./api/user/user.routes.js')(app);
 
 app.get("*", function(req, res) {
   
   res.sendFile(path.resolve(__dirname + '/../', 'public', 'index.html'))
-  console.log("CATCH ALL ENDPOINT!");
 });
 
 //Handle errors
