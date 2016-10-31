@@ -71,7 +71,7 @@ module.exports = function(app) {
     res.status(200).json(User);
   });
   app.post('/api/users/login/', passport.authenticate('local-login', {
-    successRedirect: '/profile',
+    successRedirect: '/login/profile',
     failureRedirect: '/login'
   }), function(req, res) {
     req.status(200);

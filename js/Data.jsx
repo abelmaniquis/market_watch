@@ -43,9 +43,9 @@ class Data extends React.Component {
     let change = changeNum;
     
     
-    let trend = 'trending neutral'
+    let trend = "";
     
-    change >= 0 ? trend = "up" : trend = "down"
+    change >= 0 ? trend += "up" : trend += "down"
     
     return (
       <div className="data-container">
