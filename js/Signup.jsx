@@ -1,48 +1,75 @@
-/*
-https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
-*/
-/*
-https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
-*/
-
-import React from 'react';
-import reactDOM from 'react-dom';
-const { Router, Route, IndexRoute, hashHistory } = require('react-router')
-const axios = require('axios')
-
-class Signup extends React.Component{
- constructor(props,context){
-   super(props,context)
- }
- 
- handleSubmit(e){
-   e.preventDefault();
-   axios.post('/api/profile/signup')
- }
- 
- render(){
-  return(
-    <div className='signupContainer'>
-      <h1>Sign Up here</h1>
-      <form action = "/api/users/signup" method= "post">
+const React = require('react');
+const reactDOM = require('react-dom')
+const {Router,Route,IndexRoute,browserHistory} = require('react-router')
+const axios = require('axios');
+//https://facebook.github.io/react/docs/forms.html
+class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      error: null
+    };
+    this.handleUserData = this.handleUserData.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleUserData(e){
+    this.setState({username:e.target.value});
+  }
+  handlePassword(e){
+    this.setState({password:e.target.value});
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    axios.post('/api/users/signup',{
+      username:this.state.username,
+      password:this.state.password
+    }).then((response)=>{
+      browserHistory.push('/login/profile');
+    }).catch(function(err){
+      console.log(err);
+    });
+  }
+  
+  //original form:  <form action = "/api/users/login" method="post">
+  
+  render() {
+    return (
+      <div className='signupContainer'>
+      <h1>Sign up here</h1>
+      
+      <form onSubmit={this.handleSubmit}>
         <div className="user-input">
+        
           <label>Username</label>
-          <input type="text" name ="username" className="type-here"/>
+          <input type="text"  
+          value ={this.state.username} 
+          onChange={this.handleUserData}
+          name ="username" 
+          className="type-here"/>
+          
         </div>
         
         <div className="user-input">
             <label>Password</label>
-             <input type="password" name="password" className="type-here"/>
+            
+             <input type="password" 
+             value={this.state.password}
+             onChange={this.handlePassword}
+             name="password" 
+             className="type-here"/>
         </div>
         
        <div className="button">
            <input className = "button-type" type="submit" value="Submit"/>
        </div>
-        
+      
       </form>
     </div>
-  )
+    )
   }
 }
 
-module.exports = Signup;
+module.exports = Signup

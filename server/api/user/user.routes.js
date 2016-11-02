@@ -13,43 +13,19 @@ module.exports = function(app) {
   var UserModel = mongoose.model('User',User)
   
   //USER SIGNUP
-  app.get('/api/test',function(req,res){
-    console.log(User.schema.obj);
-    res.json(User.schema);
-  })
-  
-  app.post('/api/test',function(req,res){
-    console.log(User.schema.obj);
-    res.json(User.schema)
-  })
-  
-  app.get('/api/allUsers',bodyParser,function(req,res){
-    return UserModel.find(function(err,users){
-      if(!err){
-        return res.send(users)
-      }else{
-        return console.log(err);
-      }
-    });
-  });
   
   app.post('/api/profile/userInfo',function(req,res){
     console.log(req.body);
-  });
-  
-  app.get('/api/profile/userInfo/:id',function(req,res){
-    return UserModel.findById(req.params.id,function(err,product){
-      if(!err){
-        return res.send(product);
-      }else{
-        console.log(err)
-      }
-    });
+    return req.body
   });
   
   app.put('/api/profile/userInfo/',function(req,res){
-    UserModel.findById(req.params.id,function(user){
-      user.portfolio = req.body.portfolio;
+    UserModel.findById(req.params.id,function(user,err){
+      if(!err){
+      console.log(req.body)
+      }else{
+        console.log(err);
+      }
       });
   });
   
@@ -87,21 +63,3 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
   }
 }
-
-/*
-creating a user:
-
-  var someUser = User.create({
-    username:req.params.username
-  })
-  var aUser = new User
-  var aStock = req.params.stock;
-  aUser.username = req.params.username;
-  aUser.password = req.params.password;
-  aUser.cash = 1000000;
-  
-  addToWatchList(aUser,{name:'GOOG',quant:30,val:200});
-  addToWatchList(aUser,req.params.stock);
-  aUser.cash -= aUser.portfolio[0].val*aUser.portfolio[0].quant;
-  res.json(aUser);
-*/

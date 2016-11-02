@@ -9,21 +9,20 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      isLoggedIn: false,
       error: null
     };
     this.handleUserData = this.handleUserData.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleUserData(e){
-    this.setState({username: e.target.value});
+    this.setState({username:e.target.value});
   }
   handlePassword(e){
     this.setState({password:e.target.value});
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("INFO FROM AXIOS")
     axios.post('/api/users/login',{
       username:this.state.username,
       password:this.state.password
@@ -41,10 +40,10 @@ class Login extends React.Component {
       <div className='signupContainer'>
       <h1>Log in here</h1>
       
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit}>
         <div className="user-input">
+        
           <label>Username</label>
-          
           <input type="text"  
           value ={this.state.username} 
           onChange={this.handleUserData}

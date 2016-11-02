@@ -4,10 +4,6 @@ const {Link} = require('react-router');
 const Data = require('./Data');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
-/*
-get user info from back end
-
-*/
 
 class View extends React.Component {
   constructor(props) {
@@ -16,28 +12,22 @@ class View extends React.Component {
       stocks: []
     }
   }
-
   componentDidMount() {
     axios.post('/api/profile/userInfo') //Where the API will be called
       .then((response) => {
-        //Take stocks saved in user object and push them into the this.state.stock
         console.log(response);
         console.log(this.state.stocks);
       })
   }
-
   addStock(e) {
     e.preventDefault();
     axios.put('/api/profile/userInfo').then((response)=>{
       console.log(response);
     })
     //store current stocks in a variable
+    
     const stockUpdateStore = this.state.stocks
-
-    //Push the next item to the stocks state temporary storage
-    this.state.stocks.push(this.refs.addInput.value);
     stockUpdateStore.push(this.refs.addInput.value);
-
 
     //clear input element
     this.refs.addInput.value = '';
@@ -48,7 +38,6 @@ class View extends React.Component {
   }
   render() {
     return (
-
       <div>
       
         <h1>My Watchlist</h1>

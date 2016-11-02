@@ -31127,10 +31127,6 @@
 	var Data = __webpack_require__(173);
 	var UserStockData = __webpack_require__(293);
 	var list = __webpack_require__(294);
-	/*
-	get user info from back end
-	
-	*/
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -31153,7 +31149,6 @@
 	
 	      axios.post('/api/profile/userInfo') //Where the API will be called
 	      .then(function (response) {
-	        //Take stocks saved in user object and push them into the this.state.stock
 	        console.log(response);
 	        console.log(_this2.state.stocks);
 	      });
@@ -31166,10 +31161,8 @@
 	        console.log(response);
 	      });
 	      //store current stocks in a variable
-	      var stockUpdateStore = this.state.stocks;
 	
-	      //Push the next item to the stocks state temporary storage
-	      this.state.stocks.push(this.refs.addInput.value);
+	      var stockUpdateStore = this.state.stocks;
 	      stockUpdateStore.push(this.refs.addInput.value);
 	
 	      //clear input element
@@ -34638,89 +34631,116 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(34);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	/*
-	https://www.youtube.com/watch?v=97fT5ZOcpp4&list=PLuNEz8XtB51K-x3bwCC9uNM_cxXaiCcRY&index=6
-	*/
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	var reactDOM = __webpack_require__(34);
 	
 	var _require = __webpack_require__(196);
 	
 	var Router = _require.Router;
 	var Route = _require.Route;
 	var IndexRoute = _require.IndexRoute;
-	var hashHistory = _require.hashHistory;
+	var browserHistory = _require.browserHistory;
 	
 	var axios = __webpack_require__(174);
+	//https://facebook.github.io/react/docs/forms.html
 	
 	var Signup = function (_React$Component) {
 	  _inherits(Signup, _React$Component);
 	
-	  function Signup(props, context) {
+	  function Signup(props) {
 	    _classCallCheck(this, Signup);
 	
-	    return _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).call(this, props, context));
+	    var _this = _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).call(this, props));
+	
+	    _this.state = {
+	      username: "",
+	      password: "",
+	      error: null
+	    };
+	    _this.handleUserData = _this.handleUserData.bind(_this);
+	    _this.handlePassword = _this.handlePassword.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(Signup, [{
+	    key: 'handleUserData',
+	    value: function handleUserData(e) {
+	      this.setState({ username: e.target.value });
+	    }
+	  }, {
+	    key: 'handlePassword',
+	    value: function handlePassword(e) {
+	      this.setState({ password: e.target.value });
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      axios.post('/api/profile/signup');
+	      axios.post('/api/users/signup', {
+	        username: this.state.username,
+	        password: this.state.password
+	      }).then(function (response) {
+	        browserHistory.push('/login/profile');
+	      }).catch(function (err) {
+	        console.log(err);
+	      });
 	    }
+	
+	    //original form:  <form action = "/api/users/login" method="post">
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
+	      return React.createElement(
 	        'div',
 	        { className: 'signupContainer' },
-	        _react2.default.createElement(
+	        React.createElement(
 	          'h1',
 	          null,
-	          'Sign Up here'
+	          'Sign up here'
 	        ),
-	        _react2.default.createElement(
+	        React.createElement(
 	          'form',
-	          { action: '/api/users/signup', method: 'post' },
-	          _react2.default.createElement(
+	          { onSubmit: this.handleSubmit },
+	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
-	            _react2.default.createElement(
+	            React.createElement(
 	              'label',
 	              null,
 	              'Username'
 	            ),
-	            _react2.default.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	            React.createElement('input', { type: 'text',
+	              value: this.state.username,
+	              onChange: this.handleUserData,
+	              name: 'username',
+	              className: 'type-here' })
 	          ),
-	          _react2.default.createElement(
+	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
-	            _react2.default.createElement(
+	            React.createElement(
 	              'label',
 	              null,
 	              'Password'
 	            ),
-	            _react2.default.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	            React.createElement('input', { type: 'password',
+	              value: this.state.password,
+	              onChange: this.handlePassword,
+	              name: 'password',
+	              className: 'type-here' })
 	          ),
-	          _react2.default.createElement(
+	          React.createElement(
 	            'div',
 	            { className: 'button' },
-	            _react2.default.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	          )
 	        )
 	      );
@@ -34728,7 +34748,7 @@
 	  }]);
 	
 	  return Signup;
-	}(_react2.default.Component);
+	}(React.Component);
 	
 	module.exports = Signup;
 
@@ -34770,11 +34790,11 @@
 	    _this.state = {
 	      username: "",
 	      password: "",
-	      isLoggedIn: false,
 	      error: null
 	    };
 	    _this.handleUserData = _this.handleUserData.bind(_this);
 	    _this.handlePassword = _this.handlePassword.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 	
@@ -34792,7 +34812,6 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      console.log("INFO FROM AXIOS");
 	      axios.post('/api/users/login', {
 	        username: this.state.username,
 	        password: this.state.password
@@ -34818,7 +34837,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { onSubmit: this.handleSubmit.bind(this) },
+	          { onSubmit: this.handleSubmit },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
