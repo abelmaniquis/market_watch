@@ -47,10 +47,8 @@ module.exports = function(app) {
   });
   
   app.put('/api/users/:user',function(req,res){
-    User.findByIdAndUpdate(req.user._id,{
-      portfolio:req.body.portfolio.push(req.params.stock)
-    });
-    console.log(req.body.portfolio)
+    console.log(req.body);
+    console.log("Got a PUT request");
   })
   
 }

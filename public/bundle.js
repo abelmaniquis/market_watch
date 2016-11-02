@@ -31157,7 +31157,7 @@
 	    key: 'addStock',
 	    value: function addStock(e) {
 	      e.preventDefault();
-	      axios.put('/api/profile/userInfo').then(function (response) {
+	      axios.put('/api/users/abel').then(function (response) {
 	        console.log(response);
 	      });
 	      //store current stocks in a variable
@@ -31192,6 +31192,11 @@
 	            null,
 	            'Add'
 	          )
+	        ),
+	        React.createElement(
+	          Link,
+	          { to: '/' },
+	          'Check out the full list of stocks here'
 	        ),
 	        React.createElement(
 	          'table',
@@ -31244,7 +31249,6 @@
 	          'ul',
 	          null,
 	          this.state.stocks.map(function (stock, i) {
-	            console.log(stock);
 	            return React.createElement(
 	              'li',
 	              { key: i },

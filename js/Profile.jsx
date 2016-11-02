@@ -21,7 +21,7 @@ class View extends React.Component {
   }
   addStock(e) {
     e.preventDefault();
-    axios.put('/api/profile/userInfo').then((response)=>{
+    axios.put('/api/users/abel').then((response)=>{
       console.log(response);
     })
     //store current stocks in a variable
@@ -42,10 +42,12 @@ class View extends React.Component {
       
         <h1>My Watchlist</h1>
       
-          <form onSubmit={ this.addStock.bind(this) }>
+        <form onSubmit={ this.addStock.bind(this) }>
           <input type="text" placeHolder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
+        
+        <Link to="/">Check out the full list of stocks here</Link>
         
         <table className="tableHead">
         <tbody>
@@ -64,7 +66,6 @@ class View extends React.Component {
         <ul>
           {
             this.state.stocks.map((stock,i)=>{
-            console.log(stock);
               return(
                 <li key={i}>
                 <UserStockData keyword = {stock} key={i}/>
@@ -72,9 +73,7 @@ class View extends React.Component {
               )
             })
           }
-        
         </ul>
-        
       </div>
     )
   }
