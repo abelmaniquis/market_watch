@@ -31151,12 +31151,10 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      axios.get('/api/profile/userInfo') //Where the API will be called
+	      axios.post('/api/profile/userInfo') //Where the API will be called
 	      .then(function (response) {
-	        //Take stocks saved in user object and push them into the this.state.stocks
-	
-	        _this2.state.stocks = response.data.portfolio;
-	        console.log(response.data.portfolio);
+	        //Take stocks saved in user object and push them into the this.state.stock
+	        console.log(response);
 	        console.log(_this2.state.stocks);
 	      });
 	    }
@@ -31164,7 +31162,9 @@
 	    key: 'addStock',
 	    value: function addStock(e) {
 	      e.preventDefault();
-	
+	      axios.put('/api/profile/userInfo').then(function (response) {
+	        console.log(response);
+	      });
 	      //store current stocks in a variable
 	      var stockUpdateStore = this.state.stocks;
 	
@@ -34681,7 +34681,7 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      axios.post('/api/profile/userInfo');
+	      axios.post('/api/profile/signup');
 	    }
 	  }, {
 	    key: 'render',
@@ -34773,23 +34773,31 @@
 	      isLoggedIn: false,
 	      error: null
 	    };
-	    //this.formSubmit = this.formSubmit.bind(this);
-	
-	    //<form onSubmit={this.handleSubmit}>
+	    _this.handleUserData = _this.handleUserData.bind(_this);
+	    _this.handlePassword = _this.handlePassword.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(Login, [{
+	    key: 'handleUserData',
+	    value: function handleUserData(e) {
+	      this.setState({ username: e.target.value });
+	    }
+	  }, {
+	    key: 'handlePassword',
+	    value: function handlePassword(e) {
+	      this.setState({ password: e.target.value });
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
-	      browserHistory.push('/login/profile');
-	      console.log(this.state);
+	      console.log("INFO FROM AXIOS");
 	      axios.post('/api/users/login', {
-	        username: 'abel',
-	        password: '12345'
+	        username: this.state.username,
+	        password: this.state.password
 	      }).then(function (response) {
-	        console.log(response);
+	        browserHistory.push('/login/profile');
 	      }).catch(function (err) {
 	        console.log(err);
 	      });
@@ -34819,7 +34827,11 @@
 	              null,
 	              'Username'
 	            ),
-	            React.createElement('input', { type: 'text', name: 'username', className: 'type-here' })
+	            React.createElement('input', { type: 'text',
+	              value: this.state.username,
+	              onChange: this.handleUserData,
+	              name: 'username',
+	              className: 'type-here' })
 	          ),
 	          React.createElement(
 	            'div',
@@ -34829,7 +34841,11 @@
 	              null,
 	              'Password'
 	            ),
-	            React.createElement('input', { type: 'password', name: 'password', className: 'type-here' })
+	            React.createElement('input', { type: 'password',
+	              value: this.state.password,
+	              onChange: this.handlePassword,
+	              name: 'password',
+	              className: 'type-here' })
 	          ),
 	          React.createElement(
 	            'div',

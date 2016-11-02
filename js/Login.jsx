@@ -12,19 +12,23 @@ class Login extends React.Component {
       isLoggedIn: false,
       error: null
     };
-    //this.formSubmit = this.formSubmit.bind(this);
-    
-    //<form onSubmit={this.handleSubmit}>
+    this.handleUserData = this.handleUserData.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+  }
+  handleUserData(e){
+    this.setState({username: e.target.value});
+  }
+  handlePassword(e){
+    this.setState({password:e.target.value});
   }
   handleSubmit(e) {
     e.preventDefault();
-    browserHistory.push('/login/profile');
-    console.log(this.state);
+    console.log("INFO FROM AXIOS")
     axios.post('/api/users/login',{
-      username:'abel',
-      password:'12345'
+      username:this.state.username,
+      password:this.state.password
     }).then((response)=>{
-      console.log(response);
+      browserHistory.push('/login/profile');
     }).catch(function(err){
       console.log(err);
     });
@@ -40,12 +44,23 @@ class Login extends React.Component {
       <form onSubmit={this.handleSubmit.bind(this)}>
         <div className="user-input">
           <label>Username</label>
-          <input type="text" name ="username" className="type-here"/>
+          
+          <input type="text"  
+          value ={this.state.username} 
+          onChange={this.handleUserData}
+          name ="username" 
+          className="type-here"/>
+          
         </div>
         
         <div className="user-input">
             <label>Password</label>
-             <input type="password" name="password" className="type-here"/>
+            
+             <input type="password" 
+             value={this.state.password}
+             onChange={this.handlePassword}
+             name="password" 
+             className="type-here"/>
         </div>
         
        <div className="button">

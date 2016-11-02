@@ -47,12 +47,8 @@ module.exports = function(app) {
     });
   });
   
-  app.put('/api/profile/userInfo/:id',function(req,res){
+  app.put('/api/profile/userInfo/',function(req,res){
     UserModel.findById(req.params.id,function(user){
-      user.title = req.body.title;
-      user.username = req.body.username;
-      user.password = req.body.password;
-      user.cash = req.body.cash;
       user.portfolio = req.body.portfolio;
       });
   });

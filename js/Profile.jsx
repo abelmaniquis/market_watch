@@ -18,19 +18,19 @@ class View extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/profile/userInfo') //Where the API will be called
+    axios.post('/api/profile/userInfo') //Where the API will be called
       .then((response) => {
-        //Take stocks saved in user object and push them into the this.state.stocks
-
-        this.state.stocks = response.data.portfolio;
-        console.log(response.data.portfolio);
+        //Take stocks saved in user object and push them into the this.state.stock
+        console.log(response);
         console.log(this.state.stocks);
       })
   }
 
   addStock(e) {
     e.preventDefault();
-
+    axios.put('/api/profile/userInfo').then((response)=>{
+      console.log(response);
+    })
     //store current stocks in a variable
     const stockUpdateStore = this.state.stocks
 

@@ -17,7 +17,7 @@ class Signup extends React.Component{
  
  handleSubmit(e){
    e.preventDefault();
-   axios.post('/api/profile/userInfo')
+   axios.post('/api/profile/signup')
  }
  
  render(){
