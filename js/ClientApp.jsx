@@ -40,8 +40,3 @@ const App = React.createClass({
 })
 
 ReactDOM.render(<App/>, document.getElementById('app'))
-
-/*
-Front End posted on:
-https://abelmaniquis.github.io/market_watch/#/?_k=8woh2c
-*/

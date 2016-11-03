@@ -4,6 +4,8 @@ const React = require('react')
 const axios = require('axios')
 const { Link } = require('react-router')
 
+//Keep the file name as UserStockData
+
 class StockData extends React.Component {
   constructor(props) {
     super(props)
@@ -22,7 +24,26 @@ class StockData extends React.Component {
       .then((response) => {
         var i = 0;
         while (i < response.data.dataset.column_names.length) {
-          this.state.prices.push(response.data.dataset.data[0][i]);
+          //this.state.prices.push(response.data.dataset.data[0][i]); //This is how you work with mutable data structures
+          this.setState({
+            prices: this.state.prices.concat([response.data.dataset.data[0][i]])  //this is how you work with immutable data structures
+          })
+          
+          //React works with immutable structures
+          //mutating this.state, There are things that are immutable
+          //strings are immutable, objects are not.
+          //On line 27, you are changing the value of the array
+          //arrays are changeable.
+          //In react, state is supposed to be immutable, you cannot change it yourself
+          //You need to treat this state as if it doesn't have a push method.
+          
+          //We should be using setstate on line 27
+          //Take a copy of a previous array, and return a new
+          
+          //BIG PICTURE: You should not mutate state
+          //How to distinguish: in general: start your line with this.setState, this.state should be read only
+          //.push modifies an existing array, concat does not.
+          
           i += 1;
         }
         this.setState({
@@ -61,7 +82,7 @@ class StockData extends React.Component {
           <th className='trend'>{trend}</th>
           <th className='onDate'>{date}</th>
           <th className='value'>{value}</th>
-          <th className='quantity'>{quantity}</th>
+          <th className='delete-button'><button>Delete</button></th>
         </tr>
         </tbody>
       </table>

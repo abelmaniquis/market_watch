@@ -62,7 +62,7 @@ module.exports = function(app) {
           return done(null, false)
         }
         else if (user.validPassword(password)) {
-          console.log("Success! ", user);
+          console.log("PASSPORT LOGIN IS A SUCCESS!");
           return done(null, user)
         };
       });

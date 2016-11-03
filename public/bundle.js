@@ -109,11 +109,6 @@
 	});
 	
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
-	
-	/*
-	Front End posted on:
-	https://abelmaniquis.github.io/market_watch/#/?_k=8woh2c
-	*/
 
 /***/ },
 /* 1 */
@@ -31126,8 +31121,9 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
-	      username: '',
+	      username: 'abel', //Set username state here
 	      cash: 0,
+	      currentStock: 'NFLX', //current stock
 	      stocks: [],
 	      iterator: 0
 	    };
@@ -31135,24 +31131,10 @@
 	  }
 	
 	  _createClass(View, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      axios.post('/api/profile/userInfo') //Where the API will be called
-	      .then(function (response) {
-	        console.log(response);
-	        console.log(_this2.state.stocks);
-	      });
-	    }
-	  }, {
 	    key: 'addStock',
 	    value: function addStock(e) {
-	      var _this3 = this;
-	
 	      e.preventDefault();
-	      axios.put('/api/users/' + this.state.username + '/' + this.state.stocks[this.state.iterator]).then(function (response) {
-	        _this3.state.iterator += 1;
+	      axios.put('/api/users/' + this.state.username + '/' + this.state.currentStock).then(function (response) {
 	        console.log(response);
 	      });
 	      //store current stocks in a variable
@@ -31181,7 +31163,7 @@
 	        React.createElement(
 	          'form',
 	          { onSubmit: this.addStock.bind(this) },
-	          React.createElement('input', { type: 'text', placeHolder: 'Enter Stock Ticker Here', ref: 'addInput' }),
+	          React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
 	          React.createElement(
 	            'button',
 	            null,
@@ -31235,7 +31217,7 @@
 	              React.createElement(
 	                'th',
 	                null,
-	                'Quantity'
+	                'Delete'
 	              )
 	            )
 	          )
@@ -31283,6 +31265,8 @@
 	
 	var Link = _require.Link;
 	
+	//Keep the file name as UserStockData
+	
 	var StockData = function (_React$Component) {
 	  _inherits(StockData, _React$Component);
 	
@@ -31310,7 +31294,26 @@
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.state.keyword + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        var i = 0;
 	        while (i < response.data.dataset.column_names.length) {
-	          _this2.state.prices.push(response.data.dataset.data[0][i]);
+	          //this.state.prices.push(response.data.dataset.data[0][i]); //This is how you work with mutable data structures
+	          _this2.setState({
+	            prices: _this2.state.prices.concat([response.data.dataset.data[0][i]]) //this is how you work with immutable data structures
+	          });
+	
+	          //React works with immutable structures
+	          //mutating this.state, There are things that are immutable
+	          //strings are immutable, objects are not.
+	          //On line 27, you are changing the value of the array
+	          //arrays are changeable.
+	          //In react, state is supposed to be immutable, you cannot change it yourself
+	          //You need to treat this state as if it doesn't have a push method.
+	
+	          //We should be using setstate on line 27
+	          //Take a copy of a previous array, and return a new
+	
+	          //BIG PICTURE: You should not mutate state
+	          //How to distinguish: in general: start your line with this.setState, this.state should be read only
+	          //.push modifies an existing array, concat does not.
+	
 	          i += 1;
 	        }
 	        _this2.setState({
@@ -31388,8 +31391,12 @@
 	              ),
 	              React.createElement(
 	                'th',
-	                { className: 'quantity' },
-	                quantity
+	                { className: 'delete-button' },
+	                React.createElement(
+	                  'button',
+	                  null,
+	                  'Delete'
+	                )
 	              )
 	            )
 	          )
@@ -34821,9 +34828,6 @@
 	        console.log(err);
 	      });
 	    }
-	
-	    //original form:  <form action = "/api/users/login" method="post">
-	
 	  }, {
 	    key: 'render',
 	    value: function render() {

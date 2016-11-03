@@ -9,23 +9,16 @@ class View extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username:'',
+      username:'abel', //Set username state here
       cash:0,
+      currentStock:'NFLX', //current stock
       stocks:[],
       iterator:0
     }
   }
-  componentDidMount() {
-    axios.post('/api/profile/userInfo') //Where the API will be called
-      .then((response) => {
-        console.log(response);
-        console.log(this.state.stocks);
-      })
-  }
   addStock(e) {
     e.preventDefault();
-    axios.put(`/api/users/${this.state.username}/${this.state.stocks[this.state.iterator]}`).then((response)=>{
-      this.state.iterator += 1;
+    axios.put(`/api/users/${this.state.username}/${this.state.currentStock}`).then((response)=>{
       console.log(response);
     })
     //store current stocks in a variable
@@ -47,7 +40,7 @@ class View extends React.Component {
         <h1>My Watchlist</h1>
       
         <form onSubmit={ this.addStock.bind(this) }>
-          <input type="text" placeHolder = "Enter Stock Ticker Here" ref="addInput" />
+          <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
         
@@ -62,7 +55,7 @@ class View extends React.Component {
           <th>Trend</th>
           <th>On Date</th>
           <th>Value</th>
-          <th>Quantity</th>
+          <th>Delete</th>
           </tr>
         </tbody>
     </table>

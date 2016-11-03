@@ -29,6 +29,10 @@ userSchema.statics.findByName = function(name,cb){
   return this.find({username: new RegExp(name,'i')},cb);
 };
 
+userSchema.statics.addStock = function(stock){
+  this.portfolio.push(stock);
+}
+
 userSchema.methods.validPassword = function(password) {
   var salt = bcrypt.genSaltSync(8);
   var hash = bcrypt.hashSync(password, salt);

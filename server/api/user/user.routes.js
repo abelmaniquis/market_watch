@@ -45,24 +45,29 @@ module.exports = function(app) {
     res.end();
   });
   
-  app.put('/api/users/:user/:stock',function(req,res){
-    UserModel.findById(req.params.user,function(user,err){
-      if(err){
-        console.log(err)
+  app.put('/api/users/:user/:stock',isLoggedIn,function(req,res){
+    UserModel.findByName(req.params.user,function(err){
+      if(!err){
+        console.log(req.params.user);
+        console.log(req.body);
+        //req.body.portfolio.push(req.params.stock);
       }else{
-        console.log("FOUND IT!",user);
+        console.log(err)
       }
+      console.log(req.body);
     })
-    console.log(req.params);
-    req.body.username = req.params.user
-    req.body.portfolio.push(req.params.stock)
-    console.log(req.body);
-    console.log("Got a PUT request");
+  })
+  
+  app.get('/api/profile/myInfo',isLoggedIn,function(req,res){
+    res.json({
+      username:req.user
+    });
   })
   
 }
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
+    console.log(req,res);
     console.log("USER IS LOGGED IN");
     return next();
   }

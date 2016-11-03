@@ -33,8 +33,6 @@ class Login extends React.Component {
     });
   }
   
-  //original form:  <form action = "/api/users/login" method="post">
-  
   render() {
     return (
       <div className='signupContainer'>
