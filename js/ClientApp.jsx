@@ -14,17 +14,6 @@ const NotFound = require('./NotFound')
 
 const App = React.createClass({
   
-  /*
-Use axios to redirect
-
-succesful login or unsuccesful login
-use axios to redirect
-
-Use the front end to redirect, use framework features
-don't use redirects in backend
-
-*/
-  
   assignStock(nextState,replace){
     const stockArray = stocks.filter((stock) => stock.ticker === nextState.params.id)
     if(stockArray.length < 1){
@@ -32,9 +21,6 @@ don't use redirects in backend
     }
     Object.assign(nextState.params,stockArray[0])
       return nextState
-  },
-  requireAuth(nextState){
-    
   },
   render() {
     return (
@@ -44,7 +30,7 @@ don't use redirects in backend
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/login/profile' component={Profile}/>
+        <Route path='/login/profile/:username' component={Profile}/>
         <Route path='/test' component={TestPage}/>
         <Route path="*" component={NotFound}/>
       </Router>

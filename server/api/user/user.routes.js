@@ -28,7 +28,6 @@ module.exports = function(app) {
       }
       });
   });
-  
 
   app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res) {
     console.log(req.user,req.body)
@@ -46,7 +45,17 @@ module.exports = function(app) {
     res.end();
   });
   
-  app.put('/api/users/:user',function(req,res){
+  app.put('/api/users/:user/:stock',function(req,res){
+    UserModel.findById(req.params.user,function(user,err){
+      if(err){
+        console.log(err)
+      }else{
+        console.log("FOUND IT!",user);
+      }
+    })
+    console.log(req.params);
+    req.body.username = req.params.user
+    req.body.portfolio.push(req.params.stock)
     console.log(req.body);
     console.log("Got a PUT request");
   })

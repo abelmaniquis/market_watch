@@ -9,7 +9,10 @@ class View extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      stocks: []
+      username:'',
+      cash:0,
+      stocks:[],
+      iterator:0
     }
   }
   componentDidMount() {
@@ -21,7 +24,8 @@ class View extends React.Component {
   }
   addStock(e) {
     e.preventDefault();
-    axios.put('/api/users/abel').then((response)=>{
+    axios.put(`/api/users/${this.state.username}/${this.state.stocks[this.state.iterator]}`).then((response)=>{
+      this.state.iterator += 1;
       console.log(response);
     })
     //store current stocks in a variable

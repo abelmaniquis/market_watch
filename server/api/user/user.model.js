@@ -22,7 +22,12 @@ var userSchema = mongoose.Schema({
   }
 })
 
+
 require('./user.validation.js')(userSchema);
+
+userSchema.statics.findByName = function(name,cb){
+  return this.find({username: new RegExp(name,'i')},cb);
+};
 
 userSchema.methods.validPassword = function(password) {
   var salt = bcrypt.genSaltSync(8);

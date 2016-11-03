@@ -2,7 +2,7 @@ const React = require('react');
 const reactDOM = require('react-dom')
 const {Router,Route,IndexRoute,browserHistory} = require('react-router')
 const axios = require('axios');
-//https://facebook.github.io/react/docs/forms.html
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class Login extends React.Component {
       username:this.state.username,
       password:this.state.password
     }).then((response)=>{
-      browserHistory.push('/login/profile');
+      browserHistory.push(`/login/profile/${this.state.username}`);
     }).catch(function(err){
       console.log(err);
     });

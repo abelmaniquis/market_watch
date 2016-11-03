@@ -79,16 +79,6 @@
 	
 	var App = React.createClass({
 	  displayName: 'App',
-	
-	
-	  /*
-	  Use axios to redirect
-	  succesful login or unsuccesful login
-	  use axios to redirect
-	  Use the front end to redirect, use framework features
-	  don't use redirects in backend
-	  */
-	
 	  assignStock: function assignStock(nextState, replace) {
 	    var stockArray = stocks.filter(function (stock) {
 	      return stock.ticker === nextState.params.id;
@@ -99,7 +89,6 @@
 	    Object.assign(nextState.params, stockArray[0]);
 	    return nextState;
 	  },
-	  requireAuth: function requireAuth(nextState) {},
 	  render: function render() {
 	    return React.createElement(
 	      Provider,
@@ -111,7 +100,7 @@
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
-	        React.createElement(Route, { path: '/login/profile', component: Profile }),
+	        React.createElement(Route, { path: '/login/profile/:username', component: Profile }),
 	        React.createElement(Route, { path: '/test', component: TestPage }),
 	        React.createElement(Route, { path: '*', component: NotFound })
 	      )
@@ -31137,7 +31126,10 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
-	      stocks: []
+	      username: '',
+	      cash: 0,
+	      stocks: [],
+	      iterator: 0
 	    };
 	    return _this;
 	  }
@@ -31156,8 +31148,11 @@
 	  }, {
 	    key: 'addStock',
 	    value: function addStock(e) {
+	      var _this3 = this;
+	
 	      e.preventDefault();
-	      axios.put('/api/users/abel').then(function (response) {
+	      axios.put('/api/users/' + this.state.username + '/' + this.state.stocks[this.state.iterator]).then(function (response) {
+	        _this3.state.iterator += 1;
 	        console.log(response);
 	      });
 	      //store current stocks in a variable
@@ -34781,7 +34776,6 @@
 	var browserHistory = _require.browserHistory;
 	
 	var axios = __webpack_require__(174);
-	//https://facebook.github.io/react/docs/forms.html
 	
 	var Login = function (_React$Component) {
 	  _inherits(Login, _React$Component);
@@ -34815,12 +34809,14 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
+	      var _this2 = this;
+	
 	      e.preventDefault();
 	      axios.post('/api/users/login', {
 	        username: this.state.username,
 	        password: this.state.password
 	      }).then(function (response) {
-	        browserHistory.push('/login/profile');
+	        browserHistory.push('/login/profile/' + _this2.state.username);
 	      }).catch(function (err) {
 	        console.log(err);
 	      });
