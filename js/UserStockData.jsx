@@ -1,12 +1,8 @@
-//http://jsfiddle.net/faria/3nodz94g/
-
 const React = require('react')
 const axios = require('axios')
 const { Link } = require('react-router')
 
-//Keep the file name as UserStockData
-
-class StockData extends React.Component {
+class Data extends React.Component {
   constructor(props) {
     super(props)
   
@@ -16,34 +12,16 @@ class StockData extends React.Component {
       ticker: "",
       prices: [],
       keyword: this.props.keyword,
-      quantity:1,
+      quantity: 1
     }
   }
+  
   componentDidMount() {
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.state.keyword}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
       .then((response) => {
         var i = 0;
         while (i < response.data.dataset.column_names.length) {
-          //this.state.prices.push(response.data.dataset.data[0][i]); //This is how you work with mutable data structures
-          this.setState({
-            prices: this.state.prices.concat([response.data.dataset.data[0][i]])  //this is how you work with immutable data structures
-          })
-          
-          //React works with immutable structures
-          //mutating this.state, There are things that are immutable
-          //strings are immutable, objects are not.
-          //On line 27, you are changing the value of the array
-          //arrays are changeable.
-          //In react, state is supposed to be immutable, you cannot change it yourself
-          //You need to treat this state as if it doesn't have a push method.
-          
-          //We should be using setstate on line 27
-          //Take a copy of a previous array, and return a new
-          
-          //BIG PICTURE: You should not mutate state
-          //How to distinguish: in general: start your line with this.setState, this.state should be read only
-          //.push modifies an existing array, concat does not.
-          
+          this.state.prices.push(response.data.dataset.data[0][i]);
           i += 1;
         }
         this.setState({
@@ -66,10 +44,11 @@ class StockData extends React.Component {
     let changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1])*100/100).toFixed(2);
     let change = changeNum;
     let quantity = this.state.quantity;
-    let value = close*this.state.quantity
-    let trend = 'trending neutral'
+    let trend = "";
     
-    change >= 0 ? trend = "up" : trend = "down"
+    let value = quantity*close //state is being manipulated here, find another way to do this
+
+    change >= 0 ? trend += "up" : trend += "down"
     
     return (
       <div className="data-container">
@@ -79,10 +58,13 @@ class StockData extends React.Component {
           <th className='ticker'><Link to={`/details/${this.state.ticker}`}>{this.state.ticker}</Link></th>
           <th className='open'>{open}</th>
           <th className='close'>{close}</th>
+          <th className='high'>{high}</th>
+          <th className='low'>{low}</th>
           <th className='trend'>{trend}</th>
-          <th className='onDate'>{date}</th>
-          <th className='value'>{value}</th>
-          <th className='delete-button'><button>Delete</button></th>
+          <th className='buy'><button>Buy</button></th>
+          <th className='sell'><button>Sell</button></th>
+          <th className='quantity'>{this.state.quantity}</th>
+          <th className='value'>{close}</th>
         </tr>
         </tbody>
       </table>
@@ -91,4 +73,4 @@ class StockData extends React.Component {
   }
 }
 
-module.exports = StockData;
+module.exports = Data;

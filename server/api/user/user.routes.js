@@ -59,15 +59,20 @@ module.exports = function(app) {
   })
   
   app.get('/api/profile/myInfo',isLoggedIn,function(req,res){
-    res.json({
-      username:req.user
-    });
+      res.json(req.user)
   })
+  
+  app.put('/api/profile/myInfo',isLoggedIn,function(req,res){
+    console.log(req.user);
+  })
+  /*
+  Feature to be added later
+  app.post('/api/profile/myInfo/buystock',isLoggedIn,function(req,res){
+  })*/
   
 }
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
-    console.log(req,res);
     console.log("USER IS LOGGED IN");
     return next();
   }

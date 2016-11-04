@@ -53,6 +53,7 @@
 	var Profile = __webpack_require__(292);
 	var Signup = __webpack_require__(295);
 	var Login = __webpack_require__(296);
+	var FullList = __webpack_require__(301);
 	var TestPage = __webpack_require__(297);
 	
 	var _require = __webpack_require__(196);
@@ -97,6 +98,7 @@
 	        Router,
 	        { history: browserHistory },
 	        React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
+	        React.createElement(Route, { path: '/fullList', component: FullList, stocks: stocks }),
 	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
 	        React.createElement(Route, { path: '/signup', component: Signup }),
 	        React.createElement(Route, { path: '/login', component: Login }),
@@ -21555,8 +21557,6 @@
 	    this.setState({ searchTerm: event.target.value });
 	  },
 	  render: function render() {
-	    var _this = this;
-	
 	    return React.createElement(
 	      'div',
 	      { className: 'app-container' },
@@ -21591,20 +21591,10 @@
 	          )
 	        ),
 	        React.createElement(
-	          'h4',
-	          null,
-	          'Or just check the markets below:'
-	        ),
-	        React.createElement(Header, null)
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'stocks' },
-	        this.props.route.stocks.filter(function (stock) {
-	          return ('' + stock.ticker + stock.name).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	        }).map(function (stock, index) {
-	          return React.createElement(Data, { keyword: stock.ticker, key: index });
-	        })
+	          'div',
+	          { className: 'description' },
+	          'Create A mock portfolio of stocks'
+	        )
 	      )
 	    );
 	  }
@@ -31121,33 +31111,69 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
-	      username: 'abel', //Set username state here
+	      username: '', //Set username state here
 	      cash: 0,
-	      currentStock: 'NFLX', //current stock
 	      stocks: [],
-	      iterator: 0
+	      quandlInfo: null
 	    };
 	    return _this;
 	  }
 	
 	  _createClass(View, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      axios.get('/api/profile/myInfo').then(function (response) {
+	        console.log(response.data);
+	
+	        _this2.setState({
+	          username: response.data.username,
+	          cash: response.data.cash,
+	          stocks: response.data.portfolio
+	        });
+	        console.log("User's info in front end: ", _this2.state);
+	      });
+	    }
+	  }, {
 	    key: 'addStock',
 	    value: function addStock(e) {
+	      var _this3 = this;
+	
 	      e.preventDefault();
-	      axios.put('/api/users/' + this.state.username + '/' + this.state.currentStock).then(function (response) {
+	
+	      var stockToAdd = this.refs.addInput.value;
+	      console.log(stockToAdd);
+	
+	      axios.put('/api/users/' + this.state.username + '/' + this.refs.addInput.value).then(function (response) {
 	        console.log(response);
 	      });
-	      //store current stocks in a variable
+	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
+	        console.log("QUANDL INFO");
+	        _this3.setState({ quandlInfo: response });
+	        console.log(_this3.state.quandlInfo.data.dataset.column_names);
+	        console.log(_this3.state.quandlInfo.data.dataset.data[0][4]);
+	        console.log(_this3.state.cash);
+	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
+	        var currentCash = _this3.state.cash;
+	        console.log(currentCash - currentPrice);
+	        _this3.setState({ cash: currentCash - currentPrice });
+	        console.log(_this3.state);
+	      });
 	
 	      var stockUpdateStore = this.state.stocks;
-	      stockUpdateStore.push(this.refs.addInput.value);
 	
-	      //clear input element
+	      if (this.state.stocks.indexOf(stockToAdd) > -1) {
+	        console.log("this stock is already included");
+	      } else {
+	        stockUpdateStore.push(stockToAdd);
+	      }
 	      this.refs.addInput.value = '';
 	
 	      this.setState({
 	        stocks: stockUpdateStore
 	      });
+	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'render',
@@ -31158,7 +31184,7 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'My Watchlist'
+	          'My Portfolio'
 	        ),
 	        React.createElement(
 	          'form',
@@ -31172,7 +31198,7 @@
 	        ),
 	        React.createElement(
 	          Link,
-	          { to: '/' },
+	          { to: '/fullList' },
 	          'Check out the full list of stocks here'
 	        ),
 	        React.createElement(
@@ -31202,37 +31228,44 @@
 	              React.createElement(
 	                'th',
 	                null,
+	                'High'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Low'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
 	                'Trend'
 	              ),
 	              React.createElement(
 	                'th',
 	                null,
-	                'On Date'
+	                'Buy'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Sell'
+	              ),
+	              React.createElement(
+	                'th',
+	                null,
+	                'Quant'
 	              ),
 	              React.createElement(
 	                'th',
 	                null,
 	                'Value'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Delete'
 	              )
 	            )
 	          )
 	        ),
-	        React.createElement(
-	          'ul',
-	          null,
-	          this.state.stocks.map(function (stock, i) {
-	            return React.createElement(
-	              'li',
-	              { key: i },
-	              React.createElement(UserStockData, { keyword: stock, key: i })
-	            );
-	          })
-	        )
+	        this.state.stocks.map(function (stock, i) {
+	          return React.createElement(UserStockData, { keyword: stock, key: i });
+	        })
 	      );
 	    }
 	  }]);
@@ -31256,8 +31289,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//http://jsfiddle.net/faria/3nodz94g/
-	
 	var React = __webpack_require__(1);
 	var axios = __webpack_require__(174);
 	
@@ -31265,15 +31296,13 @@
 	
 	var Link = _require.Link;
 	
-	//Keep the file name as UserStockData
+	var Data = function (_React$Component) {
+	  _inherits(Data, _React$Component);
 	
-	var StockData = function (_React$Component) {
-	  _inherits(StockData, _React$Component);
+	  function Data(props) {
+	    _classCallCheck(this, Data);
 	
-	  function StockData(props) {
-	    _classCallCheck(this, StockData);
-	
-	    var _this = _possibleConstructorReturn(this, (StockData.__proto__ || Object.getPrototypeOf(StockData)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Data.__proto__ || Object.getPrototypeOf(Data)).call(this, props));
 	
 	    _this.state = {
 	      id: {},
@@ -31286,7 +31315,7 @@
 	    return _this;
 	  }
 	
-	  _createClass(StockData, [{
+	  _createClass(Data, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var _this2 = this;
@@ -31294,26 +31323,7 @@
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.state.keyword + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        var i = 0;
 	        while (i < response.data.dataset.column_names.length) {
-	          //this.state.prices.push(response.data.dataset.data[0][i]); //This is how you work with mutable data structures
-	          _this2.setState({
-	            prices: _this2.state.prices.concat([response.data.dataset.data[0][i]]) //this is how you work with immutable data structures
-	          });
-	
-	          //React works with immutable structures
-	          //mutating this.state, There are things that are immutable
-	          //strings are immutable, objects are not.
-	          //On line 27, you are changing the value of the array
-	          //arrays are changeable.
-	          //In react, state is supposed to be immutable, you cannot change it yourself
-	          //You need to treat this state as if it doesn't have a push method.
-	
-	          //We should be using setstate on line 27
-	          //Take a copy of a previous array, and return a new
-	
-	          //BIG PICTURE: You should not mutate state
-	          //How to distinguish: in general: start your line with this.setState, this.state should be read only
-	          //.push modifies an existing array, concat does not.
-	
+	          _this2.state.prices.push(response.data.dataset.data[0][i]);
 	          i += 1;
 	        }
 	        _this2.setState({
@@ -31338,10 +31348,11 @@
 	      var changeNum = parseFloat(Math.round(this.state.prices[4] - this.state.prices[1]) * 100 / 100).toFixed(2);
 	      var change = changeNum;
 	      var quantity = this.state.quantity;
-	      var value = close * this.state.quantity;
-	      var trend = 'trending neutral';
+	      var trend = "";
 	
-	      change >= 0 ? trend = "up" : trend = "down";
+	      var value = quantity * close; //state is being manipulated here, find another way to do this
+	
+	      change >= 0 ? trend += "up" : trend += "down";
 	
 	      return React.createElement(
 	        'div',
@@ -31376,27 +31387,46 @@
 	              ),
 	              React.createElement(
 	                'th',
+	                { className: 'high' },
+	                high
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'low' },
+	                low
+	              ),
+	              React.createElement(
+	                'th',
 	                { className: 'trend' },
 	                trend
 	              ),
 	              React.createElement(
 	                'th',
-	                { className: 'onDate' },
-	                date
+	                { className: 'buy' },
+	                React.createElement(
+	                  'button',
+	                  null,
+	                  'Buy'
+	                )
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'sell' },
+	                React.createElement(
+	                  'button',
+	                  null,
+	                  'Sell'
+	                )
+	              ),
+	              React.createElement(
+	                'th',
+	                { className: 'quantity' },
+	                this.state.quantity
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'value' },
-	                value
-	              ),
-	              React.createElement(
-	                'th',
-	                { className: 'delete-button' },
-	                React.createElement(
-	                  'button',
-	                  null,
-	                  'Delete'
-	                )
+	                close
 	              )
 	            )
 	          )
@@ -31405,10 +31435,10 @@
 	    }
 	  }]);
 	
-	  return StockData;
+	  return Data;
 	}(React.Component);
 	
-	module.exports = StockData;
+	module.exports = Data;
 
 /***/ },
 /* 294 */
@@ -34833,7 +34863,7 @@
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'signupContainer' },
+	        { className: 'home-info' },
 	        React.createElement(
 	          'h1',
 	          null,
@@ -35211,6 +35241,75 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var Data = __webpack_require__(173);
+	var Header = __webpack_require__(259);
+	var _React$PropTypes = React.PropTypes;
+	var object = _React$PropTypes.object;
+	var string = _React$PropTypes.string;
+	
+	var _require = __webpack_require__(260);
+	
+	var connector = _require.connector;
+	
+	var _require2 = __webpack_require__(196);
+	
+	var Link = _require2.Link;
+	
+	var Description = __webpack_require__(290);
+	
+	var FullList = React.createClass({
+	  displayName: 'FullList',
+	
+	  propTypes: {
+	    route: object,
+	    searchTerm: string
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      searchTerm: ''
+	    };
+	  },
+	  handleSearchTermEvent: function handleSearchTermEvent(event) {
+	    this.setState({ searchTerm: event.target.value });
+	  },
+	  render: function render() {
+	    var _this = this;
+	
+	    return React.createElement(
+	      'div',
+	      { className: 'app-container' },
+	      React.createElement(
+	        'div',
+	        { className: 'home-info' },
+	        React.createElement(
+	          'h1',
+	          { className: 'title' },
+	          'Here is our full list of Stocks'
+	        ),
+	        React.createElement(Header, null)
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'stocks' },
+	        this.props.route.stocks.filter(function (stock) {
+	          return ('' + stock.ticker + stock.name).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	        }).map(function (stock, index) {
+	          return React.createElement(Data, { keyword: stock.ticker, key: index });
+	        })
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = connector(FullList);
 
 /***/ }
 /******/ ]);

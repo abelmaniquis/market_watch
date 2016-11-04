@@ -35,7 +35,7 @@ class Login extends React.Component {
   
   render() {
     return (
-      <div className='signupContainer'>
+      <div className='home-info'>
       <h1>Log in here</h1>
       
       <form onSubmit={this.handleSubmit}>

@@ -24,7 +24,6 @@ const Landing = React.createClass({
       <div className='app-container'>
       <div className='home-info'>
         <h1 className='title'>MarketWatch!</h1>
-        
         <div className='buttonContainer'>
           <form action="/login">
           <button className='submitButton' type="submit">Log in here</button>
@@ -34,13 +33,11 @@ const Landing = React.createClass({
           <button className='submitButton' type="submit">Sign up here</button>
           </form>
         </div>
-        <h4>Or just check the markets below:</h4>
-        <Header/>
-      </div>
-      <div className='stocks'>
-        {this.props.route.stocks
-        .filter((stock) =>`${stock.ticker}${stock.name}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >=0)
-        .map((stock,index)=>(<Data keyword={stock.ticker} key={index}/>))}
+        
+        <div className="description">
+          Create A mock portfolio of stocks 
+        </div>
+        
       </div>
     </div>
     )

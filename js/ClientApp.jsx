@@ -5,6 +5,7 @@ const Details = require('./Details');
 const Profile = require('./Profile');
 const Signup = require('./Signup');
 const Login = require('./Login');
+const FullList = require('./FullList');
 const TestPage = require('./TestPage');
 const { Router, Route, IndexRoute, hashHistory,browserHistory } = require('react-router')
 const { stocks } = require('../public/tickers')
@@ -27,6 +28,7 @@ const App = React.createClass({
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path='/' component={Landing} stocks={stocks}/>
+        <Route path='/fullList' component={FullList} stocks={stocks}/>
         <Route path='/details/:id' component={Details} onEnter={this.assignStock} />
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
