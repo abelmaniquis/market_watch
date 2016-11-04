@@ -53,8 +53,8 @@
 	var Profile = __webpack_require__(292);
 	var Signup = __webpack_require__(295);
 	var Login = __webpack_require__(296);
-	var FullList = __webpack_require__(301);
-	var TestPage = __webpack_require__(297);
+	var FullList = __webpack_require__(297);
+	var TestPage = __webpack_require__(298);
 	
 	var _require = __webpack_require__(196);
 	
@@ -76,7 +76,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(300);
+	var NotFound = __webpack_require__(301);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -31144,10 +31144,6 @@
 	
 	      var stockToAdd = this.refs.addInput.value;
 	      console.log(stockToAdd);
-	
-	      axios.put('/api/users/' + this.state.username + '/' + this.refs.addInput.value).then(function (response) {
-	        console.log(response);
-	      });
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        console.log("QUANDL INFO");
 	        _this3.setState({ quandlInfo: response });
@@ -31164,9 +31160,16 @@
 	      var stockUpdateStore = this.state.stocks;
 	
 	      if (this.state.stocks.indexOf(stockToAdd) > -1) {
+	        alert("This stock is already included");
 	        console.log("this stock is already included");
+	      } else if (stockToAdd === "") {
+	        alert("You must enter a valid stock");
+	        console.log("No blank strings allowed");
 	      } else {
 	        stockUpdateStore.push(stockToAdd);
+	        axios.put('/api/profile/myInfo/' + stockToAdd).then(function (response) {
+	          console.log(response);
+	        });
 	      }
 	      this.refs.addInput.value = '';
 	
@@ -31176,6 +31179,16 @@
 	      console.log(this.state);
 	    }
 	  }, {
+	    key: 'buy',
+	    value: function buy() {
+	      console.log("This will buy another share of this stock");
+	    }
+	  }, {
+	    key: 'sell',
+	    value: function sell() {
+	      console.log("This will sell a share of this stock");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -31183,7 +31196,7 @@
 	        null,
 	        React.createElement(
 	          'h1',
-	          null,
+	          { className: 'title' },
 	          'My Portfolio'
 	        ),
 	        React.createElement(
@@ -34921,6 +34934,75 @@
 
 	'use strict';
 	
+	var React = __webpack_require__(1);
+	var Data = __webpack_require__(173);
+	var Header = __webpack_require__(259);
+	var _React$PropTypes = React.PropTypes;
+	var object = _React$PropTypes.object;
+	var string = _React$PropTypes.string;
+	
+	var _require = __webpack_require__(260);
+	
+	var connector = _require.connector;
+	
+	var _require2 = __webpack_require__(196);
+	
+	var Link = _require2.Link;
+	
+	var Description = __webpack_require__(290);
+	
+	var FullList = React.createClass({
+	  displayName: 'FullList',
+	
+	  propTypes: {
+	    route: object,
+	    searchTerm: string
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      searchTerm: ''
+	    };
+	  },
+	  handleSearchTermEvent: function handleSearchTermEvent(event) {
+	    this.setState({ searchTerm: event.target.value });
+	  },
+	  render: function render() {
+	    var _this = this;
+	
+	    return React.createElement(
+	      'div',
+	      { className: 'app-container' },
+	      React.createElement(
+	        'div',
+	        { className: 'home-info' },
+	        React.createElement(
+	          'h1',
+	          { className: 'title' },
+	          'Here is our full list of Stocks'
+	        ),
+	        React.createElement(Header, null)
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'stocks' },
+	        this.props.route.stocks.filter(function (stock) {
+	          return ('' + stock.ticker + stock.name).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	        }).map(function (stock, index) {
+	          return React.createElement(Data, { keyword: stock.ticker, key: index });
+	        })
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = connector(FullList);
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34933,7 +35015,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(298);
+	var uuid = __webpack_require__(299);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -34976,7 +35058,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34989,7 +35071,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(299);
+	var _rng = __webpack_require__(300);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -35160,7 +35242,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -35198,7 +35280,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35241,75 +35323,6 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
-
-/***/ },
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var Data = __webpack_require__(173);
-	var Header = __webpack_require__(259);
-	var _React$PropTypes = React.PropTypes;
-	var object = _React$PropTypes.object;
-	var string = _React$PropTypes.string;
-	
-	var _require = __webpack_require__(260);
-	
-	var connector = _require.connector;
-	
-	var _require2 = __webpack_require__(196);
-	
-	var Link = _require2.Link;
-	
-	var Description = __webpack_require__(290);
-	
-	var FullList = React.createClass({
-	  displayName: 'FullList',
-	
-	  propTypes: {
-	    route: object,
-	    searchTerm: string
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      searchTerm: ''
-	    };
-	  },
-	  handleSearchTermEvent: function handleSearchTermEvent(event) {
-	    this.setState({ searchTerm: event.target.value });
-	  },
-	  render: function render() {
-	    var _this = this;
-	
-	    return React.createElement(
-	      'div',
-	      { className: 'app-container' },
-	      React.createElement(
-	        'div',
-	        { className: 'home-info' },
-	        React.createElement(
-	          'h1',
-	          { className: 'title' },
-	          'Here is our full list of Stocks'
-	        ),
-	        React.createElement(Header, null)
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'stocks' },
-	        this.props.route.stocks.filter(function (stock) {
-	          return ('' + stock.ticker + stock.name).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	        }).map(function (stock, index) {
-	          return React.createElement(Data, { keyword: stock.ticker, key: index });
-	        })
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = connector(FullList);
 
 /***/ }
 /******/ ]);

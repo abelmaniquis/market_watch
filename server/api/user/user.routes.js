@@ -45,30 +45,30 @@ module.exports = function(app) {
     res.end();
   });
   
-  app.put('/api/users/:user/:stock',isLoggedIn,function(req,res){
-    UserModel.findByName(req.params.user,function(err){
-      if(!err){
-        console.log(req.params.user);
-        console.log(req.body);
-        //req.body.portfolio.push(req.params.stock);
-      }else{
-        console.log(err)
-      }
-      console.log(req.body);
-    })
-  })
   
   app.get('/api/profile/myInfo',isLoggedIn,function(req,res){
       res.json(req.user)
   })
   
-  app.put('/api/profile/myInfo',isLoggedIn,function(req,res){
+  app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req,res){
+    console.log(req.user._id);
+    UserModel.findByIdAndUpdate(req.user._id,{
+      
+    },function(err,user){
+      if(err){
+        console.log(err)
+      }else{
+        console.log("Put request goes through");
+        user.portfolio.push(req.params.aStock);
+        console.log(user)
+        user.save();
+        console.log(req.params.aStock);
+      }
+    })
+    
     console.log(req.user);
+    console.log(" ")
   })
-  /*
-  Feature to be added later
-  app.post('/api/profile/myInfo/buystock',isLoggedIn,function(req,res){
-  })*/
   
 }
 function isLoggedIn(req, res, next) {

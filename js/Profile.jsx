@@ -31,11 +31,6 @@ class View extends React.Component {
     
     var stockToAdd = this.refs.addInput.value;
     console.log(stockToAdd);
-    
-    axios.put(`/api/users/${this.state.username}/${this.refs.addInput.value}`)
-    .then((response)=>{
-      console.log(response);
-    })
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
       console.log("QUANDL INFO")
@@ -53,9 +48,20 @@ class View extends React.Component {
     const stockUpdateStore = this.state.stocks
     
     if(this.state.stocks.indexOf(stockToAdd) > -1){
+      alert("This stock is already included")
       console.log("this stock is already included")
-    }else{
+    }
+    else if(stockToAdd === ""){
+      alert("You must enter a valid stock");
+      console.log("No blank strings allowed");
+    }
+    else{
       stockUpdateStore.push(stockToAdd);
+      axios.put(`/api/profile/myInfo/${stockToAdd}`)
+    .then((response)=>{
+      console.log(response);
+    })
+      
     }
     this.refs.addInput.value = '';
 
@@ -64,11 +70,17 @@ class View extends React.Component {
     })
     console.log(this.state);
   }
+  buy(){
+    console.log("This will buy another share of this stock")
+  }
+  sell(){
+    console.log("This will sell a share of this stock")
+  }
   render() {
     return (
       <div>
       
-        <h1>My Portfolio</h1>
+        <h1 className='title'>My Portfolio</h1>
       
         <form onSubmit={ this.addStock.bind(this) }>
           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
