@@ -65,6 +65,41 @@ html {
   font-size: 16px;
 }
 
+.button-type{
+  background-color: #008CBA;
+  border-radius: 4px;
+  border: none;
+  margin: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.buy-button{
+  background-color: #00FF00;
+  border-radius: 4px;
+  border: none;
+  margin: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.sell-button{
+  background-color: #B80000;
+  border-radius: 4px;
+  border: none;
+  margin: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
 table {
   width: 100%;
 }
@@ -83,7 +118,7 @@ th {
 }
 
 .table-body:hover {
-  background-color: #00ff00;
+  background-color: #707070;
   cursor: pointer;
 }
 

@@ -13,7 +13,9 @@ class Data extends React.Component {
       prices: [],
       keyword: this.props.keyword,
       quantity: 1
-    }
+    };
+    this.buy = this.buy.bind(this);
+    this.sell = this.sell.bind(this);
   }
   
   componentDidMount() {
@@ -30,6 +32,18 @@ class Data extends React.Component {
           id: response.data.dataset.dataset_id
         });
       })
+  }
+  buy(e){
+    e.preventDefault();
+    this.setState({
+      quantity:this.state.quantity += 1
+    })
+    console.log(this.state);
+    console.log("This will buy another share of the stock")
+  }
+  sell(e){
+    e.preventDefault();
+    console.log("This will sell a share of the stock")
   }
   render() {
     
@@ -61,8 +75,18 @@ class Data extends React.Component {
           <th className='high'>{high}</th>
           <th className='low'>{low}</th>
           <th className='trend'>{trend}</th>
-          <th className='buy'><button>Buy</button></th>
-          <th className='sell'><button>Sell</button></th>
+          <th className='buy'>
+            <form onSubmit={this.buy}>
+              <button className="buy-button" type="submit"></button>
+            </form>
+          </th>
+          
+          <th className='sell'>
+            <form onSubmit={this.sell}>
+              <button className="sell-button" type="submit"></button>
+            </form>
+          </th>
+          
           <th className='quantity'>{this.state.quantity}</th>
           <th className='value'>{close}</th>
         </tr>

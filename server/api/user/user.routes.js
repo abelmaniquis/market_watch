@@ -60,14 +60,16 @@ module.exports = function(app) {
       }else{
         console.log("Put request goes through");
         user.portfolio.push(req.params.aStock);
-        console.log(user)
         user.save();
-        console.log(req.params.aStock);
       }
     })
     
     console.log(req.user);
     console.log(" ")
+  })
+  
+  app.put('/api/profile/myInfo/sell/:aStock',isLoggedIn,function(req,res){
+    console.log("This will remove this stock from the user's portfolio");
   })
   
 }

@@ -21593,7 +21593,11 @@
 	        React.createElement(
 	          'div',
 	          { className: 'description' },
-	          'Create A mock portfolio of stocks'
+	          React.createElement(
+	            'h4',
+	            null,
+	            'How would you invest a million dollars?'
+	          )
 	        )
 	      )
 	    );
@@ -31099,6 +31103,7 @@
 	var Link = _require.Link;
 	
 	var Data = __webpack_require__(173);
+	//const Typeahead = require('./TypeAhead.jsx')
 	var UserStockData = __webpack_require__(293);
 	var list = __webpack_require__(294);
 	
@@ -31325,6 +31330,8 @@
 	      keyword: _this.props.keyword,
 	      quantity: 1
 	    };
+	    _this.buy = _this.buy.bind(_this);
+	    _this.sell = _this.sell.bind(_this);
 	    return _this;
 	  }
 	
@@ -31345,6 +31352,22 @@
 	          id: response.data.dataset.dataset_id
 	        });
 	      });
+	    }
+	  }, {
+	    key: 'buy',
+	    value: function buy(e) {
+	      e.preventDefault();
+	      this.setState({
+	        quantity: this.state.quantity += 1
+	      });
+	      console.log(this.state);
+	      console.log("This will buy another share of the stock");
+	    }
+	  }, {
+	    key: 'sell',
+	    value: function sell(e) {
+	      e.preventDefault();
+	      console.log("This will sell a share of the stock");
 	    }
 	  }, {
 	    key: 'render',
@@ -31417,18 +31440,18 @@
 	                'th',
 	                { className: 'buy' },
 	                React.createElement(
-	                  'button',
-	                  null,
-	                  'Buy'
+	                  'form',
+	                  { onSubmit: this.buy },
+	                  React.createElement('button', { className: 'buy-button', type: 'submit' })
 	                )
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'sell' },
 	                React.createElement(
-	                  'button',
-	                  null,
-	                  'Sell'
+	                  'form',
+	                  { onSubmit: this.sell },
+	                  React.createElement('button', { className: 'sell-button', type: 'submit' })
 	                )
 	              ),
 	              React.createElement(

@@ -35,7 +35,7 @@ const Landing = React.createClass({
         </div>
         
         <div className="description">
-          Create A mock portfolio of stocks 
+          <h4>How would you invest a million dollars?</h4>
         </div>
         
       </div>

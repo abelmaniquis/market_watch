@@ -2,6 +2,7 @@ const React = require('react');
 const axios = require('axios');
 const {Link} = require('react-router');
 const Data = require('./Data');
+//const Typeahead = require('./TypeAhead.jsx')
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
 
@@ -81,7 +82,6 @@ class View extends React.Component {
       <div>
       
         <h1 className='title'>My Portfolio</h1>
-      
         <form onSubmit={ this.addStock.bind(this) }>
           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
