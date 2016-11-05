@@ -14,10 +14,7 @@ module.exports = function(app) {
   
   //USER SIGNUP
   
-  app.post('/api/profile/userInfo',function(req,res){
-    console.log(req.body);
-    return req.body
-  });
+
   
   app.put('/api/profile/userInfo/',function(req,res){
     UserModel.findById(req.params.id,function(user,err){
@@ -45,6 +42,7 @@ module.exports = function(app) {
     res.end();
   });
   
+  //USER INFO
   
   app.get('/api/profile/myInfo',isLoggedIn,function(req,res){
       res.json(req.user)

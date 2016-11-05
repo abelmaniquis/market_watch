@@ -27,8 +27,9 @@ class Signup extends React.Component {
       username:this.state.username,
       password:this.state.password
     }).then((response)=>{
-      browserHistory.push('/login/profile');
+      browserHistory.push(`/login/profile/${this.state.username}`);
     }).catch(function(err){
+      alert(err);
       console.log(err);
     });
   }
@@ -37,10 +38,10 @@ class Signup extends React.Component {
   
   render() {
     return (
-      <div className='signupContainer'>
+      <div className='home-info'>
       <h1>Sign up here</h1>
       
-      <form onSubmit={this.handleSubmit}>
+      <form className='user-submit' onSubmit={this.handleSubmit}>
         <div className="user-input">
         
           <label>Username</label>
@@ -62,7 +63,7 @@ class Signup extends React.Component {
              className="type-here"/>
         </div>
         
-       <div className="button">
+       <div className="submit-button">
            <input className = "button-type" type="submit" value="Submit"/>
        </div>
       

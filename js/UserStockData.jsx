@@ -61,7 +61,9 @@ class Data extends React.Component {
     let trend = "";
     
     let value = quantity*close //state is being manipulated here, find another way to do this
-
+    
+    console.log(value);
+    
     change >= 0 ? trend += "up" : trend += "down"
     
     return (

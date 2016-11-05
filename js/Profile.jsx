@@ -39,8 +39,10 @@ class View extends React.Component {
       console.log(this.state.quandlInfo.data.dataset.column_names);
       console.log(this.state.quandlInfo.data.dataset.data[0][4]);
       console.log(this.state.cash);
+      
       var currentPrice = this.state.quandlInfo.data.dataset.data[0][4];
       var currentCash = this.state.cash;
+      
       console.log(currentCash - currentPrice);
       this.setState({cash:currentCash - currentPrice})
       console.log(this.state);

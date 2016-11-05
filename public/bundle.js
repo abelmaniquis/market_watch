@@ -31155,8 +31155,10 @@
 	        console.log(_this3.state.quandlInfo.data.dataset.column_names);
 	        console.log(_this3.state.quandlInfo.data.dataset.data[0][4]);
 	        console.log(_this3.state.cash);
+	
 	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
 	        var currentCash = _this3.state.cash;
+	
 	        console.log(currentCash - currentPrice);
 	        _this3.setState({ cash: currentCash - currentPrice });
 	        console.log(_this3.state);
@@ -31387,6 +31389,8 @@
 	      var trend = "";
 	
 	      var value = quantity * close; //state is being manipulated here, find another way to do this
+	
+	      console.log(value);
 	
 	      change >= 0 ? trend += "up" : trend += "down";
 	
@@ -34754,13 +34758,16 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
+	      var _this2 = this;
+	
 	      e.preventDefault();
 	      axios.post('/api/users/signup', {
 	        username: this.state.username,
 	        password: this.state.password
 	      }).then(function (response) {
-	        browserHistory.push('/login/profile');
+	        browserHistory.push('/login/profile/' + _this2.state.username);
 	      }).catch(function (err) {
+	        alert(err);
 	        console.log(err);
 	      });
 	    }
@@ -34772,7 +34779,7 @@
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'signupContainer' },
+	        { className: 'home-info' },
 	        React.createElement(
 	          'h1',
 	          null,
@@ -34780,7 +34787,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { onSubmit: this.handleSubmit },
+	          { className: 'user-submit', onSubmit: this.handleSubmit },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
@@ -34811,7 +34818,7 @@
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'button' },
+	            { className: 'submit-button' },
 	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	          )
 	        )
@@ -34891,6 +34898,7 @@
 	      }).then(function (response) {
 	        browserHistory.push('/login/profile/' + _this2.state.username);
 	      }).catch(function (err) {
+	        alert(err);
 	        console.log(err);
 	      });
 	    }
@@ -34907,7 +34915,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { onSubmit: this.handleSubmit },
+	          { className: 'user-submit', onSubmit: this.handleSubmit },
 	          React.createElement(
 	            'div',
 	            { className: 'user-input' },
@@ -34938,7 +34946,7 @@
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'button' },
+	            { className: 'submit-button' },
 	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	          )
 	        )

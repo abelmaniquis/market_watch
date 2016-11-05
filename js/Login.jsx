@@ -29,6 +29,7 @@ class Login extends React.Component {
     }).then((response)=>{
       browserHistory.push(`/login/profile/${this.state.username}`);
     }).catch(function(err){
+      alert(err);
       console.log(err);
     });
   }
@@ -38,7 +39,7 @@ class Login extends React.Component {
       <div className='home-info'>
       <h1>Log in here</h1>
       
-      <form onSubmit={this.handleSubmit}>
+      <form className='user-submit' onSubmit={this.handleSubmit}>
         <div className="user-input">
         
           <label>Username</label>
@@ -60,7 +61,7 @@ class Login extends React.Component {
              className="type-here"/>
         </div>
         
-       <div className="button">
+       <div className="submit-button">
            <input className = "button-type" type="submit" value="Submit"/>
        </div>
       
