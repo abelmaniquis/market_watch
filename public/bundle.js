@@ -31152,6 +31152,7 @@
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        console.log("QUANDL INFO");
 	        _this3.setState({ quandlInfo: response });
+	
 	        console.log(_this3.state.quandlInfo.data.dataset.column_names);
 	        console.log(_this3.state.quandlInfo.data.dataset.data[0][4]);
 	        console.log(_this3.state.cash);
@@ -31162,6 +31163,10 @@
 	        console.log(currentCash - currentPrice);
 	        _this3.setState({ cash: currentCash - currentPrice });
 	        console.log(_this3.state);
+	
+	        if (_this3.cash === 0) {
+	          alert("You are out of money");
+	        }
 	      });
 	
 	      var stockUpdateStore = this.state.stocks;
@@ -31184,16 +31189,6 @@
 	        stocks: stockUpdateStore
 	      });
 	      console.log(this.state);
-	    }
-	  }, {
-	    key: 'buy',
-	    value: function buy() {
-	      console.log("This will buy another share of this stock");
-	    }
-	  }, {
-	    key: 'sell',
-	    value: function sell() {
-	      console.log("This will sell a share of this stock");
 	    }
 	  }, {
 	    key: 'render',
@@ -31370,6 +31365,9 @@
 	    value: function sell(e) {
 	      e.preventDefault();
 	      console.log("This will sell a share of the stock");
+	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {
+	        console.log(response);
+	      });
 	    }
 	  }, {
 	    key: 'render',

@@ -36,6 +36,7 @@ class View extends React.Component {
     .then((response)=>{
       console.log("QUANDL INFO")
       this.setState({quandlInfo: response})
+      
       console.log(this.state.quandlInfo.data.dataset.column_names);
       console.log(this.state.quandlInfo.data.dataset.data[0][4]);
       console.log(this.state.cash);
@@ -46,6 +47,11 @@ class View extends React.Component {
       console.log(currentCash - currentPrice);
       this.setState({cash:currentCash - currentPrice})
       console.log(this.state);
+      
+      if(this.cash === 0){
+        alert("You are out of money");
+      }
+      
     })
     
     const stockUpdateStore = this.state.stocks
@@ -72,12 +78,6 @@ class View extends React.Component {
       stocks: stockUpdateStore
     })
     console.log(this.state);
-  }
-  buy(){
-    console.log("This will buy another share of this stock")
-  }
-  sell(){
-    console.log("This will sell a share of this stock")
   }
   render() {
     return (

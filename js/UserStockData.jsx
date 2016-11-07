@@ -44,6 +44,9 @@ class Data extends React.Component {
   sell(e){
     e.preventDefault();
     console.log("This will sell a share of the stock")
+    axios.put(`/api/profile/myInfo/sell/${this.state.keyword}`).then((response)=>{
+      console.log(response)
+    })
   }
   render() {
     

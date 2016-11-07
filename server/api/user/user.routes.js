@@ -14,6 +14,7 @@ module.exports = function(app) {
   
   //USER SIGNUP
   
+  //Error handling: http://expressjs.com/en/guide/error-handling.html
 
   
   app.put('/api/profile/userInfo/',function(req,res){
@@ -66,10 +67,25 @@ module.exports = function(app) {
     console.log(" ")
   })
   
-  app.put('/api/profile/myInfo/sell/:aStock',isLoggedIn,function(req,res){
-    console.log("This will remove this stock from the user's portfolio");
+  app.put('/api/profile/myInfo/sell/:aStock', isLoggedIn, function(req, res,next) {
+    console.log(req.user);
+    console.log(req.params);
+    UserModel.findByIdAndUpdate(req.user._id, {
+        $pull: {
+          portfolio: req.params.aStock
+        }
+      },
+      function(error, user) {
+
+        if (error) {
+          next(error);
+        }
+        else {
+          res.status(201).json(user);
+        }
+
+      });
   })
-  
 }
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
