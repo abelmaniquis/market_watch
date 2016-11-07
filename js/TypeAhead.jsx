@@ -3,19 +3,17 @@
 
 const React = require('react');
 const Typeahead = require('react-typeahead').Typeahead;
+const StocksToList = require('../public/tickers.json');
 
-class TypeBar extends React.component {
-  constructor(props){
-    super(props);
-  }
-  render(){
-    return(
-      <Typeahead 
-      options={['GOOG','NFLX','AMZN']}
-      maxVisible={2}
-      />
-    )
-  }
+class TypeAhead extends React.component {
+    render(){
+      return(
+        <div>
+        <h1>Hello from typeahead</h1>
+        </div>
+      )
+    }
 }
 
-module.exports = TypeBar;
+
+module.exports = TypeAhead;

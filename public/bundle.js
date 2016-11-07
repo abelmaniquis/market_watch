@@ -31103,7 +31103,12 @@
 	var Link = _require.Link;
 	
 	var Data = __webpack_require__(173);
-	//const Typeahead = require('./TypeAhead.jsx')
+	
+	var _require2 = __webpack_require__(196);
+	
+	var Router = _require2.Router;
+	//const Typeahead = require('./TypeAhead.jsx');
+	
 	var UserStockData = __webpack_require__(293);
 	var list = __webpack_require__(294);
 	
@@ -31121,6 +31126,8 @@
 	      stocks: [],
 	      quandlInfo: null
 	    };
+	    _this.addStock = _this.addStock.bind(_this);
+	
 	    return _this;
 	  }
 	
@@ -31191,8 +31198,19 @@
 	      console.log(this.state);
 	    }
 	  }, {
+	    key: 'remove',
+	    value: function remove(e) {
+	      e.preventDefault();
+	      console.log("Will remove an item from the list");
+	    }
+	  }, {
+	    key: 'refresh',
+	    value: function refresh() {}
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this4 = this;
+	
 	      return React.createElement(
 	        'div',
 	        null,
@@ -31203,7 +31221,7 @@
 	        ),
 	        React.createElement(
 	          'form',
-	          { onSubmit: this.addStock.bind(this) },
+	          { onSubmit: this.addStock },
 	          React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
 	          React.createElement(
 	            'button',
@@ -31279,6 +31297,7 @@
 	          )
 	        ),
 	        this.state.stocks.map(function (stock, i) {
+	          console.log(_this4.state.stocks);
 	          return React.createElement(UserStockData, { keyword: stock, key: i });
 	        })
 	      );

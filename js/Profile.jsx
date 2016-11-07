@@ -2,7 +2,8 @@ const React = require('react');
 const axios = require('axios');
 const {Link} = require('react-router');
 const Data = require('./Data');
-//const Typeahead = require('./TypeAhead.jsx')
+const {Router} = require('react-router');
+//const Typeahead = require('./TypeAhead.jsx');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
 
@@ -14,7 +15,9 @@ class View extends React.Component {
       cash:0,
       stocks:[],
       quandlInfo: null
-    }
+    };
+    this.addStock = this.addStock.bind(this);
+    
   }componentWillMount(){
     axios.get('/api/profile/myInfo').then((response)=>{
       console.log(response.data);
@@ -79,12 +82,21 @@ class View extends React.Component {
     })
     console.log(this.state);
   }
+  
+  remove(e){
+   e.preventDefault();
+   console.log("Will remove an item from the list")
+  }
+  
+  refresh(){
+    
+  }
   render() {
     return (
       <div>
       
         <h1 className='title'>My Portfolio</h1>
-        <form onSubmit={ this.addStock.bind(this) }>
+        <form onSubmit={ this.addStock}>
           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
@@ -109,6 +121,7 @@ class View extends React.Component {
     </table>
           {
             this.state.stocks.map((stock,i)=>{
+            console.log(this.state.stocks);
               return(
                 <UserStockData keyword={stock} key={i}/>
               )
