@@ -12,21 +12,6 @@ module.exports = function(app) {
   
   var UserModel = mongoose.model('User',User)
   
-  //USER SIGNUP
-  
-  //Error handling: http://expressjs.com/en/guide/error-handling.html
-
-  
-  app.put('/api/profile/userInfo/',function(req,res){
-    UserModel.findById(req.params.id,function(user,err){
-      if(!err){
-      console.log(req.body)
-      }else{
-        console.log(err);
-      }
-      });
-  });
-
   app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res) {
     console.log(req.user,req.body)
     res.end();
@@ -34,28 +19,30 @@ module.exports = function(app) {
 
   //LOGIN
 
-  app.get('/api/users/login/', function(req, res) {
-    res.status(200).json(User);
+  app.get('/api/users/login/', function(err, req, res, next) {
+    if(!err){
+      res.status(200).json(User);
+    }else{
+      next(err)
+    }
   });
   
   app.post('/api/users/login/', passport.authenticate('local-login'), function(req, res){
-    console.log(req.user,req.body);
     res.end();
   });
   
   //USER INFO
   
-  app.get('/api/profile/myInfo',isLoggedIn,function(req,res){
+  app.get('/api/profile/myInfo',isLoggedIn,function(req,res,next){
       res.json(req.user)
   })
   
-  app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req,res){
+  app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req,res,next){
     console.log(req.user._id);
     UserModel.findByIdAndUpdate(req.user._id,{
-      
     },function(err,user){
       if(err){
-        console.log(err)
+        next(err);
       }else{
         console.log("Put request goes through");
         user.portfolio.push(req.params.aStock);
@@ -76,7 +63,6 @@ module.exports = function(app) {
         }
       },
       function(error, user) {
-
         if (error) {
           next(error);
         }

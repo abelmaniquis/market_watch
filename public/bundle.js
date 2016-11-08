@@ -31144,7 +31144,7 @@
 	          cash: response.data.cash,
 	          stocks: response.data.portfolio
 	        });
-	        console.log("User's info in front end: ", _this2.state);
+	        console.log(_this2.state);
 	      });
 	    }
 	  }, {
@@ -31157,11 +31157,8 @@
 	      var stockToAdd = this.refs.addInput.value;
 	      console.log(stockToAdd);
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
-	        console.log("QUANDL INFO");
 	        _this3.setState({ quandlInfo: response });
 	
-	        console.log(_this3.state.quandlInfo.data.dataset.column_names);
-	        console.log(_this3.state.quandlInfo.data.dataset.data[0][4]);
 	        console.log(_this3.state.cash);
 	
 	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
@@ -31217,7 +31214,8 @@
 	        React.createElement(
 	          'h1',
 	          { className: 'title' },
-	          'My Portfolio'
+	          this.state.username,
+	          '\'s Portfolio'
 	        ),
 	        React.createElement(
 	          'form',
@@ -31329,6 +31327,9 @@
 	var _require = __webpack_require__(196);
 	
 	var Link = _require.Link;
+	var Router = _require.Router;
+	var IndexRoute = _require.IndexRoute;
+	var browserHistory = _require.browserHistory;
 	
 	var Data = function (_React$Component) {
 	  _inherits(Data, _React$Component);
@@ -31386,6 +31387,13 @@
 	      console.log("This will sell a share of the stock");
 	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {
 	        console.log(response);
+	      }).catch(function (err) {
+	        alert(err);
+	        console.log(err);
+	      });
+	      axios.get('/api/profile/myInfo').then(function (response) {
+	        console.log(response.data.username);
+	        browserHistory.push('/login');
 	      });
 	    }
 	  }, {

@@ -1,6 +1,6 @@
 const React = require('react')
 const axios = require('axios')
-const { Link } = require('react-router')
+const { Link,Router,IndexRoute,browserHistory } = require('react-router')
 
 class Data extends React.Component {
   constructor(props) {
@@ -46,7 +46,14 @@ class Data extends React.Component {
     console.log("This will sell a share of the stock")
     axios.put(`/api/profile/myInfo/sell/${this.state.keyword}`).then((response)=>{
       console.log(response)
+    }).catch(function(err){
+      alert(err);
+      console.log(err);
     })
+    axios.get('/api/profile/myInfo').then((response)=>{
+      console.log(response.data.username);
+      browserHistory.push(`/login`);
+    });
   }
   render() {
     

@@ -27,7 +27,7 @@ class View extends React.Component {
         cash:response.data.cash,
         stocks:response.data.portfolio
       })
-      console.log("User's info in front end: ",this.state);
+      console.log(this.state);
     })
   }
   addStock(e) {
@@ -37,11 +37,8 @@ class View extends React.Component {
     console.log(stockToAdd);
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
-      console.log("QUANDL INFO")
       this.setState({quandlInfo: response})
       
-      console.log(this.state.quandlInfo.data.dataset.column_names);
-      console.log(this.state.quandlInfo.data.dataset.data[0][4]);
       console.log(this.state.cash);
       
       var currentPrice = this.state.quandlInfo.data.dataset.data[0][4];
@@ -82,7 +79,6 @@ class View extends React.Component {
     })
     console.log(this.state);
   }
-  
   remove(e){
    e.preventDefault();
    console.log("Will remove an item from the list")
@@ -95,7 +91,7 @@ class View extends React.Component {
     return (
       <div>
       
-        <h1 className='title'>My Portfolio</h1>
+        <h1 className='title'>{this.state.username}'s Portfolio</h1>
         <form onSubmit={ this.addStock}>
           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
