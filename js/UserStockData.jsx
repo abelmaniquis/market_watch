@@ -38,7 +38,6 @@ class Data extends React.Component {
     this.setState({
       quantity:this.state.quantity += 1
     })
-    console.log(this.state);
     console.log("This will buy another share of the stock")
   }
   sell(e){

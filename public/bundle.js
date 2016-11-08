@@ -31107,10 +31107,11 @@
 	var _require2 = __webpack_require__(196);
 	
 	var Router = _require2.Router;
-	//const Typeahead = require('./TypeAhead.jsx');
 	
 	var UserStockData = __webpack_require__(293);
 	var list = __webpack_require__(294);
+	//const Typeahead = require('./TypeAhead.jsx');
+	
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -31121,13 +31122,14 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
-	      username: '', //Set username state here
+	      username: '',
 	      cash: 0,
 	      stocks: [],
 	      quandlInfo: null
 	    };
 	    _this.addStock = _this.addStock.bind(_this);
-	
+	    _this.remove = _this.remove.bind(_this);
+	    _this.alterCash = _this.alterCash.bind(_this);
 	    return _this;
 	  }
 	
@@ -31137,8 +31139,6 @@
 	      var _this2 = this;
 	
 	      axios.get('/api/profile/myInfo').then(function (response) {
-	        console.log(response.data);
-	
 	        _this2.setState({
 	          username: response.data.username,
 	          cash: response.data.cash,
@@ -31155,7 +31155,6 @@
 	      e.preventDefault();
 	
 	      var stockToAdd = this.refs.addInput.value;
-	      console.log(stockToAdd);
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({ quandlInfo: response });
 	
@@ -31172,15 +31171,12 @@
 	          alert("You are out of money");
 	        }
 	      });
-	
 	      var stockUpdateStore = this.state.stocks;
 	
 	      if (this.state.stocks.indexOf(stockToAdd) > -1) {
 	        alert("This stock is already included");
-	        console.log("this stock is already included");
 	      } else if (stockToAdd === "") {
 	        alert("You must enter a valid stock");
-	        console.log("No blank strings allowed");
 	      } else {
 	        stockUpdateStore.push(stockToAdd);
 	        axios.put('/api/profile/myInfo/' + stockToAdd).then(function (response) {
@@ -31188,26 +31184,21 @@
 	        });
 	      }
 	      this.refs.addInput.value = '';
-	
 	      this.setState({
 	        stocks: stockUpdateStore
 	      });
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'remove',
-	    value: function remove(e) {
-	      e.preventDefault();
+	    value: function remove() {
 	      console.log("Will remove an item from the list");
 	    }
 	  }, {
-	    key: 'refresh',
-	    value: function refresh() {}
+	    key: 'alterCash',
+	    value: function alterCash() {}
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this4 = this;
-	
 	      return React.createElement(
 	        'div',
 	        null,
@@ -31231,6 +31222,15 @@
 	          Link,
 	          { to: '/fullList' },
 	          'Check out the full list of stocks here'
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'cashContainer' },
+	          React.createElement(
+	            'h3',
+	            { className: 'myCash' },
+	            this.state.cash
+	          )
 	        ),
 	        React.createElement(
 	          'table',
@@ -31295,7 +31295,6 @@
 	          )
 	        ),
 	        this.state.stocks.map(function (stock, i) {
-	          console.log(_this4.state.stocks);
 	          return React.createElement(UserStockData, { keyword: stock, key: i });
 	        })
 	      );
@@ -31377,7 +31376,6 @@
 	      this.setState({
 	        quantity: this.state.quantity += 1
 	      });
-	      console.log(this.state);
 	      console.log("This will buy another share of the stock");
 	    }
 	  }, {

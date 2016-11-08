@@ -3,25 +3,25 @@ const axios = require('axios');
 const {Link} = require('react-router');
 const Data = require('./Data');
 const {Router} = require('react-router');
-//const Typeahead = require('./TypeAhead.jsx');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
+//const Typeahead = require('./TypeAhead.jsx');
+
 
 class View extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username:'', //Set username state here
+      username:'',
       cash:0,
       stocks:[],
       quandlInfo: null
     };
     this.addStock = this.addStock.bind(this);
-    
+    this.remove = this.remove.bind(this);
+    this.alterCash = this.alterCash.bind(this);
   }componentWillMount(){
     axios.get('/api/profile/myInfo').then((response)=>{
-      console.log(response.data);
-      
       this.setState({
         username:response.data.username,
         cash:response.data.cash,
@@ -34,7 +34,6 @@ class View extends React.Component {
     e.preventDefault();
     
     var stockToAdd = this.refs.addInput.value;
-    console.log(stockToAdd);
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
       this.setState({quandlInfo: response})
@@ -53,16 +52,13 @@ class View extends React.Component {
       }
       
     })
-    
     const stockUpdateStore = this.state.stocks
     
     if(this.state.stocks.indexOf(stockToAdd) > -1){
       alert("This stock is already included")
-      console.log("this stock is already included")
     }
     else if(stockToAdd === ""){
       alert("You must enter a valid stock");
-      console.log("No blank strings allowed");
     }
     else{
       stockUpdateStore.push(stockToAdd);
@@ -70,21 +66,16 @@ class View extends React.Component {
     .then((response)=>{
       console.log(response);
     })
-      
     }
     this.refs.addInput.value = '';
-
     this.setState({
       stocks: stockUpdateStore
     })
-    console.log(this.state);
   }
-  remove(e){
-   e.preventDefault();
+  remove(){
    console.log("Will remove an item from the list")
   }
-  
-  refresh(){
+  alterCash(){
     
   }
   render() {
@@ -98,7 +89,9 @@ class View extends React.Component {
         </form>
         
         <Link to="/fullList">Check out the full list of stocks here</Link>
-        
+        <div className="cashContainer">
+          <h3 className="myCash">{this.state.cash}</h3>
+        </div>
         <table className="tableHead">
         <tbody>
           <tr>
@@ -117,7 +110,6 @@ class View extends React.Component {
     </table>
           {
             this.state.stocks.map((stock,i)=>{
-            console.log(this.state.stocks);
               return(
                 <UserStockData keyword={stock} key={i}/>
               )
