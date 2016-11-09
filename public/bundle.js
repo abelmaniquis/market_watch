@@ -59,10 +59,10 @@
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(290);
 	var Profile = __webpack_require__(291);
-	var Signup = __webpack_require__(294);
-	var Login = __webpack_require__(295);
-	var FullList = __webpack_require__(296);
-	var TestPage = __webpack_require__(297);
+	var Signup = __webpack_require__(305);
+	var Login = __webpack_require__(306);
+	var FullList = __webpack_require__(307);
+	var TestPage = __webpack_require__(308);
 	
 	var _require = __webpack_require__(196);
 	
@@ -84,7 +84,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(300);
+	var NotFound = __webpack_require__(311);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -31096,7 +31096,7 @@
 	
 	var UserStockData = __webpack_require__(292);
 	var list = __webpack_require__(293);
-	//const Typeahead = require('./TypeAhead.jsx');
+	//const TypeAheadComponent = require('./TypeAhead.jsx');
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -31189,6 +31189,15 @@
 	        React.createElement(
 	          'form',
 	          { onSubmit: this.addStock },
+	          React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	              'h1',
+	              null,
+	              'A typeahead component will be placed here'
+	            )
+	          ),
 	          React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
 	          React.createElement(
 	            'button',
@@ -34692,7 +34701,18 @@
 	};
 
 /***/ },
-/* 294 */
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34824,7 +34844,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 295 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34952,7 +34972,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 296 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35020,7 +35040,7 @@
 	module.exports = connector(FullList);
 
 /***/ },
-/* 297 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35037,7 +35057,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(298);
+	var uuid = __webpack_require__(309);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -35080,7 +35100,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 298 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35093,7 +35113,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(299);
+	var _rng = __webpack_require__(310);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -35264,7 +35284,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 299 */
+/* 310 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -35302,7 +35322,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 300 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

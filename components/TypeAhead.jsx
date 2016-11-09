@@ -9,7 +9,9 @@ class TypeAhead extends React.component {
     render(){
       return(
         <div>
-        <h1>Hello from typeahead</h1>
+        <Typeahead options = {['John','Paul','Ringo','George']} 
+        maxVisible = {2}
+        />
         </div>
       )
     }
