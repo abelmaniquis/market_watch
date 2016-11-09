@@ -5,7 +5,7 @@ const Data = require('./Data');
 const {Router} = require('react-router');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
-//const Typeahead = require('./TypeAhead.jsx');
+const Typeahead = require('./TypeAhead.jsx');
 
 class View extends React.Component {
   constructor(props) {

@@ -57,12 +57,12 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
-	var Details = __webpack_require__(291);
-	var Profile = __webpack_require__(292);
-	var Signup = __webpack_require__(295);
-	var Login = __webpack_require__(296);
-	var FullList = __webpack_require__(297);
-	var TestPage = __webpack_require__(298);
+	var Details = __webpack_require__(290);
+	var Profile = __webpack_require__(291);
+	var Signup = __webpack_require__(294);
+	var Login = __webpack_require__(295);
+	var FullList = __webpack_require__(296);
+	var TestPage = __webpack_require__(297);
 	
 	var _require = __webpack_require__(196);
 	
@@ -72,7 +72,7 @@
 	var hashHistory = _require.hashHistory;
 	var browserHistory = _require.browserHistory;
 	
-	var _require2 = __webpack_require__(294);
+	var _require2 = __webpack_require__(293);
 	
 	var stocks = _require2.stocks;
 	
@@ -84,7 +84,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(301);
+	var NotFound = __webpack_require__(300);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -30948,8 +30948,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 290 */,
-/* 291 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31069,7 +31068,7 @@
 	module.exports = Details;
 
 /***/ },
-/* 292 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31095,8 +31094,8 @@
 	
 	var Router = _require2.Router;
 	
-	var UserStockData = __webpack_require__(293);
-	var list = __webpack_require__(294);
+	var UserStockData = __webpack_require__(292);
+	var list = __webpack_require__(293);
 	//const Typeahead = require('./TypeAhead.jsx');
 	
 	var View = function (_React$Component) {
@@ -31286,7 +31285,7 @@
 	module.exports = View;
 
 /***/ },
-/* 293 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31474,7 +31473,7 @@
 	module.exports = Data;
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -34693,7 +34692,7 @@
 	};
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34825,7 +34824,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34953,7 +34952,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35021,7 +35020,7 @@
 	module.exports = connector(FullList);
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35038,7 +35037,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(299);
+	var uuid = __webpack_require__(298);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -35081,7 +35080,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35094,7 +35093,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(300);
+	var _rng = __webpack_require__(299);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -35265,7 +35264,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -35303,7 +35302,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
