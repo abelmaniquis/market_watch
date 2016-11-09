@@ -55,8 +55,6 @@ module.exports = function(app) {
   })
   
   app.put('/api/profile/myInfo/sell/:aStock', isLoggedIn, function(req, res,next) {
-    console.log(req.user);
-    console.log(req.params);
     UserModel.findByIdAndUpdate(req.user._id, {
         $pull: {
           portfolio: req.params.aStock

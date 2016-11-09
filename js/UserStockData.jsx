@@ -17,7 +17,6 @@ class Data extends React.Component {
     this.buy = this.buy.bind(this);
     this.sell = this.sell.bind(this);
   }
-  
   componentDidMount() {
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.state.keyword}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
       .then((response) => {
@@ -38,24 +37,18 @@ class Data extends React.Component {
     this.setState({
       quantity:this.state.quantity += 1
     })
-    console.log("This will buy another share of the stock")
   }
-  sell(e){
+  sell(e){ 
     e.preventDefault();
-    console.log("This will sell a share of the stock")
     axios.put(`/api/profile/myInfo/sell/${this.state.keyword}`).then((response)=>{
-      console.log(response)
     }).catch(function(err){
       alert(err);
-      console.log(err);
     })
     axios.get('/api/profile/myInfo').then((response)=>{
-      console.log(response.data.username);
       browserHistory.push(`/login`);
     });
   }
   render() {
-    
     let date = this.state.prices[0]
     let open = this.state.prices[1]
     let high = this.state.prices[2]
@@ -70,8 +63,6 @@ class Data extends React.Component {
     let trend = "";
     
     let value = quantity*close //state is being manipulated here, find another way to do this
-    
-    console.log(value);
     
     change >= 0 ? trend += "up" : trend += "down"
     

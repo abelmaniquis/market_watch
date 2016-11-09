@@ -13,17 +13,14 @@ const { store } = require('./Store')
 const { Provider } = require('react-redux')
 const NotFound = require('./NotFound')
 
-const App = React.createClass({
-  
-  assignStock(nextState,replace){
-    const stockArray = stocks.filter((stock) => stock.ticker === nextState.params.id)
-    if(stockArray.length < 1){
-      return replace('/')
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
     }
-    Object.assign(nextState.params,stockArray[0])
-      return nextState
-  },
+  }
   render() {
+    console.log("ES6 Client working");
     return (
     <Provider store={store}>
       <Router history={browserHistory}>
@@ -36,9 +33,9 @@ const App = React.createClass({
         <Route path='/test' component={TestPage}/>
         <Route path="*" component={NotFound}/>
       </Router>
-    </Provider>
-    )
+    </Provider>)
   }
-})
-
+}
 ReactDOM.render(<App/>, document.getElementById('app'))
+
+

@@ -4,7 +4,6 @@ const Header = require('./Header')
 const {object,string} = React.PropTypes
 const {connector} = require('./Store')
 const { Link } = require('react-router')
-const Description = require('./Description')
 
 const FullList = React.createClass({
   propTypes: {

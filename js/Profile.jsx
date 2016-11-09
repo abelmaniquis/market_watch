@@ -7,7 +7,6 @@ const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
 //const Typeahead = require('./TypeAhead.jsx');
 
-
 class View extends React.Component {
   constructor(props) {
     super(props)
@@ -17,9 +16,8 @@ class View extends React.Component {
       stocks:[],
       quandlInfo: null
     };
-    this.addStock = this.addStock.bind(this);
-    this.remove = this.remove.bind(this);
-    this.alterCash = this.alterCash.bind(this);
+    this.addStock = this.addStock.bind(this);       //Find a way to pass these functions into UserStockData
+    this.removeStock = this.removeStock.bind(this);
   }componentWillMount(){
     axios.get('/api/profile/myInfo').then((response)=>{
       this.setState({
@@ -27,7 +25,6 @@ class View extends React.Component {
         cash:response.data.cash,
         stocks:response.data.portfolio
       })
-      console.log(this.state);
     })
   }
   addStock(e) {
@@ -38,20 +35,16 @@ class View extends React.Component {
     .then((response)=>{
       this.setState({quandlInfo: response})
       
-      console.log(this.state.cash);
-      
       var currentPrice = this.state.quandlInfo.data.dataset.data[0][4];
       var currentCash = this.state.cash;
-      
-      console.log(currentCash - currentPrice);
-      this.setState({cash:currentCash - currentPrice})
-      console.log(this.state);
+    
+      this.setState({cash:currentPrice - currentPrice})
       
       if(this.cash === 0){
         alert("You are out of money");
       }
-      
     })
+    
     const stockUpdateStore = this.state.stocks
     
     if(this.state.stocks.indexOf(stockToAdd) > -1){
@@ -72,16 +65,13 @@ class View extends React.Component {
       stocks: stockUpdateStore
     })
   }
-  remove(){
+  removeStock(){
    console.log("Will remove an item from the list")
-  }
-  alterCash(){
-    
+   console.log(this.state.stocks);
   }
   render() {
     return (
       <div>
-      
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         <form onSubmit={ this.addStock}>
           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />

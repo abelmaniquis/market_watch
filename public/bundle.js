@@ -46,6 +46,14 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
@@ -78,37 +86,43 @@
 	
 	var NotFound = __webpack_require__(301);
 	
-	var App = React.createClass({
-	  displayName: 'App',
-	  assignStock: function assignStock(nextState, replace) {
-	    var stockArray = stocks.filter(function (stock) {
-	      return stock.ticker === nextState.params.id;
-	    });
-	    if (stockArray.length < 1) {
-	      return replace('/');
-	    }
-	    Object.assign(nextState.params, stockArray[0]);
-	    return nextState;
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      Provider,
-	      { store: store },
-	      React.createElement(
-	        Router,
-	        { history: browserHistory },
-	        React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
-	        React.createElement(Route, { path: '/fullList', component: FullList, stocks: stocks }),
-	        React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
-	        React.createElement(Route, { path: '/signup', component: Signup }),
-	        React.createElement(Route, { path: '/login', component: Login }),
-	        React.createElement(Route, { path: '/login/profile/:username', component: Profile }),
-	        React.createElement(Route, { path: '/test', component: TestPage }),
-	        React.createElement(Route, { path: '*', component: NotFound })
-	      )
-	    );
+	var App = function (_React$Component) {
+	  _inherits(App, _React$Component);
+	
+	  function App(props) {
+	    _classCallCheck(this, App);
+	
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	
+	    _this.state = {};
+	    return _this;
 	  }
-	});
+	
+	  _createClass(App, [{
+	    key: 'render',
+	    value: function render() {
+	      console.log("ES6 Client working");
+	      return React.createElement(
+	        Provider,
+	        { store: store },
+	        React.createElement(
+	          Router,
+	          { history: browserHistory },
+	          React.createElement(Route, { path: '/', component: Landing, stocks: stocks }),
+	          React.createElement(Route, { path: '/fullList', component: FullList, stocks: stocks }),
+	          React.createElement(Route, { path: '/details/:id', component: Details, onEnter: this.assignStock }),
+	          React.createElement(Route, { path: '/signup', component: Signup }),
+	          React.createElement(Route, { path: '/login', component: Login }),
+	          React.createElement(Route, { path: '/login/profile/:username', component: Profile }),
+	          React.createElement(Route, { path: '/test', component: TestPage }),
+	          React.createElement(Route, { path: '*', component: NotFound })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return App;
+	}(React.Component);
 	
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
@@ -21539,7 +21553,6 @@
 	
 	var Link = _require2.Link;
 	
-	var Description = __webpack_require__(290);
 	
 	var Landing = React.createClass({
 	  displayName: 'Landing',
@@ -30935,33 +30948,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 290 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var React = __webpack_require__(1);
-	
-	var Description = function Description() {
-	  React.createElement(
-	    "div",
-	    { "class": "desContainer" },
-	    React.createElement(
-	      "h1",
-	      null,
-	      "What is it?"
-	    ),
-	    React.createElement(
-	      "p",
-	      null,
-	      "We'll give you 1 million dollars in fake internet money that you can use to build a portfolio of stocks"
-	    )
-	  );
-	};
-	
-	module.exports = Description;
-
-/***/ },
+/* 290 */,
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31112,7 +31099,6 @@
 	var list = __webpack_require__(294);
 	//const Typeahead = require('./TypeAhead.jsx');
 	
-	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
 	
@@ -31127,9 +31113,8 @@
 	      stocks: [],
 	      quandlInfo: null
 	    };
-	    _this.addStock = _this.addStock.bind(_this);
-	    _this.remove = _this.remove.bind(_this);
-	    _this.alterCash = _this.alterCash.bind(_this);
+	    _this.addStock = _this.addStock.bind(_this); //Find a way to pass these functions into UserStockData
+	    _this.removeStock = _this.removeStock.bind(_this);
 	    return _this;
 	  }
 	
@@ -31144,7 +31129,6 @@
 	          cash: response.data.cash,
 	          stocks: response.data.portfolio
 	        });
-	        console.log(_this2.state);
 	      });
 	    }
 	  }, {
@@ -31158,19 +31142,16 @@
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({ quandlInfo: response });
 	
-	        console.log(_this3.state.cash);
-	
 	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
 	        var currentCash = _this3.state.cash;
 	
-	        console.log(currentCash - currentPrice);
-	        _this3.setState({ cash: currentCash - currentPrice });
-	        console.log(_this3.state);
+	        _this3.setState({ cash: currentPrice - currentPrice });
 	
 	        if (_this3.cash === 0) {
 	          alert("You are out of money");
 	        }
 	      });
+	
 	      var stockUpdateStore = this.state.stocks;
 	
 	      if (this.state.stocks.indexOf(stockToAdd) > -1) {
@@ -31189,13 +31170,11 @@
 	      });
 	    }
 	  }, {
-	    key: 'remove',
-	    value: function remove() {
+	    key: 'removeStock',
+	    value: function removeStock() {
 	      console.log("Will remove an item from the list");
+	      console.log(this.state.stocks);
 	    }
-	  }, {
-	    key: 'alterCash',
-	    value: function alterCash() {}
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -31376,28 +31355,21 @@
 	      this.setState({
 	        quantity: this.state.quantity += 1
 	      });
-	      console.log("This will buy another share of the stock");
 	    }
 	  }, {
 	    key: 'sell',
 	    value: function sell(e) {
 	      e.preventDefault();
-	      console.log("This will sell a share of the stock");
-	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {
-	        console.log(response);
-	      }).catch(function (err) {
+	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {}).catch(function (err) {
 	        alert(err);
-	        console.log(err);
 	      });
 	      axios.get('/api/profile/myInfo').then(function (response) {
-	        console.log(response.data.username);
 	        browserHistory.push('/login');
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	
 	      var date = this.state.prices[0];
 	      var open = this.state.prices[1];
 	      var high = this.state.prices[2];
@@ -31412,8 +31384,6 @@
 	      var trend = "";
 	
 	      var value = quantity * close; //state is being manipulated here, find another way to do this
-	
-	      console.log(value);
 	
 	      change >= 0 ? trend += "up" : trend += "down";
 	
@@ -35003,7 +34973,6 @@
 	
 	var Link = _require2.Link;
 	
-	var Description = __webpack_require__(290);
 	
 	var FullList = React.createClass({
 	  displayName: 'FullList',
