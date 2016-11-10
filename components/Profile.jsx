@@ -5,7 +5,7 @@ const Data = require('./Data');
 const {Router} = require('react-router');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
-//const TypeAheadComponent = require('./TypeAhead.jsx');
+const TypeAheadComponent = require('./TypeAhead.jsx');
 
 class View extends React.Component {
   constructor(props) {
@@ -73,12 +73,10 @@ class View extends React.Component {
     return (
       <div>
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
+        
+        <TypeAheadComponent/>
+        
         <form onSubmit={ this.addStock}>
-        
-        <div>
-        <h1>A typeahead component will be placed here</h1>
-        </div>
-        
           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
