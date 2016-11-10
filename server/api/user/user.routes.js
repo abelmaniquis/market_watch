@@ -12,29 +12,25 @@ module.exports = function(app) {
   
   var UserModel = mongoose.model('User',User)
   
-  app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res) {
+  app.post('/api/users/signup', passport.authenticate('local-signup'),function(req,res,next) {
     console.log(req.user,req.body)
-    res.end();
+      res.end();
   });
 
   //LOGIN
 
-  app.get('/api/users/login/', function(err, req, res, next) {
-    if(!err){
+  app.get('/api/users/login/', function(req, res, next) {
       res.status(200).json(User);
-    }else{
-      next(err)
-    }
   });
   
-  app.post('/api/users/login/', passport.authenticate('local-login'), function(req, res){
+  app.post('/api/users/login/', passport.authenticate('local-login'), function(req,res,next){
     res.end();
   });
   
   //USER INFO
   
   app.get('/api/profile/myInfo',isLoggedIn,function(req,res,next){
-      res.json(req.user)
+      res.status(200).json(req.user)
   })
   
   app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req,res,next){
@@ -49,7 +45,6 @@ module.exports = function(app) {
         user.save();
       }
     })
-    
     console.log(req.user);
     console.log(" ")
   })

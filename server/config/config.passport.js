@@ -67,7 +67,6 @@ module.exports = function(app) {
         };
       });
 
-
     }));
 
   passport.serializeUser(function(user, done) {

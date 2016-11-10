@@ -13,9 +13,16 @@ class TypeAhead extends React.Component {
     }
   }
   render() {
+    var quoteArray = [];
+    console.log(StocksToList.stocks);
+    for(var i = 0; i < StocksToList.stocks.length; i++){
+      quoteArray.push(StocksToList.stocks[i].ticker);
+    }
+    console.log(quoteArray);
+    
     return (
     <Typeahead
-      options={this.state.optArray}
+      options={quoteArray}
     maxVisible={2}
   />)
   }

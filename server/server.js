@@ -14,7 +14,6 @@ require('./config/config.mongoose.js')(app);
 
 app.use(express.static(__dirname + '/../public'));
 
-
 require('./middleware/appMiddleware.js')(app);
 require('./api/user/user.routes.js')(app);
 
