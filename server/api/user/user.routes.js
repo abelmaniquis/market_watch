@@ -12,14 +12,14 @@ module.exports = function(app) {
   
   var UserModel = mongoose.model('User',User)
   
-  app.post('/api/users/signup', passport.authenticate('local-signup'),function(req,res,next) {
+  app.post('/api/users/signup', passport.authenticate('local-signup'),function(err, req, res, next) {
     console.log(req.user,req.body)
       res.end();
   });
 
   //LOGIN
 
-  app.get('/api/users/login/', function(req, res, next) {
+  app.get('/api/users/login/', function(err, req, res, next) {
       res.status(200).json(User);
   });
   
@@ -29,11 +29,11 @@ module.exports = function(app) {
   
   //USER INFO
   
-  app.get('/api/profile/myInfo',isLoggedIn,function(req,res,next){
+  app.get('/api/profile/myInfo',isLoggedIn,function(err, req, res, next){
       res.status(200).json(req.user)
   })
   
-  app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req,res,next){
+  app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req, res, next){
     console.log(req.user._id);
     UserModel.findByIdAndUpdate(req.user._id,{
     },function(err,user){
@@ -49,7 +49,7 @@ module.exports = function(app) {
     console.log(" ")
   })
   
-  app.put('/api/profile/myInfo/sell/:aStock', isLoggedIn, function(req, res,next) {
+  app.put('/api/profile/myInfo/sell/:aStock', isLoggedIn, function(err, req, res, next) {
     UserModel.findByIdAndUpdate(req.user._id, {
         $pull: {
           portfolio: req.params.aStock

@@ -31323,7 +31323,8 @@
 	      ticker: "",
 	      prices: [],
 	      keyword: _this.props.keyword,
-	      quantity: 1
+	      quantity: 1,
+	      appears: false
 	    };
 	    _this.buy = _this.buy.bind(_this);
 	    _this.sell = _this.sell.bind(_this);
@@ -31360,12 +31361,17 @@
 	    key: 'sell',
 	    value: function sell(e) {
 	      e.preventDefault();
+	      this.setState({
+	        appears: true
+	      });
 	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {}).catch(function (err) {
 	        alert(err);
 	      });
 	      axios.get('/api/profile/myInfo').then(function (response) {
-	        browserHistory.push('/login');
+	        console.log(browserHistory);
 	      });
+	
+	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'render',
@@ -34722,7 +34728,7 @@
 	    var _this = _possibleConstructorReturn(this, (TypeAhead.__proto__ || Object.getPrototypeOf(TypeAhead)).call(this, props));
 	
 	    _this.state = {
-	      optArray: ['GOOG', 'YHOO', 'ATVI', 'AAPL']
+	      optArray: []
 	    };
 	    return _this;
 	  }
@@ -34736,10 +34742,9 @@
 	        quoteArray.push(StocksToList.stocks[i].ticker);
 	      }
 	      console.log(quoteArray);
-	
 	      return React.createElement(Typeahead, {
 	        options: quoteArray,
-	        maxVisible: 2
+	        maxVisible: 10
 	      });
 	    }
 	  }]);

@@ -9,7 +9,7 @@ class TypeAhead extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      optArray: ['GOOG','YHOO','ATVI','AAPL']
+      optArray: []
     }
   }
   render() {
@@ -19,11 +19,10 @@ class TypeAhead extends React.Component {
       quoteArray.push(StocksToList.stocks[i].ticker);
     }
     console.log(quoteArray);
-    
     return (
     <Typeahead
       options={quoteArray}
-    maxVisible={2}
+    maxVisible={10}
   />)
   }
 }

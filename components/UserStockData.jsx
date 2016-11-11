@@ -12,7 +12,8 @@ class Data extends React.Component {
       ticker: "",
       prices: [],
       keyword: this.props.keyword,
-      quantity: 1
+      quantity: 1,
+      appears: false
     };
     this.buy = this.buy.bind(this);
     this.sell = this.sell.bind(this);
@@ -40,13 +41,19 @@ class Data extends React.Component {
   }
   sell(e){ 
     e.preventDefault();
+    this.setState({
+      appears:true
+    });
     axios.put(`/api/profile/myInfo/sell/${this.state.keyword}`).then((response)=>{
     }).catch(function(err){
       alert(err);
     })
     axios.get('/api/profile/myInfo').then((response)=>{
-      browserHistory.push(`/login`);
+      console.log(browserHistory);
     });
+    
+    console.log(this.state)
+    
   }
   render() {
     let date = this.state.prices[0]
