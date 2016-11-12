@@ -39,12 +39,32 @@ userSchema.pre('save',function(next){
       return next(err)
     }
     user.password = hash;
-    console.log(user.password);
+    console.log("Here is the Hash", user.password);
     next();
   })
   
 })
 
+userSchema.methods.validPassword = function(userPassword){
+  var salt = bcrypt.genSaltSync(10)
+  var hash = bcrypt.hashSync(userPassword,salt);
+  var thisHash = bcrypt.hashSync(this.password,salt);
+  
+  if(bcrypt.compareSync(userPassword,hash)){        //if I set it as (userPassword,hash) it always logs in /// (hash,userPassword) never logs in
+    console.log("USER PASSWORD: ", userPassword)
+    console.log("HASH: ", hash);
+    return true;
+  }
+  else{
+    console.log("bcrypt.compareSync: ",bcrypt.compareSync(userPassword,hash,salt));
+    console.log("userPassword",userPassword);
+    console.log("salt: ", salt);
+    console.log("hash: ", hash);
+    //console.log("thisHash: ", thisHash);
+    return false
+  }
+}
+/*
 userSchema.methods.validPassword = function(password) {
   console.log(this.password);
   var salt = bcrypt.genSaltSync(8);
@@ -54,6 +74,6 @@ userSchema.methods.validPassword = function(password) {
     return true;
   };
 };
-
+*/
 
 module.exports = mongoose.model('User', userSchema);
