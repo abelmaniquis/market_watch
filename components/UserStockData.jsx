@@ -50,6 +50,8 @@ class Data extends React.Component {
     })
     axios.get('/api/profile/myInfo').then((response)=>{
       console.log(browserHistory);
+      browserHistory.push('/login');
+      console.log(browserHistory);
     });
     
     console.log(this.state)

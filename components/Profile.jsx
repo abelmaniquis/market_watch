@@ -70,14 +70,17 @@ class View extends React.Component {
    console.log(this.state.stocks);
   }
   render() {
+    
+    //<input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
+    
     return (
       <div>
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         
-        <TypeAheadComponent/>
+         <TypeAheadComponent/>
         
         <form onSubmit={ this.addStock}>
-          <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
+           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
         

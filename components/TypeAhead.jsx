@@ -9,7 +9,8 @@ class TypeAhead extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      optArray: []
+      optArray: [],
+      backgroundColor:'white'
     }
   }
   render() {
@@ -18,12 +19,12 @@ class TypeAhead extends React.Component {
     for(var i = 0; i < StocksToList.stocks.length; i++){
       quoteArray.push(StocksToList.stocks[i].ticker);
     }
-    console.log(quoteArray);
     return (
     <Typeahead
+      placeholder="Typeahead Search"
       options={quoteArray}
-    maxVisible={10}
-  />)
+      maxVisible={10}
+    />)
   }
 }
 

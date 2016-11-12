@@ -31177,6 +31177,9 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	
+	      //<input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
+	
 	      return React.createElement(
 	        'div',
 	        null,
@@ -31368,6 +31371,8 @@
 	        alert(err);
 	      });
 	      axios.get('/api/profile/myInfo').then(function (response) {
+	        console.log(browserHistory);
+	        browserHistory.push('/login');
 	        console.log(browserHistory);
 	      });
 	
@@ -34728,7 +34733,8 @@
 	    var _this = _possibleConstructorReturn(this, (TypeAhead.__proto__ || Object.getPrototypeOf(TypeAhead)).call(this, props));
 	
 	    _this.state = {
-	      optArray: []
+	      optArray: [],
+	      backgroundColor: 'white'
 	    };
 	    return _this;
 	  }
@@ -34741,8 +34747,8 @@
 	      for (var i = 0; i < StocksToList.stocks.length; i++) {
 	        quoteArray.push(StocksToList.stocks[i].ticker);
 	      }
-	      console.log(quoteArray);
 	      return React.createElement(Typeahead, {
+	        placeholder: 'Typeahead Search',
 	        options: quoteArray,
 	        maxVisible: 10
 	      });
