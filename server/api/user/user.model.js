@@ -27,9 +27,7 @@ var userSchema = mongoose.Schema({
 require('./user.validation.js')(userSchema);
 
 userSchema.methods.validPassword = function(password) {
-  console.log(this.password);
   var salt = bcrypt.genSaltSync(8);
-  console.log(salt);
   var hash = bcrypt.hashSync(password, salt);
   if (bcrypt.compareSync(this.password, hash)) {
     return true;
