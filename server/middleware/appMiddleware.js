@@ -12,7 +12,7 @@ module.exports = function(app) {
         extended: false,
     }));
     app.use(session({
-        secret: 'generateRandomHash',
+        secret: process.env.passPort||'generateRandomHash',
         resave: 'false',
         saveUninitialized: 'false',
         name: 'stocks_session',
