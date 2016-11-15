@@ -52,7 +52,7 @@ class Data extends React.Component {
       <table>
       <tbody className="table-body">
         <tr>
-          <th className='ticker'><Link to={`/details/${this.state.ticker}`}>{this.state.ticker}</Link></th>
+          <th className='ticker'>{this.state.ticker}</th>
           <th className='open'>{open}</th>
           <th className='high'>{high}</th>
           <th className='low'>{low}</th>

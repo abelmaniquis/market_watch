@@ -31,6 +31,7 @@ module.exports = function(app) {
                 done(err, null)
               }
               else {
+                createdUser.password = createdUser.generateHash(createdUser.password);
                 console.log(createdUser.username + " has been added to the user database!");
                 return done(null, createdUser);
               }

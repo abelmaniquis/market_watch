@@ -21710,11 +21710,7 @@
 	              React.createElement(
 	                'th',
 	                { className: 'ticker' },
-	                React.createElement(
-	                  Link,
-	                  { to: '/details/' + this.state.ticker },
-	                  this.state.ticker
-	                )
+	                this.state.ticker
 	              ),
 	              React.createElement(
 	                'th',
