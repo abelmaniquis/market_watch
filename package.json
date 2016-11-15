@@ -4,6 +4,7 @@
   "description": "React Project",
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha",
     "build": "webpack",
     "server": "nodemon --watch server --exec babel-node -- server/server.js",
