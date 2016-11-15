@@ -87,6 +87,13 @@ class View extends React.Component {
         <Link to="/fullList">Check out the full list of stocks here</Link>
         <div className="cashContainer">
           <h3 className="myCash">{this.state.cash}</h3>
+          
+        </div>
+        
+        <div className="logoutContainer">
+        
+        <h3><Link to="/">LOG OUT</Link></h3>
+        
         </div>
         <table className="tableHead">
         <tbody>

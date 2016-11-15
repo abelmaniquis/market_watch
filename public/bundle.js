@@ -31211,6 +31211,19 @@
 	          )
 	        ),
 	        React.createElement(
+	          'div',
+	          { className: 'logoutContainer' },
+	          React.createElement(
+	            'h3',
+	            null,
+	            React.createElement(
+	              Link,
+	              { to: '/' },
+	              'LOG OUT'
+	            )
+	          )
+	        ),
+	        React.createElement(
 	          'table',
 	          { className: 'tableHead' },
 	          React.createElement(
