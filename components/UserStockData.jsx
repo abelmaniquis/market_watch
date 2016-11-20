@@ -49,13 +49,8 @@ class Data extends React.Component {
       alert(err);
     })
     axios.get('/api/profile/myInfo').then((response)=>{
-      console.log(browserHistory);
       browserHistory.push('/login');
-      console.log(browserHistory);
     });
-    
-    console.log(this.state)
-    
   }
   render() {
     let date = this.state.prices[0]
@@ -86,6 +81,7 @@ class Data extends React.Component {
           <th className='high'>{high}</th>
           <th className='low'>{low}</th>
           <th className='trend'>{trend}</th>
+          
           <th className='buy'>
             <form onSubmit={this.buy}>
               <button className="buy-button" type="submit"></button>

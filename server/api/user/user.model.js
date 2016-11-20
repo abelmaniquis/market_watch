@@ -26,12 +26,12 @@ var userSchema = mongoose.Schema({
 
 require('./user.validation.js')(userSchema);
 
-userSchema.methods.validPassword = function(password) {
-  var salt = bcrypt.genSaltSync(8);
-  var hash = bcrypt.hashSync(password, salt);
-  if (bcrypt.compareSync(this.password, hash)) {
-    return true;
-  };
+userSchema.methods.generateHash = function(password){
+  return bcrypt.hashSync(password,bcrypt.genSaltSync(8),null);
+}
+
+userSchema.methods.validPassword = function(password){
+  return bcrypt.compareSync(password,this.password);
 };
 
 module.exports = mongoose.model('User', userSchema);

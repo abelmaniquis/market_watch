@@ -4,7 +4,7 @@ var User = require('../api/user/user.model.js');
 var bcrypt = require('bcrypt');
 module.exports = function(app) {
 
-  //Local Signup
+  //Signup
   passport.use('local-signup', new LocalStrategy({
       usernameField: 'username',
       passwordField: 'password',
@@ -22,24 +22,24 @@ module.exports = function(app) {
             console.log('This username already exists');
           }
           else {
-            User.create({
-              'username': username,
-              'password': password,
-              'cash': 1000000
-            }, function(err, createdUser) {
-              if (err) {
-                done(err, null)
+            
+            var newUser = new User();
+            console.log(newUser);
+            newUser.username = username;
+            newUser.password = newUser.generateHash(password);
+            
+            newUser.save(function(err){
+              if (err){
+                throw err
               }
-              else {
-                console.log(createdUser.username + " has been added to the user database!");
-                return done(null, createdUser);
-              }
-            });
+              return done(null,newUser);
+            })
+            
           }
         })
     }));
 
-  //Local Login
+  // Login
   passport.use('local-login', new LocalStrategy({
       usernameField: 'username',
       passwordField: 'password',
@@ -55,14 +55,14 @@ module.exports = function(app) {
         }
         if (!user) {
           console.log('There is no user!');
-          return done(null, false, { message: 'Incorrect username or password' });
+          return done(null, false, {
+            message: 'Incorrect username or password'
+          });
         }
         else if (!user.validPassword(password)) {
           console.log("Not valid password");
           return done(null, false)
-        }
-        else if (user.validPassword(password)) {
-          console.log("PASSPORT LOGIN IS A SUCCESS!");
+        }else if (user.validPassword(password)){
           return done(null, user)
         };
       });

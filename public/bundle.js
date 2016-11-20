@@ -31156,13 +31156,10 @@
 	      } else {
 	        stockUpdateStore.push(stockToAdd);
 	        axios.put('/api/profile/myInfo/' + stockToAdd).then(function (response) {
-	          console.log(response);
+	          _this3.setState({ stocks: stockUpdateStore });
 	        });
 	      }
 	      this.refs.addInput.value = '';
-	      this.setState({
-	        stocks: stockUpdateStore
-	      });
 	    }
 	  }, {
 	    key: 'removeStock',
@@ -31174,8 +31171,6 @@
 	    key: 'render',
 	    value: function render() {
 	
-	      //<input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
-	
 	      return React.createElement(
 	        'div',
 	        null,
@@ -31185,15 +31180,19 @@
 	          this.state.username,
 	          '\'s Portfolio'
 	        ),
-	        React.createElement(TypeAheadComponent, null),
 	        React.createElement(
-	          'form',
-	          { onSubmit: this.addStock },
-	          React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
+	          'div',
+	          { className: 'searchContainer' },
+	          React.createElement(TypeAheadComponent, null),
 	          React.createElement(
-	            'button',
-	            null,
-	            'Add'
+	            'form',
+	            { onSubmit: this.addStock },
+	            React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
+	            React.createElement(
+	              'button',
+	              null,
+	              'Add'
+	            )
 	          )
 	        ),
 	        React.createElement(
@@ -31270,7 +31269,7 @@
 	              React.createElement(
 	                'th',
 	                null,
-	                'Sell'
+	                'Delete'
 	              ),
 	              React.createElement(
 	                'th',
@@ -31380,12 +31379,8 @@
 	        alert(err);
 	      });
 	      axios.get('/api/profile/myInfo').then(function (response) {
-	        console.log(browserHistory);
 	        browserHistory.push('/login');
-	        console.log(browserHistory);
 	      });
-	
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'render',

@@ -5,7 +5,7 @@
 
 html {
   background-color: #fafafa;
-  background-image: url("./img/cityscape.jpg");
+  /*background-image: url("./img/cityscape.jpg");*/
   font-family: Helvetica Neue, Helvetica, sans-serif;
 }
 
@@ -24,6 +24,12 @@ html {
 
 .tableHead{
   background-color: rgba(220, 220, 220, .8);
+}
+
+.searchContainer{
+  width:100%;
+  text-align:center;
+  display:inline-block;
 }
 
 .title {

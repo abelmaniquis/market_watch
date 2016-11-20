@@ -57,13 +57,10 @@ class View extends React.Component {
       stockUpdateStore.push(stockToAdd);
       axios.put(`/api/profile/myInfo/${stockToAdd}`)
     .then((response)=>{
-      console.log(response);
+      this.setState({stocks: stockUpdateStore});
     })
     }
     this.refs.addInput.value = '';
-    this.setState({
-      stocks: stockUpdateStore
-    })
   }
   removeStock(){
    console.log("Will remove an item from the list")
@@ -71,18 +68,17 @@ class View extends React.Component {
   }
   render() {
     
-    //<input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
-    
     return (
       <div>
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         
+        <div className='searchContainer'>
          <TypeAheadComponent/>
-        
         <form onSubmit={ this.addStock}>
            <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
         </form>
+        </div>
         
         <Link to="/fullList">Check out the full list of stocks here</Link>
         <div className="cashContainer">
@@ -105,7 +101,7 @@ class View extends React.Component {
           <th>Low</th>
           <th>Trend</th>
           <th>Buy</th>
-          <th>Sell</th>
+          <th>Delete</th>
           <th>Quant</th>
           <th>Value</th>
           </tr>

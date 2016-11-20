@@ -25,7 +25,6 @@ app.get("*", function(req, res) {
 //Handle errors
 app.use(function(err, req, res, next) {
   if (err) {
-    console.log(err);
     res.status(500).send(err);
   }
 });

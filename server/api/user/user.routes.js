@@ -19,7 +19,7 @@ module.exports = function(app) {
 
   //LOGIN
 
-  app.get('/api/users/login/', function(err, req, res, next) {
+  app.get('/api/users/login/', function(req, res, next) {
       res.status(200).json(User);
   });
   
@@ -34,8 +34,8 @@ module.exports = function(app) {
   })
   
   app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req, res, next){
-    console.log(req.user._id);
     UserModel.findByIdAndUpdate(req.user._id,{
+      
     },function(err,user){
       if(err){
         next(err);
