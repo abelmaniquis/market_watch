@@ -31,6 +31,11 @@ class Details extends React.Component{
         priceLog: response.data.dataset.data
       });
     });
+  }componentDidMount(){
+   axios.get(`https://content.guardianapis.com/search?q="${this.state.name}"&tag=politics/politics&from-date=2014-01-01&api-key= 526bb08c-1bbc-41f2-a4ab-3e0669d251c0`)
+   .then((response)=>{
+     console.log(response.data);
+   }) //Guardian API key:  526bb08c-1bbc-41f2-a4ab-3e0669d251c0
   }
   render(){
     return(

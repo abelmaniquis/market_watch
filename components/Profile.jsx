@@ -7,31 +7,6 @@ const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
 const TypeAhead = require('./TypeAhead.jsx');
 
-/*
-
-Define all of my state here. (state must be in the parent)
-
-The state must be here.
-
-(In Redux all state belongs to store)
-
-create a function on the profile.
-
-use your stocks array here,
-Must pass a function through props when button pushed on UserStockData
-You call a function which will be on the profile.
-This function will change the state on the parent.
-
-children and parents in react
-
-http://stackoverflow.com/questions/26176519/reactjs-call-parent-function
-
-http://codepen.io/errorsmith/pen/mVQxMd?editors=0010
-
-if you are on different files, you will be on a different scope,
-so you will have to use bind(this)
-
-*/
 
 
 class View extends React.Component {
@@ -52,6 +27,7 @@ class View extends React.Component {
         cash:response.data.cash,
         stocks:response.data.portfolio
       })
+      console.log(this.state);
     })
   }
   addStock(e) {
