@@ -8,12 +8,10 @@ var Typeahead = require('react-typeahead').Typeahead;
 class TypeAhead extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-      optArray: [],
-      backgroundColor:'white'
-    }
+    this.backgroundColor = 'white';
   }
   render() {
+    
     var quoteArray = [];
     console.log(StocksToList.stocks);
     for(var i = 0; i < StocksToList.stocks.length; i++){

@@ -5,7 +5,34 @@ const Data = require('./Data');
 const {Router} = require('react-router');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
-const TypeAheadComponent = require('./TypeAhead.jsx');
+const TypeAhead = require('./TypeAhead.jsx');
+
+/*
+
+Define all of my state here. (state must be in the parent)
+
+The state must be here.
+
+(In Redux all state belongs to store)
+
+create a function on the profile.
+
+use your stocks array here,
+Must pass a function through props when button pushed on UserStockData
+You call a function which will be on the profile.
+This function will change the state on the parent.
+
+children and parents in react
+
+http://stackoverflow.com/questions/26176519/reactjs-call-parent-function
+
+http://codepen.io/errorsmith/pen/mVQxMd?editors=0010
+
+if you are on different files, you will be on a different scope,
+so you will have to use bind(this)
+
+*/
+
 
 class View extends React.Component {
   constructor(props) {
@@ -29,7 +56,6 @@ class View extends React.Component {
   }
   addStock(e) {
     e.preventDefault();
-    
     var stockToAdd = this.refs.addInput.value;
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
@@ -63,17 +89,31 @@ class View extends React.Component {
     this.refs.addInput.value = '';
   }
   removeStock(){
-   console.log("Will remove an item from the list")
    console.log(this.state.stocks);
+   axios.get('/api/profile/myInfo').then((response)=>{
+     console.log("updated portfolio: ", response.data.portfolio);
+     this.setState({
+       stocks:response.data.portfolio,
+       cash:response.data.cash
+     })
+     
+   })
+   
+   
   }
   render() {
-    
+    //cannot split typeahead component because children are not rendered in component definition
     return (
       <div>
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         
         <div className='searchContainer'>
-         <TypeAheadComponent/>
+        
+         <TypeAhead>
+         
+         </TypeAhead>
+         
+         
         <form onSubmit={ this.addStock}>
            <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
           <button>Add</button>
@@ -110,7 +150,7 @@ class View extends React.Component {
           {
             this.state.stocks.map((stock,i)=>{
               return(
-                <UserStockData keyword={stock} key={i}/>
+                <UserStockData keyword={stock} removeStock={this.removeStock} key={i}/>
               )
             })
           }

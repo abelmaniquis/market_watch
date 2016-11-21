@@ -41,15 +41,13 @@ class Data extends React.Component {
   }
   sell(e){ 
     e.preventDefault();
-    this.setState({
-      appears:true
-    });
     axios.put(`/api/profile/myInfo/sell/${this.state.keyword}`).then((response)=>{
     }).catch(function(err){
       alert(err);
     })
     axios.get('/api/profile/myInfo').then((response)=>{
-      browserHistory.push('/login');
+      console.log("Stock removed");
+      this.props.removeStock();
     });
   }
   render() {

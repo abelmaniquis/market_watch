@@ -5,7 +5,6 @@ var session = require('express-session');
 var app = express();
 var port = process.env.PORT || 8080;
 var server = require('http').createServer(app);
-
 var config = require('./config/config.db')
 var mongoose = require('mongoose');
 var User = require('./api/user/user.model.js')
@@ -22,7 +21,7 @@ app.get("*", function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../', 'public', 'index.html'))
 });
 
-//Handle errors
+
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(500).send(err);

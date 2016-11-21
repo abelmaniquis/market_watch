@@ -31092,7 +31092,33 @@
 	
 	var UserStockData = __webpack_require__(292);
 	var list = __webpack_require__(293);
-	var TypeAheadComponent = __webpack_require__(294);
+	var TypeAhead = __webpack_require__(294);
+	
+	/*
+	
+	Define all of my state here. (state must be in the parent)
+	
+	The state must be here.
+	
+	(In Redux all state belongs to store)
+	
+	create a function on the profile.
+	
+	use your stocks array here,
+	Must pass a function through props when button pushed on UserStockData
+	You call a function which will be on the profile.
+	This function will change the state on the parent.
+	
+	children and parents in react
+	
+	http://stackoverflow.com/questions/26176519/reactjs-call-parent-function
+	
+	http://codepen.io/errorsmith/pen/mVQxMd?editors=0010
+	
+	if you are on different files, you will be on a different scope,
+	so you will have to use bind(this)
+	
+	*/
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -31132,7 +31158,6 @@
 	      var _this3 = this;
 	
 	      e.preventDefault();
-	
 	      var stockToAdd = this.refs.addInput.value;
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({ quandlInfo: response });
@@ -31164,13 +31189,23 @@
 	  }, {
 	    key: 'removeStock',
 	    value: function removeStock() {
-	      console.log("Will remove an item from the list");
+	      var _this4 = this;
+	
 	      console.log(this.state.stocks);
+	      axios.get('/api/profile/myInfo').then(function (response) {
+	        console.log("updated portfolio: ", response.data.portfolio);
+	        _this4.setState({
+	          stocks: response.data.portfolio,
+	          cash: response.data.cash
+	        });
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this5 = this;
 	
+	      //cannot split typeahead component because children are not rendered in component definition
 	      return React.createElement(
 	        'div',
 	        null,
@@ -31183,7 +31218,7 @@
 	        React.createElement(
 	          'div',
 	          { className: 'searchContainer' },
-	          React.createElement(TypeAheadComponent, null),
+	          React.createElement(TypeAhead, null),
 	          React.createElement(
 	            'form',
 	            { onSubmit: this.addStock },
@@ -31285,7 +31320,7 @@
 	          )
 	        ),
 	        this.state.stocks.map(function (stock, i) {
-	          return React.createElement(UserStockData, { keyword: stock, key: i });
+	          return React.createElement(UserStockData, { keyword: stock, removeStock: _this5.removeStock, key: i });
 	        })
 	      );
 	    }
@@ -31371,15 +31406,15 @@
 	  }, {
 	    key: 'sell',
 	    value: function sell(e) {
+	      var _this3 = this;
+	
 	      e.preventDefault();
-	      this.setState({
-	        appears: true
-	      });
 	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {}).catch(function (err) {
 	        alert(err);
 	      });
 	      axios.get('/api/profile/myInfo').then(function (response) {
-	        browserHistory.push('/login');
+	        console.log("Stock removed");
+	        _this3.props.removeStock();
 	      });
 	    }
 	  }, {
@@ -34736,16 +34771,14 @@
 	
 	    var _this = _possibleConstructorReturn(this, (TypeAhead.__proto__ || Object.getPrototypeOf(TypeAhead)).call(this, props));
 	
-	    _this.state = {
-	      optArray: [],
-	      backgroundColor: 'white'
-	    };
+	    _this.backgroundColor = 'white';
 	    return _this;
 	  }
 	
 	  _createClass(TypeAhead, [{
 	    key: 'render',
 	    value: function render() {
+	
 	      var quoteArray = [];
 	      console.log(StocksToList.stocks);
 	      for (var i = 0; i < StocksToList.stocks.length; i++) {
