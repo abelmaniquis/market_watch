@@ -101,7 +101,6 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log("ES6 Client working");
 	      return React.createElement(
 	        Provider,
 	        { store: store },
@@ -31131,7 +31130,6 @@
 	          cash: response.data.cash,
 	          stocks: response.data.portfolio
 	        });
-	        console.log(_this2.state);
 	      });
 	    }
 	  }, {
@@ -31143,11 +31141,10 @@
 	      var stockToAdd = this.refs.addInput.value;
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({ quandlInfo: response });
-	
 	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
 	        var currentCash = _this3.state.cash;
 	
-	        _this3.setState({ cash: currentPrice - currentPrice });
+	        _this3.setState({ cash: currentCash - currentPrice });
 	
 	        if (_this3.cash === 0) {
 	          alert("You are out of money");

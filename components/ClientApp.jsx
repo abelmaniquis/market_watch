@@ -20,7 +20,6 @@ class App extends React.Component{
     }
   }
   render() {
-    console.log("ES6 Client working");
     return (
     <Provider store={store}>
       <Router history={browserHistory}>

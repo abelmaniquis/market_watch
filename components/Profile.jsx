@@ -27,7 +27,6 @@ class View extends React.Component {
         cash:response.data.cash,
         stocks:response.data.portfolio
       })
-      console.log(this.state);
     })
   }
   addStock(e) {
@@ -36,11 +35,10 @@ class View extends React.Component {
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
       this.setState({quandlInfo: response})
-      
       var currentPrice = this.state.quandlInfo.data.dataset.data[0][4];
       var currentCash = this.state.cash;
-    
-      this.setState({cash:currentPrice - currentPrice})
+      
+      this.setState({cash:currentCash - currentPrice})
       
       if(this.cash === 0){
         alert("You are out of money");
@@ -75,7 +73,6 @@ class View extends React.Component {
      
    })
    
-   
   }
   render() {
     //cannot split typeahead component because children are not rendered in component definition
@@ -99,7 +96,6 @@ class View extends React.Component {
         <Link to="/fullList">Check out the full list of stocks here</Link>
         <div className="cashContainer">
           <h3 className="myCash">{this.state.cash}</h3>
-          
         </div>
         
         <div className="logoutContainer">
