@@ -30,7 +30,6 @@ module.exports = function(app) {
             
             newUser.save(function(err){
               if (err){
-                console.log("USER FAILED TO SAVE");
                 throw err
               }
               return done(null,newUser);

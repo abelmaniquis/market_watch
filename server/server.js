@@ -23,6 +23,7 @@ app.get("*", function(req, res) {
 
 app.use(function(err, req, res, next) {
   if (err) {
+    console.log("THERE IS AN ERROR IN THIS BUILD!");
     res.status(500).send(err);
   }
 });
