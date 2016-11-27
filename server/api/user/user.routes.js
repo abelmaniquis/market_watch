@@ -12,7 +12,8 @@ module.exports = function(app) {
   
   console.log("In user routes");
   
-  console.log(User);
+  console.log("Should this be a schema or a POJO? ");
+  console.log("");
   var UserModel = mongoose.model('User',User)
   
   app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res, next) {
