@@ -22,6 +22,7 @@ module.exports = function(app) {
   //LOGIN
 
   app.get('/api/users/login/', function(req, res, next) {
+    console.log("GETTING LOGIN")
       res.status(200).json(User);
   });
   
