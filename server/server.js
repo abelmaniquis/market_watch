@@ -21,7 +21,6 @@ app.get("*", function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../', 'public', 'index.html'))
 });
 
-
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(500).send(err);

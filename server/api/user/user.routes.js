@@ -9,18 +9,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(app) {
-  
-  console.log("In user routes");
-  
-  console.log("Should this be a schema or a POJO? ");
-  console.log("");
-  
-  //var UserModel = mongoose.model('User',User)
-  
+
   var UserModel = User;
   
+  //SIGNUP
+  
   app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res, next) {
-    console.log(req.user,req.body)
       res.end();
   });
 
@@ -47,13 +41,10 @@ module.exports = function(app) {
       if(err){
         next(err);
       }else{
-        console.log("Put request goes through");
         user.portfolio.push(req.params.aStock);
         user.save();
       }
     })
-    console.log(req.user);
-    console.log(" ")
   })
   
   app.put('/api/profile/myInfo/sell/:aStock', isLoggedIn, function(req, res, next) {

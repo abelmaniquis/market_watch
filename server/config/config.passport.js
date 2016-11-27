@@ -24,12 +24,13 @@ module.exports = function(app) {
           else {
             
             var newUser = new User();
-            console.log(newUser);
+            
             newUser.username = username;
             newUser.password = newUser.generateHash(password);
             
             newUser.save(function(err){
               if (err){
+                console.log("USER FAILED TO SAVE");
                 throw err
               }
               return done(null,newUser);

@@ -2,7 +2,7 @@ const React = require('react');
 const reactDOM = require('react-dom')
 const {Router,Route,IndexRoute,browserHistory} = require('react-router')
 const axios = require('axios');
-//https://facebook.github.io/react/docs/forms.html
+
 class Signup extends React.Component {
   constructor(props) {
     super(props);
