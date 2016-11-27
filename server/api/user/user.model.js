@@ -3,8 +3,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
-var Portfolio = require('../portfolio/portfolio.model.js');
-
 var userSchema = mongoose.Schema({
   username:{
     type:String,
