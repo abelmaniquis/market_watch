@@ -14,7 +14,10 @@ module.exports = function(app) {
   
   console.log("Should this be a schema or a POJO? ");
   console.log("");
-  var UserModel = mongoose.model('User',User)
+  
+  //var UserModel = mongoose.model('User',User)
+  
+  var UserModel = User;
   
   app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res, next) {
     console.log(req.user,req.body)
