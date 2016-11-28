@@ -3,7 +3,7 @@ module.exports = {
   seed:true,
   db:
   {
-    url:process.env.MONGOLAB_URI
+    url:process.env.MONGODB_URI
   }
 }
 

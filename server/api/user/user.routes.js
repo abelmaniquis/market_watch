@@ -15,7 +15,6 @@ module.exports = function(app) {
   //SIGNUP
   
   app.post('/api/users/signup', passport.authenticate('local-signup'),function(req, res, next) {
-    console.log("I CAN READ POST!");
       res.end();
   });
 
