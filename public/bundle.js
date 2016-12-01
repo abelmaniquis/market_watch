@@ -21551,7 +21551,7 @@
 	var _require2 = __webpack_require__(196);
 	
 	var Link = _require2.Link;
-	
+	//const FontAwesome = require('react-fontawesome');
 	
 	var Landing = React.createClass({
 	  displayName: 'Landing',
@@ -21602,15 +21602,7 @@
 	            )
 	          )
 	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'description' },
-	          React.createElement(
-	            'h4',
-	            null,
-	            'How would you invest a million dollars?'
-	          )
-	        )
+	        React.createElement('div', { className: 'description' })
 	      )
 	    );
 	  }
@@ -34763,7 +34755,7 @@
 	        quoteArray.push(StocksToList.stocks[i].ticker);
 	      }
 	      return React.createElement(Typeahead, {
-	        placeholder: 'Typeahead Search',
+	        placeholder: 'Search available stocks',
 	        options: quoteArray,
 	        maxVisible: 10
 	      });
@@ -35908,7 +35900,6 @@
 	var browserHistory = _require.browserHistory;
 	
 	var axios = __webpack_require__(174);
-	//https://facebook.github.io/react/docs/forms.html
 	
 	var Signup = function (_React$Component) {
 	  _inherits(Signup, _React$Component);

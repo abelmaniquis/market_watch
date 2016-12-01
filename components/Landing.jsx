@@ -1,9 +1,10 @@
-const React = require('react')
-const Data = require('./Data')
-const Header = require('./Header')
-const {object,string} = React.PropTypes
-const {connector} = require('./Store')
-const { Link } = require('react-router')
+const React = require('react');
+const Data = require('./Data');
+const Header = require('./Header');
+const {object,string} = React.PropTypes;
+const {connector} = require('./Store');
+const { Link } = require('react-router');
+//const FontAwesome = require('react-fontawesome');
 
 const Landing = React.createClass({
   propTypes: {
@@ -34,7 +35,7 @@ const Landing = React.createClass({
         </div>
         
         <div className="description">
-          <h4>How would you invest a million dollars?</h4>
+        
         </div>
         
       </div>

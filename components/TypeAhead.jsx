@@ -18,7 +18,7 @@ class TypeAhead extends React.Component {
     }
     return (
     <Typeahead
-      placeholder="Typeahead Search"
+      placeholder="Search available stocks"
       options={quoteArray}
       maxVisible={10}
     />)
