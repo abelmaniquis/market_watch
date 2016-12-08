@@ -1,73 +1,53 @@
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
+/*-webkit-box-sizing: border-box */
+/*box-sizing: border-box */
 html {
-  background-image:url('./img/night-city.jpg');
-  font-family: Helvetica Neue, Helvetica, sans-serif;
-}
+  background-image: url("./img/night-city.jpg");
+  font-family: Helvetica Neue, Helvetica, sans-serif; }
 
-h3{
-  text-align:center;
-}
+h3 {
+  text-align: center; }
 
+.userProfile {
+  background: white; }
 
-.userProfile{
-  background:white;
-}
-
-
-
-.home-info{
-  text-align:center;
-  border:0 none;
+.home-info {
+  text-align: center;
+  border: 0 none;
   border-radius: 4px;
-  box-sizing:border-box;
-  width:25%;
+  box-sizing: border-box;
+  width: 25%;
   margin: 25% 37.5%;
-  position:relative;
-  background-color: rgba(220, 220, 220, .8);
-  
-}
+  position: relative;
+  background-color: rgba(220, 220, 220, 0.8); }
 
-.home-
+.tableHead {
+  background-color: rgba(220, 220, 220, 0.8); }
 
-.tableHead{
-  background-color: rgba(220, 220, 220, .8);
-}
-
-.searchContainer{
-  width:100%;
-  text-align:center;
-  display:inline-block;
-}
+.searchContainer {
+  width: 100%;
+  text-align: center;
+  display: inline-block; }
 
 .title {
   color: #008CBA;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 .header {
   text-align: center;
-  background-color: #fafafa;
-}
+  background-color: #fafafa; }
 
 .search {
   width: 100%;
-  border-radius: 4px;
-}
+  border-radius: 4px; }
 
 .data-container {
   position: relative;
-  background-color: rgba(220, 220, 220, .8);
-}
+  background-color: rgba(220, 220, 220, 0.8); }
 
 .stocks {
   width: 100%;
   height: 50em;
-  overflow: scroll;
-}
+  overflow: scroll; }
 
 .submitButton {
   display: inline-block;
@@ -79,10 +59,9 @@ h3{
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
-}
+  font-size: 16px; }
 
-.button-type{
+.button-type {
   background-color: #008CBA;
   border-radius: 4px;
   border: none;
@@ -91,10 +70,9 @@ h3{
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
-}
+  font-size: 16px; }
 
-.buy-button{
+.buy-button {
   background-color: #00FF00;
   border-radius: 4px;
   border: none;
@@ -103,10 +81,9 @@ h3{
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
-}
+  font-size: 16px; }
 
-.sell-button{
+.sell-button {
   background-color: #B80000;
   border-radius: 4px;
   border: none;
@@ -115,46 +92,30 @@ h3{
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
-}
-
-.user-submit{
-  text-align:center;
-}
-.user-input{
-  text-align:center;
-}
-
-.submit-button{
-  text-align:center;
-}
+  font-size: 16px; }
 
 table {
-  width: 100%;
-}
+  width: 100%; }
 
 table,
 th,
 td {
   border: none;
-  border-collapse: collapse;
-}
+  border-collapse: collapse; }
 
 th {
   height: 3em;
   width: 6em;
-  text-align: left;
-}
+  text-align: left; }
 
 .table-body:hover {
   background-color: #707070;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 ul {
-  list-style: none
-}
+  list-style: none; }
 
 h1 {
-  text-align: center;
-}
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */
