@@ -21585,15 +21585,7 @@
 	        )
 	      )
 	    ),
-	    React.createElement(
-	      'div',
-	      { className: 'description' },
-	      React.createElement(
-	        'p',
-	        null,
-	        'Create a watchlist of stocks'
-	      )
-	    )
+	    React.createElement('div', { className: 'description' })
 	  );
 	};
 	

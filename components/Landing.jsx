@@ -23,7 +23,6 @@ const Landing = () =>{
         </div>
         
         <div className="description">
-          <p>Create a watchlist of stocks</p>
         </div>
         
       </div>
