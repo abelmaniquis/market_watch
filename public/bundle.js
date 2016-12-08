@@ -21550,68 +21550,52 @@
 	var Link = _require2.Link;
 	
 	
-	var Landing = React.createClass({
-	  displayName: 'Landing',
-	
-	  propTypes: {
-	    route: object,
-	    searchTerm: string
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      searchTerm: ''
-	    };
-	  },
-	  handleSearchTermEvent: function handleSearchTermEvent(event) {
-	    this.setState({ searchTerm: event.target.value });
-	  },
-	  render: function render() {
-	    return React.createElement(
+	var Landing = function Landing() {
+	  return React.createElement(
+	    'div',
+	    { className: 'home-info' },
+	    React.createElement(
+	      'h1',
+	      { className: 'title' },
+	      'MarketSource'
+	    ),
+	    React.createElement(
 	      'div',
-	      { className: 'home-info' },
+	      { className: 'buttonContainer' },
 	      React.createElement(
-	        'h1',
-	        { className: 'title' },
-	        'MarketSource'
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'buttonContainer' },
+	        'fieldset',
+	        null,
 	        React.createElement(
-	          'fieldset',
-	          null,
+	          'form',
+	          { action: '/signup' },
 	          React.createElement(
-	            'form',
-	            { action: '/signup' },
-	            React.createElement(
-	              'button',
-	              { className: 'submitButton', type: 'submit' },
-	              'Register'
-	            )
-	          ),
+	            'button',
+	            { className: 'submitButton', type: 'submit' },
+	            'Register'
+	          )
+	        ),
+	        React.createElement(
+	          'form',
+	          { action: '/login' },
 	          React.createElement(
-	            'form',
-	            { action: '/login' },
-	            React.createElement(
-	              'button',
-	              { className: 'submitButton', type: 'submit' },
-	              'Log in'
-	            )
+	            'button',
+	            { className: 'submitButton', type: 'submit' },
+	            'Log in'
 	          )
 	        )
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'description' },
-	        React.createElement(
-	          'p',
-	          null,
-	          'Create a watchlist of stocks'
-	        )
 	      )
-	    );
-	  }
-	});
+	    ),
+	    React.createElement(
+	      'div',
+	      { className: 'description' },
+	      React.createElement(
+	        'p',
+	        null,
+	        'Create a watchlist of stocks'
+	      )
+	    )
+	  );
+	};
 	
 	module.exports = connector(Landing);
 
@@ -31785,7 +31769,7 @@
 	            React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
 	            React.createElement(
 	              'button',
-	              null,
+	              { className: 'submitButton' },
 	              'Add'
 	            )
 	          )

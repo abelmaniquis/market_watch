@@ -7,8 +7,16 @@ html {
 h3 {
   text-align: center; }
 
+a:link {
+  color: #540dd8;
+  text-decoration: none; }
+
+a:hover {
+  color: white; }
+
 .userProfile {
-  background: white; }
+  margin-top: 7em;
+  background: rgba(220, 220, 220, 0.8); }
 
 .home-info {
   text-align: center;
@@ -18,9 +26,6 @@ h3 {
   width: 25%;
   margin: 25% 37.5%;
   position: relative;
-  background-color: rgba(220, 220, 220, 0.8); }
-
-.tableHead {
   background-color: rgba(220, 220, 220, 0.8); }
 
 .searchContainer {
@@ -34,15 +39,14 @@ h3 {
 
 .header {
   text-align: center;
-  background-color: #fafafa; }
+  background-color: rgba(220, 220, 220, 0.8); }
 
 .search {
-  width: 100%;
+  max-width: 100%;
   border-radius: 4px; }
 
 .data-container {
-  position: relative;
-  background-color: rgba(220, 220, 220, 0.8); }
+  position: relative; }
 
 .stocks {
   width: 100%;
@@ -93,6 +97,15 @@ h3 {
   text-align: center;
   text-decoration: none;
   font-size: 16px; }
+
+.user-submit {
+  text-align: center; }
+
+.user-input {
+  text-align: center; }
+
+.submit-button {
+  text-align: center; }
 
 table {
   width: 100%; }

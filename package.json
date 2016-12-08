@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "test": "mocha",
+    "watch-css": "sass --watch public/style.sass:public/style.css",
     "build": "webpack",
     "server": "nodemon --watch server --exec babel-node -- server/server.js",
     "watch": "webpack --watch"

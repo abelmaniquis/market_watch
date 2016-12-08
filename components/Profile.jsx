@@ -102,9 +102,8 @@ class View extends React.Component {
         
         <form onSubmit={this.addStock}>
         <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
-        <button>Add</button>
+        <button className="submitButton">Add</button>
         </form>
-        
         </div>
         
         

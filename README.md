@@ -15,6 +15,7 @@ proper decision on how to further invest in the market.
 Technical
 =============
 *This App is built using React, MongoDB and Nodejs with Express, it utilizes JSX and Ecmascript 6.
+*CSS Styling is done through Sass.
 *Market Source uses Passportjs for authentication, and bcrypt for secure password storage.
 *Data is stored in a user object, and stocks are stored as an Array within the userSchema, this data
  is given to the Quandl API which returns market information.

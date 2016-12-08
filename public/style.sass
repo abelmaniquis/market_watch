@@ -1,20 +1,28 @@
 /*-webkit-box-sizing: border-box*/
 /*box-sizing: border-box*/
 
+$transparent: rgba(220, 220, 220, .8)
+$citybackground: url('./img/night-city.jpg')
+$default-font: Helvetica Neue, Helvetica, sans-serif
+$link-color: #540dd8
 
 html 
-  background-image: url('./img/night-city.jpg')
-  font-family: Helvetica Neue, Helvetica, sans-serif
-
+  background-image: $citybackground
+  font-family: $default-font
 
 h3
   text-align: center
 
+a:link
+  color: $link-color
+  text-decoration: none
 
+a:hover
+  color: white
 
 .userProfile
-  background: white
-
+  margin-top: 7em
+  background: $transparent
 
 
 
@@ -26,13 +34,7 @@ h3
   width: 25%
   margin: 25% 37.5%
   position: relative
-  background-color: rgba(220, 220, 220, .8)
-
-
-.home-
-
-.tableHead
-  background-color: rgba(220, 220, 220, .8)
+  background-color: $transparent
 
 
 .searchContainer
@@ -48,17 +50,16 @@ h3
 
 .header 
   text-align: center
-  background-color: #fafafa
+  background-color: $transparent
 
 
 .search 
-  width: 100%
+  max-width: 100%
   border-radius: 4px
 
 
 .data-container 
   position: relative
-  background-color: rgba(220, 220, 220, .8)
 
 
 .stocks 
@@ -117,15 +118,13 @@ h3
 
 
 .user-submit
-  text-align:center
+  text-align: center
 
 .user-input
-  text-align:center
-
+  text-align: center
 
 .submit-button
-  text-align:center
-
+  text-align: center
 
 table 
   width: 100%

@@ -5,20 +5,7 @@ const {object,string} = React.PropTypes;
 const {connector} = require('./Store');
 const { Link } = require('react-router');
 
-const Landing = React.createClass({
-  propTypes: {
-    route: object,
-    searchTerm: string,
-  },
-  getInitialState(){
-    return{
-      searchTerm: ''
-    }
-  },
-  handleSearchTermEvent(event){
-    this.setState({searchTerm: event.target.value})
-  },
-  render() {
+const Landing = () =>{
     return (
       <div className='home-info'>
         <h1 className='title'>MarketSource</h1>
@@ -41,7 +28,6 @@ const Landing = React.createClass({
         
       </div>
     )
-  }
-})
+}
 
 module.exports = connector(Landing)
