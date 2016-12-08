@@ -4,7 +4,6 @@ const Header = require('./Header');
 const {object,string} = React.PropTypes;
 const {connector} = require('./Store');
 const { Link } = require('react-router');
-//const FontAwesome = require('react-fontawesome');
 
 const Landing = React.createClass({
   propTypes: {
@@ -21,25 +20,26 @@ const Landing = React.createClass({
   },
   render() {
     return (
-      <div className='app-container'>
       <div className='home-info'>
-        <h1 className='title'>MarketWatch!</h1>
+        <h1 className='title'>MarketSource</h1>
         <div className='buttonContainer'>
-          <form action="/login">
-          <button className='submitButton' type="submit">Log in here</button>
+        <fieldset>
+          <form action="/signup">
+          <button className='submitButton' type="submit">Register</button>
           </form>
         
-          <form action="/signup">
-          <button className='submitButton' type="submit">Sign up here</button>
+          <form action="/login">
+          <button className='submitButton' type="submit">Log in</button>
           </form>
+        </fieldset>
+
         </div>
         
         <div className="description">
-        
+          <p>Create a watchlist of stocks</p>
         </div>
         
       </div>
-    </div>
     )
   }
 })

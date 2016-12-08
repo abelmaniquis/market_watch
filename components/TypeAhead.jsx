@@ -11,7 +11,6 @@ class TypeAhead extends React.Component {
     this.backgroundColor = 'white';
   }
   render() {
-    
     var quoteArray = [];
     for(var i = 0; i < StocksToList.stocks.length; i++){
       quoteArray.push(StocksToList.stocks[i].ticker);
@@ -20,8 +19,13 @@ class TypeAhead extends React.Component {
     <Typeahead
       placeholder="Search available stocks"
       options={quoteArray}
-      maxVisible={10}
-    />)
+      
+      onTokenAdd={function(token){
+        console.log("token added: ", token)
+        console.log("token!")
+      }}
+      maxVisible={10}/>
+      )
   }
 }
 

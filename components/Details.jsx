@@ -6,51 +6,64 @@
 const React = require('react')
 const axios = require('axios')
 const Data = require('./Data')
-const { Link } = require('react-router')
+const {Link} = require('react-router')
+const d3 = require('d3');
 
-class Details extends React.Component{
-  constructor(props){
+class Details extends React.Component {
+  constructor(props) {
     super(props)
-    console.log("Details state: ")
-    console.log(this.props.params);
     this.state = {
-      id:{},
-      name:"",
-      ticker:"",
-      logTitles:[],
-      priceLog:[]
+      id: {},
+      name: "",
+      ticker: "",
+      logTitles: [],
+      priceLog: [],
+      dates:[]
     }
   }
-  componentDidMount(){
-   axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
-    .then((response)=>{
-      this.setState({
-        ticker: response.data.dataset.dataset_code,
-        name: response.data.dataset.name,
-        logTitles: response.data.dataset.column_names,
-        priceLog: response.data.dataset.data
+  componentDidMount() {
+    
+    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
+      
+      .then((response) => {
+        
+        var dateArray = [];
+        
+        this.setState({
+          ticker: response.data.dataset.dataset_code,
+          name: response.data.dataset.name,
+          logTitles: response.data.dataset.column_names,
+          priceLog: response.data.dataset.data
+        });
       });
-    });
-  }componentDidMount(){
-   axios.get(`https://content.guardianapis.com/search?q="${this.state.name}"&tag=politics/politics&from-date=2014-01-01&api-key= 526bb08c-1bbc-41f2-a4ab-3e0669d251c0`)
-   .then((response)=>{
-     console.log(response.data);
-   }) //Guardian API key:  526bb08c-1bbc-41f2-a4ab-3e0669d251c0
+  }generateDates(){
   }
-  render(){
-    return(
-    <div className="FurtherDetails">
+  render() {
+    console.log("this.state.priceLog: ",this.state.priceLog)
+    return (
+      <div className="FurtherDetails">
       <h1>{this.state.name}</h1>
       <p><Link to='/'>Back to Homepage</Link></p>
       <p><Link to="/profile/aUser">Add to my Profile/Watchlist</Link></p>
       <h1>Stock History for {this.state.ticker}</h1>
-          <pre><code>
-          {JSON.stringify(this.state.logTitles, null, 4)}
-          {JSON.stringify(this.state.priceLog, null, 4)}
-        </code></pre>
-        <p>"Updated"</p>
+      
+        <div id="chart"><svg></svg></div>
+        <div id="datatable"></div>
+      
     </div>
     )
   }
 }
 module.exports = Details
+
+
+
+/*
+
+          <pre><code>
+          {JSON.stringify(this.state.logTitles, null, 4)}
+          {JSON.stringify(this.state.priceLog, null, 4)}
+        </code></pre>
+
+
+*/

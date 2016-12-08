@@ -6,8 +6,7 @@ const {Router} = require('react-router');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
 const TypeAhead = require('./TypeAhead.jsx');
-
-
+const d3 = require('d3');
 
 class View extends React.Component {
   constructor(props) {
@@ -18,8 +17,11 @@ class View extends React.Component {
       stocks:[],
       quandlInfo: null
     };
+    
     this.addStock = this.addStock.bind(this);       //Find a way to pass these functions into UserStockData
     this.removeStock = this.removeStock.bind(this);
+    this.test = this.test.bind(this);
+    
   }componentWillMount(){
     axios.get('/api/profile/myInfo').then((response)=>{
       this.setState({
@@ -29,9 +31,19 @@ class View extends React.Component {
       })
     })
   }
+  test(e){
+    e.preventDefault();
+    console.log("receiving from typeahead");
+    console.log(this.refs.addInput);
+  }
+  
   addStock(e) {
     e.preventDefault();
+    
     var stockToAdd = this.refs.addInput.value;
+    
+   
+    
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
       this.setState({quandlInfo: response})
@@ -63,7 +75,6 @@ class View extends React.Component {
     this.refs.addInput.value = '';
   }
   removeStock(){
-   console.log(this.state.stocks);
    axios.get('/api/profile/myInfo').then((response)=>{
      console.log("updated portfolio: ", response.data.portfolio);
      this.setState({
@@ -73,36 +84,33 @@ class View extends React.Component {
      
    })
    
+   
   }
   render() {
-    //cannot split typeahead component because children are not rendered in component definition
     return (
-      <div>
+      <div className="userProfile">
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         
+          <h3><Link to="/">LOG OUT</Link></h3>
+      
         <div className='searchContainer'>
         
-         <TypeAhead>
-         
-         </TypeAhead>
-         
-         
-        <form onSubmit={ this.addStock}>
-           <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
-          <button>Add</button>
+        {/*<form onSubmit={this.test}>
+         <TypeAhead inputProps={this.addStock}></TypeAhead>
+         <button>Test</button>
+        </form>*/}
+        
+        <form onSubmit={this.addStock}>
+        <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
+        <button>Add</button>
         </form>
-        </div>
-        
-        <Link to="/fullList">Check out the full list of stocks here</Link>
-        <div className="cashContainer">
-          <h3 className="myCash">{this.state.cash}</h3>
-        </div>
-        
-        <div className="logoutContainer">
-        
-        <h3><Link to="/">LOG OUT</Link></h3>
         
         </div>
+        
+        
+        {/*<Link to="/fullList">Check out the full list of stocks here</Link>
+        */}
+
         <table className="tableHead">
         <tbody>
           <tr>
@@ -112,10 +120,10 @@ class View extends React.Component {
           <th>High</th>
           <th>Low</th>
           <th>Trend</th>
-          <th>Buy</th>
           <th>Delete</th>
+          {/*
           <th>Quant</th>
-          <th>Value</th>
+          <th>Value</th>*/}
           </tr>
         </tbody>
     </table>
