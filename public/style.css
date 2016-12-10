@@ -131,4 +131,15 @@ ul {
 h1 {
   text-align: center; }
 
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white; }
+
+.FurtherDetails {
+  background-color: rgba(220, 220, 220, 0.8); }
+
 /*# sourceMappingURL=style.css.map */

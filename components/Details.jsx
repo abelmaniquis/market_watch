@@ -22,9 +22,7 @@ class Details extends React.Component {
     }
   }
   componentDidMount() {
-    
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
-      
       .then((response) => {
         
         var dateArray = [];
@@ -33,12 +31,31 @@ class Details extends React.Component {
           ticker: response.data.dataset.dataset_code,
           name: response.data.dataset.name,
           logTitles: response.data.dataset.column_names,
-          priceLog: response.data.dataset.data
-        });
+          statepriceLog: response.data.dataset.data});
+        
+          this.createChart = this.createChart.bind(this);
       });
-  }generateDates(){
+  }createChart(){
   }
   render() {
+    console.log(d3);
+    
+    var data = [4,8,15,16,23,42]
+    
+    var x = d3.scaleLinear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
+    
+    
+    d3.select(".chart")
+    .selectAll("div")
+    .data(data)
+    .enter()
+    .append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .text(function(d) { return d; });
+    
+    
     console.log("this.state.priceLog: ",this.state.priceLog)
     return (
       <div className="FurtherDetails">
@@ -47,23 +64,11 @@ class Details extends React.Component {
       <p><Link to="/profile/aUser">Add to my Profile/Watchlist</Link></p>
       <h1>Stock History for {this.state.ticker}</h1>
       
-        <div id="chart"><svg></svg></div>
-        <div id="datatable"></div>
+        <div className="chart">
+        </div>
       
     </div>
     )
   }
 }
 module.exports = Details
-
-
-
-/*
-
-          <pre><code>
-          {JSON.stringify(this.state.logTitles, null, 4)}
-          {JSON.stringify(this.state.priceLog, null, 4)}
-        </code></pre>
-
-
-*/

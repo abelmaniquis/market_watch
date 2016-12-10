@@ -30976,16 +30976,29 @@
 	          ticker: response.data.dataset.dataset_code,
 	          name: response.data.dataset.name,
 	          logTitles: response.data.dataset.column_names,
-	          priceLog: response.data.dataset.data
-	        });
+	          statepriceLog: response.data.dataset.data });
+	
+	        _this2.createChart = _this2.createChart.bind(_this2);
 	      });
 	    }
 	  }, {
-	    key: 'generateDates',
-	    value: function generateDates() {}
+	    key: 'createChart',
+	    value: function createChart() {}
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(d3);
+	
+	      var data = [4, 8, 15, 16, 23, 42];
+	
+	      var x = d3.scaleLinear().domain([0, d3.max(data)]).range([0, 420]);
+	
+	      d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width", function (d) {
+	        return x(d) + "px";
+	      }).text(function (d) {
+	        return d;
+	      });
+	
 	      console.log("this.state.priceLog: ", this.state.priceLog);
 	      return React.createElement(
 	        'div',
@@ -31019,12 +31032,7 @@
 	          'Stock History for ',
 	          this.state.ticker
 	        ),
-	        React.createElement(
-	          'div',
-	          { id: 'chart' },
-	          React.createElement('svg', null)
-	        ),
-	        React.createElement('div', { id: 'datatable' })
+	        React.createElement('div', { className: 'chart' })
 	      );
 	    }
 	  }]);
@@ -31033,16 +31041,6 @@
 	}(React.Component);
 	
 	module.exports = Details;
-	
-	/*
-	
-	          <pre><code>
-	          {JSON.stringify(this.state.logTitles, null, 4)}
-	          {JSON.stringify(this.state.priceLog, null, 4)}
-	        </code></pre>
-
-
-	*/
 
 /***/ },
 /* 291 */
@@ -31849,6 +31847,8 @@
 	var IndexRoute = _require.IndexRoute;
 	var browserHistory = _require.browserHistory;
 	
+	var d3 = __webpack_require__(291);
+	
 	var Data = function (_React$Component) {
 	  _inherits(Data, _React$Component);
 	
@@ -31930,6 +31930,8 @@
 	      var value = quantity * close; //state is being manipulated here, find another way to do this
 	
 	      change >= 0 ? trend += "up" : trend += "down";
+	
+	      trend === "up" ? d3.select(".data-container").style("color", "green") : d3.select(".data-container").style("color", "red");
 	
 	      return React.createElement(
 	        'div',
