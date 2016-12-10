@@ -30943,6 +30943,7 @@
 	var Link = _require.Link;
 	
 	var d3 = __webpack_require__(291);
+	var VisualData = __webpack_require__(313);
 	
 	var Details = function (_React$Component) {
 	  _inherits(Details, _React$Component);
@@ -30977,27 +30978,11 @@
 	          name: response.data.dataset.name,
 	          logTitles: response.data.dataset.column_names,
 	          statepriceLog: response.data.dataset.data });
-	
-	        _this2.createChart = _this2.createChart.bind(_this2);
 	      });
 	    }
 	  }, {
-	    key: 'createChart',
-	    value: function createChart() {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(d3);
-	
-	      var data = [4, 8, 15, 16, 23, 42];
-	
-	      var x = d3.scaleLinear().domain([0, d3.max(data)]).range([0, 420]);
-	
-	      d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width", function (d) {
-	        return x(d) + "px";
-	      }).text(function (d) {
-	        return d;
-	      });
 	
 	      console.log("this.state.priceLog: ", this.state.priceLog);
 	      return React.createElement(
@@ -31032,7 +31017,8 @@
 	          'Stock History for ',
 	          this.state.ticker
 	        ),
-	        React.createElement('div', { className: 'chart' })
+	        React.createElement(VisualData, { data: [4, 8, 15, 16, 23, 42] }),
+	        React.createElement(VisualData, { data: [5, 43, 27, 19, 83, 20] })
 	      );
 	    }
 	  }]);
@@ -37043,6 +37029,62 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	var d3 = __webpack_require__(291);
+	
+	var VisualData = function (_React$Component) {
+	  _inherits(VisualData, _React$Component);
+	
+	  function VisualData(props) {
+	    _classCallCheck(this, VisualData);
+	
+	    return _possibleConstructorReturn(this, (VisualData.__proto__ || Object.getPrototypeOf(VisualData)).call(this, props));
+	  }
+	
+	  _createClass(VisualData, [{
+	    key: 'render',
+	    value: function render() {
+	      console.log("This one is from VisualData");
+	      console.log(this.props.data);
+	      console.log(d3);
+	
+	      var x = d3.scaleLinear().domain([0, d3.max(this.props.data)]).range([0, 420]);
+	
+	      console.log("x", x);
+	
+	      d3.select(".chart").selectAll("div").data(this.props.data).enter().append("div").style("width", function (d) {
+	        return x(d) + "px";
+	      }).text(function (d) {
+	        return d;
+	      });
+	
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement('div', { className: 'chart' })
+	      );
+	    }
+	  }]);
+	
+	  return VisualData;
+	}(React.Component);
+	
+	module.exports = VisualData;
 
 /***/ }
 /******/ ]);
