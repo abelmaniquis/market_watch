@@ -30954,12 +30954,23 @@
 	    var _this = _possibleConstructorReturn(this, (Details.__proto__ || Object.getPrototypeOf(Details)).call(this, props));
 	
 	    _this.state = {
-	      id: {},
 	      name: "",
 	      ticker: "",
-	      logTitles: [],
+	      date: "",
 	      priceLog: [],
-	      dates: []
+	      logDates: [],
+	      logOpen: [],
+	      logHigh: [],
+	      logLow: [],
+	      logClose: [],
+	      logVolume: [],
+	      logExDiv: [],
+	      logSplitRatio: [],
+	      logAdjOpen: [],
+	      logAdjHigh: [],
+	      logAdjLow: [],
+	      logAdjClose: [],
+	      logAdjVol: []
 	    };
 	    return _this;
 	  }
@@ -30971,20 +30982,39 @@
 	
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + this.props.params.id + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	
-	        var dateArray = [];
+	        var i = 0;
+	        var dates = [],
+	            open = [],
+	            high = [],
+	            low = [];
+	        while (i < 7) {
+	          dates.push(response.data.dataset.data[i][0]);
+	          open.push(response.data.dataset.data[i][1]);
+	          high.push(response.data.dataset.data[i][2]);
+	
+	          i += 1;
+	        }
+	
+	        console.log("open: ", open);
 	
 	        _this2.setState({
 	          ticker: response.data.dataset.dataset_code,
 	          name: response.data.dataset.name,
 	          logTitles: response.data.dataset.column_names,
-	          statepriceLog: response.data.dataset.data });
+	          priceLog: response.data.dataset.data,
+	          logOpen: open,
+	          logClose: close
+	        });
 	      });
+	
+	      console.log("this.state.logOpen: ", this.state.logOpen);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	
-	      console.log("this.state.priceLog: ", this.state.priceLog);
+	      console.log("Details.state: ", this.state);
+	
 	      return React.createElement(
 	        'div',
 	        { className: 'FurtherDetails' },
@@ -30998,17 +31028,8 @@
 	          null,
 	          React.createElement(
 	            Link,
-	            { to: '/' },
+	            { to: '/login/profile/' + this.props.username },
 	            'Back to Homepage'
-	          )
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          React.createElement(
-	            Link,
-	            { to: '/profile/aUser' },
-	            'Add to my Profile/Watchlist'
 	          )
 	        ),
 	        React.createElement(
@@ -31017,8 +31038,17 @@
 	          'Stock History for ',
 	          this.state.ticker
 	        ),
-	        React.createElement(VisualData, { data: [4, 8, 15, 16, 23, 42] }),
-	        React.createElement(VisualData, { data: [5, 43, 27, 19, 83, 20] })
+	        React.createElement(
+	          'h2',
+	          null,
+	          'Opening Prices'
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'chartContainer' },
+	          React.createElement(VisualData, { data: this.state.logOpen, stock: this.state.ticker }),
+	          React.createElement(VisualData, { data: this.state.logClose, stock: this.state.ticker })
+	        )
 	      );
 	    }
 	  }]);
@@ -31638,7 +31668,7 @@
 	      quandlInfo: null
 	    };
 	
-	    _this.addStock = _this.addStock.bind(_this); //Find a way to pass these functions into UserStockData
+	    _this.addStock = _this.addStock.bind(_this);
 	    _this.removeStock = _this.removeStock.bind(_this);
 	    _this.test = _this.test.bind(_this);
 	
@@ -36595,7 +36625,7 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'Log in here'
+	          'Log in'
 	        ),
 	        React.createElement(
 	          'form',
@@ -37046,6 +37076,7 @@
 	
 	var React = __webpack_require__(1);
 	var d3 = __webpack_require__(291);
+	var axios = __webpack_require__(174);
 	
 	var VisualData = function (_React$Component) {
 	  _inherits(VisualData, _React$Component);
@@ -37059,13 +37090,8 @@
 	  _createClass(VisualData, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log("This one is from VisualData");
-	      console.log(this.props.data);
-	      console.log(d3);
-	
-	      var x = d3.scaleLinear().domain([0, d3.max(this.props.data)]).range([0, 420]);
-	
-	      console.log("x", x);
+	      console.log("this.props.data: ", this.props.data);
+	      var x = d3.scaleLinear().domain([0, d3.max(this.props.data)]).range([0, 1000]);
 	
 	      d3.select(".chart").selectAll("div").data(this.props.data).enter().append("div").style("width", function (d) {
 	        return x(d) + "px";

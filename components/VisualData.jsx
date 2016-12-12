@@ -1,23 +1,17 @@
 
 const React = require('react');
-const d3 = require('d3')
-
+const d3 = require('d3');
+const axios = require('axios');
 
 class VisualData extends React.Component{
   constructor(props){
     super(props)
   }
-  
   render(){
-    console.log("This one is from VisualData");
-    console.log(this.props.data);
-    console.log(d3);
-    
+    console.log("this.props.data: ",this.props.data);
     var x = d3.scaleLinear()
     .domain([0, d3.max(this.props.data)])
-    .range([0, 420]);
-    
-    console.log("x", x);
+    .range([0, 1000]);
     
     d3.select(".chart")
     .selectAll("div")

@@ -15,40 +15,79 @@ class Details extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: {},
       name: "",
       ticker: "",
-      logTitles: [],
+      date:"",
       priceLog: [],
-      dates:[]
+      logDates:[],
+      logOpen:[],
+      logHigh:[],
+      logLow:[],
+      logClose:[],
+      logVolume:[],
+      logExDiv:[],
+      logSplitRatio:[],
+      logAdjOpen:[],
+      logAdjHigh:[],
+      logAdjLow:[],
+      logAdjClose:[],
+      logAdjVol:[],
     }
   }
   componentDidMount() {
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
       .then((response) => {
         
-        var dateArray = [];
+        var i = 0;
+        var dates = [],
+        open = [],
+        high = [],
+        low = []
+        while(i < 7){
+          dates.push(response.data.dataset.data[i][0])
+          open.push(response.data.dataset.data[i][1])
+          high.push(response.data.dataset.data[i][2])
+          
+          i += 1
+        }
+        
+        console.log("open: ",open)
         
         this.setState({
           ticker: response.data.dataset.dataset_code,
           name: response.data.dataset.name,
           logTitles: response.data.dataset.column_names,
-          statepriceLog: response.data.dataset.data});
+          priceLog: response.data.dataset.data,
+          logOpen: open,
+          logClose: close
+        })
+          
       });
+      
+      console.log("this.state.logOpen: ",this.state.logOpen);
+      
   }
+  
+  
   render() {
     
+    console.log("Details.state: ",this.state)
     
-    console.log("this.state.priceLog: ",this.state.priceLog)
     return (
       <div className="FurtherDetails">
       <h1>{this.state.name}</h1>
-      <p><Link to='/'>Back to Homepage</Link></p>
-      <p><Link to="/profile/aUser">Add to my Profile/Watchlist</Link></p>
+      
+      <p><Link to={`/login/profile/${this.props.username}`}>Back to Homepage</Link></p>
       <h1>Stock History for {this.state.ticker}</h1>
+        <h2>Opening Prices</h2>
         
-        <VisualData data={[4,8,15,16,23,42]}/>
-        <VisualData data={[5,43,27,19,83,20]}/>
+        <div className = 'chartContainer'>
+          <VisualData data={this.state.logOpen} stock={this.state.ticker}/>
+          <VisualData data = {this.state.logClose} stock={this.state.ticker}/>
+        </div>
+        
+        
+        
       
     </div>
     )

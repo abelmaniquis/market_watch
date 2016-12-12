@@ -18,7 +18,7 @@ class View extends React.Component {
       quandlInfo: null
     };
     
-    this.addStock = this.addStock.bind(this);       //Find a way to pass these functions into UserStockData
+    this.addStock = this.addStock.bind(this);
     this.removeStock = this.removeStock.bind(this);
     this.test = this.test.bind(this);
     
@@ -41,8 +41,6 @@ class View extends React.Component {
     e.preventDefault();
     
     var stockToAdd = this.refs.addInput.value;
-    
-   
     
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
     .then((response)=>{
