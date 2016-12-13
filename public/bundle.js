@@ -58,11 +58,11 @@
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(290);
-	var Profile = __webpack_require__(292);
-	var Signup = __webpack_require__(306);
-	var Login = __webpack_require__(307);
-	var FullList = __webpack_require__(308);
-	var TestPage = __webpack_require__(309);
+	var Profile = __webpack_require__(293);
+	var Signup = __webpack_require__(307);
+	var Login = __webpack_require__(308);
+	var FullList = __webpack_require__(309);
+	var TestPage = __webpack_require__(310);
 	
 	var _require = __webpack_require__(196);
 	
@@ -72,7 +72,7 @@
 	var hashHistory = _require.hashHistory;
 	var browserHistory = _require.browserHistory;
 	
-	var _require2 = __webpack_require__(294);
+	var _require2 = __webpack_require__(295);
 	
 	var stocks = _require2.stocks;
 	
@@ -84,7 +84,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(312);
+	var NotFound = __webpack_require__(313);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -30943,7 +30943,7 @@
 	var Link = _require.Link;
 	
 	var d3 = __webpack_require__(291);
-	var VisualData = __webpack_require__(313);
+	var VisualData = __webpack_require__(292);
 	
 	var Details = function (_React$Component) {
 	  _inherits(Details, _React$Component);
@@ -31637,6 +31637,118 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
+	var d3 = __webpack_require__(291);
+	var axios = __webpack_require__(174);
+	
+	var VisualData = function (_React$Component) {
+	  _inherits(VisualData, _React$Component);
+	
+	  function VisualData(props) {
+	    _classCallCheck(this, VisualData);
+	
+	    return _possibleConstructorReturn(this, (VisualData.__proto__ || Object.getPrototypeOf(VisualData)).call(this, props));
+	  }
+	
+	  _createClass(VisualData, [{
+	    key: 'render',
+	    value: function render() {
+	      console.log("-------------------------------------");
+	      console.log("this.props.data: ", this.props.data);
+	
+	      //http://stackoverflow.com/questions/21639305/d3js-take-data-from-an-array-instead-of-a-file
+	
+	      var lineData = [{
+	        x: 0,
+	        y: this.props.data[6]
+	      }, {
+	        x: 1,
+	        y: this.props.data[5]
+	      }, {
+	        x: 2,
+	        y: this.props.data[4]
+	      }, {
+	        x: 3,
+	        y: this.props.data[3]
+	      }, {
+	        x: 4,
+	        y: this.props.data[2]
+	      }, {
+	        x: 5,
+	        y: this.props.data[1]
+	      }, {
+	        x: 6,
+	        y: this.props.data[0]
+	      }];
+	
+	      console.log("lineData: ", lineData);
+	
+	      var vis = d3.select('.chart'),
+	          WIDTH = 1000,
+	          HEIGHT = 500,
+	          MARGINS = {
+	        top: 20,
+	        right: 20,
+	        bottom: 20,
+	        left: 50
+	      },
+	          xRange = d3.scaleLinear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
+	        return d.x;
+	      }), d3.max(lineData, function (d) {
+	        return d.x;
+	      })]),
+	          yRange = d3.scaleLinear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
+	        return d.y;
+	      }), d3.max(lineData, function (d) {
+	        return d.y;
+	      })]),
+	          xAxis = d3.axisBottom().scale(xRange),
+	          yAxis = d3.axisLeft().scale(yRange);
+	
+	      vis.append('svg:g').attr('class', 'x axis').attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')').call(xAxis);
+	
+	      vis.append('svg:g').attr('class', 'y axis').attr('transform', 'translate(' + MARGINS.left + ',0)').call(yAxis);
+	
+	      var lineFunc = d3.line().x(function (d) {
+	        return xRange(d.x);
+	      }).y(function (d) {
+	        return yRange(d.y);
+	      }).curve(d3.curveCardinal);
+	
+	      vis.append('svg:path').attr('d', lineFunc(lineData)).attr('stroke', 'blue').attr('stroke-width', 2).attr('fill', 'none');
+	
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h4',
+	          null,
+	          this.props.dataName
+	        ),
+	        React.createElement('svg', { className: 'chart', width: '1000', height: '500' })
+	      );
+	    }
+	  }]);
+	
+	  return VisualData;
+	}(React.Component);
+	
+	module.exports = VisualData;
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
 	var axios = __webpack_require__(174);
 	
 	var _require = __webpack_require__(196);
@@ -31649,9 +31761,9 @@
 	
 	var Router = _require2.Router;
 	
-	var UserStockData = __webpack_require__(293);
-	var list = __webpack_require__(294);
-	var TypeAhead = __webpack_require__(295);
+	var UserStockData = __webpack_require__(294);
+	var list = __webpack_require__(295);
+	var TypeAhead = __webpack_require__(296);
 	var d3 = __webpack_require__(291);
 	
 	var View = function (_React$Component) {
@@ -31841,7 +31953,7 @@
 	module.exports = View;
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31864,7 +31976,7 @@
 	var IndexRoute = _require.IndexRoute;
 	var browserHistory = _require.browserHistory;
 	
-	var d3 = __webpack_require__(291);
+	var Loading = __webpack_require__(314);
 	
 	var Data = function (_React$Component) {
 	  _inherits(Data, _React$Component);
@@ -31881,7 +31993,8 @@
 	      prices: [],
 	      keyword: _this.props.keyword,
 	      quantity: 1,
-	      appears: false
+	      appears: false,
+	      loaded: false
 	    };
 	    _this.buy = _this.buy.bind(_this);
 	    _this.sell = _this.sell.bind(_this);
@@ -31931,6 +32044,11 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	
+	      while (this.state.prices.length <= 0) {
+	        return React.createElement(Loading, null);
+	      }
+	
 	      var date = this.state.prices[0];
 	      var open = this.state.prices[1];
 	      var high = this.state.prices[2];
@@ -31943,12 +32061,9 @@
 	      var change = changeNum;
 	      var quantity = this.state.quantity;
 	      var trend = "";
-	
 	      var value = quantity * close; //state is being manipulated here, find another way to do this
 	
 	      change >= 0 ? trend += "up" : trend += "down";
-	
-	      trend === "up" ? d3.select(".data-container").style("color", "green") : d3.select(".data-container").style("color", "red");
 	
 	      return React.createElement(
 	        'div',
@@ -32027,7 +32142,7 @@
 	module.exports = Data;
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -35246,7 +35361,7 @@
 	};
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35263,8 +35378,8 @@
 	//https://www.npmjs.com/package/react-typeahead
 	
 	var React = __webpack_require__(1);
-	var StocksToList = __webpack_require__(294);
-	var Typeahead = __webpack_require__(296).Typeahead;
+	var StocksToList = __webpack_require__(295);
+	var Typeahead = __webpack_require__(297).Typeahead;
 	
 	var TypeAhead = function (_React$Component) {
 	  _inherits(TypeAhead, _React$Component);
@@ -35303,13 +35418,13 @@
 	module.exports = TypeAhead;
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Typeahead = __webpack_require__(297);
-	var Tokenizer = __webpack_require__(304);
+	var Typeahead = __webpack_require__(298);
+	var Tokenizer = __webpack_require__(305);
 	
 	module.exports = {
 	  Typeahead: Typeahead,
@@ -35317,7 +35432,7 @@
 	};
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35332,12 +35447,12 @@
 	  }return target;
 	};
 	
-	var Accessor = __webpack_require__(298);
+	var Accessor = __webpack_require__(299);
 	var React = __webpack_require__(1);
-	var TypeaheadSelector = __webpack_require__(299);
-	var KeyEvent = __webpack_require__(302);
-	var fuzzy = __webpack_require__(303);
-	var classNames = __webpack_require__(301);
+	var TypeaheadSelector = __webpack_require__(300);
+	var KeyEvent = __webpack_require__(303);
+	var fuzzy = __webpack_require__(304);
+	var classNames = __webpack_require__(302);
 	
 	/**
 	 * A "typeahead", an auto-completing text input
@@ -35724,7 +35839,7 @@
 	module.exports = Typeahead;
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35764,14 +35879,14 @@
 	module.exports = Accessor;
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var TypeaheadOption = __webpack_require__(300);
-	var classNames = __webpack_require__(301);
+	var TypeaheadOption = __webpack_require__(301);
+	var classNames = __webpack_require__(302);
 	
 	/**
 	 * Container for the options rendered as part of the autocompletion process
@@ -35859,13 +35974,13 @@
 	module.exports = TypeaheadSelector;
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var classNames = __webpack_require__(301);
+	var classNames = __webpack_require__(302);
 	
 	/**
 	 * A single option within the TypeaheadSelector
@@ -35922,7 +36037,7 @@
 	module.exports = TypeaheadOption;
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -35974,7 +36089,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35994,7 +36109,7 @@
 	module.exports = KeyEvent;
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36144,17 +36259,17 @@
 	})();
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Accessor = __webpack_require__(298);
+	var Accessor = __webpack_require__(299);
 	var React = __webpack_require__(1);
-	var Token = __webpack_require__(305);
-	var KeyEvent = __webpack_require__(302);
-	var Typeahead = __webpack_require__(297);
-	var classNames = __webpack_require__(301);
+	var Token = __webpack_require__(306);
+	var KeyEvent = __webpack_require__(303);
+	var Typeahead = __webpack_require__(298);
+	var classNames = __webpack_require__(302);
 	
 	function _arraysAreDifferent(array1, array2) {
 	  if (array1.length != array2.length) {
@@ -36354,13 +36469,13 @@
 	module.exports = TypeaheadTokenizer;
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var classNames = __webpack_require__(301);
+	var classNames = __webpack_require__(302);
 	
 	/**
 	 * Encapsulates the rendering of an option that has been "selected" in a
@@ -36411,7 +36526,7 @@
 	module.exports = Token;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36547,7 +36662,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36677,7 +36792,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36745,7 +36860,7 @@
 	module.exports = connector(FullList);
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36762,7 +36877,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(310);
+	var uuid = __webpack_require__(311);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -36805,7 +36920,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36818,7 +36933,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(311);
+	var _rng = __webpack_require__(312);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -36989,7 +37104,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -37027,7 +37142,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37072,116 +37187,126 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _createClass = function () {
+	    function defineProperties(target, props) {
+	        for (var i = 0; i < props.length; i++) {
+	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	        }
+	    }return function (Constructor, protoProps, staticProps) {
+	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	    };
+	}();
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	        throw new TypeError("Cannot call a class as a function");
+	    }
+	}
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _possibleConstructorReturn(self, call) {
+	    if (!self) {
+	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	    }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	    if (typeof superClass !== "function" && superClass !== null) {
+	        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(291);
-	var axios = __webpack_require__(174);
 	
-	var VisualData = function (_React$Component) {
-	  _inherits(VisualData, _React$Component);
+	var loading_style = {
+	    position: 'relative',
+	    margin: '0px auto',
+	    width: '40px',
+	    height: '40px'
+	};
 	
-	  function VisualData(props) {
-	    _classCallCheck(this, VisualData);
+	var svg_style = {
+	    animation: 'rotate 2s linear infinite',
+	    height: '100%',
+	    transformOrigin: 'center center',
+	    width: '100%',
+	    position: 'absolute',
+	    top: 0,
+	    bottom: 0,
+	    left: 0,
+	    right: 0,
+	    margin: 'auto'
+	};
 	
-	    return _possibleConstructorReturn(this, (VisualData.__proto__ || Object.getPrototypeOf(VisualData)).call(this, props));
-	  }
+	var circle_style = {
+	    strokeDasharray: '1,200',
+	    strokeDashoffset: '0',
+	    animation: 'dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite',
+	    strokeLinecap: 'round'
+	};
 	
-	  _createClass(VisualData, [{
-	    key: 'render',
-	    value: function render() {
-	      console.log("-------------------------------------");
-	      console.log("this.props.data: ", this.props.data);
+	var animation = '@keyframes rotate {\n    100% {\n        transform: rotate(360deg);\n    }\n}\n@keyframes dash {\n    0% {\n        stroke-dasharray: 1,200;\n        stroke-dashoffset: 0;\n    }\n    50% {\n        stroke-dasharray: 89,200;\n        stroke-dashoffset: -35px;\n    }\n    100% {\n        stroke-dasharray: 89,200;\n        stroke-dashoffset: -124px;\n    }\n}\n@keyframes color {\n    100%, 0% {\n        stroke: #d62d20;\n    }\n    40% {\n        stroke: #0057e7;\n    }\n    66% {\n        stroke: #008744;\n    }\n    80%, 90% {\n        stroke: #ffa700;\n    }\n}';
 	
-	      //http://stackoverflow.com/questions/21639305/d3js-take-data-from-an-array-instead-of-a-file
+	var Loading = function (_React$Component) {
+	    _inherits(Loading, _React$Component);
 	
-	      var lineData = [{
-	        x: 0,
-	        y: this.props.data[6]
-	      }, {
-	        x: 1,
-	        y: this.props.data[5]
-	      }, {
-	        x: 2,
-	        y: this.props.data[4]
-	      }, {
-	        x: 3,
-	        y: this.props.data[3]
-	      }, {
-	        x: 4,
-	        y: this.props.data[2]
-	      }, {
-	        x: 5,
-	        y: this.props.data[1]
-	      }, {
-	        x: 6,
-	        y: this.props.data[0]
-	      }];
+	    function Loading() {
+	        _classCallCheck(this, Loading);
 	
-	      console.log("lineData: ", lineData);
-	
-	      var vis = d3.select('.chart'),
-	          WIDTH = 1000,
-	          HEIGHT = 500,
-	          MARGINS = {
-	        top: 20,
-	        right: 20,
-	        bottom: 20,
-	        left: 50
-	      },
-	          xRange = d3.scaleLinear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
-	        return d.x;
-	      }), d3.max(lineData, function (d) {
-	        return d.x;
-	      })]),
-	          yRange = d3.scaleLinear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
-	        return d.y;
-	      }), d3.max(lineData, function (d) {
-	        return d.y;
-	      })]),
-	          xAxis = d3.axisBottom().scale(xRange),
-	          yAxis = d3.axisLeft().scale(yRange);
-	
-	      vis.append('svg:g').attr('class', 'x axis').attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')').call(xAxis);
-	
-	      vis.append('svg:g').attr('class', 'y axis').attr('transform', 'translate(' + MARGINS.left + ',0)').call(yAxis);
-	
-	      var lineFunc = d3.line().x(function (d) {
-	        return xRange(d.x);
-	      }).y(function (d) {
-	        return yRange(d.y);
-	      }).curve(d3.curveCardinal);
-	
-	      vis.append('svg:path').attr('d', lineFunc(lineData)).attr('stroke', 'blue').attr('stroke-width', 2).attr('fill', 'none');
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h4',
-	          null,
-	          this.props.dataName
-	        ),
-	        React.createElement('svg', { className: 'chart', width: '1000', height: '500' })
-	      );
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Loading).apply(this, arguments));
 	    }
-	  }]);
 	
-	  return VisualData;
+	    _createClass(Loading, [{
+	        key: 'render',
+	        value: function render() {
+	            var _props = this.props;
+	            var isLoading = _props.isLoading;
+	            var children = _props.children;
+	
+	            if (isLoading) {
+	                var _props2 = this.props;
+	                var width = _props2.width;
+	                var height = _props2.height;
+	                var margin = _props2.margin;
+	                var style = _props2.style;
+	
+	                loading_style.width = width;
+	                loading_style.height = height;
+	                loading_style.margin = margin;
+	
+	                return React.createElement('div', { style: Object.assign({}, loading_style, style) }, React.createElement('style', null, animation), React.createElement('svg', { style: svg_style, viewBox: '25 25 50 50' }, React.createElement('circle', { style: circle_style, cx: '50', cy: '50', r: '20', fill: 'none', strokeWidth: '7', strokeMiterlimit: '10' })));
+	            } else {
+	                return React.createElement('div', null, children || null);
+	            }
+	        }
+	    }]);
+	
+	    return Loading;
 	}(React.Component);
 	
-	module.exports = VisualData;
+	Loading.propTypes = {
+	    isLoading: React.PropTypes.bool,
+	    style: React.PropTypes.object,
+	    width: React.PropTypes.string,
+	    height: React.PropTypes.string,
+	    margin: React.PropTypes.string
+	};
+	
+	Loading.defaultProps = {
+	    isLoading: true,
+	    style: {},
+	    width: '40px',
+	    height: '40px',
+	    margin: '0 auto'
+	};
+	
+	module.exports = Loading;
 
 /***/ }
 /******/ ]);

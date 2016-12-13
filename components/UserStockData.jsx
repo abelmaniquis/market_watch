@@ -1,7 +1,7 @@
 const React = require('react')
 const axios = require('axios')
 const { Link,Router,IndexRoute,browserHistory } = require('react-router')
-const d3 = require('d3');
+const Loading = require('react-loading-animation')
 
 class Data extends React.Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class Data extends React.Component {
       prices: [],
       keyword: this.props.keyword,
       quantity: 1,
-      appears: false
+      appears: false,
+      loaded:false
     };
     this.buy = this.buy.bind(this);
     this.sell = this.sell.bind(this);
@@ -52,6 +53,11 @@ class Data extends React.Component {
     });
   }
   render() {
+    
+    while(this.state.prices.length <= 0){
+      return <Loading/>
+    }
+    
     let date = this.state.prices[0]
     let open = this.state.prices[1]
     let high = this.state.prices[2]
@@ -64,12 +70,9 @@ class Data extends React.Component {
     let change = changeNum;
     let quantity = this.state.quantity;
     let trend = "";
-    
     let value = quantity*close //state is being manipulated here, find another way to do this
     
     change >= 0 ? trend += "up" : trend += "down"
-    
-    trend === "up" ? d3.select(".data-container").style("color","green") : d3.select(".data-container").style("color","red");
     
     return (
       <div className="data-container">
