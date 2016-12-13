@@ -36565,6 +36565,7 @@
 	var _require = __webpack_require__(196);
 	
 	var Router = _require.Router;
+	var Link = _require.Link;
 	var Route = _require.Route;
 	var IndexRoute = _require.IndexRoute;
 	var browserHistory = _require.browserHistory;
@@ -36654,6 +36655,15 @@
 	            'div',
 	            { className: 'submit-button' },
 	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	          ),
+	          React.createElement(
+	            'h3',
+	            null,
+	            React.createElement(
+	              Link,
+	              { to: '/' },
+	              'Back to homepage'
+	            )
 	          )
 	        )
 	      );

@@ -1,6 +1,6 @@
 const React = require('react');
 const reactDOM = require('react-dom')
-const {Router,Route,IndexRoute,browserHistory} = require('react-router')
+const {Router,Link,Route,IndexRoute,browserHistory} = require('react-router')
 const axios = require('axios');
 
 class Login extends React.Component {
@@ -63,6 +63,7 @@ class Login extends React.Component {
        <div className="submit-button">
            <input className = "button-type" type="submit" value="Submit"/>
        </div>
+       <h3><Link to="/">Back to homepage</Link></h3>
       
       </form>
     </div>
