@@ -88,7 +88,7 @@ class View extends React.Component {
       <div className="userProfile">
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         
-          <h3><Link to="/">LOG OUT</Link></h3>
+        <h3><Link to="/">LOG OUT</Link></h3>
       
         <div className='searchContainer'>
         

@@ -37,10 +37,11 @@ class Details extends React.Component {
   componentDidMount() {
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.params.id}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
       .then((response) => {
-        
+        console.log("Response: ",response.data)
         var i = 0;
         var dates = [],
         open = [],
+        close = [],
         high = [],
         low = []
         while(i < 7){
@@ -52,6 +53,7 @@ class Details extends React.Component {
         }
         
         console.log("open: ",open)
+        console.log("close: ",close)
         
         this.setState({
           ticker: response.data.dataset.dataset_code,
@@ -59,7 +61,7 @@ class Details extends React.Component {
           logTitles: response.data.dataset.column_names,
           priceLog: response.data.dataset.data,
           logOpen: open,
-          logClose: close
+          logHigh: high
         })
           
       });
@@ -79,16 +81,12 @@ class Details extends React.Component {
       
       <p><Link to={`/login/profile/${this.props.username}`}>Back to Homepage</Link></p>
       <h1>Stock History for {this.state.ticker}</h1>
-        <h2>Opening Prices</h2>
+        <h2>Trends</h2>
         
         <div className = 'chartContainer'>
-          <VisualData data={this.state.logOpen} stock={this.state.ticker}/>
-          <VisualData data = {this.state.logClose} stock={this.state.ticker}/>
+          <VisualData data={this.state.logOpen} stock={this.state.ticker} dataName={"Opening Prices"}/>
         </div>
         
-        
-        
-      
     </div>
     )
   }
