@@ -86,7 +86,6 @@ class Details extends React.Component {
         <div className = 'chartContainer'>
           <VisualData data={this.state.logOpen} stock={this.state.ticker} dataName={"Opening Prices"}/>
         </div>
-        
     </div>
     )
   }

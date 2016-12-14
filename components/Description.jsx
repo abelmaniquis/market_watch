@@ -1,7 +1,6 @@
 const React = require('react');
 
 const Description = () =>{
-  
   return(
     <div className="description-container">
       <h1>Create a Watchlist of Stocks</h1>

@@ -1,13 +1,52 @@
 /*-webkit-box-sizing: border-box*/
 /*box-sizing: border-box*/
 
+@import url('https://fonts.googleapis.com/css?family=Roboto|Titillium+Web')
+
 $transparent: rgba(220, 220, 220, .8)
 $citybackground: url('./img/night-city.jpg')
-$default-font: Helvetica Neue, Helvetica, sans-serif
-$link-color: #540dd8
+$title-font: Titillium Web, Helvetica, sans-serif
+$default-font: Roboto, Helvetica, sans-serif
+$link-color: #206EFF
+$default-color: #96A9C3
+$background-color:#18212D
 
 html 
+  background-color: $background-color
   font-family: $default-font
+
+#app
+  padding: 1px
+  max-width: 100%
+
+.home-info
+  text-align: center
+  border: 0 none
+  border-radius: 6%
+  box-sizing: border-box
+  width: 25%
+  height: 25%
+  margin: 15% 35.5%
+  position: block
+  padding-bottom: 3px
+
+fieldset
+  border-style: none
+  
+.title 
+  font: $title-font
+  color: $default-color
+  font-weight: normal
+
+.description-container
+  background-color: white
+
+.user-input
+  text-align: center
+
+.submit-button
+  text-align: center
+
 
 h3
   text-align: center
@@ -20,36 +59,14 @@ a:hover
   color: white
 
 .userProfile
+  color: $default-color
   margin-top: 7em
-  background: $transparent
 
-#app
-  height: 100%
-  margin: 0
-
-.home-info
-  text-align: center
-  border: 0 none
-  border-radius: 4px
-  box-sizing: border-box
-  width: 25%
-  height: 25%
-  margin: 20% 35.5%
-  position: relative
-  background-color: $transparent
-
-fieldset
-  border-style: none
 
 .searchContainer
   width: 100%
   text-align: center
   display: inline-block
-
-
-.title 
-  color: #008CBA
-  font-weight: normal
 
 
 .header 
@@ -124,11 +141,6 @@ fieldset
 .user-submit
   text-align: center
 
-.user-input
-  text-align: center
-
-.submit-button
-  text-align: center
 
 table 
   width: 100%
@@ -149,8 +161,6 @@ th
 
 .table-body:hover 
   background-color: #707070
-  cursor: pointer
-
 
 ul 
   list-style: none
