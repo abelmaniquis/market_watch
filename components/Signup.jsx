@@ -58,6 +58,9 @@ class Signup extends React.Component {
              name="password" 
              placeholder="Password"
              className="type-here"/>
+             
+             <input className = "button-type" type="submit" value="Submit"/>
+             
         </div>
         
        <div className="submit-button">

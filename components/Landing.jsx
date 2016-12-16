@@ -6,7 +6,7 @@ const {connector} = require('./Store');
 const { Link } = require('react-router');
 const Description = require('./Description.jsx');
 const Anime = require('react-anime').default;
-const {Button, Segment} = require('semantic-ui-react');
+const {Button, Segment, Icon} = require('semantic-ui-react');
 
 const Landing = () =>{
     return (
@@ -25,6 +25,8 @@ const Landing = () =>{
           </Anime>
         
         </div>
+        
+        <h1><Icon name='dollar' size='large' /></h1>
         
         <h1 className='title'>MarketSource</h1>
         <div className='buttonContainer'>
@@ -45,10 +47,10 @@ const Landing = () =>{
           </Segment>
           </form>
         </li>
+        
         </ul>
        
         </fieldset>
-        
         </div>
         
       </div>

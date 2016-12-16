@@ -21556,6 +21556,7 @@
 	
 	var Button = _require3.Button;
 	var Segment = _require3.Segment;
+	var Icon = _require3.Icon;
 	
 	
 	var Landing = function Landing() {
@@ -21579,6 +21580,11 @@
 	        React.createElement('div', { className: 'green' }),
 	        React.createElement('div', { className: 'red' })
 	      )
+	    ),
+	    React.createElement(
+	      'h1',
+	      null,
+	      React.createElement(Icon, { name: 'dollar', size: 'large' })
 	    ),
 	    React.createElement(
 	      'h1',
@@ -37263,7 +37269,8 @@
 	              onChange: this.handlePassword,
 	              name: 'password',
 	              placeholder: 'Password',
-	              className: 'type-here' })
+	              className: 'type-here' }),
+	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
 	          ),
 	          React.createElement(
 	            'div',
