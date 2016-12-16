@@ -1,6 +1,5 @@
 
 var User = require('./user.model.js');
-var _ = require('lodash');
 
 /*
 Controller functions

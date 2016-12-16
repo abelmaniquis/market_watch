@@ -1,4 +1,3 @@
-
 const React = require('react');
 const d3 = require('d3');
 const axios = require('axios');
@@ -86,7 +85,6 @@ vis.append('svg:path')
   .attr('stroke', 'blue')
   .attr('stroke-width', 2)
   .attr('fill', 'none');
-    
     return(
       <div>
       <h4>{this.props.dataName}</h4>

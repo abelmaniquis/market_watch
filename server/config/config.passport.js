@@ -1,7 +1,6 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../api/user/user.model.js');
-var bcrypt = require('bcrypt');
 module.exports = function(app) {
 
   //Signup
@@ -22,7 +21,6 @@ module.exports = function(app) {
             console.log('This username already exists');
           }
           else {
-            
             var newUser = new User();
             
             newUser.username = username;

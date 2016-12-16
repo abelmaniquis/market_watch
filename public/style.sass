@@ -7,14 +7,20 @@ $transparent: rgba(220, 220, 220, .8)
 $citybackground: url('./img/night-city.jpg')
 $title-font: Titillium Web, Helvetica, sans-serif
 $default-font: Roboto, Helvetica, sans-serif
-$link-color: #206EFF
+$link-color: #96A9C3
 $default-color: #96A9C3
 $background-color:#18212D
 
-html 
+html
+  height: 100%
   background-color: $background-color
   font-family: $default-font
+  color: $default-color
 
+body
+  padding-top: 3.5em
+  background: $background-color
+  
 #app
   padding: 1px
   max-width: 100%
@@ -30,16 +36,27 @@ html
   position: block
   padding-bottom: 3px
 
-fieldset
-  border-style: none
-  
-.title 
-  font: $title-font
-  color: $default-color
-  font-weight: normal
+.home-info
+  ul
+    padding-left: 0px
 
-.description-container
-  background-color: white
+.home-info
+  li
+    display: inline-block
+
+.home-info
+  fieldset
+    border-style: none
+    
+.home-info  
+  .title 
+    font: $title-font
+    color: $default-color
+    font-weight: normal
+
+
+.description
+  
 
 .user-input
   text-align: center
@@ -91,7 +108,7 @@ a:hover
 
 .submitButton 
   display: inline-block
-  background-color: #008CBA
+  background-color: $default-color
   border-radius: 4px
   border: none
   margin: 5px
@@ -103,7 +120,7 @@ a:hover
 
 
 .button-type
-  background-color: #008CBA
+  background-color: $default-color
   border-radius: 4px
   border: none
   margin: 5px
@@ -157,7 +174,6 @@ th
   height: 3em
   width: 6em
   text-align: left
-
 
 .table-body:hover 
   background-color: #707070

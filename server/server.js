@@ -23,7 +23,7 @@ app.get("*", function(req, res) {
 
 app.use(function(err, req, res, next) {
   if (err) {
-    res.status(500).send(err);
+    res.status(500).send({err:"Something happened!"});
   }
 });
 

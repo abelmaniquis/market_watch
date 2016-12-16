@@ -2,8 +2,14 @@
 /*box-sizing: border-box */
 @import url("https://fonts.googleapis.com/css?family=Roboto|Titillium+Web");
 html {
+  height: 100%;
   background-color: #18212D;
-  font-family: Roboto, Helvetica, sans-serif; }
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #96A9C3; }
+
+body {
+  padding-top: 3.5em;
+  background: #18212D; }
 
 #app {
   padding: 1px;
@@ -20,16 +26,19 @@ html {
   position: block;
   padding-bottom: 3px; }
 
-fieldset {
+.home-info ul {
+  padding-left: 0px; }
+
+.home-info li {
+  display: inline-block; }
+
+.home-info fieldset {
   border-style: none; }
 
-.title {
+.home-info .title {
   font: Titillium Web, Helvetica, sans-serif;
   color: #96A9C3;
   font-weight: normal; }
-
-.description-container {
-  background-color: white; }
 
 .user-input {
   text-align: center; }
@@ -41,7 +50,7 @@ h3 {
   text-align: center; }
 
 a:link {
-  color: #206EFF;
+  color: #96A9C3;
   text-decoration: none; }
 
 a:hover {
@@ -74,7 +83,7 @@ a:hover {
 
 .submitButton {
   display: inline-block;
-  background-color: #008CBA;
+  background-color: #96A9C3;
   border-radius: 4px;
   border: none;
   margin: 5px;
@@ -85,7 +94,7 @@ a:hover {
   font-size: 16px; }
 
 .button-type {
-  background-color: #008CBA;
+  background-color: #96A9C3;
   border-radius: 4px;
   border: none;
   margin: 5px;
