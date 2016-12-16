@@ -59,13 +59,11 @@ class Signup extends React.Component {
              placeholder="Password"
              className="type-here"/>
              
-             <input className = "button-type" type="submit" value="Submit"/>
-             
         </div>
-        
-       <div className="submit-button">
+          <div className="submit-button">
            <input className = "button-type" type="submit" value="Submit"/>
-       </div>
+          </div>
+        
        
       <div class="link">
             <p><a href="/">Back to Homepage</a></p>
