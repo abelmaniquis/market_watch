@@ -36,7 +36,8 @@ body {
 
 .home-info .title {
   font: Titillium Web, Helvetica, sans-serif;
-  color: #96A9C3;
+  color: #31ffa6;
+  font-size: 3em;
   font-weight: normal; }
 
 .user-input {
@@ -85,6 +86,7 @@ a:visited {
 
 .submitButton {
   background-color: #2796F8;
+  border: 5px solid #2796F8;
   color: white;
   display: inline-block;
   border-radius: 4px;

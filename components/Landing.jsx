@@ -8,27 +8,15 @@ const Description = require('./Description.jsx');
 const Anime = require('react-anime').default;
 const {Button, Segment, Icon} = require('semantic-ui-react');
 
+const SlideShow = require('./SlideShow')
+
 const Landing = () =>{
     return (
       <div className='home-info'>
-        <div className='logo'>
-        
-          <Anime easing="easeOutElastic"
-              direction="alternate"
-              loop={true}
-              delay={(el,index)=>{index*240}}
-              translateX='13rem'
-              scale={[.75, .9]}>
-            <div className="blue"/>
-            <div className="green"/>
-            <div className="red"/>
-          </Anime>
-        
-        </div>
-        
+      
         <h1><Icon name='dollar' size='large' /></h1>
         
-        <h1 className='title'>MarketSource</h1>
+        <h1 className='title' id='frontTitle'>MarketSource</h1>
         <div className='buttonContainer'>
         
         <fieldset>

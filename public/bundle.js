@@ -21559,28 +21559,12 @@
 	var Icon = _require3.Icon;
 	
 	
+	var SlideShow = __webpack_require__(851);
+	
 	var Landing = function Landing() {
 	  return React.createElement(
 	    'div',
 	    { className: 'home-info' },
-	    React.createElement(
-	      'div',
-	      { className: 'logo' },
-	      React.createElement(
-	        Anime,
-	        { easing: 'easeOutElastic',
-	          direction: 'alternate',
-	          loop: true,
-	          delay: function delay(el, index) {
-	            index * 240;
-	          },
-	          translateX: '13rem',
-	          scale: [.75, .9] },
-	        React.createElement('div', { className: 'blue' }),
-	        React.createElement('div', { className: 'green' }),
-	        React.createElement('div', { className: 'red' })
-	      )
-	    ),
 	    React.createElement(
 	      'h1',
 	      null,
@@ -21588,7 +21572,7 @@
 	    ),
 	    React.createElement(
 	      'h1',
-	      { className: 'title' },
+	      { className: 'title', id: 'frontTitle' },
 	      'MarketSource'
 	    ),
 	    React.createElement(
@@ -73357,6 +73341,58 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 851 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	
+	var Images = ['./img/cityscape.jpg', './img/night-cty.jpg'];
+	
+	var SlideShow = function (_React$Component) {
+	  _inherits(SlideShow, _React$Component);
+	
+	  function SlideShow(props) {
+	    _classCallCheck(this, SlideShow);
+	
+	    var _this = _possibleConstructorReturn(this, (SlideShow.__proto__ || Object.getPrototypeOf(SlideShow)).call(this, props));
+	
+	    _this.forward = 0;
+	    _this.backward = 1;
+	    _this.fade = false;
+	    return _this;
+	  }
+	
+	  _createClass(SlideShow, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'show' },
+	        React.createElement(
+	          'h1',
+	          null,
+	          'This is where the slideshow goes'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return SlideShow;
+	}(React.Component);
+	
+	module.exports = SlideShow;
 
 /***/ }
 /******/ ]);
