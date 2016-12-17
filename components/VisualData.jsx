@@ -45,7 +45,10 @@ class VisualData extends React.Component{
       right: 20,
       bottom: 20,
       left: 50
-    },
+    }
+    
+    var parseTime = d3.timeParse("%d-%b-%y"),
+    
     xRange = d3.scaleLinear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function(d) {
       return d.x;
     }), d3.max(lineData, function(d) {
@@ -62,12 +65,12 @@ class VisualData extends React.Component{
       .scale(yRange)
 
 vis.append('svg:g')
-  .attr('class', 'x axis')
+  .attr('class', 'xAxis')
   .attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')')
   .call(xAxis);
 
 vis.append('svg:g')
-  .attr('class', 'y axis')
+  .attr('class', 'yAxis')
   .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
   .call(yAxis);
 
@@ -82,9 +85,12 @@ var lineFunc = d3.line()
 
 vis.append('svg:path')
   .attr('d', lineFunc(lineData))
-  .attr('stroke', 'blue')
+  .attr('stroke', 'white')
   .attr('stroke-width', 2)
-  .attr('fill', 'none');
+  .attr('fill', 'none'); //none
+  
+  console.log(parseTime)
+  
     return(
       <div>
       <h4>{this.props.dataName}</h4>

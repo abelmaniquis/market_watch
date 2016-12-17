@@ -61,7 +61,7 @@ class Signup extends React.Component {
              
         </div>
           <div className="submit-button">
-           <input className = "button-type" type="submit" value="Submit"/>
+           <input className = "submitButton" type="submit" value="Submit"/>
           </div>
         
        

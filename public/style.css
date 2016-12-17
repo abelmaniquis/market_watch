@@ -49,11 +49,14 @@ h3 {
   text-align: center; }
 
 a:link {
-  color: #96A9C3;
+  color: #206EFF;
   text-decoration: none; }
 
 a:hover {
   color: white; }
+
+a:visited {
+  color: #206EFF; }
 
 .userProfile {
   color: #96A9C3;
@@ -81,19 +84,19 @@ a:hover {
   overflow: scroll; }
 
 .submitButton {
+  background-color: #2796F8;
+  color: white;
   display: inline-block;
-  background-color: #96A9C3;
   border-radius: 4px;
   border: none;
   margin: 5px;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   font-size: 16px; }
 
 .button-type {
-  background-color: #96A9C3;
+  background-color: #2796F8;
   border-radius: 4px;
   border: none;
   margin: 5px;
@@ -165,17 +168,32 @@ h1 {
 h2 {
   text-align: center; }
 
+.FurtherDetails {
+  background-color: #18212D; }
+
 .chartContainer {
+  background-color: #18212D;
   margin: auto;
   max-width: 80%;
   padding: 1em; }
 
 .axis path .axis line {
-  fill: none;
-  stroke: #777;
+  fill: #96A9C3;
+  stroke: #96A9C3;
   shape-rendering: crispEdges; }
 
+.xAxis {
+  font-size: 20px;
+  stroke: #96A9C3;
+  font-style: bold; }
+
+.yAxis {
+  font-size: 20px;
+  stroke: #96A9C3;
+  font-style: bold; }
+
 .axis text {
+  color: white;
   font-family: "Arial";
   font-size: 13px; }
 

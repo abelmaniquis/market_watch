@@ -72,17 +72,11 @@ class Details extends React.Component {
   
   
   render() {
-    
-    console.log("Details.state: ",this.state)
-    
     return (
       <div className="FurtherDetails">
       <h1>{this.state.name}</h1>
       
-      <p><Link to={`/login/profile/${this.props.username}`}>Back to Homepage</Link></p>
-      <h1>Stock History for {this.state.ticker}</h1>
-        <h2>Trends</h2>
-        
+      <h2><Link to={`/login/profile/${this.props.username}`}>Back to Homepage</Link></h2>
         <div className = 'chartContainer'>
           <VisualData data={this.state.logOpen} stock={this.state.ticker} dataName={"Opening Prices"}/>
         </div>

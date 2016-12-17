@@ -80,11 +80,11 @@ class Data extends React.Component {
       <tbody className="table-body">
         <tr>
           <th className='ticker'><Link to={`/details/${this.state.ticker}`}>{this.state.ticker}</Link></th>
-          <th className='open'>{open}</th>
-          <th className='close'>{close}</th>
-          <th className='high'>{high}</th>
-          <th className='low'>{low}</th>
-          <th className='trend'>{trend}</th>
+          <th className='open'><Link to={`/details/${this.state.ticker}`}>{open}</Link></th>
+          <th className='close'><Link to={`/details/${this.state.ticker}`}>{close}</Link></th>
+          <th className='high'><Link to={`details/${this.state.ticker}`}>{high}</Link></th>
+          <th className='low'><Link to={`details/${this.state.ticker}`}>{low}</Link></th>
+          <th className='trend'><Link to={`details/${this.state.ticker}`}>{trend}</Link></th>
 
           <th className='sell'>
             <form onSubmit={this.sell}>

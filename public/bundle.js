@@ -67054,9 +67054,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	
-	      console.log("Details.state: ", this.state);
-	
 	      return React.createElement(
 	        'div',
 	        { className: 'FurtherDetails' },
@@ -67066,24 +67063,13 @@
 	          this.state.name
 	        ),
 	        React.createElement(
-	          'p',
+	          'h2',
 	          null,
 	          React.createElement(
 	            Link,
 	            { to: '/login/profile/' + this.props.username },
 	            'Back to Homepage'
 	          )
-	        ),
-	        React.createElement(
-	          'h1',
-	          null,
-	          'Stock History for ',
-	          this.state.ticker
-	        ),
-	        React.createElement(
-	          'h2',
-	          null,
-	          'Trends'
 	        ),
 	        React.createElement(
 	          'div',
@@ -67730,7 +67716,9 @@
 	        right: 20,
 	        bottom: 20,
 	        left: 50
-	      },
+	      };
+	
+	      var parseTime = d3.timeParse("%d-%b-%y"),
 	          xRange = d3.scaleLinear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
 	        return d.x;
 	      }), d3.max(lineData, function (d) {
@@ -67744,9 +67732,9 @@
 	          xAxis = d3.axisBottom().scale(xRange),
 	          yAxis = d3.axisLeft().scale(yRange);
 	
-	      vis.append('svg:g').attr('class', 'x axis').attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')').call(xAxis);
+	      vis.append('svg:g').attr('class', 'xAxis').attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')').call(xAxis);
 	
-	      vis.append('svg:g').attr('class', 'y axis').attr('transform', 'translate(' + MARGINS.left + ',0)').call(yAxis);
+	      vis.append('svg:g').attr('class', 'yAxis').attr('transform', 'translate(' + MARGINS.left + ',0)').call(yAxis);
 	
 	      var lineFunc = d3.line().x(function (d) {
 	        return xRange(d.x);
@@ -67754,7 +67742,10 @@
 	        return yRange(d.y);
 	      }).curve(d3.curveCardinal);
 	
-	      vis.append('svg:path').attr('d', lineFunc(lineData)).attr('stroke', 'blue').attr('stroke-width', 2).attr('fill', 'none');
+	      vis.append('svg:path').attr('d', lineFunc(lineData)).attr('stroke', 'white').attr('stroke-width', 2).attr('fill', 'none'); //none
+	
+	      console.log(parseTime);
+	
 	      return React.createElement(
 	        'div',
 	        null,
@@ -68128,27 +68119,47 @@
 	              React.createElement(
 	                'th',
 	                { className: 'open' },
-	                open
+	                React.createElement(
+	                  Link,
+	                  { to: '/details/' + this.state.ticker },
+	                  open
+	                )
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'close' },
-	                close
+	                React.createElement(
+	                  Link,
+	                  { to: '/details/' + this.state.ticker },
+	                  close
+	                )
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'high' },
-	                high
+	                React.createElement(
+	                  Link,
+	                  { to: 'details/' + this.state.ticker },
+	                  high
+	                )
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'low' },
-	                low
+	                React.createElement(
+	                  Link,
+	                  { to: 'details/' + this.state.ticker },
+	                  low
+	                )
 	              ),
 	              React.createElement(
 	                'th',
 	                { className: 'trend' },
-	                trend
+	                React.createElement(
+	                  Link,
+	                  { to: 'details/' + this.state.ticker },
+	                  trend
+	                )
 	              ),
 	              React.createElement(
 	                'th',
@@ -72797,7 +72808,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'submit-button' },
-	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	            React.createElement('input', { className: 'submitButton', type: 'submit', value: 'Submit' })
 	          ),
 	          React.createElement(
 	            'div',
@@ -72931,7 +72942,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'submit-button' },
-	            React.createElement('input', { className: 'button-type', type: 'submit', value: 'Submit' })
+	            React.createElement('input', { className: 'submitButton', type: 'submit', value: 'Submit' })
 	          ),
 	          React.createElement(
 	            'h3',
