@@ -4,9 +4,10 @@ const {Link} = require('react-router');
 const Data = require('./Data');
 const {Router} = require('react-router');
 const UserStockData = require('./UserStockData');
-const list = require('../public/tickers.json');
+//const list = require('../public/tickers.json');
 const TypeAhead = require('./TypeAhead.jsx');
 const d3 = require('d3');
+const TextScroll = require('./TextScroll.jsx')
 
 class View extends React.Component {
   constructor(props) {
@@ -20,9 +21,9 @@ class View extends React.Component {
     
     this.addStock = this.addStock.bind(this);
     this.removeStock = this.removeStock.bind(this);
-    this.test = this.test.bind(this);
     
-  }componentWillMount(){
+  }
+  componentWillMount(){
     axios.get('/api/profile/myInfo').then((response)=>{
       this.setState({
         username:response.data.username,
@@ -31,12 +32,6 @@ class View extends React.Component {
       })
     })
   }
-  test(e){
-    e.preventDefault();
-    console.log("receiving from typeahead");
-    console.log(this.refs.addInput);
-  }
-  
   addStock(e) {
     e.preventDefault();
     
@@ -76,36 +71,28 @@ class View extends React.Component {
    axios.get('/api/profile/myInfo').then((response)=>{
      console.log("updated portfolio: ", response.data.portfolio);
      this.setState({
-       stocks:response.data.portfolio,
-       cash:response.data.cash
+       stocks:response.data.portfolio
      })
-     
    })
    
   }
   render() {
     return (
       <div className="userProfile">
+        
+        <TextScroll/>
+        
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
         
         <h3><Link to="/">LOG OUT</Link></h3>
       
         <div className='searchContainer'>
         
-        {/*<form onSubmit={this.test}>
-         <TypeAhead inputProps={this.addStock}></TypeAhead>
-         <button>Test</button>
-        </form>*/}
-        
         <form onSubmit={this.addStock}>
         <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
         <button className="submitButton">Add</button>
         </form>
         </div>
-        
-        
-        {/*<Link to="/fullList">Check out the full list of stocks here</Link>
-        */}
 
         <table className="tableHead">
         <tbody>
@@ -117,9 +104,6 @@ class View extends React.Component {
           <th>Low</th>
           <th>Trend</th>
           <th>Delete</th>
-          {/*
-          <th>Quant</th>
-          <th>Value</th>*/}
           </tr>
         </tbody>
     </table>

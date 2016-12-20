@@ -34,12 +34,11 @@ class Signup extends React.Component {
     });
   }
   
-  //original form:  <form action = "/api/users/login" method="post">
-  
+
   render() {
     return (
       <div className='home-info'>
-      <h1>Register</h1>
+      <h1 className="title">Register</h1>
       
       <form className='user-submit' onSubmit={this.handleSubmit}>
         <div className="user-input">

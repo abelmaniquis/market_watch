@@ -57,12 +57,12 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 	var Landing = __webpack_require__(172);
-	var Details = __webpack_require__(826);
-	var Profile = __webpack_require__(829);
-	var Signup = __webpack_require__(844);
-	var Login = __webpack_require__(845);
-	var FullList = __webpack_require__(846);
-	var TestPage = __webpack_require__(847);
+	var Details = __webpack_require__(827);
+	var Profile = __webpack_require__(830);
+	var Signup = __webpack_require__(845);
+	var Login = __webpack_require__(846);
+	var FullList = __webpack_require__(847);
+	var TestPage = __webpack_require__(848);
 	
 	var _require = __webpack_require__(196);
 	
@@ -72,7 +72,7 @@
 	var hashHistory = _require.hashHistory;
 	var browserHistory = _require.browserHistory;
 	
-	var _require2 = __webpack_require__(832);
+	var _require2 = __webpack_require__(833);
 	
 	var stocks = _require2.stocks;
 	
@@ -84,7 +84,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(850);
+	var NotFound = __webpack_require__(851);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -21559,7 +21559,7 @@
 	var Icon = _require3.Icon;
 	
 	
-	var SlideShow = __webpack_require__(851);
+	var SlideShow = __webpack_require__(826);
 	
 	var Landing = function Landing() {
 	  return React.createElement(
@@ -66953,6 +66953,58 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var React = __webpack_require__(1);
+	
+	var Images = ['./img/cityscape.jpg', './img/night-cty.jpg'];
+	
+	var SlideShow = function (_React$Component) {
+	  _inherits(SlideShow, _React$Component);
+	
+	  function SlideShow(props) {
+	    _classCallCheck(this, SlideShow);
+	
+	    var _this = _possibleConstructorReturn(this, (SlideShow.__proto__ || Object.getPrototypeOf(SlideShow)).call(this, props));
+	
+	    _this.forward = 0;
+	    _this.backward = 1;
+	    _this.fade = false;
+	    return _this;
+	  }
+	
+	  _createClass(SlideShow, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'show' },
+	        React.createElement(
+	          'h1',
+	          null,
+	          'This is where the slideshow goes'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return SlideShow;
+	}(React.Component);
+	
+	module.exports = SlideShow;
+
+/***/ },
+/* 827 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	//newyorktimes api key = dbe98497b30d4e558156fc8c7bfc301b
 	//should take in Data.state.ticker
 	
@@ -66966,8 +67018,8 @@
 	
 	var Link = _require.Link;
 	
-	var d3 = __webpack_require__(827);
-	var VisualData = __webpack_require__(828);
+	var d3 = __webpack_require__(828);
+	var VisualData = __webpack_require__(829);
 	
 	var Details = function (_React$Component) {
 	  _inherits(Details, _React$Component);
@@ -67070,7 +67122,7 @@
 	module.exports = Details;
 
 /***/ },
-/* 827 */
+/* 828 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};// https://d3js.org Version 4.4.0. Copyright 2016 Mike Bostock.
@@ -67633,7 +67685,7 @@
 	cache,cacheStream,projection;function reset(){cache=cacheStream=null;return projection;}return projection={stream:function stream(_stream2){return cache&&cacheStream===_stream2?cache:cache=transform(clip(cacheStream=_stream2));},clipExtent:function clipExtent(_){return arguments.length?(clip=_==null?(x0=y0=x1=y1=null,identity$7):_clipExtent(x0=+_[0][0],y0=+_[0][1],x1=+_[1][0],y1=+_[1][1]),reset()):x0==null?null:[[x0,y0],[x1,y1]];},scale:function scale(_){return arguments.length?(transform=scaleTranslate((k=+_)*sx,k*sy,tx,ty),reset()):k;},translate:function translate(_){return arguments.length?(transform=scaleTranslate(k*sx,k*sy,tx=+_[0],ty=+_[1]),reset()):[tx,ty];},reflectX:function reflectX(_){return arguments.length?(transform=scaleTranslate(k*(sx=_?-1:1),k*sy,tx,ty),reset()):sx<0;},reflectY:function reflectY(_){return arguments.length?(transform=scaleTranslate(k*sx,k*(sy=_?-1:1),tx,ty),reset()):sy<0;},fitExtent:function fitExtent(extent,object){return _fitExtent(projection,extent,object);},fitSize:function fitSize(size,object){return _fitSize(projection,size,object);}};};function orthographicRaw(x,y){return[cos$1(y)*sin$1(x),sin$1(y)];}orthographicRaw.invert=azimuthalInvert(asin$1);var orthographic=function orthographic(){return projection(orthographicRaw).scale(249.5).clipAngle(90+epsilon$4);};function stereographicRaw(x,y){var cy=cos$1(y),k=1+cos$1(x)*cy;return[cy*sin$1(x)/k,sin$1(y)/k];}stereographicRaw.invert=azimuthalInvert(function(z){return 2*atan(z);});var stereographic=function stereographic(){return projection(stereographicRaw).scale(250).clipAngle(142);};function transverseMercatorRaw(lambda,phi){return[log$1(tan((halfPi$3+phi)/2)),-lambda];}transverseMercatorRaw.invert=function(x,y){return[-y,2*atan(exp(x))-halfPi$3];};var transverseMercator=function transverseMercator(){var m=mercatorProjection(transverseMercatorRaw),center=m.center,rotate=m.rotate;m.center=function(_){return arguments.length?center([-_[1],_[0]]):(_=center(),[_[1],-_[0]]);};m.rotate=function(_){return arguments.length?rotate([_[0],_[1],_.length>2?_[2]+90:90]):(_=rotate(),[_[0],_[1],_[2]-90]);};return rotate([0,0,90]).scale(159.155);};exports.version=version;exports.bisect=bisectRight;exports.bisectRight=bisectRight;exports.bisectLeft=bisectLeft;exports.ascending=ascending;exports.bisector=bisector;exports.descending=descending;exports.deviation=deviation;exports.extent=extent;exports.histogram=histogram;exports.thresholdFreedmanDiaconis=freedmanDiaconis;exports.thresholdScott=scott;exports.thresholdSturges=sturges;exports.max=max;exports.mean=mean;exports.median=median;exports.merge=merge;exports.min=min;exports.pairs=pairs;exports.permute=permute;exports.quantile=threshold;exports.range=range;exports.scan=scan;exports.shuffle=shuffle;exports.sum=sum;exports.ticks=ticks;exports.tickStep=tickStep;exports.transpose=transpose;exports.variance=variance;exports.zip=zip;exports.entries=entries;exports.keys=keys;exports.values=values;exports.map=map$1;exports.set=set;exports.nest=nest;exports.randomUniform=uniform;exports.randomNormal=normal;exports.randomLogNormal=logNormal;exports.randomBates=bates;exports.randomIrwinHall=irwinHall;exports.randomExponential=exponential;exports.easeLinear=linear;exports.easeQuad=quadInOut;exports.easeQuadIn=quadIn;exports.easeQuadOut=quadOut;exports.easeQuadInOut=quadInOut;exports.easeCubic=cubicInOut;exports.easeCubicIn=cubicIn;exports.easeCubicOut=cubicOut;exports.easeCubicInOut=cubicInOut;exports.easePoly=polyInOut;exports.easePolyIn=polyIn;exports.easePolyOut=polyOut;exports.easePolyInOut=polyInOut;exports.easeSin=sinInOut;exports.easeSinIn=sinIn;exports.easeSinOut=sinOut;exports.easeSinInOut=sinInOut;exports.easeExp=expInOut;exports.easeExpIn=expIn;exports.easeExpOut=expOut;exports.easeExpInOut=expInOut;exports.easeCircle=circleInOut;exports.easeCircleIn=circleIn;exports.easeCircleOut=circleOut;exports.easeCircleInOut=circleInOut;exports.easeBounce=bounceOut;exports.easeBounceIn=bounceIn;exports.easeBounceOut=bounceOut;exports.easeBounceInOut=bounceInOut;exports.easeBack=backInOut;exports.easeBackIn=backIn;exports.easeBackOut=backOut;exports.easeBackInOut=backInOut;exports.easeElastic=elasticOut;exports.easeElasticIn=elasticIn;exports.easeElasticOut=elasticOut;exports.easeElasticInOut=elasticInOut;exports.polygonArea=area;exports.polygonCentroid=centroid;exports.polygonHull=hull;exports.polygonContains=contains;exports.polygonLength=length$1;exports.path=path;exports.quadtree=quadtree;exports.queue=queue;exports.arc=arc;exports.area=area$1;exports.line=line;exports.pie=pie;exports.radialArea=radialArea;exports.radialLine=radialLine$1;exports.symbol=symbol;exports.symbols=symbols;exports.symbolCircle=circle;exports.symbolCross=cross$1;exports.symbolDiamond=diamond;exports.symbolSquare=square;exports.symbolStar=star;exports.symbolTriangle=triangle;exports.symbolWye=wye;exports.curveBasisClosed=basisClosed;exports.curveBasisOpen=basisOpen;exports.curveBasis=basis;exports.curveBundle=bundle;exports.curveCardinalClosed=cardinalClosed;exports.curveCardinalOpen=cardinalOpen;exports.curveCardinal=cardinal;exports.curveCatmullRomClosed=catmullRomClosed;exports.curveCatmullRomOpen=catmullRomOpen;exports.curveCatmullRom=catmullRom;exports.curveLinearClosed=linearClosed;exports.curveLinear=curveLinear;exports.curveMonotoneX=monotoneX;exports.curveMonotoneY=monotoneY;exports.curveNatural=natural;exports.curveStep=step;exports.curveStepAfter=stepAfter;exports.curveStepBefore=stepBefore;exports.stack=stack;exports.stackOffsetExpand=expand;exports.stackOffsetNone=none;exports.stackOffsetSilhouette=silhouette;exports.stackOffsetWiggle=wiggle;exports.stackOrderAscending=ascending$1;exports.stackOrderDescending=descending$2;exports.stackOrderInsideOut=insideOut;exports.stackOrderNone=none$1;exports.stackOrderReverse=reverse;exports.color=color;exports.rgb=rgb;exports.hsl=hsl;exports.lab=lab;exports.hcl=hcl;exports.cubehelix=cubehelix;exports.interpolate=interpolate;exports.interpolateArray=array$1;exports.interpolateDate=date;exports.interpolateNumber=interpolateNumber;exports.interpolateObject=object;exports.interpolateRound=interpolateRound;exports.interpolateString=interpolateString;exports.interpolateTransformCss=interpolateTransformCss;exports.interpolateTransformSvg=interpolateTransformSvg;exports.interpolateZoom=interpolateZoom;exports.interpolateRgb=interpolateRgb;exports.interpolateRgbBasis=rgbBasis;exports.interpolateRgbBasisClosed=rgbBasisClosed;exports.interpolateHsl=hsl$2;exports.interpolateHslLong=hslLong;exports.interpolateLab=lab$1;exports.interpolateHcl=hcl$2;exports.interpolateHclLong=hclLong;exports.interpolateCubehelix=cubehelix$2;exports.interpolateCubehelixLong=cubehelixLong;exports.interpolateBasis=basis$2;exports.interpolateBasisClosed=basisClosed$1;exports.quantize=quantize;exports.dispatch=dispatch;exports.dsvFormat=dsv;exports.csvParse=csvParse;exports.csvParseRows=csvParseRows;exports.csvFormat=csvFormat;exports.csvFormatRows=csvFormatRows;exports.tsvParse=tsvParse;exports.tsvParseRows=tsvParseRows;exports.tsvFormat=tsvFormat;exports.tsvFormatRows=tsvFormatRows;exports.request=request;exports.html=html;exports.json=json;exports.text=text;exports.xml=xml;exports.csv=csv$1;exports.tsv=tsv$1;exports.now=now;exports.timer=timer;exports.timerFlush=timerFlush;exports.timeout=timeout$1;exports.interval=interval$1;exports.timeInterval=newInterval;exports.timeMillisecond=millisecond;exports.timeMilliseconds=milliseconds;exports.timeSecond=second;exports.timeSeconds=seconds;exports.timeMinute=minute;exports.timeMinutes=minutes;exports.timeHour=hour;exports.timeHours=hours;exports.timeDay=day;exports.timeDays=days;exports.timeWeek=sunday;exports.timeWeeks=sundays;exports.timeSunday=sunday;exports.timeSundays=sundays;exports.timeMonday=monday;exports.timeMondays=mondays;exports.timeTuesday=tuesday;exports.timeTuesdays=tuesdays;exports.timeWednesday=wednesday;exports.timeWednesdays=wednesdays;exports.timeThursday=thursday;exports.timeThursdays=thursdays;exports.timeFriday=friday;exports.timeFridays=fridays;exports.timeSaturday=saturday;exports.timeSaturdays=saturdays;exports.timeMonth=month;exports.timeMonths=months;exports.timeYear=year;exports.timeYears=years;exports.utcMillisecond=millisecond;exports.utcMilliseconds=milliseconds;exports.utcSecond=second;exports.utcSeconds=seconds;exports.utcMinute=utcMinute;exports.utcMinutes=utcMinutes;exports.utcHour=utcHour;exports.utcHours=utcHours;exports.utcDay=utcDay;exports.utcDays=utcDays;exports.utcWeek=utcSunday;exports.utcWeeks=utcSundays;exports.utcSunday=utcSunday;exports.utcSundays=utcSundays;exports.utcMonday=utcMonday;exports.utcMondays=utcMondays;exports.utcTuesday=utcTuesday;exports.utcTuesdays=utcTuesdays;exports.utcWednesday=utcWednesday;exports.utcWednesdays=utcWednesdays;exports.utcThursday=utcThursday;exports.utcThursdays=utcThursdays;exports.utcFriday=utcFriday;exports.utcFridays=utcFridays;exports.utcSaturday=utcSaturday;exports.utcSaturdays=utcSaturdays;exports.utcMonth=utcMonth;exports.utcMonths=utcMonths;exports.utcYear=utcYear;exports.utcYears=utcYears;exports.formatLocale=formatLocale;exports.formatDefaultLocale=defaultLocale;exports.formatSpecifier=formatSpecifier;exports.precisionFixed=precisionFixed;exports.precisionPrefix=precisionPrefix;exports.precisionRound=precisionRound;exports.isoFormat=formatIso;exports.isoParse=parseIso;exports.timeFormatLocale=formatLocale$1;exports.timeFormatDefaultLocale=defaultLocale$1;exports.scaleBand=band;exports.scalePoint=point$4;exports.scaleIdentity=identity$4;exports.scaleLinear=linear$2;exports.scaleLog=log;exports.scaleOrdinal=ordinal;exports.scaleImplicit=implicit;exports.scalePow=pow;exports.scaleSqrt=sqrt;exports.scaleQuantile=quantile$$1;exports.scaleQuantize=quantize$1;exports.scaleThreshold=threshold$1;exports.scaleTime=time;exports.scaleUtc=utcTime;exports.schemeCategory10=category10;exports.schemeCategory20b=category20b;exports.schemeCategory20c=category20c;exports.schemeCategory20=category20;exports.scaleSequential=sequential;exports.interpolateCubehelixDefault=cubehelix$3;exports.interpolateRainbow=rainbow$1;exports.interpolateWarm=warm;exports.interpolateCool=cool;exports.interpolateViridis=viridis;exports.interpolateMagma=magma;exports.interpolateInferno=inferno;exports.interpolatePlasma=plasma;exports.creator=creator;exports.customEvent=customEvent;exports.local=local;exports.matcher=matcher$1;exports.mouse=mouse;exports.namespace=namespace;exports.namespaces=namespaces;exports.select=select;exports.selectAll=selectAll;exports.selection=selection;exports.selector=selector;exports.selectorAll=selectorAll;exports.touch=touch;exports.touches=touches;exports.window=window;exports.active=active;exports.interrupt=interrupt;exports.transition=transition;exports.axisTop=axisTop;exports.axisRight=axisRight;exports.axisBottom=axisBottom;exports.axisLeft=axisLeft;exports.cluster=cluster;exports.hierarchy=hierarchy;exports.pack=index;exports.packSiblings=siblings;exports.packEnclose=enclose;exports.partition=partition;exports.stratify=stratify;exports.tree=tree;exports.treemap=index$1;exports.treemapBinary=binary;exports.treemapDice=treemapDice;exports.treemapSlice=treemapSlice;exports.treemapSliceDice=sliceDice;exports.treemapSquarify=squarify;exports.treemapResquarify=resquarify;exports.forceCenter=center$1;exports.forceCollide=collide;exports.forceLink=link;exports.forceManyBody=manyBody;exports.forceSimulation=simulation;exports.forceX=x$3;exports.forceY=y$3;exports.drag=drag;exports.dragDisable=dragDisable;exports.dragEnable=yesdrag;exports.voronoi=voronoi;exports.zoom=zoom;exports.zoomIdentity=identity$6;exports.zoomTransform=transform;exports.brush=brush;exports.brushX=brushX;exports.brushY=brushY;exports.brushSelection=brushSelection;exports.chord=chord;exports.ribbon=ribbon;exports.geoAlbers=albers;exports.geoAlbersUsa=albersUsa;exports.geoArea=area$2;exports.geoAzimuthalEqualArea=azimuthalEqualArea;exports.geoAzimuthalEqualAreaRaw=azimuthalEqualAreaRaw;exports.geoAzimuthalEquidistant=azimuthalEquidistant;exports.geoAzimuthalEquidistantRaw=azimuthalEquidistantRaw;exports.geoBounds=bounds;exports.geoCentroid=centroid$1;exports.geoCircle=circle$1;exports.geoClipExtent=extent$1;exports.geoConicConformal=conicConformal;exports.geoConicConformalRaw=conicConformalRaw;exports.geoConicEqualArea=conicEqualArea;exports.geoConicEqualAreaRaw=conicEqualAreaRaw;exports.geoConicEquidistant=conicEquidistant;exports.geoConicEquidistantRaw=conicEquidistantRaw;exports.geoDistance=distance;exports.geoEquirectangular=equirectangular;exports.geoEquirectangularRaw=equirectangularRaw;exports.geoGnomonic=gnomonic;exports.geoGnomonicRaw=gnomonicRaw;exports.geoGraticule=graticule;exports.geoGraticule10=graticule10;exports.geoIdentity=identity$8;exports.geoInterpolate=interpolate$2;exports.geoLength=length$2;exports.geoMercator=mercator;exports.geoMercatorRaw=mercatorRaw;exports.geoOrthographic=orthographic;exports.geoOrthographicRaw=orthographicRaw;exports.geoPath=index$3;exports.geoProjection=projection;exports.geoProjectionMutator=projectionMutator;exports.geoRotation=rotation;exports.geoStereographic=stereographic;exports.geoStereographicRaw=stereographicRaw;exports.geoStream=geoStream;exports.geoTransform=transform$1;exports.geoTransverseMercator=transverseMercator;exports.geoTransverseMercatorRaw=transverseMercatorRaw;Object.defineProperty(exports,'__esModule',{value:true});});
 
 /***/ },
-/* 828 */
+/* 829 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67647,7 +67699,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(827);
+	var d3 = __webpack_require__(828);
 	var axios = __webpack_require__(174);
 	
 	var VisualData = function (_React$Component) {
@@ -67749,7 +67801,7 @@
 	module.exports = VisualData;
 
 /***/ },
-/* 829 */
+/* 830 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67775,10 +67827,11 @@
 	
 	var Router = _require2.Router;
 	
-	var UserStockData = __webpack_require__(830);
-	var list = __webpack_require__(832);
-	var TypeAhead = __webpack_require__(833);
-	var d3 = __webpack_require__(827);
+	var UserStockData = __webpack_require__(831);
+	//const list = require('../public/tickers.json');
+	var TypeAhead = __webpack_require__(834);
+	var d3 = __webpack_require__(828);
+	var TextScroll = __webpack_require__(852);
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -67797,7 +67850,6 @@
 	
 	    _this.addStock = _this.addStock.bind(_this);
 	    _this.removeStock = _this.removeStock.bind(_this);
-	    _this.test = _this.test.bind(_this);
 	
 	    return _this;
 	  }
@@ -67814,13 +67866,6 @@
 	          stocks: response.data.portfolio
 	        });
 	      });
-	    }
-	  }, {
-	    key: 'test',
-	    value: function test(e) {
-	      e.preventDefault();
-	      console.log("receiving from typeahead");
-	      console.log(this.refs.addInput);
 	    }
 	  }, {
 	    key: 'addStock',
@@ -67865,8 +67910,7 @@
 	      axios.get('/api/profile/myInfo').then(function (response) {
 	        console.log("updated portfolio: ", response.data.portfolio);
 	        _this4.setState({
-	          stocks: response.data.portfolio,
-	          cash: response.data.cash
+	          stocks: response.data.portfolio
 	        });
 	      });
 	    }
@@ -67878,6 +67922,7 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'userProfile' },
+	        React.createElement(TextScroll, null),
 	        React.createElement(
 	          'h1',
 	          { className: 'title' },
@@ -67967,7 +68012,7 @@
 	module.exports = View;
 
 /***/ },
-/* 830 */
+/* 831 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67990,7 +68035,7 @@
 	var IndexRoute = _require.IndexRoute;
 	var browserHistory = _require.browserHistory;
 	
-	var Loading = __webpack_require__(831);
+	var Loading = __webpack_require__(832);
 	
 	var Data = function (_React$Component) {
 	  _inherits(Data, _React$Component);
@@ -68176,7 +68221,7 @@
 	module.exports = Data;
 
 /***/ },
-/* 831 */
+/* 832 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68298,7 +68343,7 @@
 	module.exports = Loading;
 
 /***/ },
-/* 832 */
+/* 833 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -71517,7 +71562,7 @@
 	};
 
 /***/ },
-/* 833 */
+/* 834 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71534,8 +71579,8 @@
 	//https://www.npmjs.com/package/react-typeahead
 	
 	var React = __webpack_require__(1);
-	var StocksToList = __webpack_require__(832);
-	var Typeahead = __webpack_require__(834).Typeahead;
+	var StocksToList = __webpack_require__(833);
+	var Typeahead = __webpack_require__(835).Typeahead;
 	
 	var TypeAhead = function (_React$Component) {
 	  _inherits(TypeAhead, _React$Component);
@@ -71574,13 +71619,13 @@
 	module.exports = TypeAhead;
 
 /***/ },
-/* 834 */
+/* 835 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Typeahead = __webpack_require__(835);
-	var Tokenizer = __webpack_require__(842);
+	var Typeahead = __webpack_require__(836);
+	var Tokenizer = __webpack_require__(843);
 	
 	module.exports = {
 	  Typeahead: Typeahead,
@@ -71588,7 +71633,7 @@
 	};
 
 /***/ },
-/* 835 */
+/* 836 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71603,12 +71648,12 @@
 	  }return target;
 	};
 	
-	var Accessor = __webpack_require__(836);
+	var Accessor = __webpack_require__(837);
 	var React = __webpack_require__(1);
-	var TypeaheadSelector = __webpack_require__(837);
-	var KeyEvent = __webpack_require__(840);
-	var fuzzy = __webpack_require__(841);
-	var classNames = __webpack_require__(839);
+	var TypeaheadSelector = __webpack_require__(838);
+	var KeyEvent = __webpack_require__(841);
+	var fuzzy = __webpack_require__(842);
+	var classNames = __webpack_require__(840);
 	
 	/**
 	 * A "typeahead", an auto-completing text input
@@ -71995,7 +72040,7 @@
 	module.exports = Typeahead;
 
 /***/ },
-/* 836 */
+/* 837 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72035,14 +72080,14 @@
 	module.exports = Accessor;
 
 /***/ },
-/* 837 */
+/* 838 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var TypeaheadOption = __webpack_require__(838);
-	var classNames = __webpack_require__(839);
+	var TypeaheadOption = __webpack_require__(839);
+	var classNames = __webpack_require__(840);
 	
 	/**
 	 * Container for the options rendered as part of the autocompletion process
@@ -72130,13 +72175,13 @@
 	module.exports = TypeaheadSelector;
 
 /***/ },
-/* 838 */
+/* 839 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var classNames = __webpack_require__(839);
+	var classNames = __webpack_require__(840);
 	
 	/**
 	 * A single option within the TypeaheadSelector
@@ -72193,7 +72238,7 @@
 	module.exports = TypeaheadOption;
 
 /***/ },
-/* 839 */
+/* 840 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -72245,7 +72290,7 @@
 	}
 
 /***/ },
-/* 840 */
+/* 841 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72265,7 +72310,7 @@
 	module.exports = KeyEvent;
 
 /***/ },
-/* 841 */
+/* 842 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72415,17 +72460,17 @@
 	})();
 
 /***/ },
-/* 842 */
+/* 843 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Accessor = __webpack_require__(836);
+	var Accessor = __webpack_require__(837);
 	var React = __webpack_require__(1);
-	var Token = __webpack_require__(843);
-	var KeyEvent = __webpack_require__(840);
-	var Typeahead = __webpack_require__(835);
-	var classNames = __webpack_require__(839);
+	var Token = __webpack_require__(844);
+	var KeyEvent = __webpack_require__(841);
+	var Typeahead = __webpack_require__(836);
+	var classNames = __webpack_require__(840);
 	
 	function _arraysAreDifferent(array1, array2) {
 	  if (array1.length != array2.length) {
@@ -72625,13 +72670,13 @@
 	module.exports = TypeaheadTokenizer;
 
 /***/ },
-/* 843 */
+/* 844 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var classNames = __webpack_require__(839);
+	var classNames = __webpack_require__(840);
 	
 	/**
 	 * Encapsulates the rendering of an option that has been "selected" in a
@@ -72682,7 +72727,7 @@
 	module.exports = Token;
 
 /***/ },
-/* 844 */
+/* 845 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72752,9 +72797,6 @@
 	        console.log(err);
 	      });
 	    }
-	
-	    //original form:  <form action = "/api/users/login" method="post">
-	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -72763,7 +72805,7 @@
 	        { className: 'home-info' },
 	        React.createElement(
 	          'h1',
-	          null,
+	          { className: 'title' },
 	          'Register'
 	        ),
 	        React.createElement(
@@ -72818,7 +72860,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 845 */
+/* 846 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72948,7 +72990,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 846 */
+/* 847 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73016,7 +73058,7 @@
 	module.exports = connector(FullList);
 
 /***/ },
-/* 847 */
+/* 848 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73033,7 +73075,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(848);
+	var uuid = __webpack_require__(849);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -73076,7 +73118,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 848 */
+/* 849 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73089,7 +73131,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(849);
+	var _rng = __webpack_require__(850);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -73260,7 +73302,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 849 */
+/* 850 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -73298,7 +73340,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 850 */
+/* 851 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73343,56 +73385,35 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 851 */
+/* 852 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _react = __webpack_require__(1);
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _react2 = _interopRequireDefault(_react);
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var _reactAnime = __webpack_require__(291);
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _reactAnime2 = _interopRequireDefault(_reactAnime);
 	
-	var React = __webpack_require__(1);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Images = ['./img/cityscape.jpg', './img/night-cty.jpg'];
+	var TextScroll = function TextScroll() {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      _reactAnime2.default,
+	      { direction: 'alternate' },
+	      _react2.default.createElement('div', { className: 'blue' })
+	    ),
+	    _react2.default.createElement('ul', { className: 'scroller' })
+	  );
+	};
 	
-	var SlideShow = function (_React$Component) {
-	  _inherits(SlideShow, _React$Component);
-	
-	  function SlideShow(props) {
-	    _classCallCheck(this, SlideShow);
-	
-	    var _this = _possibleConstructorReturn(this, (SlideShow.__proto__ || Object.getPrototypeOf(SlideShow)).call(this, props));
-	
-	    _this.forward = 0;
-	    _this.backward = 1;
-	    _this.fade = false;
-	    return _this;
-	  }
-	
-	  _createClass(SlideShow, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: 'show' },
-	        React.createElement(
-	          'h1',
-	          null,
-	          'This is where the slideshow goes'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return SlideShow;
-	}(React.Component);
-	
-	module.exports = SlideShow;
+	module.exports = TextScroll;
 
 /***/ }
 /******/ ]);

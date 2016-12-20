@@ -36,3 +36,12 @@ As of 12/12/2016, Opening prices for the past five days are now charted when the
 I am also working on restyling the app to be more aesthetically pleasing. I've been told that financial apps
 are difficult to style, and I can now see why, at the moment my priority is to simply make the information easy
 to read.
+
+12/19/2016:
+  Currently working with Animejs to place an animated stock ticker on top of the user profile
+
+Bugs and Issues
+===================
+
+When a stock is deleted, the DOM removes the stock at the end of the list
+even though the back end updates properly
