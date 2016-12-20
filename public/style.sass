@@ -30,7 +30,6 @@ body
   background: $background-color
 
 #app
-  padding: 1px
   max-width: 100%
 
 .home-info
@@ -86,7 +85,6 @@ a:visited
 .userProfile
   color: $default-color
   margin-top: 7em
-
 
 .searchContainer
   width: 100%
@@ -255,6 +253,10 @@ h2
 .scroller
   li
     display: inline-block
-    
 
-
+@media screen and (max-width: 400px)
+  .userProfile
+    font-size: 0.9em
+  
+  .sell-button
+    padding: 1em 1.2em

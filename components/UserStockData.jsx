@@ -48,8 +48,8 @@ class Data extends React.Component {
       alert(err);
     })
     axios.get('/api/profile/myInfo').then((response)=>{
-      console.log("Stock removed");
       this.props.removeStock();
+      console.log(`${this.state.keyword} removed`);
     });
   }
   render() {
@@ -91,9 +91,6 @@ class Data extends React.Component {
               <button className="sell-button" type="submit"></button>
             </form>
           </th>
-          
-          {/*<th className='quantity'>{this.state.quantity}</th>
-          <th className='value'>{close}</th>*/}
         </tr>
         </tbody>
       </table>
@@ -102,12 +99,4 @@ class Data extends React.Component {
   }
 }
 
-
-     /*
-          <th className='buy'>
-            <form onSubmit={this.buy}>
-              <button className="buy-button" type="submit"></button>
-            </form>
-          </th>
-      */
 module.exports = Data;

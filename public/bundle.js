@@ -67850,13 +67850,18 @@
 	
 	    _this.addStock = _this.addStock.bind(_this);
 	    _this.removeStock = _this.removeStock.bind(_this);
-	
+	    _this.updateList = _this.updateList.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(View, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
+	      this.updateList();
+	    }
+	  }, {
+	    key: 'updateList',
+	    value: function updateList() {
 	      var _this2 = this;
 	
 	      axios.get('/api/profile/myInfo').then(function (response) {
@@ -67865,6 +67870,7 @@
 	          cash: response.data.cash,
 	          stocks: response.data.portfolio
 	        });
+	        console.log("UPDATING LIST!");
 	      });
 	    }
 	  }, {
@@ -67872,23 +67878,13 @@
 	    value: function addStock(e) {
 	      var _this3 = this;
 	
+	      var stockUpdateStore = this.state.stocks;
 	      e.preventDefault();
-	
 	      var stockToAdd = this.refs.addInput.value;
-	
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({ quandlInfo: response });
 	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
-	        var currentCash = _this3.state.cash;
-	
-	        _this3.setState({ cash: currentCash - currentPrice });
-	
-	        if (_this3.cash === 0) {
-	          alert("You are out of money");
-	        }
 	      });
-	
-	      var stockUpdateStore = this.state.stocks;
 	
 	      if (this.state.stocks.indexOf(stockToAdd) > -1) {
 	        alert("This stock is already included");
@@ -68000,6 +67996,8 @@
 	          )
 	        ),
 	        this.state.stocks.map(function (stock, i) {
+	          console.log("mapping stocks");
+	          console.log(stock);
 	          return React.createElement(UserStockData, { keyword: stock, removeStock: _this5.removeStock, key: i });
 	        })
 	      );
@@ -68096,8 +68094,8 @@
 	        alert(err);
 	      });
 	      axios.get('/api/profile/myInfo').then(function (response) {
-	        console.log("Stock removed");
 	        _this3.props.removeStock();
+	        console.log(_this3.state.keyword + ' removed');
 	      });
 	    }
 	  }, {
@@ -68208,15 +68206,6 @@
 	
 	  return Data;
 	}(React.Component);
-	
-	/*
-	     <th className='buy'>
-	       <form onSubmit={this.buy}>
-	         <button className="buy-button" type="submit"></button>
-	       </form>
-	     </th>
-	 */
-	
 	
 	module.exports = Data;
 

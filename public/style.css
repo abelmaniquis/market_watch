@@ -12,7 +12,6 @@ body {
   background: #18212D; }
 
 #app {
-  padding: 1px;
   max-width: 100%; }
 
 .home-info {
@@ -213,5 +212,12 @@ h2 {
 
 .scroller li {
   display: inline-block; }
+
+@media screen and (max-width: 400px) {
+  .userProfile {
+    font-size: 0.9em; }
+
+  .sell-button {
+    padding: 1em 1.2em; } }
 
 /*# sourceMappingURL=style.css.map */
