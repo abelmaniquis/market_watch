@@ -37,10 +37,9 @@ module.exports = function(app) {
   
   app.put('/api/profile/myInfo/:aStock',isLoggedIn,function(req, res, next){
     UserModel.findByIdAndUpdate(req.user._id,{
-      
-    },function(err,user){
-      if(err){
-        next(err);
+    },function(error,user){
+      if(error){
+        next(error);
       }else{
         user.portfolio.push(req.params.aStock);
         user.save();
@@ -50,18 +49,19 @@ module.exports = function(app) {
   
   app.put('/api/profile/myInfo/sell/:aStock', isLoggedIn, function(req, res, next) {
     UserModel.findByIdAndUpdate(req.user._id, {
-        $pull: {
-          portfolio: req.params.aStock
-        }
       },
       function(error, user) {
         if (error) {
           next(error);
         }
         else {
+          var index = user.portfolio.indexOf(req.params.aStock);
+          if(index > -1){
+            user.portfolio.splice(index,1);
+            user.save();
+          }
           res.status(201).json(user);
         }
-
       });
   })
 }

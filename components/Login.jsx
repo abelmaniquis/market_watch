@@ -29,7 +29,7 @@ class Login extends React.Component {
     }).then((response)=>{
       browserHistory.push(`/login/profile/${this.state.username}`);
     }).catch(function(err){
-      alert(err);
+      alert("This is an invalid username");
       console.log(err);
     });
   }

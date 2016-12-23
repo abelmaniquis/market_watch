@@ -59,10 +59,10 @@
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(827);
 	var Profile = __webpack_require__(830);
-	var Signup = __webpack_require__(845);
-	var Login = __webpack_require__(846);
-	var FullList = __webpack_require__(847);
-	var TestPage = __webpack_require__(848);
+	var Signup = __webpack_require__(846);
+	var Login = __webpack_require__(847);
+	var FullList = __webpack_require__(848);
+	var TestPage = __webpack_require__(849);
 	
 	var _require = __webpack_require__(196);
 	
@@ -84,7 +84,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(851);
+	var NotFound = __webpack_require__(852);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -67828,10 +67828,10 @@
 	var Router = _require2.Router;
 	
 	var UserStockData = __webpack_require__(831);
-	//const list = require('../public/tickers.json');
+	var list = __webpack_require__(833);
 	var TypeAhead = __webpack_require__(834);
 	var d3 = __webpack_require__(828);
-	var TextScroll = __webpack_require__(852);
+	var TextScroll = __webpack_require__(845);
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -67842,6 +67842,7 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
+	      possibleStocks: [],
 	      username: '',
 	      cash: 0,
 	      stocks: [],
@@ -67851,6 +67852,7 @@
 	    _this.addStock = _this.addStock.bind(_this);
 	    _this.removeStock = _this.removeStock.bind(_this);
 	    _this.updateList = _this.updateList.bind(_this);
+	    _this.mapStocks = _this.mapStocks.bind(_this);
 	    return _this;
 	  }
 	
@@ -67870,7 +67872,6 @@
 	          cash: response.data.cash,
 	          stocks: response.data.portfolio
 	        });
-	        console.log("UPDATING LIST!");
 	      });
 	    }
 	  }, {
@@ -67882,10 +67883,13 @@
 	      e.preventDefault();
 	      var stockToAdd = this.refs.addInput.value;
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
-	        _this3.setState({ quandlInfo: response });
+	        _this3.setState({
+	          quandlInfo: response
+	        });
 	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
+	      }).catch(function (error) {
+	        alert("It appears that that stock does not exist");
 	      });
-	
 	      if (this.state.stocks.indexOf(stockToAdd) > -1) {
 	        alert("This stock is already included");
 	      } else if (stockToAdd === "") {
@@ -67893,7 +67897,11 @@
 	      } else {
 	        stockUpdateStore.push(stockToAdd);
 	        axios.put('/api/profile/myInfo/' + stockToAdd).then(function (response) {
-	          _this3.setState({ stocks: stockUpdateStore });
+	          _this3.setState({
+	            stocks: stockUpdateStore
+	          });
+	        }).catch(function (error) {
+	          alert('received this error: ' + error);
 	        });
 	      }
 	      this.refs.addInput.value = '';
@@ -67903,6 +67911,8 @@
 	    value: function removeStock() {
 	      var _this4 = this;
 	
+	      var stockUpdateStore = this.state.stocks;
+	      console.log("Here is the stock update store: ", stockUpdateStore);
 	      axios.get('/api/profile/myInfo').then(function (response) {
 	        console.log("updated portfolio: ", response.data.portfolio);
 	        _this4.setState({
@@ -67911,9 +67921,20 @@
 	      });
 	    }
 	  }, {
+	    key: 'mapStocks',
+	    value: function mapStocks() {
+	      var _this5 = this;
+	
+	      this.state.stocks.map(function (stock, i) {
+	        console.log("mapping stocks");
+	        console.log(stock);
+	        return React.createElement(UserStockData, { keyword: stock, removeStock: _this5.removeStock, key: i });
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this5 = this;
+	      var _this6 = this;
 	
 	      return React.createElement(
 	        'div',
@@ -67998,7 +68019,7 @@
 	        this.state.stocks.map(function (stock, i) {
 	          console.log("mapping stocks");
 	          console.log(stock);
-	          return React.createElement(UserStockData, { keyword: stock, removeStock: _this5.removeStock, key: i });
+	          return React.createElement(UserStockData, { keyword: stock, removeStock: _this6.removeStock, key: i });
 	        })
 	      );
 	    }
@@ -72721,6 +72742,37 @@
 
 	'use strict';
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactAnime = __webpack_require__(291);
+	
+	var _reactAnime2 = _interopRequireDefault(_reactAnime);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var TextScroll = function TextScroll() {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      _reactAnime2.default,
+	      { direction: 'alternate' },
+	      _react2.default.createElement('div', { className: 'blue' })
+	    ),
+	    _react2.default.createElement('ul', { className: 'scroller' })
+	  );
+	};
+	
+	module.exports = TextScroll;
+
+/***/ },
+/* 846 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72849,7 +72901,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 846 */
+/* 847 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72916,7 +72968,7 @@
 	      }).then(function (response) {
 	        browserHistory.push('/login/profile/' + _this2.state.username);
 	      }).catch(function (err) {
-	        alert(err);
+	        alert("This is an invalid username");
 	        console.log(err);
 	      });
 	    }
@@ -72979,7 +73031,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 847 */
+/* 848 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73047,7 +73099,7 @@
 	module.exports = connector(FullList);
 
 /***/ },
-/* 848 */
+/* 849 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73064,7 +73116,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(849);
+	var uuid = __webpack_require__(850);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -73107,7 +73159,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 849 */
+/* 850 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73120,7 +73172,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(850);
+	var _rng = __webpack_require__(851);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -73291,7 +73343,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 850 */
+/* 851 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -73329,7 +73381,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 851 */
+/* 852 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73372,37 +73424,6 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
-
-/***/ },
-/* 852 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactAnime = __webpack_require__(291);
-	
-	var _reactAnime2 = _interopRequireDefault(_reactAnime);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var TextScroll = function TextScroll() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      _reactAnime2.default,
-	      { direction: 'alternate' },
-	      _react2.default.createElement('div', { className: 'blue' })
-	    ),
-	    _react2.default.createElement('ul', { className: 'scroller' })
-	  );
-	};
-	
-	module.exports = TextScroll;
 
 /***/ }
 /******/ ]);
