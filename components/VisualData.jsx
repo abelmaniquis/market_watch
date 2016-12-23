@@ -1,42 +1,33 @@
-const React = require('react');
-const d3 = require('d3');
-const axios = require('axios');
+const React = require('react')
+const d3 = require('d3')
 
-class VisualData extends React.Component{
-  constructor(props){
-    super(props)
-  }
-  render(){
-    console.log("-------------------------------------");
-    console.log("this.props.data: ",this.props.data);
-    
-    //http://stackoverflow.com/questions/21639305/d3js-take-data-from-an-array-instead-of-a-file
-    
+class VisualData extends React.Component {
+  render () {
     var lineData = [{
-      x:0,
-      y:this.props.data[6]
+      x: 0,
+      y: this.props.data[6]
+    },
+    {
+      x: 1, 
+      y: this.props.data[5],
+    },
+    {
+      x: 2,
+      y: this.props.data[4],
+    },
+    {
+      x: 3, 
+      y: this.props.data[3]
     },{
-      x:1,
-      y:this.props.data[5],
+      x: 4, 
+      y: this.props.data[2]
     },{
-      x:2,
-      y:this.props.data[4],
+      x: 5, 
+      y: this.props.data[1]
     },{
-      x:3,
-      y:this.props.data[3]
-    },{
-      x:4,
-      y:this.props.data[2]
-    },{
-      x:5,
-      y:this.props.data[1]
-    },{
-      x:6,
-      y:this.props.data[0]
+      x: 6, 
+      y: this.props.data[0]
     }];
-    
-    console.log("lineData: ",lineData);
-    
     var vis = d3.select('.chart'),
     WIDTH = 1000,
     HEIGHT = 500,
@@ -49,6 +40,7 @@ class VisualData extends React.Component{
     
     var parseTime = d3.timeParse("%d-%b-%y"),
     
+    //originally d3.scaleLinear()
     xRange = d3.scaleLinear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function(d) {
       return d.x;
     }), d3.max(lineData, function(d) {
@@ -83,24 +75,23 @@ var lineFunc = d3.line()
   })
   .curve(d3.curveCardinal);
 
-vis.append('svg:path')
-  .attr('d', lineFunc(lineData))
-  .attr('stroke', 'white')
-  .attr('stroke-width', 2)
-  .attr('fill', 'none'); //none
-  
-  console.log(parseTime)
-  
+    vis.append('svg:path')
+    .attr('d', lineFunc(lineData))
+    .attr('stroke', 'white')
+    .attr('stroke-width', 2)
+    .attr('fill', 'none'); 
+
     return(
       <div>
       <h4>{this.props.dataName}</h4>
-      <svg className="chart" width="1000" height="500"></svg>
+        <svg className='chart' width='1000' height='500'/>
       </div>
     )
-    
   }
-  
-  
+}
+
+VisualData.propTypes = {
+  data: React.PropTypes.array
 }
 
 module.exports = VisualData

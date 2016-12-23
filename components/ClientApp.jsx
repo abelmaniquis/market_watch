@@ -1,5 +1,5 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
+const React = require('react');
+const ReactDOM = require('react-dom');
 const Landing = require('./Landing');
 const Details = require('./Details');
 const Profile = require('./Profile');
@@ -7,15 +7,15 @@ const Signup = require('./Signup');
 const Login = require('./Login');
 const FullList = require('./FullList');
 const TestPage = require('./TestPage');
-const { Router, Route, IndexRoute, hashHistory,browserHistory } = require('react-router')
-const { stocks } = require('../public/tickers')
-const { store } = require('./Store')
-const { Provider } = require('react-redux')
-const NotFound = require('./NotFound')
+const { Router, Route, IndexRoute, hashHistory,browserHistory } = require('react-router');
+const { stocks } = require('../public/tickers');
+const { store } = require('./Store');
+const { Provider } = require('react-redux');
+const NotFound = require('./NotFound');
 
 class App extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
   }
   render() {
     return (

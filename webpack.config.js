@@ -19,7 +19,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.(js|jsx)?$/,
-                loader: 'babel-loader'
+                loaders: ['babel-loader','eslint-loader']
             }
             ,
             {

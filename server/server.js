@@ -17,7 +17,6 @@ require('./middleware/appMiddleware.js')(app);
 require('./api/user/user.routes.js')(app);
 
 app.get("*", function(req, res) {
-  
   res.sendFile(path.resolve(__dirname + '/../', 'public', 'index.html'))
 });
 

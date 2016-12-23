@@ -5,7 +5,6 @@ const Data = require('./Data');
 const {Router} = require('react-router');
 const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
-const TypeAhead = require('./TypeAhead.jsx');
 const d3 = require('d3');
 const TextScroll = require('./TextScroll.jsx')
 

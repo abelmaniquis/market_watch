@@ -6,6 +6,9 @@ Introduction
 Market Source is an app built with React and Nodejs. It utilizes the Quandl API to allow users to create a watch list of stocks
 that update daily, and further uses the D3js library to convert data into graphs.
 
+*NOTE*
+As of 12/22/2016 I am trying to figure out a new way to list all available stock options, until that point
+
 Use Case
 =============
 This app allows a user to keep track of their stock market investments through their account. The app tracks the opening and
@@ -40,8 +43,15 @@ to read.
 12/19/2016:
   Currently working with Animejs to place an animated stock ticker on top of the user profile
 
+
+
 Bugs and Issues
 ===================
 
+
+
 When a stock is deleted, the DOM removes the stock at the end of the list
-even though the back end updates properly
+even though the back end updates properly. I believe that this is an issue with
+how the state changes on the profile
+
+As of this moment, The 

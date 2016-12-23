@@ -21,7 +21,6 @@ module.exports = function(app) {
   //LOGIN
 
   app.get('/api/users/login/', function(req, res, next) {
-    console.log("GETTING LOGIN")
       res.status(200).json(User);
   });
   
@@ -44,6 +43,7 @@ module.exports = function(app) {
         user.portfolio.push(req.params.aStock);
         user.save();
       }
+      res.status(201).json(user);
     })
   })
   
