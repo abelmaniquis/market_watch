@@ -2,32 +2,16 @@ const React = require('react')
 const d3 = require('d3')
 
 class VisualData extends React.Component {
+  
   render () {
-    var lineData = [{
-      x: 0,
-      y: this.props.data[6]
-    },
-    {
-      x: 1, 
-      y: this.props.data[5],
-    },
-    {
-      x: 2,
-      y: this.props.data[4],
-    },
-    {
-      x: 3, 
-      y: this.props.data[3]
-    },{
-      x: 4, 
-      y: this.props.data[2]
-    },{
-      x: 5, 
-      y: this.props.data[1]
-    },{
-      x: 6, 
-      y: this.props.data[0]
-    }];
+    var lineData = []
+    
+    for(var i = 0; i < 6; i++){
+      lineData.push({x: i, y: this.props.data[6 - i]})
+    };
+    
+    
+    console.log('lineData',lineData)
     var vis = d3.select('.chart'),
     WIDTH = 1000,
     HEIGHT = 500,

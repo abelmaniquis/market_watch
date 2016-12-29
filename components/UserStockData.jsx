@@ -6,6 +6,8 @@ const Loading = require('react-loading-animation')
 class Data extends React.Component {
   constructor (props) {
     super(props)
+    
+    console.log(this.props);
     this.state = {
       id: {},
       name: '',
@@ -15,8 +17,7 @@ class Data extends React.Component {
       appears: false,
       loaded: false
     }
-    this.buy = this.buy.bind(this)
-    this.sell = this.sell.bind(this)
+    this.removeFromPortfolio = this.removeFromPortfolio.bind(this);
   }
   componentDidMount () {
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${this.props.keyword}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
@@ -33,22 +34,12 @@ class Data extends React.Component {
         })
       })
   }
-  buy (e) {
-    e.preventDefault()
-    this.setState({
-      quantity: this.state.quantity += 1
-    })
-  }
-  sell (e) {
-    e.preventDefault()
-    axios.put(`/api/profile/myInfo/sell/${this.state.keyword}`).then((response) => {
-    }).catch(function (err) {
-      alert(err)
-    })
-    axios.get('/api/profile/myInfo').then((response) => {
-      this.props.removeStock()
-      console.log(`${this.state.keyword} removed`)
-    })
+  removeFromPortfolio(){
+    console.log(this.state.ticker)
+    axios.put(`/api/profile/myInfo/sell/${this.state.ticker}`)
+    .then((response)=>{
+      console.log(response);
+    });
   }
   render () {
     while (this.state.prices.length <= 0) {
@@ -66,7 +57,7 @@ class Data extends React.Component {
     let change = changeNum
     let quantity = this.state.quantity
     let trend = ''
-    let value = quantity * close // state is being manipulated here, find another way to do this
+    let value = quantity * close
     change >= 0 ? trend += 'up' : trend += 'down'
     return (
       <div className='data-container'>
@@ -79,12 +70,11 @@ class Data extends React.Component {
             <th className='high'><Link to={`details/${this.state.ticker}`}>{high}</Link></th>
             <th className='low'><Link to={`details/${this.state.ticker}`}>{low}</Link></th>
             <th className='trend'><Link to={`details/${this.state.ticker}`}>{trend}</Link></th>
-
             <th className='sell'>
-            <form onSubmit={this.sell}>
-              <button className='sell-button' type='submit' />
-            </form>
-          </th>
+              <form onSubmit={this.removeFromPortfolio}>
+                <button className='sell-button' type='submit' />
+              </form>
+            </th>
           </tr>
           </tbody>
         </table>
@@ -93,7 +83,7 @@ class Data extends React.Component {
   }
 }
 
-Data.propTypes = {
+Data.PropTypes = {
   keyword: React.PropTypes.string,
   removeStock: React.PropTypes.function
 }

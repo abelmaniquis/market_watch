@@ -59,6 +59,7 @@ module.exports = function(app) {
           if(index > -1){
             user.portfolio.splice(index,1);
             user.save();
+            console.log(user.portfolio);
           }
           res.status(201).json(user);
         }

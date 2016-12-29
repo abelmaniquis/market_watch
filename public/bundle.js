@@ -67718,28 +67718,13 @@
 	  _createClass(VisualData, [{
 	    key: 'render',
 	    value: function render() {
-	      var lineData = [{
-	        x: 0,
-	        y: this.props.data[6]
-	      }, {
-	        x: 1,
-	        y: this.props.data[5]
-	      }, {
-	        x: 2,
-	        y: this.props.data[4]
-	      }, {
-	        x: 3,
-	        y: this.props.data[3]
-	      }, {
-	        x: 4,
-	        y: this.props.data[2]
-	      }, {
-	        x: 5,
-	        y: this.props.data[1]
-	      }, {
-	        x: 6,
-	        y: this.props.data[0]
-	      }];
+	      var lineData = [];
+	
+	      for (var i = 0; i < 6; i++) {
+	        lineData.push({ x: i, y: this.props.data[6 - i] });
+	      };
+	
+	      console.log('lineData', lineData);
 	      var vis = d3.select('.chart'),
 	          WIDTH = 1000,
 	          HEIGHT = 500,
@@ -67832,6 +67817,7 @@
 	var list = __webpack_require__(833);
 	var d3 = __webpack_require__(828);
 	var TextScroll = __webpack_require__(834);
+	var TableHead = __webpack_require__(842);
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -67842,7 +67828,6 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
-	      possibleStocks: [],
 	      username: '',
 	      cash: 0,
 	      stocks: [],
@@ -67852,7 +67837,6 @@
 	    _this.addStock = _this.addStock.bind(_this);
 	    _this.removeStock = _this.removeStock.bind(_this);
 	    _this.updateList = _this.updateList.bind(_this);
-	    _this.mapStocks = _this.mapStocks.bind(_this);
 	    return _this;
 	  }
 	
@@ -67879,14 +67863,13 @@
 	    value: function addStock(e) {
 	      var _this3 = this;
 	
-	      var stockUpdateStore = this.state.stocks;
 	      e.preventDefault();
+	      var stockUpdateStore = this.state.stocks;
 	      var stockToAdd = this.refs.addInput.value;
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({
 	          quandlInfo: response
 	        });
-	        var currentPrice = _this3.state.quandlInfo.data.dataset.data[0][4];
 	      }).catch(function (error) {
 	        alert("It appears that that stock does not exist");
 	      });
@@ -67908,38 +67891,23 @@
 	    }
 	  }, {
 	    key: 'removeStock',
-	    value: function removeStock() {
-	      var _this4 = this;
-	
-	      var stockUpdateStore = this.state.stocks;
-	      console.log("Here is the stock update store: ", stockUpdateStore);
-	      axios.get('/api/profile/myInfo').then(function (response) {
-	        console.log("updated portfolio: ", response.data.portfolio);
-	        _this4.setState({
-	          stocks: response.data.portfolio
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'mapStocks',
-	    value: function mapStocks() {
-	      var _this5 = this;
-	
-	      this.state.stocks.map(function (stock, i) {
-	        console.log("mapping stocks");
-	        console.log(stock);
-	        return React.createElement(UserStockData, { keyword: stock, removeStock: _this5.removeStock, key: i });
-	      });
+	    value: function removeStock(e) {
+	      e.preventDefault();
+	      console.log("This will remove a stock");
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this6 = this;
+	      var _this4 = this;
+	
+	      var displayStocks = this.state.stocks.map(function (stock, i) {
+	
+	        return React.createElement(UserStockData, { keyword: stock, key: i, toDelete: _this4.removeStock });
+	      });
 	
 	      return React.createElement(
 	        'div',
 	        { className: 'userProfile' },
-	        React.createElement(TextScroll, null),
 	        React.createElement(
 	          'h1',
 	          { className: 'title' },
@@ -67961,7 +67929,7 @@
 	          React.createElement(
 	            'form',
 	            { onSubmit: this.addStock },
-	            React.createElement('input', { type: 'text', placeholder: 'Enter Stock Ticker Here', ref: 'addInput' }),
+	            React.createElement('input', { type: 'text', placeholder: 'Stock ticker (e.g: GOOG, AAPL, YHOO)', ref: 'addInput' }),
 	            React.createElement(
 	              'button',
 	              { className: 'submitButton' },
@@ -67969,58 +67937,8 @@
 	            )
 	          )
 	        ),
-	        React.createElement(
-	          'table',
-	          { className: 'tableHead' },
-	          React.createElement(
-	            'tbody',
-	            null,
-	            React.createElement(
-	              'tr',
-	              null,
-	              React.createElement(
-	                'th',
-	                null,
-	                'Ticker'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Open'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Close'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'High'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Low'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Trend'
-	              ),
-	              React.createElement(
-	                'th',
-	                null,
-	                'Delete'
-	              )
-	            )
-	          )
-	        ),
-	        this.state.stocks.map(function (stock, i) {
-	          console.log("mapping stocks");
-	          console.log(stock);
-	          return React.createElement(UserStockData, { keyword: stock, removeStock: _this6.removeStock, key: i });
-	        })
+	        React.createElement(TableHead, null),
+	        displayStocks
 	      );
 	    }
 	  }]);
@@ -68061,6 +67979,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Data.__proto__ || Object.getPrototypeOf(Data)).call(this, props));
 	
+	    console.log(_this.props);
 	    _this.state = {
 	      id: {},
 	      name: '',
@@ -68070,8 +67989,7 @@
 	      appears: false,
 	      loaded: false
 	    };
-	    _this.buy = _this.buy.bind(_this);
-	    _this.sell = _this.sell.bind(_this);
+	    _this.removeFromPortfolio = _this.removeFromPortfolio.bind(_this);
 	    return _this;
 	  }
 	
@@ -68094,25 +68012,11 @@
 	      });
 	    }
 	  }, {
-	    key: 'buy',
-	    value: function buy(e) {
-	      e.preventDefault();
-	      this.setState({
-	        quantity: this.state.quantity += 1
-	      });
-	    }
-	  }, {
-	    key: 'sell',
-	    value: function sell(e) {
-	      var _this3 = this;
-	
-	      e.preventDefault();
-	      axios.put('/api/profile/myInfo/sell/' + this.state.keyword).then(function (response) {}).catch(function (err) {
-	        alert(err);
-	      });
-	      axios.get('/api/profile/myInfo').then(function (response) {
-	        _this3.props.removeStock();
-	        console.log(_this3.state.keyword + ' removed');
+	    key: 'removeFromPortfolio',
+	    value: function removeFromPortfolio() {
+	      console.log(this.state.ticker);
+	      axios.put('/api/profile/myInfo/sell/' + this.state.ticker).then(function (response) {
+	        console.log(response);
 	      });
 	    }
 	  }, {
@@ -68133,7 +68037,7 @@
 	      var change = changeNum;
 	      var quantity = this.state.quantity;
 	      var trend = '';
-	      var value = quantity * close; // state is being manipulated here, find another way to do this
+	      var value = quantity * close;
 	      change >= 0 ? trend += 'up' : trend += 'down';
 	      return React.createElement(
 	        'div',
@@ -68206,7 +68110,7 @@
 	                { className: 'sell' },
 	                React.createElement(
 	                  'form',
-	                  { onSubmit: this.sell },
+	                  { onSubmit: this.removeFromPortfolio },
 	                  React.createElement('button', { className: 'sell-button', type: 'submit' })
 	                )
 	              )
@@ -68220,7 +68124,7 @@
 	  return Data;
 	}(React.Component);
 	
-	Data.propTypes = {
+	Data.PropTypes = {
 	  keyword: React.PropTypes.string,
 	  removeStock: React.PropTypes.function
 	};
@@ -72251,6 +72155,70 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 842 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var TableHead = function TableHead() {
+	  return _react2.default.createElement(
+	    "table",
+	    { className: "tableHead" },
+	    _react2.default.createElement(
+	      "tbody",
+	      null,
+	      _react2.default.createElement(
+	        "tr",
+	        null,
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Ticker"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Open"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Close"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "High"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Low"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Trend"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Delete"
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = TableHead;
 
 /***/ }
 /******/ ]);

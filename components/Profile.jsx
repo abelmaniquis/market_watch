@@ -7,12 +7,12 @@ const UserStockData = require('./UserStockData');
 const list = require('../public/tickers.json');
 const d3 = require('d3');
 const TextScroll = require('./TextScroll.jsx')
+const TableHead = require('./TableHead.jsx')
 
 class View extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      possibleStocks: [],
       username: '',
       cash: 0,
       stocks: [],
@@ -22,7 +22,6 @@ class View extends React.Component {
     this.addStock = this.addStock.bind(this);
     this.removeStock = this.removeStock.bind(this);
     this.updateList = this.updateList.bind(this);
-    this.mapStocks = this.mapStocks.bind(this);
   }
   componentWillMount() {
     this.updateList();
@@ -37,15 +36,14 @@ class View extends React.Component {
     })
   }
   addStock(e) {
-    const stockUpdateStore = this.state.stocks
     e.preventDefault();
-    var stockToAdd = this.refs.addInput.value;
+    let stockUpdateStore = this.state.stocks
+    let stockToAdd = this.refs.addInput.value;
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
       .then((response) => {
         this.setState({
           quandlInfo: response
         })
-        var currentPrice = this.state.quandlInfo.data.dataset.data[0][4];
       }).catch(function(error) {
         alert("It appears that that stock does not exist");
       })
@@ -68,66 +66,33 @@ class View extends React.Component {
     }
     this.refs.addInput.value = '';
   }
-  removeStock() {
-    var stockUpdateStore = this.state.stocks
-    console.log("Here is the stock update store: ", stockUpdateStore)
-    axios.get('/api/profile/myInfo').then((response) => {
-      console.log("updated portfolio: ", response.data.portfolio);
-      this.setState({
-        stocks: response.data.portfolio
-      })
-    })
-  }mapStocks(){
-    this.state.stocks.map((stock,i)=>{
-      console.log("mapping stocks")
-      console.log(stock);
-      return(
-          <UserStockData keyword={stock} removeStock={this.removeStock} key={i}/>
+  removeStock(e) {
+    e.preventDefault();
+    console.log("This will remove a stock");
+  }
+  render() {
+    
+      let displayStocks = this.state.stocks.map((stock, i) => {
+      
+      return (
+        <UserStockData keyword={stock} key={i} toDelete={this.removeStock}/>
       )
     })
-  }
-  
-  render() {
+    
     return (
       <div className="userProfile">
-        
-        <TextScroll/>
-        
         <h1 className='title'>{this.state.username}'s Portfolio</h1>
-        
         <h3><Link to="/">LOG OUT</Link></h3>
-      
-        <div className='searchContainer'>
         
+        <div className='searchContainer'>
         <form onSubmit={this.addStock}>
-          <input type="text" placeholder = "Enter Stock Ticker Here" ref="addInput" />
+          <input type="text" placeholder = "Stock ticker (e.g: GOOG, AAPL, YHOO)" ref="addInput" />
           <button className="submitButton">Add</button>
         </form>
-        
         </div>
-
-        <table className="tableHead">
-        <tbody>
-          <tr>
-          <th>Ticker</th>
-          <th>Open</th>
-          <th>Close</th>
-          <th>High</th>
-          <th>Low</th>
-          <th>Trend</th>
-          <th>Delete</th>
-          </tr>
-        </tbody>
-    </table>
-          {
-            this.state.stocks.map((stock,i)=>{
-              console.log("mapping stocks")
-              console.log(stock);
-              return(
-                <UserStockData keyword={stock} removeStock={this.removeStock} key={i}/>
-              )
-            })
-          }
+        
+        <TableHead />
+        {displayStocks}
       </div>
     )
   }
