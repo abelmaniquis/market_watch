@@ -59,10 +59,10 @@
 	var Landing = __webpack_require__(172);
 	var Details = __webpack_require__(827);
 	var Profile = __webpack_require__(830);
-	var Signup = __webpack_require__(835);
-	var Login = __webpack_require__(836);
-	var FullList = __webpack_require__(837);
-	var TestPage = __webpack_require__(838);
+	var Signup = __webpack_require__(836);
+	var Login = __webpack_require__(837);
+	var FullList = __webpack_require__(838);
+	var TestPage = __webpack_require__(839);
 	
 	var _require = __webpack_require__(196);
 	
@@ -84,7 +84,7 @@
 	
 	var Provider = _require4.Provider;
 	
-	var NotFound = __webpack_require__(841);
+	var NotFound = __webpack_require__(842);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -67817,7 +67817,7 @@
 	var list = __webpack_require__(833);
 	var d3 = __webpack_require__(828);
 	var TextScroll = __webpack_require__(834);
-	var TableHead = __webpack_require__(842);
+	var TableHead = __webpack_require__(835);
 	
 	var View = function (_React$Component) {
 	  _inherits(View, _React$Component);
@@ -67828,12 +67828,12 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
+	      id: 0,
 	      username: '',
 	      cash: 0,
 	      stocks: [],
 	      quandlInfo: null
 	    };
-	
 	    _this.addStock = _this.addStock.bind(_this);
 	    _this.removeStock = _this.removeStock.bind(_this);
 	    _this.updateList = _this.updateList.bind(_this);
@@ -67864,8 +67864,15 @@
 	      var _this3 = this;
 	
 	      e.preventDefault();
+	
+	      this.setState({
+	        id: this.state.id += 1
+	      });
+	      console.log(this.state.id);
+	
 	      var stockUpdateStore = this.state.stocks;
 	      var stockToAdd = this.refs.addInput.value;
+	
 	      axios.get('https://www.quandl.com/api/v3/datasets/WIKI/' + stockToAdd + '.json?api_key=PqxkDaWHTxrB8VHFSDVS').then(function (response) {
 	        _this3.setState({
 	          quandlInfo: response
@@ -67891,9 +67898,12 @@
 	    }
 	  }, {
 	    key: 'removeStock',
-	    value: function removeStock(e) {
-	      e.preventDefault();
-	      console.log("This will remove a stock");
+	    value: function removeStock(stock, number) {
+	      var index = this.state.stocks.indexOf(stock);
+	      var stockUpdateStore = this.state.stocks;
+	
+	      stockUpdateStore.splice(number, 1);
+	      this.setState({ stocks: stockUpdateStore });
 	    }
 	  }, {
 	    key: 'render',
@@ -67901,8 +67911,7 @@
 	      var _this4 = this;
 	
 	      var displayStocks = this.state.stocks.map(function (stock, i) {
-	
-	        return React.createElement(UserStockData, { keyword: stock, key: i, toDelete: _this4.removeStock });
+	        return React.createElement(UserStockData, { keyword: stock, key: i, keyView: i, removeStock: _this4.removeStock });
 	      });
 	
 	      return React.createElement(
@@ -67981,7 +67990,7 @@
 	
 	    console.log(_this.props);
 	    _this.state = {
-	      id: {},
+	      id: _this.props.id,
 	      name: '',
 	      ticker: '',
 	      prices: [],
@@ -68013,8 +68022,11 @@
 	    }
 	  }, {
 	    key: 'removeFromPortfolio',
-	    value: function removeFromPortfolio() {
-	      console.log(this.state.ticker);
+	    value: function removeFromPortfolio(e) {
+	
+	      this.props.removeStock(this.state.ticker, this.props.keyView);
+	
+	      e.preventDefault();
 	      axios.put('/api/profile/myInfo/sell/' + this.state.ticker).then(function (response) {
 	        console.log(response);
 	      });
@@ -68022,6 +68034,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props.keyView);
 	      while (this.state.prices.length <= 0) {
 	        return React.createElement(Loading, null);
 	      }
@@ -71502,6 +71515,70 @@
 /* 835 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var TableHead = function TableHead() {
+	  return _react2.default.createElement(
+	    "table",
+	    { className: "tableHead" },
+	    _react2.default.createElement(
+	      "tbody",
+	      null,
+	      _react2.default.createElement(
+	        "tr",
+	        null,
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Ticker"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Open"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Close"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "High"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Low"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Trend"
+	        ),
+	        _react2.default.createElement(
+	          "th",
+	          null,
+	          "Delete"
+	        )
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = TableHead;
+
+/***/ },
+/* 836 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -71632,7 +71709,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 836 */
+/* 837 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71762,7 +71839,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 837 */
+/* 838 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71830,7 +71907,7 @@
 	module.exports = connector(FullList);
 
 /***/ },
-/* 838 */
+/* 839 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71847,7 +71924,7 @@
 	var Redux = __webpack_require__(261);
 	var ReactDOM = __webpack_require__(34);
 	var ReactRedux = __webpack_require__(276);
-	var uuid = __webpack_require__(839);
+	var uuid = __webpack_require__(840);
 	var createStore = Redux.createStore;
 	var bindActionCreators = Redux.bindActionCreators;
 	var Provider = ReactRedux.Provider;
@@ -71890,7 +71967,7 @@
 	module.exports = Test;
 
 /***/ },
-/* 839 */
+/* 840 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71903,7 +71980,7 @@
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(840);
+	var _rng = __webpack_require__(841);
 	
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -72074,7 +72151,7 @@
 	module.exports = uuid;
 
 /***/ },
-/* 840 */
+/* 841 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -72112,7 +72189,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 841 */
+/* 842 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72155,70 +72232,6 @@
 	}(React.Component);
 	
 	module.exports = NotFound;
-
-/***/ },
-/* 842 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var TableHead = function TableHead() {
-	  return _react2.default.createElement(
-	    "table",
-	    { className: "tableHead" },
-	    _react2.default.createElement(
-	      "tbody",
-	      null,
-	      _react2.default.createElement(
-	        "tr",
-	        null,
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "Ticker"
-	        ),
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "Open"
-	        ),
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "Close"
-	        ),
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "High"
-	        ),
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "Low"
-	        ),
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "Trend"
-	        ),
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "Delete"
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = TableHead;
 
 /***/ }
 /******/ ]);

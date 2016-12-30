@@ -9,7 +9,7 @@ class Data extends React.Component {
     
     console.log(this.props);
     this.state = {
-      id: {},
+      id: this.props.id,
       name: '',
       ticker: '',
       prices: [],
@@ -34,14 +34,18 @@ class Data extends React.Component {
         })
       })
   }
-  removeFromPortfolio(){
-    console.log(this.state.ticker)
+  removeFromPortfolio(e){
+    
+    this.props.removeStock(this.state.ticker,this.props.keyView);
+    
+    e.preventDefault();
     axios.put(`/api/profile/myInfo/sell/${this.state.ticker}`)
     .then((response)=>{
       console.log(response);
     });
   }
   render () {
+    console.log(this.props.keyView);
     while (this.state.prices.length <= 0) {
       return <Loading />
     }

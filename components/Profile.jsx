@@ -13,12 +13,12 @@ class View extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      id:0,
       username: '',
       cash: 0,
       stocks: [],
       quandlInfo: null
     };
-
     this.addStock = this.addStock.bind(this);
     this.removeStock = this.removeStock.bind(this);
     this.updateList = this.updateList.bind(this);
@@ -37,8 +37,15 @@ class View extends React.Component {
   }
   addStock(e) {
     e.preventDefault();
+    
+    this.setState({
+      id: this.state.id += 1
+    })
+    console.log(this.state.id)
+    
     let stockUpdateStore = this.state.stocks
     let stockToAdd = this.refs.addInput.value;
+    
     axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${stockToAdd}.json?api_key=PqxkDaWHTxrB8VHFSDVS`)
       .then((response) => {
         this.setState({
@@ -66,16 +73,17 @@ class View extends React.Component {
     }
     this.refs.addInput.value = '';
   }
-  removeStock(e) {
-    e.preventDefault();
-    console.log("This will remove a stock");
+  removeStock(stock,number){
+    var index = this.state.stocks.indexOf(stock);
+    var stockUpdateStore = this.state.stocks;
+    
+    stockUpdateStore.splice(number,1);
+    this.setState({stocks: stockUpdateStore});
   }
   render() {
-    
       let displayStocks = this.state.stocks.map((stock, i) => {
-      
       return (
-        <UserStockData keyword={stock} key={i} toDelete={this.removeStock}/>
+        <UserStockData keyword={stock} key={i} keyView = {i} removeStock = {this.removeStock}/>
       )
     })
     
