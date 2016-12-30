@@ -54,4 +54,5 @@ When a stock is deleted, the DOM removes the stock at the end of the list
 even though the back end updates properly. I believe that this is an issue with
 how the state changes on the profile
 
-As of this moment, The 
+I have figured out that the problem lies in how keys are manipulated in React.
+I am working on fixing this issue.
