@@ -13,7 +13,6 @@ class View extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      id:0,
       username: '',
       cash: 0,
       stocks: [],
@@ -73,17 +72,25 @@ class View extends React.Component {
     }
     this.refs.addInput.value = '';
   }
-  removeStock(stock,number){
-    var index = this.state.stocks.indexOf(stock);
-    var stockUpdateStore = this.state.stocks;
-    
-    stockUpdateStore.splice(number,1);
-    this.setState({stocks: stockUpdateStore});
+  removeStock(stock){
+   /*
+   follow this example:
+   http://jsfiddle.net/jwm6k66c/315/
+   
+   */
+   var newState = this.state.stocks
+    if(newState.indexOf(stock) > -1){
+      newState.splice(newState.indexOf(stock),1)
+      this.setState({
+        stocks: newState
+      })
+    }
+   
   }
   render() {
-      let displayStocks = this.state.stocks.map((stock, i) => {
+      let displayStocks = this.state.stocks.map((stock,i) => {
       return (
-        <UserStockData keyword={stock} key={i} keyView = {i} removeStock = {this.removeStock}/>
+        <UserStockData keyword={stock} key={stock} keyView = {i} removeStock ={this.removeStock}/>
       )
     })
     

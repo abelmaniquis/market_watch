@@ -67828,7 +67828,6 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 	
 	    _this.state = {
-	      id: 0,
 	      username: '',
 	      cash: 0,
 	      stocks: [],
@@ -67898,12 +67897,19 @@
 	    }
 	  }, {
 	    key: 'removeStock',
-	    value: function removeStock(stock, number) {
-	      var index = this.state.stocks.indexOf(stock);
-	      var stockUpdateStore = this.state.stocks;
-	
-	      stockUpdateStore.splice(number, 1);
-	      this.setState({ stocks: stockUpdateStore });
+	    value: function removeStock(stock) {
+	      /*
+	      follow this example:
+	      http://jsfiddle.net/jwm6k66c/315/
+	      
+	      */
+	      var newState = this.state.stocks;
+	      if (newState.indexOf(stock) > -1) {
+	        newState.splice(newState.indexOf(stock), 1);
+	        this.setState({
+	          stocks: newState
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -67911,7 +67917,7 @@
 	      var _this4 = this;
 	
 	      var displayStocks = this.state.stocks.map(function (stock, i) {
-	        return React.createElement(UserStockData, { keyword: stock, key: i, keyView: i, removeStock: _this4.removeStock });
+	        return React.createElement(UserStockData, { keyword: stock, key: stock, keyView: i, removeStock: _this4.removeStock });
 	      });
 	
 	      return React.createElement(
@@ -67965,6 +67971,8 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -67990,7 +67998,7 @@
 	
 	    console.log(_this.props);
 	    _this.state = {
-	      id: _this.props.id,
+	      id: 0,
 	      name: '',
 	      ticker: '',
 	      prices: [],
@@ -68013,18 +68021,18 @@
 	          _this2.state.prices.push(response.data.dataset.data[0][i]);
 	          i += 1;
 	        }
-	        _this2.setState({
+	        _this2.setState(_defineProperty({
+	          id: _this2.state.id + 1,
 	          name: response.data.dataset.name,
-	          ticker: response.data.dataset.dataset_code,
-	          id: response.data.dataset.dataset_id
-	        });
+	          ticker: response.data.dataset.dataset_code
+	        }, 'id', response.data.dataset.dataset_id));
 	      });
 	    }
 	  }, {
 	    key: 'removeFromPortfolio',
 	    value: function removeFromPortfolio(e) {
 	
-	      this.props.removeStock(this.state.ticker, this.props.keyView);
+	      this.props.removeStock(this.state.ticker);
 	
 	      e.preventDefault();
 	      axios.put('/api/profile/myInfo/sell/' + this.state.ticker).then(function (response) {
