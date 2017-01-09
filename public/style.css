@@ -21,23 +21,26 @@ body {
   box-sizing: border-box;
   max-width: 25%;
   height: 75%;
-  margin: 15% 35.5%;
+  margin: 5% 35.5%;
   position: block; }
 
-.home-info ul {
+.home-info {
+  text-align: center; }
+
+.frontButtonContainer {
   padding-left: 0px; }
 
 .home-info li {
   display: inline-block; }
-
-.home-info fieldset {
-  border-style: none; }
 
 .home-info .title {
   font: Titillium Web, Helvetica, sans-serif;
   color: #31ffa6;
   font-size: 3em;
   font-weight: normal; }
+
+fieldset {
+  border-style: none; }
 
 .user-input {
   text-align: center; }
@@ -90,11 +93,21 @@ a:visited {
   display: inline-block;
   border-radius: 4px;
   border: none;
-  margin: 5px;
-  padding: 15px 32px;
+  margin: 0.4em;
+  padding: 1em 2em;
   text-align: center;
   text-decoration: none;
-  font-size: 16px; }
+  font-size: 1em; }
+
+.stockButton {
+  background-color: #2796F8;
+  border: 5px solid #2796F8;
+  color: white;
+  display: inline-block;
+  margin: 0.4em;
+  padding: 1em 2em;
+  border-radius: 4px;
+  border: none; }
 
 .button-type {
   background-color: #2796F8;
@@ -161,6 +174,9 @@ ul {
 h1 {
   text-align: center; }
 
+.description-container {
+  max-width: 100%; }
+
 .chart div {
   font: 10px sans-serif;
   background-color: steelblue;
@@ -213,7 +229,26 @@ h2 {
 .scroller li {
   display: inline-block; }
 
+@media screen and (max-width: 840px) {
+  .home-info .title {
+    font-size: 2em; }
+
+  .submitButton {
+    background-color: #2796F8;
+    border: 5px solid #2796F8;
+    color: white;
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    margin: 5px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px; } }
 @media screen and (max-width: 400px) {
+  .home-info .title {
+    font-size: 1em; }
+
   .userProfile {
     font-size: 0.9em; }
 

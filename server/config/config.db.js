@@ -3,12 +3,14 @@ module.exports = {
   seed:true,
   db:
   {
-   url:process.env.MONGODB_URI
+   url:'mongodb://localhost/marketUsers'
   }
 }
 
 /*development 
-url:'mongodb://localhost/marketUsers'*/
+url:'mongodb://localhost/marketUsers'
+
+*/
 
 /*
 deployment:

@@ -21558,32 +21558,31 @@
 	var Segment = _require3.Segment;
 	var Icon = _require3.Icon;
 	
-	
 	var SlideShow = __webpack_require__(826);
 	
 	var Landing = function Landing() {
 	  return React.createElement(
 	    'div',
-	    { className: 'home-info' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      React.createElement(Icon, { name: 'dollar', size: 'large' })
-	    ),
-	    React.createElement(
-	      'h1',
-	      { className: 'title', id: 'frontTitle' },
-	      'MarketSource'
-	    ),
+	    null,
 	    React.createElement(
 	      'div',
-	      { className: 'buttonContainer' },
+	      { className: 'home-info' },
 	      React.createElement(
-	        'fieldset',
+	        'h1',
 	        null,
+	        React.createElement(Icon, { name: 'dollar', size: 'large' })
+	      ),
+	      React.createElement(
+	        'h1',
+	        { className: 'title', id: 'frontTitle' },
+	        'MarketSource'
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'buttonContainer' },
 	        React.createElement(
 	          'ul',
-	          null,
+	          { className: 'frontButtonContainer' },
 	          React.createElement(
 	            'li',
 	            null,
@@ -21604,19 +21603,16 @@
 	              'form',
 	              { action: '/login' },
 	              React.createElement(
-	                Segment,
-	                { inverted: true },
-	                React.createElement(
-	                  Button,
-	                  { inverted: true, color: 'red', className: 'submitButton', type: 'submit' },
-	                  'Log in'
-	                )
+	                Button,
+	                { className: 'submitButton', type: 'submit' },
+	                'Log in'
 	              )
 	            )
 	          )
 	        )
 	      )
-	    )
+	    ),
+	    React.createElement(Description, null)
 	  );
 	};
 	
@@ -30960,7 +30956,7 @@
 	    { className: "description-container" },
 	    React.createElement(
 	      "h1",
-	      null,
+	      { className: "slogan" },
 	      "Create a Watchlist of Stocks"
 	    ),
 	    React.createElement(
@@ -67898,11 +67894,7 @@
 	  }, {
 	    key: 'removeStock',
 	    value: function removeStock(stock) {
-	      /*
-	      follow this example:
-	      http://jsfiddle.net/jwm6k66c/315/
-	      
-	      */
+	
 	      var newState = this.state.stocks;
 	      if (newState.indexOf(stock) > -1) {
 	        newState.splice(newState.indexOf(stock), 1);
@@ -67947,7 +67939,7 @@
 	            React.createElement('input', { type: 'text', placeholder: 'Stock ticker (e.g: GOOG, AAPL, YHOO)', ref: 'addInput' }),
 	            React.createElement(
 	              'button',
-	              { className: 'submitButton' },
+	              { className: 'stockButton' },
 	              'Add'
 	            )
 	          )

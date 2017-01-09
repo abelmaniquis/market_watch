@@ -40,7 +40,6 @@ class View extends React.Component {
     this.setState({
       id: this.state.id += 1
     })
-    console.log(this.state.id)
     
     let stockUpdateStore = this.state.stocks
     let stockToAdd = this.refs.addInput.value;
@@ -73,11 +72,7 @@ class View extends React.Component {
     this.refs.addInput.value = '';
   }
   removeStock(stock){
-   /*
-   follow this example:
-   http://jsfiddle.net/jwm6k66c/315/
-   
-   */
+    
    var newState = this.state.stocks
     if(newState.indexOf(stock) > -1){
       newState.splice(newState.indexOf(stock),1)
@@ -102,7 +97,7 @@ class View extends React.Component {
         <div className='searchContainer'>
         <form onSubmit={this.addStock}>
           <input type="text" placeholder = "Stock ticker (e.g: GOOG, AAPL, YHOO)" ref="addInput" />
-          <button className="submitButton">Add</button>
+          <button className="stockButton">Add</button>
         </form>
         </div>
         
