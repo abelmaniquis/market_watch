@@ -10,8 +10,6 @@ class VisualData extends React.Component {
       lineData.push({x: i, y: this.props.data[6 - i]})
     };
     
-    
-    console.log('lineData',lineData)
     var vis = d3.select('.chart'),
     WIDTH = 1000,
     HEIGHT = 500,
@@ -22,9 +20,15 @@ class VisualData extends React.Component {
       left: 50
     }
     
-    var parseTime = d3.timeParse("%d-%b-%y"),
+    var parseTime = d3.timeParse("%d-%b-%y");
     
-    //originally d3.scaleLinear()
+    console.log("parseTime: ", parseTime);
+    
+    /*global xRange
+      global yRange
+      global xAxis
+      global yAxis
+    */
     xRange = d3.scaleLinear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function(d) {
       return d.x;
     }), d3.max(lineData, function(d) {

@@ -3,7 +3,7 @@ module.exports = {
   seed:true,
   db:
   {
-   url:process.env.MONGODB_URI
+   url:'mongodb://localhost/marketUsers'
   }
 }
 

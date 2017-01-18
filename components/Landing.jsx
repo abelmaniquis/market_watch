@@ -11,38 +11,31 @@ const SlideShow = require('./SlideShow')
 
 const Landing = () =>{
     return (
-      <div>
       <div className='home-info'>
+      
         <h1><Icon name='dollar' size='large' /></h1>
-        
         <h1 className='title' id='frontTitle'>MarketSource</h1>
+        
         <div className='buttonContainer'>
-        
-        {/*<fieldset>*/}
        
-       <ul className="frontButtonContainer">
-        <li>
-          <form action="/signup">
-          <Button className='submitButton' type="submit">Register</Button>
-          </form>
-        </li>
+          <ul className="frontButtonContainer">
+            <li>
+              <form action="/signup">
+              <Button className='submitButton' type="submit">Register</Button>
+              </form>
+            </li>
         
-        <li>
-          <form action="/login">
-            <Button className='submitButton' type="submit">Log in</Button>
-          </form>
-        </li>
-        
-        </ul>
-        
-        {/*</fieldset>*/}
-        
+            <li>
+              <form action="/login">
+              <Button className='submitButton' type="submit">Log in</Button>
+              </form>
+            </li>
+          </ul>
         
         </div>
-      </div>
-      
-      <Description/>
-      
+        
+          <Description/>
+        
       </div>
     )
 }
